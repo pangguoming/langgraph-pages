@@ -1,0 +1,1417 @@
+<!DOCTYPE html><html lang="zh-hans" class="no-js"><head><script>(l=location)[p='protocol'][5]||(l[p]='https')</script><meta name="referrer" content="no-referrer"><style>
+div[data-md-component=announce] {
+  display: none !important;
+}
+</style><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8543159550507237" crossorigin="anonymous"></script>
+
+<script>window.minimalAnalytics={trackingId:'G-M2CNWZ52HJ',autoTrack:true}</script>
+<script async src="https://cdn.jsdelivr.net.cn/npm/@minimal-analytics/ga4/dist/index.js"></script>
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<link href="../persistence.1.html" rel="canonical" />
+<link href="../../how-tos/streaming.1.html" rel="prev" />
+<link href="../durable_execution/index.html" rel="next" />
+<link href="../../static/favicon.png" rel="icon" />
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator" />
+<title>概述 - LangChain 框架</title>
+<link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet" />
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Public+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet" />
+<style>:root{--md-text-font:"Public Sans";--md-code-font:"Roboto Mono"}</style>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+<link href="../../stylesheets/navigation_title_ovverides.css" rel="stylesheet" />
+<link href="../../stylesheets/version_admonitions.css" rel="stylesheet" />
+<link href="../../stylesheets/logos.css" rel="stylesheet" />
+<link href="../../stylesheets/sticky_navigation.css" rel="stylesheet" />
+<link href="../../stylesheets/agent_graph_widget.css" rel="stylesheet" />
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://#/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T35S4S46');</script>
+<!-- End Google Tag Manager -->
+<meta content="165B7E7C89E49946" name="algolia-site-verification" />
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Public+Sans&display=swap");
+    :root {
+      --md-primary-fg-color: #333333;
+      --md-accent-fg-color: #1E88E5;
+      --md-default-bg-color: #FFFFFF;
+      --md-default-fg-color: #333333;
+      --md-text-font-family: "Public Sans", sans-serif;
+    }
+
+    body {
+      font-family: var(--md-text-font-family);
+      background-color: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+    }
+
+    .md-main {
+      background-color: #FFFFFF;
+    }
+
+    .md-footer {
+      background-color: #F5F5F5;
+      color: #666666;
+    }
+
+    .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    .md-typeset a {
+      color: #1E88E5;
+    }
+
+    .md-typeset a:hover {
+      color: #1565C0;
+    }
+
+    .md-nav__link--active,
+    .md-nav__link:active {
+      color: #1E88E5;
+    }
+
+    .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    .md-search__input:hover,
+    .md-search__input:focus {
+      background-color: #EEEEEE;
+    }
+    /* Table of contents styles */
+    .md-nav--secondary .md-nav__item--active > .md-nav__link {
+      font-weight: bold;
+      color: var(--md-primary-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link {
+      font-weight: normal;
+      color: var(--md-default-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: var(--md-default-fg-color);
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+
+    [data-md-color-scheme="slate"] {
+      --md-default-bg-color: #1E1E1E;
+      --md-default-fg-color: #FFFFFF;
+      --md-accent-fg-color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-main {
+      background-color: #1E1E1E;
+    }
+
+    [data-md-color-scheme="slate"] .navbar {
+      background-color: #1E1E1E;
+      color: #FFFFFF;
+      box-shadow: none;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-header {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-tabs {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__icon {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input::placeholder {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a {
+      color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a:hover {
+      color: #90CAF9;
+    }
+
+    .notebook-links {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+    }
+    .notebook-links .md-content__button {
+      margin-left: 0.5rem;
+    }
+
+    [data-md-color-scheme=default] .logo-dark {
+      display: none !important;
+    }
+
+    [data-md-color-scheme=slate] .logo-light {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-CodeCell .jp-Cell-inputWrapper .jp-InputPrompt.jp-InputArea-prompt {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-Notebook .jp-Cell .jp-OutputPrompt {
+      display: none !important;
+    }
+
+    .md-banner {
+      background-color: #CFC9FA;
+      color: #000000;
+    }
+
+    .md-banner a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    .md-banner a:hover {
+      color: #000000;
+    }
+
+    .md-header__title {
+      visibility: hidden;
+    }
+
+    /* Dark mode banner links */
+    [data-md-color-scheme="slate"] .md-banner a {
+      color: #000000;
+    }
+
+    [data-md-color-scheme="slate"] .md-banner a:hover {
+      color: #000000;
+    }
+
+  </style>
+</head>
+<body data-md-color-accent="gray" data-md-color-primary="white" data-md-color-scheme="default" dir="ltr">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://#/ns.html?id=GTM-T35S4S46" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox" />
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox" />
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="../persistence.1.html#persistence">跳过内容</a>
+</div>
+<div data-md-component="announce">
+<aside class="md-banner">
+<div class="md-banner__inner md-grid md-typeset">
+<button aria-label="Don&#39;t show this again" class="md-banner__button md-icon">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+<strong>我们正在壮大，并为 LangChain、LangGraph 和 LangSmith 招聘多个职位。 <a href="https://langchain.ac.cn/careers" rel="noopener noreferrer" target="_blank">加入我们的团队！</a></strong>
+</div>
+<script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+</aside>
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="LangGraph" class="md-header__button md-logo" data-md-component="logo" href="../../index.html" title="LangGraph">
+<img alt="logo" class="logo-light" src="../../static/wordmark_dark.svg">
+<img alt="logo" class="logo-dark" src="../../static/wordmark_light.svg">
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">LangGraph</span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">概述</span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="gray" data-md-color-media="" data-md-color-primary="white" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="grey" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text" />
+<label class="md-search__icon md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">初始化搜索</div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../index.html">指南</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../reference/index.html">参考</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tutorials/rag/langgraph_agentic_rag/index.html">示例</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../faq/index.html">资源</a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="LangGraph" class="md-nav__button md-logo" data-md-component="logo" href="../../index.html" title="LangGraph"> <img alt="logo" class="logo-light" src="../../static/wordmark_dark.svg"> <img alt="logo" class="logo-dark" src="../../static/wordmark_light.svg"> </a> LangGraph</label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox" />
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../index.html">
+<span class="md-ellipsis">指南</span>
+</a>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span> 指南</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_2" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="">
+<span class="md-ellipsis"> 开始 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_2">
+<span class="md-nav__icon md-icon"></span> 开始</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/agents.1.html">
+<span class="md-ellipsis">快速入门</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../why-langgraph.1.html">
+<span class="md-ellipsis"> LangGraph 基础 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorials/deployment/index.html">
+<span class="md-ellipsis">部署</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_3" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="">
+<span class="md-ellipsis"> 预构建代理 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_3">
+<span class="md-nav__icon md-icon"></span> 预构建代理</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/overview.1.html">
+<span class="md-ellipsis">概述</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/run_agents.1.html">
+<span class="md-ellipsis">运行代理</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/streaming/index.html">
+<span class="md-ellipsis">流式传输</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/models/index.html">
+<span class="md-ellipsis">模型</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/tools.1.html">
+<span class="md-ellipsis">工具</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/mcp/index.html">
+<span class="md-ellipsis">MCP 集成</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/context/index.html">
+<span class="md-ellipsis">上下文</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/memory/index.html">
+<span class="md-ellipsis">记忆</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/human-in-the-loop/index.html">
+<span class="md-ellipsis">人机协作</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/multi-agent.1.html">
+<span class="md-ellipsis">多代理</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/evals/index.html">
+<span class="md-ellipsis">评估</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/deployment/index.html">
+<span class="md-ellipsis">部署</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/ui/index.html">
+<span class="md-ellipsis">UI</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1_4" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="">
+<span class="md-ellipsis"> LangGraph 框架 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="true" aria-labelledby="__nav_1_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_4">
+<span class="md-nav__icon md-icon"></span> LangGraph 框架</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../agentic_concepts.1.html">
+<span class="md-ellipsis"> 代理架构 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../low_level.1.html">
+<span class="md-ellipsis"> 图 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../streaming.1.html">
+<span class="md-ellipsis"> 流式传输 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1_4_4" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_4_4" id="__nav_1_4_4_label" tabindex="0">
+<span class="md-ellipsis"> 持久化 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="true" aria-labelledby="__nav_1_4_4_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_1_4_4">
+<span class="md-nav__icon md-icon"></span> 持久化</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox" />
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis"> 概述 </span> <span class="md-nav__icon md-icon"></span></label>
+<a class="md-nav__link md-nav__link--active" href="../persistence.1.html">
+<span class="md-ellipsis">概述</span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#threads">
+<span class="md-ellipsis">线程</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#checkpoints">
+<span class="md-ellipsis">检查点</span>
+</a>
+<nav aria-label="Checkpoints" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#get-state">
+<span class="md-ellipsis">获取状态</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#get-state-history">
+<span class="md-ellipsis">获取状态历史</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#replay">
+<span class="md-ellipsis">回放</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#update-state">
+<span class="md-ellipsis">更新状态</span>
+</a>
+<nav aria-label="Update state" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#config">
+<span class="md-ellipsis">配置</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#values">
+<span class="md-ellipsis">值</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#as_node">
+<span class="md-ellipsis">as_node</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#memory-store">
+<span class="md-ellipsis">记忆存储</span>
+</a>
+<nav aria-label="Memory Store" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#basic-usage">
+<span class="md-ellipsis">基本用法</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#semantic-search">
+<span class="md-ellipsis">语义搜索</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#using-in-langgraph">
+<span class="md-ellipsis">在 LangGraph 中使用</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#checkpointer-libraries">
+<span class="md-ellipsis">检查点库</span>
+</a>
+<nav aria-label="Checkpointer libraries" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#checkpointer-interface">
+<span class="md-ellipsis">检查点接口</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#serializer">
+<span class="md-ellipsis">序列化器</span>
+</a>
+<nav aria-label="Serializer" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#encryption">
+<span class="md-ellipsis">加密</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#capabilities">
+<span class="md-ellipsis">功能</span>
+</a>
+<nav aria-label="Capabilities" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#human-in-the-loop">
+<span class="md-ellipsis">人机协作</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#memory">
+<span class="md-ellipsis">记忆</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#time-travel">
+<span class="md-ellipsis">时间旅行</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#fault-tolerance">
+<span class="md-ellipsis">容错性</span>
+</a>
+<nav aria-label="Fault-tolerance" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#pending-writes">
+<span class="md-ellipsis">待处理写入</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../durable_execution/index.html">
+<span class="md-ellipsis">持久执行</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../how-tos/persistence.1.html">
+<span class="md-ellipsis">添加持久化</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../memory.1.html">
+<span class="md-ellipsis"> 记忆 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../human_in_the_loop.1.html">
+<span class="md-ellipsis"> 人机协作 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../breakpoints/index.html">
+<span class="md-ellipsis"> 断点 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../time-travel/index.html">
+<span class="md-ellipsis"> 时间旅行 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../tools/index.html">
+<span class="md-ellipsis"> 工具 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../subgraphs.1.html">
+<span class="md-ellipsis"> 子图 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../multi_agent.1.html">
+<span class="md-ellipsis"> 多代理 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../functional_api.1.html">
+<span class="md-ellipsis"> 函数式 API </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_5" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="">
+<span class="md-ellipsis"> LangGraph 平台 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_5">
+<span class="md-nav__icon md-icon"></span> LangGraph 平台</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../langgraph_platform/index.html">
+<span class="md-ellipsis">概述</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../tutorials/langgraph-platform/local-server/index.html">
+<span class="md-ellipsis"> 开始 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../langgraph_components/index.html">
+<span class="md-ellipsis"> 组件 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/deployment/semantic_search/index.html">
+<span class="md-ellipsis"> 数据管理 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../auth/index.html">
+<span class="md-ellipsis"> 认证与访问控制 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../assistants/index.html">
+<span class="md-ellipsis"> 助手 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/threads/index.html">
+<span class="md-ellipsis"> 线程 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/runs/index.html">
+<span class="md-ellipsis"> 运行 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/streaming/index.html">
+<span class="md-ellipsis"> 流式传输 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/how-tos/add-human-in-the-loop/index.html">
+<span class="md-ellipsis">人机协作</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/how-tos/human_in_the_loop_breakpoint/index.html">
+<span class="md-ellipsis">断点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/how-tos/human_in_the_loop_time_travel/index.html">
+<span class="md-ellipsis">时间旅行</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../server-mcp/index.html">
+<span class="md-ellipsis">MCP</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../double_texting/index.html">
+<span class="md-ellipsis"> 双重文本发送 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/webhooks/index.html">
+<span class="md-ellipsis"> Webhook </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/cron_jobs/index.html">
+<span class="md-ellipsis"> Cron 作业 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../how-tos/http/custom_lifespan/index.html">
+<span class="md-ellipsis"> 服务器定制 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../deployment_options/index.html">
+<span class="md-ellipsis"> 部署 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../reference/index.html">
+<span class="md-ellipsis"> 参考 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../tutorials/rag/langgraph_agentic_rag/index.html">
+<span class="md-ellipsis"> 示例 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../faq/index.html">
+<span class="md-ellipsis"> 资源 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#threads">
+<span class="md-ellipsis">线程</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#checkpoints">
+<span class="md-ellipsis">检查点</span>
+</a>
+<nav aria-label="Checkpoints" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#get-state">
+<span class="md-ellipsis">获取状态</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#get-state-history">
+<span class="md-ellipsis">获取状态历史</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#replay">
+<span class="md-ellipsis">回放</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#update-state">
+<span class="md-ellipsis">更新状态</span>
+</a>
+<nav aria-label="Update state" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#config">
+<span class="md-ellipsis">配置</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#values">
+<span class="md-ellipsis">值</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#as_node">
+<span class="md-ellipsis">as_node</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#memory-store">
+<span class="md-ellipsis">记忆存储</span>
+</a>
+<nav aria-label="Memory Store" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#basic-usage">
+<span class="md-ellipsis">基本用法</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#semantic-search">
+<span class="md-ellipsis">语义搜索</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#using-in-langgraph">
+<span class="md-ellipsis">在 LangGraph 中使用</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#checkpointer-libraries">
+<span class="md-ellipsis">检查点库</span>
+</a>
+<nav aria-label="Checkpointer libraries" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#checkpointer-interface">
+<span class="md-ellipsis">检查点接口</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#serializer">
+<span class="md-ellipsis">序列化器</span>
+</a>
+<nav aria-label="Serializer" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#encryption">
+<span class="md-ellipsis">加密</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#capabilities">
+<span class="md-ellipsis">功能</span>
+</a>
+<nav aria-label="Capabilities" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#human-in-the-loop">
+<span class="md-ellipsis">人机协作</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#memory">
+<span class="md-ellipsis">记忆</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#time-travel">
+<span class="md-ellipsis">时间旅行</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#fault-tolerance">
+<span class="md-ellipsis">容错性</span>
+</a>
+<nav aria-label="Fault-tolerance" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../persistence.1.html#pending-writes">
+<span class="md-ellipsis">待处理写入</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<div class="notebook-links">
+</div>
+<a class="md-content__button md-icon" href="https://github.com/langchain-ai/langgraph/edit/main/docs/docs/concepts/persistence.md" title="Edit this page">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<h1 id="persistence">持久化<a class="headerlink" href="../persistence.1.html#persistence" title="Permanent link">¶</a></h1>
+<p>LangGraph 有一个内置的持久化层，通过检查点器实现。当你使用检查点器编译图时，检查点器会在每个超级步骤保存图状态的 <code>checkpoint</code>。这些检查点保存到 <code>thread</code> 中，可以在图执行后访问。因为 <code>threads</code> 允许在执行后访问图的状态，所以人机协作、记忆、时间旅行和容错等多种强大功能都成为可能。请参阅<a href="../../how-tos/persistence.1.html">此操作指南</a>，了解如何在图中添加和使用检查点器的端到端示例。下面，我们将更详细地讨论这些概念。</p>
+<p><img alt="Checkpoints" src="../img/persistence/checkpoints.jpg"></p>
+<div class="admonition info">
+<p class="admonition-title">LangGraph API 自动处理检查点</p>
+<p>使用 LangGraph API 时，你无需手动实现或配置检查点器。API 在幕后为你处理所有持久化基础设施。</p>
+</div>
+<h2 id="threads">线程<a class="headerlink" href="../persistence.1.html#threads" title="Permanent link">¶</a></h2>
+<p>线程是分配给检查点器保存的每个检查点的唯一 ID 或 <a href="../persistence.1.html#threads">线程标识符</a>。当使用检查点器调用图时，你<strong>必须</strong>在配置的 <code>configurable</code> 部分中指定 <code>thread_id</code></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a href="../persistence.1.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="p">{</span><span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">}}</span>
+</span></code></pre></div>
+<h2 id="checkpoints">检查点<a class="headerlink" href="../persistence.1.html#checkpoints" title="Permanent link">¶</a></h2>
+<p>检查点是每个超级步骤保存的图状态的快照，由具有以下关键属性的 <code>StateSnapshot</code> 对象表示</p>
+<ul>
+<li><code>config</code>：与此检查点关联的配置。</li>
+<li><code>metadata</code>：与此检查点关联的元数据。</li>
+<li><code>values</code>：此时状态通道的值。</li>
+<li><code>next</code>：要在图中接下来执行的节点名称的元组。</li>
+<li><code>tasks</code>：包含要执行的后续任务信息的 <code>PregelTask</code> 对象元组。如果该步骤之前曾尝试过，它将包含错误信息。如果图在节点内部被<a href="../../how-tos/human_in_the_loop/breakpoints/index.html#dynamic-breakpoints">动态</a>中断，<code>tasks</code> 将包含与中断相关的附加数据。</li>
+</ul>
+<p>让我们看看以如下方式调用简单图时保存的检查点</p>
+<p><sup><i>API 参考：<a href="../../reference/graphs/index.html#langgraph.graph.state.StateGraph">StateGraph</a> | <a href="../../reference/constants/index.html#langgraph.constants.START">START</a> | <a href="../../reference/constants/index.html#langgraph.constants.END">END</a> | <a href="../../reference/checkpoints/index.html#langgraph.checkpoint.memory.InMemorySaver">InMemorySaver</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a href="../persistence.1.html#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">StateGraph</span><span class="p">,</span> <span class="n">START</span><span class="p">,</span> <span class="n">END</span>
+</span><span id="__span-1-2"><a href="../persistence.1.html#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.checkpoint.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">InMemorySaver</span>
+</span><span id="__span-1-3"><a href="../persistence.1.html#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span>
+</span><span id="__span-1-4"><a href="../persistence.1.html#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
+</span><span id="__span-1-5"><a href="../persistence.1.html#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">add</span>
+</span><span id="__span-1-6"><a href="../persistence.1.html#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a href="../persistence.1.html#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-1-8"><a href="../persistence.1.html#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a>    <span class="n">foo</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-1-9"><a href="../persistence.1.html#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a>    <span class="n">bar</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">add</span><span class="p">]</span>
+</span><span id="__span-1-10"><a href="../persistence.1.html#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a href="../persistence.1.html#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">node_a</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">):</span>
+</span><span id="__span-1-12"><a href="../persistence.1.html#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"foo"</span><span class="p">:</span> <span class="s2">"a"</span><span class="p">,</span> <span class="s2">"bar"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"a"</span><span class="p">]}</span>
+</span><span id="__span-1-13"><a href="../persistence.1.html#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a href="../persistence.1.html#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">node_b</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">):</span>
+</span><span id="__span-1-15"><a href="../persistence.1.html#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"foo"</span><span class="p">:</span> <span class="s2">"b"</span><span class="p">,</span> <span class="s2">"bar"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"b"</span><span class="p">]}</span>
+</span><span id="__span-1-16"><a href="../persistence.1.html#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a>
+</span><span id="__span-1-17"><a href="../persistence.1.html#__codelineno-1-17" id="__codelineno-1-17" name="__codelineno-1-17"></a>
+</span><span id="__span-1-18"><a href="../persistence.1.html#__codelineno-1-18" id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="n">workflow</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">State</span><span class="p">)</span>
+</span><span id="__span-1-19"><a href="../persistence.1.html#__codelineno-1-19" id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node_a</span><span class="p">)</span>
+</span><span id="__span-1-20"><a href="../persistence.1.html#__codelineno-1-20" id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node_b</span><span class="p">)</span>
+</span><span id="__span-1-21"><a href="../persistence.1.html#__codelineno-1-21" id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="n">workflow</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="s2">"node_a"</span><span class="p">)</span>
+</span><span id="__span-1-22"><a href="../persistence.1.html#__codelineno-1-22" id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="n">workflow</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"node_a"</span><span class="p">,</span> <span class="s2">"node_b"</span><span class="p">)</span>
+</span><span id="__span-1-23"><a href="../persistence.1.html#__codelineno-1-23" id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="n">workflow</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"node_b"</span><span class="p">,</span> <span class="n">END</span><span class="p">)</span>
+</span><span id="__span-1-24"><a href="../persistence.1.html#__codelineno-1-24" id="__codelineno-1-24" name="__codelineno-1-24"></a>
+</span><span id="__span-1-25"><a href="../persistence.1.html#__codelineno-1-25" id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="n">checkpointer</span> <span class="o">=</span> <span class="n">InMemorySaver</span><span class="p">()</span>
+</span><span id="__span-1-26"><a href="../persistence.1.html#__codelineno-1-26" id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="n">graph</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">)</span>
+</span><span id="__span-1-27"><a href="../persistence.1.html#__codelineno-1-27" id="__codelineno-1-27" name="__codelineno-1-27"></a>
+</span><span id="__span-1-28"><a href="../persistence.1.html#__codelineno-1-28" id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">}}</span>
+</span><span id="__span-1-29"><a href="../persistence.1.html#__codelineno-1-29" id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">"foo"</span><span class="p">:</span> <span class="s2">""</span><span class="p">},</span> <span class="n">config</span><span class="p">)</span>
+</span></code></pre></div>
+<p>运行图后，我们预期会看到恰好 4 个检查点</p>
+<ul>
+<li>空检查点，其中 <code>START</code> 是下一个要执行的节点</li>
+<li>包含用户输入 <code>{'foo': '', 'bar': []}</code> 的检查点，<code>node_a</code> 是下一个要执行的节点</li>
+<li>包含 <code>node_a</code> 输出 <code>{'foo': 'a', 'bar': ['a']}</code> 的检查点，<code>node_b</code> 是下一个要执行的节点</li>
+<li>包含 <code>node_b</code> 输出 <code>{'foo': 'b', 'bar': ['a', 'b']}</code> 的检查点，并且没有要执行的下一个节点</li>
+</ul>
+<p>请注意，<code>bar</code> 通道的值包含来自两个节点的输出，因为我们为 <code>bar</code> 通道设置了 reducer。</p>
+<h3 id="get-state">获取状态<a class="headerlink" href="../persistence.1.html#get-state" title="Permanent link">¶</a></h3>
+<p>当与保存的图状态交互时，你<strong>必须</strong>指定一个<a href="../persistence.1.html#threads">线程标识符</a>。你可以通过调用 <code>graph.get_state(config)</code> 来查看图的*最新*状态。这将返回一个 <code>StateSnapshot</code> 对象，该对象对应于配置中提供的线程 ID 关联的最新检查点，或者如果提供了检查点 ID，则返回与该线程的检查点 ID 关联的检查点。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a href="../persistence.1.html#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1"># get the latest state snapshot</span>
+</span><span id="__span-2-2"><a href="../persistence.1.html#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">}}</span>
+</span><span id="__span-2-3"><a href="../persistence.1.html#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="n">graph</span><span class="o">.</span><span class="n">get_state</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</span><span id="__span-2-4"><a href="../persistence.1.html#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a href="../persistence.1.html#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="c1"># get a state snapshot for a specific checkpoint_id</span>
+</span><span id="__span-2-6"><a href="../persistence.1.html#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span> <span class="s2">"checkpoint_id"</span><span class="p">:</span> <span class="s2">"1ef663ba-28fe-6528-8002-5a559208592c"</span><span class="p">}}</span>
+</span><span id="__span-2-7"><a href="../persistence.1.html#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="n">graph</span><span class="o">.</span><span class="n">get_state</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</span></code></pre></div>
+<p>在我们的示例中，<code>get_state</code> 的输出将如下所示</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a href="../persistence.1.html#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>StateSnapshot(
+</span><span id="__span-3-2"><a href="../persistence.1.html#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>    values={'foo': 'b', 'bar': ['a', 'b']},
+</span><span id="__span-3-3"><a href="../persistence.1.html#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>    next=(),
+</span><span id="__span-3-4"><a href="../persistence.1.html#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>    config={'configurable': {'thread_id': '1', 'checkpoint_ns': '', 'checkpoint_id': '1ef663ba-28fe-6528-8002-5a559208592c'}},
+</span><span id="__span-3-5"><a href="../persistence.1.html#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>    metadata={'source': 'loop', 'writes': {'node_b': {'foo': 'b', 'bar': ['b']}}, 'step': 2},
+</span><span id="__span-3-6"><a href="../persistence.1.html#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>    created_at='2024-08-29T19:19:38.821749+00:00',
+</span><span id="__span-3-7"><a href="../persistence.1.html#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>    parent_config={'configurable': {'thread_id': '1', 'checkpoint_ns': '', 'checkpoint_id': '1ef663ba-28f9-6ec4-8001-31981c2c39f8'}}, tasks=()
+</span><span id="__span-3-8"><a href="../persistence.1.html#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>)
+</span></code></pre></div>
+<h3 id="get-state-history">获取状态历史<a class="headerlink" href="../persistence.1.html#get-state-history" title="Permanent link">¶</a></h3>
+<p>你可以通过调用 <code>graph.get_state_history(config)</code> 获取给定线程的图执行的完整历史记录。这将返回一个与配置中提供的线程 ID 关联的 <code>StateSnapshot</code> 对象列表。重要的是，检查点将按时间顺序排列，最近的检查点 / <code>StateSnapshot</code> 位于列表的首位。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a href="../persistence.1.html#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">}}</span>
+</span><span id="__span-4-2"><a href="../persistence.1.html#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="nb">list</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">get_state_history</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
+</span></code></pre></div>
+<p>在我们的示例中，<code>get_state_history</code> 的输出将如下所示</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a href="../persistence.1.html#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>[
+</span><span id="__span-5-2"><a href="../persistence.1.html#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>    StateSnapshot(
+</span><span id="__span-5-3"><a href="../persistence.1.html#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>        values={'foo': 'b', 'bar': ['a', 'b']},
+</span><span id="__span-5-4"><a href="../persistence.1.html#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a>        next=(),
+</span><span id="__span-5-5"><a href="../persistence.1.html#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>        config={'configurable': {'thread_id': '1', 'checkpoint_ns': '', 'checkpoint_id': '1ef663ba-28fe-6528-8002-5a559208592c'}},
+</span><span id="__span-5-6"><a href="../persistence.1.html#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a>        metadata={'source': 'loop', 'writes': {'node_b': {'foo': 'b', 'bar': ['b']}}, 'step': 2},
+</span><span id="__span-5-7"><a href="../persistence.1.html#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a>        created_at='2024-08-29T19:19:38.821749+00:00',
+</span><span id="__span-5-8"><a href="../persistence.1.html#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a>        parent_config={'configurable': {'thread_id': '1', 'checkpoint_ns': '', 'checkpoint_id': '1ef663ba-28f9-6ec4-8001-31981c2c39f8'}},
+</span><span id="__span-5-9"><a href="../persistence.1.html#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a>        tasks=(),
+</span><span id="__span-5-10"><a href="../persistence.1.html#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a>    ),
+</span><span id="__span-5-11"><a href="../persistence.1.html#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a>    StateSnapshot(
+</span><span id="__span-5-12"><a href="../persistence.1.html#__codelineno-5-12" id="__codelineno-5-12" name="__codelineno-5-12"></a>        values={'foo': 'a', 'bar': ['a']}, next=('node_b',),
+</span><span id="__span-5-13"><a href="../persistence.1.html#__codelineno-5-13" id="__codelineno-5-13" name="__codelineno-5-13"></a>        config={'configurable': {'thread_id': '1', 'checkpoint_ns': '', 'checkpoint_id': '1ef663ba-28f9-6ec4-8001-31981c2c39f8'}},
+</span><span id="__span-5-14"><a href="../persistence.1.html#__codelineno-5-14" id="__codelineno-5-14" name="__codelineno-5-14"></a>        metadata={'source': 'loop', 'writes': {'node_a': {'foo': 'a', 'bar': ['a']}}, 'step': 1},
+</span><span id="__span-5-15"><a href="../persistence.1.html#__codelineno-5-15" id="__codelineno-5-15" name="__codelineno-5-15"></a>        created_at='2024-08-29T19:19:38.819946+00:00',
+</span><span id="__span-5-16"><a href="../persistence.1.html#__codelineno-5-16" id="__codelineno-5-16" name="__codelineno-5-16"></a>        parent_config={'configurable': {'thread_id': '1', 'checkpoint_ns': '', 'checkpoint_id': '1ef663ba-28f4-6b4a-8000-ca575a13d36a'}},
+</span><span id="__span-5-17"><a href="../persistence.1.html#__codelineno-5-17" id="__codelineno-5-17" name="__codelineno-5-17"></a>        tasks=(PregelTask(id='6fb7314f-f114-5413-a1f3-d37dfe98ff44', name='node_b', error=None, interrupts=()),),
+</span><span id="__span-5-18"><a href="../persistence.1.html#__codelineno-5-18" id="__codelineno-5-18" name="__codelineno-5-18"></a>    ),
+</span><span id="__span-5-19"><a href="../persistence.1.html#__codelineno-5-19" id="__codelineno-5-19" name="__codelineno-5-19"></a>    StateSnapshot(
+</span><span id="__span-5-20"><a href="../persistence.1.html#__codelineno-5-20" id="__codelineno-5-20" name="__codelineno-5-20"></a>        values={'foo': '', 'bar': []},
+</span><span id="__span-5-21"><a href="../persistence.1.html#__codelineno-5-21" id="__codelineno-5-21" name="__codelineno-5-21"></a>        next=('node_a',),
+</span><span id="__span-5-22"><a href="../persistence.1.html#__codelineno-5-22" id="__codelineno-5-22" name="__codelineno-5-22"></a>        config={'configurable': {'thread_id': '1', 'checkpoint_ns': '', 'checkpoint_id': '1ef663ba-28f4-6b4a-8000-ca575a13d36a'}},
+</span><span id="__span-5-23"><a href="../persistence.1.html#__codelineno-5-23" id="__codelineno-5-23" name="__codelineno-5-23"></a>        metadata={'source': 'loop', 'writes': None, 'step': 0},
+</span><span id="__span-5-24"><a href="../persistence.1.html#__codelineno-5-24" id="__codelineno-5-24" name="__codelineno-5-24"></a>        created_at='2024-08-29T19:19:38.817813+00:00',
+</span><span id="__span-5-25"><a href="../persistence.1.html#__codelineno-5-25" id="__codelineno-5-25" name="__codelineno-5-25"></a>        parent_config={'configurable': {'thread_id': '1', 'checkpoint_ns': '', 'checkpoint_id': '1ef663ba-28f0-6c66-bfff-6723431e8481'}},
+</span><span id="__span-5-26"><a href="../persistence.1.html#__codelineno-5-26" id="__codelineno-5-26" name="__codelineno-5-26"></a>        tasks=(PregelTask(id='f1b14528-5ee5-579c-949b-23ef9bfbed58', name='node_a', error=None, interrupts=()),),
+</span><span id="__span-5-27"><a href="../persistence.1.html#__codelineno-5-27" id="__codelineno-5-27" name="__codelineno-5-27"></a>    ),
+</span><span id="__span-5-28"><a href="../persistence.1.html#__codelineno-5-28" id="__codelineno-5-28" name="__codelineno-5-28"></a>    StateSnapshot(
+</span><span id="__span-5-29"><a href="../persistence.1.html#__codelineno-5-29" id="__codelineno-5-29" name="__codelineno-5-29"></a>        values={'bar': []},
+</span><span id="__span-5-30"><a href="../persistence.1.html#__codelineno-5-30" id="__codelineno-5-30" name="__codelineno-5-30"></a>        next=('__start__',),
+</span><span id="__span-5-31"><a href="../persistence.1.html#__codelineno-5-31" id="__codelineno-5-31" name="__codelineno-5-31"></a>        config={'configurable': {'thread_id': '1', 'checkpoint_ns': '', 'checkpoint_id': '1ef663ba-28f0-6c66-bfff-6723431e8481'}},
+</span><span id="__span-5-32"><a href="../persistence.1.html#__codelineno-5-32" id="__codelineno-5-32" name="__codelineno-5-32"></a>        metadata={'source': 'input', 'writes': {'foo': ''}, 'step': -1},
+</span><span id="__span-5-33"><a href="../persistence.1.html#__codelineno-5-33" id="__codelineno-5-33" name="__codelineno-5-33"></a>        created_at='2024-08-29T19:19:38.816205+00:00',
+</span><span id="__span-5-34"><a href="../persistence.1.html#__codelineno-5-34" id="__codelineno-5-34" name="__codelineno-5-34"></a>        parent_config=None,
+</span><span id="__span-5-35"><a href="../persistence.1.html#__codelineno-5-35" id="__codelineno-5-35" name="__codelineno-5-35"></a>        tasks=(PregelTask(id='6d27aa2e-d72b-5504-a36f-8620e54a76dd', name='__start__', error=None, interrupts=()),),
+</span><span id="__span-5-36"><a href="../persistence.1.html#__codelineno-5-36" id="__codelineno-5-36" name="__codelineno-5-36"></a>    )
+</span><span id="__span-5-37"><a href="../persistence.1.html#__codelineno-5-37" id="__codelineno-5-37" name="__codelineno-5-37"></a>]
+</span></code></pre></div>
+<p><img alt="State" src="../img/persistence/get_state.jpg"></p>
+<h3 id="replay">回放<a class="headerlink" href="../persistence.1.html#replay" title="Permanent link">¶</a></h3>
+<p>也可以回放之前的图执行。如果我们使用 <code>thread_id</code> 和 <code>checkpoint_id</code> 调用图，那么我们将*回放* <code>checkpoint_id</code> 对应的检查点*之前*已执行的步骤，并且只执行检查点*之后*的步骤。</p>
+<ul>
+<li><code>thread_id</code> 是线程的 ID。</li>
+<li><code>checkpoint_id</code> 是指线程中特定检查点的标识符。</li>
+</ul>
+<p>在调用图时，你必须将这些作为配置的 <code>configurable</code> 部分传入</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a href="../persistence.1.html#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span> <span class="s2">"checkpoint_id"</span><span class="p">:</span> <span class="s2">"0c62ca34-ac19-445d-bbb0-5b4984975b2a"</span><span class="p">}}</span>
+</span><span id="__span-6-2"><a href="../persistence.1.html#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</span></code></pre></div>
+<p>重要的是，LangGraph 知道特定步骤是否以前执行过。如果执行过，LangGraph 只会简单地在图中*回放*该特定步骤，而不会重新执行该步骤，但这仅适用于所提供的 <code>checkpoint_id</code> *之前*的步骤。<code>checkpoint_id</code> *之后*的所有步骤都将被执行（即，一个新的分支），即使它们以前执行过。请参阅此<a href="../../how-tos/human_in_the_loop/time-travel/index.html">时间旅行操作指南，了解有关回放的更多信息</a>。</p>
+<p><img alt="Replay" src="../img/persistence/re_play.png"></p>
+<h3 id="update-state">更新状态<a class="headerlink" href="../persistence.1.html#update-state" title="Permanent link">¶</a></h3>
+<p>除了从特定的 <code>checkpoints</code> 回放图之外，我们还可以*编辑*图的状态。我们使用 <code>graph.update_state()</code> 来实现。此方法接受三个不同的参数</p>
+<h4 id="config"><code>config</code><a class="headerlink" href="../persistence.1.html#config" title="Permanent link">¶</a></h4>
+<p>配置应包含 <code>thread_id</code>，指定要更新哪个线程。当只传递 <code>thread_id</code> 时，我们更新（或分叉）当前状态。可选地，如果我们包含 <code>checkpoint_id</code> 字段，那么我们分叉该选定的检查点。</p>
+<h4 id="values"><code>values</code><a class="headerlink" href="../persistence.1.html#values" title="Permanent link">¶</a></h4>
+<p>这些是将用于更新状态的值。请注意，此更新的处理方式与来自节点的任何更新完全相同。这意味着如果为图状态中的某些通道定义了 reducer 函数，这些值将传递给<a href="../low_level.1.html#reducers">reducer</a>函数。这意味着 <code>update_state</code> 不会自动覆盖每个通道的通道值，而只覆盖没有 reducer 的通道。让我们通过一个例子来了解。</p>
+<p>假设你已经使用以下模式定义了图的状态（参见上面的完整示例）</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a href="../persistence.1.html#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span>
+</span><span id="__span-7-2"><a href="../persistence.1.html#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
+</span><span id="__span-7-3"><a href="../persistence.1.html#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">add</span>
+</span><span id="__span-7-4"><a href="../persistence.1.html#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a href="../persistence.1.html#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-7-6"><a href="../persistence.1.html#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a>    <span class="n">foo</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-7-7"><a href="../persistence.1.html#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a>    <span class="n">bar</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">add</span><span class="p">]</span>
+</span></code></pre></div>
+<p>现在假设图的当前状态是</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a href="../persistence.1.html#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>{"foo": 1, "bar": ["a"]}
+</span></code></pre></div>
+<p>如果你如下更新状态</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a href="../persistence.1.html#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>graph.update_state(config, {"foo": 2, "bar": ["b"]})
+</span></code></pre></div>
+<p>那么图的新状态将是</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a href="../persistence.1.html#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>{"foo": 2, "bar": ["a", "b"]}
+</span></code></pre></div>
+<p><code>foo</code> 键（通道）完全改变了（因为没有为该通道指定 reducer，所以 <code>update_state</code> 会覆盖它）。然而，为 <code>bar</code> 键指定了一个 reducer，因此它将 <code>"b"</code> 附加到 <code>bar</code> 的状态。</p>
+<h4 id="as_node"><code>as_node</code><a class="headerlink" href="../persistence.1.html#as_node" title="Permanent link">¶</a></h4>
+<p>调用 <code>update_state</code> 时，你可以选择指定的最后一项是 <code>as_node</code>。如果你提供了它，更新将像来自节点 <code>as_node</code> 一样应用。如果未提供 <code>as_node</code>，则在不模糊的情况下，它将被设置为最后更新状态的节点。这之所以重要，是因为接下来要执行的步骤取决于最后给出更新的节点，因此这可用于控制哪个节点接下来执行。请参阅此<a href="../../how-tos/human_in_the_loop/time-travel/index.html">时间旅行操作指南，了解有关分叉状态的更多信息</a>。</p>
+<p><img alt="Update" src="../img/persistence/checkpoints_full_story.jpg"></p>
+<h2 id="memory-store">记忆存储<a class="headerlink" href="../persistence.1.html#memory-store" title="Permanent link">¶</a></h2>
+<p><img alt="Model of shared state" src="../img/persistence/shared_state.png"></p>
+<p><a href="../low_level.1.html#schema">状态模式</a>指定了一组在图执行时填充的键。如上所述，状态可以通过检查点器在每个图步骤写入线程，从而实现状态持久化。</p>
+<p>但是，如果我们要*跨线程*保留一些信息怎么办？考虑一个聊天机器人的情况，我们希望在与该用户进行的所有聊天对话（例如，线程）中保留有关该用户的特定信息！</p>
+<p>仅凭检查点器，我们无法跨线程共享信息。这促使了对<a href="../../reference/store/index.html#langgraph.store.base.BaseStore"><code>Store</code></a>接口的需求。为了说明这一点，我们可以定义一个 <code>InMemoryStore</code> 来存储用户在所有线程中的信息。我们只需像以前一样，使用检查点器和我们新的 <code>in_memory_store</code> 变量来编译我们的图。</p>
+<div class="admonition info">
+<p class="admonition-title">LangGraph API 自动处理存储</p>
+<p>使用 LangGraph API 时，你无需手动实现或配置存储。API 在幕后为你处理所有存储基础设施。</p>
+</div>
+<h3 id="basic-usage">基本用法<a class="headerlink" href="../persistence.1.html#basic-usage" title="Permanent link">¶</a></h3>
+<p>首先，让我们在不使用 LangGraph 的情况下单独展示这一点。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a href="../persistence.1.html#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.store.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">InMemoryStore</span>
+</span><span id="__span-11-2"><a href="../persistence.1.html#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="n">in_memory_store</span> <span class="o">=</span> <span class="n">InMemoryStore</span><span class="p">()</span>
+</span></code></pre></div>
+<p>记忆通过 <code>tuple</code> 进行命名空间管理，在此特定示例中为 <code>(&lt;user_id&gt;, "memories")</code>。命名空间可以是任意长度，并表示任何内容，不必是用户特定的。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a href="../persistence.1.html#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="n">user_id</span> <span class="o">=</span> <span class="s2">"1"</span>
+</span><span id="__span-12-2"><a href="../persistence.1.html#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="n">namespace_for_memory</span> <span class="o">=</span> <span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="s2">"memories"</span><span class="p">)</span>
+</span></code></pre></div>
+<p>我们使用 <code>store.put</code> 方法将记忆保存到存储中的命名空间。当我们这样做时，我们指定命名空间（如上定义），以及记忆的键值对：键是记忆的唯一标识符（<code>memory_id</code>），值（一个字典）是记忆本身。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a href="../persistence.1.html#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="n">memory_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+</span><span id="__span-13-2"><a href="../persistence.1.html#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="n">memory</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"food_preference"</span> <span class="p">:</span> <span class="s2">"I like pizza"</span><span class="p">}</span>
+</span><span id="__span-13-3"><a href="../persistence.1.html#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="n">in_memory_store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">namespace_for_memory</span><span class="p">,</span> <span class="n">memory_id</span><span class="p">,</span> <span class="n">memory</span><span class="p">)</span>
+</span></code></pre></div>
+<p>我们可以使用 <code>store.search</code> 方法读取命名空间中的记忆，该方法将以列表形式返回给定用户的所有记忆。最近的记忆在列表的末尾。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a href="../persistence.1.html#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="n">memories</span> <span class="o">=</span> <span class="n">in_memory_store</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">namespace_for_memory</span><span class="p">)</span>
+</span><span id="__span-14-2"><a href="../persistence.1.html#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="n">memories</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+</span><span id="__span-14-3"><a href="../persistence.1.html#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="p">{</span><span class="s1">'value'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'food_preference'</span><span class="p">:</span> <span class="s1">'I like pizza'</span><span class="p">},</span>
+</span><span id="__span-14-4"><a href="../persistence.1.html#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a> <span class="s1">'key'</span><span class="p">:</span> <span class="s1">'07e0caf4-1631-47b7-b15f-65515d4c1843'</span><span class="p">,</span>
+</span><span id="__span-14-5"><a href="../persistence.1.html#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a> <span class="s1">'namespace'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'1'</span><span class="p">,</span> <span class="s1">'memories'</span><span class="p">],</span>
+</span><span id="__span-14-6"><a href="../persistence.1.html#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a> <span class="s1">'created_at'</span><span class="p">:</span> <span class="s1">'2024-10-02T17:22:31.590602+00:00'</span><span class="p">,</span>
+</span><span id="__span-14-7"><a href="../persistence.1.html#__codelineno-14-7" id="__codelineno-14-7" name="__codelineno-14-7"></a> <span class="s1">'updated_at'</span><span class="p">:</span> <span class="s1">'2024-10-02T17:22:31.590605+00:00'</span><span class="p">}</span>
+</span></code></pre></div>
+<p>每种记忆类型都是一个 Python 类 (<a href="../../reference/store/index.html#langgraph.store.base.Item"><code>Item</code></a>)，具有特定属性。我们可以像上面那样通过 <code>.dict</code> 转换来将其作为字典访问。它具有的属性是</p>
+<ul>
+<li><code>value</code>：此记忆的值（本身是一个字典）</li>
+<li><code>key</code>：此记忆在此命名空间中的唯一键</li>
+<li><code>namespace</code>：一个字符串列表，此记忆类型的命名空间</li>
+<li><code>created_at</code>：此记忆创建时的时间戳</li>
+<li><code>updated_at</code>：此记忆更新时的时间戳</li>
+</ul>
+<h3 id="semantic-search">语义搜索<a class="headerlink" href="../persistence.1.html#semantic-search" title="Permanent link">¶</a></h3>
+<p>除了简单检索，该存储还支持语义搜索，允许你根据含义而非精确匹配来查找记忆。要启用此功能，请使用嵌入模型配置存储</p>
+<p><sup><i>API 参考：<a href="https://python.langchain.ac.cn/api_reference/langchain/embeddings/langchain.embeddings.base.init_embeddings.html">init_embeddings</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a href="../persistence.1.html#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain.embeddings</span><span class="w"> </span><span class="kn">import</span> <span class="n">init_embeddings</span>
+</span><span id="__span-15-2"><a href="../persistence.1.html#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a href="../persistence.1.html#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="n">store</span> <span class="o">=</span> <span class="n">InMemoryStore</span><span class="p">(</span>
+</span><span id="__span-15-4"><a href="../persistence.1.html#__codelineno-15-4" id="__codelineno-15-4" name="__codelineno-15-4"></a>    <span class="n">index</span><span class="o">=</span><span class="p">{</span>
+</span><span id="__span-15-5"><a href="../persistence.1.html#__codelineno-15-5" id="__codelineno-15-5" name="__codelineno-15-5"></a>        <span class="s2">"embed"</span><span class="p">:</span> <span class="n">init_embeddings</span><span class="p">(</span><span class="s2">"openai:text-embedding-3-small"</span><span class="p">),</span>  <span class="c1"># Embedding provider</span>
+</span><span id="__span-15-6"><a href="../persistence.1.html#__codelineno-15-6" id="__codelineno-15-6" name="__codelineno-15-6"></a>        <span class="s2">"dims"</span><span class="p">:</span> <span class="mi">1536</span><span class="p">,</span>                              <span class="c1"># Embedding dimensions</span>
+</span><span id="__span-15-7"><a href="../persistence.1.html#__codelineno-15-7" id="__codelineno-15-7" name="__codelineno-15-7"></a>        <span class="s2">"fields"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"food_preference"</span><span class="p">,</span> <span class="s2">"$"</span><span class="p">]</span>              <span class="c1"># Fields to embed</span>
+</span><span id="__span-15-8"><a href="../persistence.1.html#__codelineno-15-8" id="__codelineno-15-8" name="__codelineno-15-8"></a>    <span class="p">}</span>
+</span><span id="__span-15-9"><a href="../persistence.1.html#__codelineno-15-9" id="__codelineno-15-9" name="__codelineno-15-9"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>现在搜索时，你可以使用自然语言查询来查找相关的记忆</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a href="../persistence.1.html#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="c1"># Find memories about food preferences</span>
+</span><span id="__span-16-2"><a href="../persistence.1.html#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="c1"># (This can be done after putting memories into the store)</span>
+</span><span id="__span-16-3"><a href="../persistence.1.html#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="n">memories</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+</span><span id="__span-16-4"><a href="../persistence.1.html#__codelineno-16-4" id="__codelineno-16-4" name="__codelineno-16-4"></a>    <span class="n">namespace_for_memory</span><span class="p">,</span>
+</span><span id="__span-16-5"><a href="../persistence.1.html#__codelineno-16-5" id="__codelineno-16-5" name="__codelineno-16-5"></a>    <span class="n">query</span><span class="o">=</span><span class="s2">"What does the user like to eat?"</span><span class="p">,</span>
+</span><span id="__span-16-6"><a href="../persistence.1.html#__codelineno-16-6" id="__codelineno-16-6" name="__codelineno-16-6"></a>    <span class="n">limit</span><span class="o">=</span><span class="mi">3</span>  <span class="c1"># Return top 3 matches</span>
+</span><span id="__span-16-7"><a href="../persistence.1.html#__codelineno-16-7" id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>你可以通过配置 <code>fields</code> 参数或在存储记忆时指定 <code>index</code> 参数来控制记忆的哪些部分被嵌入。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a href="../persistence.1.html#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="c1"># Store with specific fields to embed</span>
+</span><span id="__span-17-2"><a href="../persistence.1.html#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+</span><span id="__span-17-3"><a href="../persistence.1.html#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a>    <span class="n">namespace_for_memory</span><span class="p">,</span>
+</span><span id="__span-17-4"><a href="../persistence.1.html#__codelineno-17-4" id="__codelineno-17-4" name="__codelineno-17-4"></a>    <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()),</span>
+</span><span id="__span-17-5"><a href="../persistence.1.html#__codelineno-17-5" id="__codelineno-17-5" name="__codelineno-17-5"></a>    <span class="p">{</span>
+</span><span id="__span-17-6"><a href="../persistence.1.html#__codelineno-17-6" id="__codelineno-17-6" name="__codelineno-17-6"></a>        <span class="s2">"food_preference"</span><span class="p">:</span> <span class="s2">"I love Italian cuisine"</span><span class="p">,</span>
+</span><span id="__span-17-7"><a href="../persistence.1.html#__codelineno-17-7" id="__codelineno-17-7" name="__codelineno-17-7"></a>        <span class="s2">"context"</span><span class="p">:</span> <span class="s2">"Discussing dinner plans"</span>
+</span><span id="__span-17-8"><a href="../persistence.1.html#__codelineno-17-8" id="__codelineno-17-8" name="__codelineno-17-8"></a>    <span class="p">},</span>
+</span><span id="__span-17-9"><a href="../persistence.1.html#__codelineno-17-9" id="__codelineno-17-9" name="__codelineno-17-9"></a>    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">"food_preference"</span><span class="p">]</span>  <span class="c1"># Only embed "food_preferences" field</span>
+</span><span id="__span-17-10"><a href="../persistence.1.html#__codelineno-17-10" id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="p">)</span>
+</span><span id="__span-17-11"><a href="../persistence.1.html#__codelineno-17-11" id="__codelineno-17-11" name="__codelineno-17-11"></a>
+</span><span id="__span-17-12"><a href="../persistence.1.html#__codelineno-17-12" id="__codelineno-17-12" name="__codelineno-17-12"></a><span class="c1"># Store without embedding (still retrievable, but not searchable)</span>
+</span><span id="__span-17-13"><a href="../persistence.1.html#__codelineno-17-13" id="__codelineno-17-13" name="__codelineno-17-13"></a><span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+</span><span id="__span-17-14"><a href="../persistence.1.html#__codelineno-17-14" id="__codelineno-17-14" name="__codelineno-17-14"></a>    <span class="n">namespace_for_memory</span><span class="p">,</span>
+</span><span id="__span-17-15"><a href="../persistence.1.html#__codelineno-17-15" id="__codelineno-17-15" name="__codelineno-17-15"></a>    <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()),</span>
+</span><span id="__span-17-16"><a href="../persistence.1.html#__codelineno-17-16" id="__codelineno-17-16" name="__codelineno-17-16"></a>    <span class="p">{</span><span class="s2">"system_info"</span><span class="p">:</span> <span class="s2">"Last updated: 2024-01-01"</span><span class="p">},</span>
+</span><span id="__span-17-17"><a href="../persistence.1.html#__codelineno-17-17" id="__codelineno-17-17" name="__codelineno-17-17"></a>    <span class="n">index</span><span class="o">=</span><span class="kc">False</span>
+</span><span id="__span-17-18"><a href="../persistence.1.html#__codelineno-17-18" id="__codelineno-17-18" name="__codelineno-17-18"></a><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="using-in-langgraph">在 LangGraph 中使用<a class="headerlink" href="../persistence.1.html#using-in-langgraph" title="Permanent link">¶</a></h3>
+<p>有了这些，我们就可以在 LangGraph 中使用 <code>in_memory_store</code>。<code>in_memory_store</code> 与检查点器协同工作：检查点器如上所述将状态保存到线程，而 <code>in_memory_store</code> 允许我们存储任意信息以供*跨*线程访问。我们如下编译图，同时使用检查点器和 <code>in_memory_store</code>。</p>
+<p><sup><i>API 参考：<a href="../../reference/checkpoints/index.html#langgraph.checkpoint.memory.InMemorySaver">InMemorySaver</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a href="../persistence.1.html#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.checkpoint.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">InMemorySaver</span>
+</span><span id="__span-18-2"><a href="../persistence.1.html#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a>
+</span><span id="__span-18-3"><a href="../persistence.1.html#__codelineno-18-3" id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="c1"># We need this because we want to enable threads (conversations)</span>
+</span><span id="__span-18-4"><a href="../persistence.1.html#__codelineno-18-4" id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="n">checkpointer</span> <span class="o">=</span> <span class="n">InMemorySaver</span><span class="p">()</span>
+</span><span id="__span-18-5"><a href="../persistence.1.html#__codelineno-18-5" id="__codelineno-18-5" name="__codelineno-18-5"></a>
+</span><span id="__span-18-6"><a href="../persistence.1.html#__codelineno-18-6" id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="c1"># ... Define the graph ...</span>
+</span><span id="__span-18-7"><a href="../persistence.1.html#__codelineno-18-7" id="__codelineno-18-7" name="__codelineno-18-7"></a>
+</span><span id="__span-18-8"><a href="../persistence.1.html#__codelineno-18-8" id="__codelineno-18-8" name="__codelineno-18-8"></a><span class="c1"># Compile the graph with the checkpointer and store</span>
+</span><span id="__span-18-9"><a href="../persistence.1.html#__codelineno-18-9" id="__codelineno-18-9" name="__codelineno-18-9"></a><span class="n">graph</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="n">in_memory_store</span><span class="p">)</span>
+</span></code></pre></div>
+<p>我们像以前一样，使用 <code>thread_id</code> 调用图，并使用 <code>user_id</code>，我们将用它来将我们的记忆命名空间到这个特定的用户，如我们上面所示。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a href="../persistence.1.html#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="c1"># Invoke the graph</span>
+</span><span id="__span-19-2"><a href="../persistence.1.html#__codelineno-19-2" id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="n">user_id</span> <span class="o">=</span> <span class="s2">"1"</span>
+</span><span id="__span-19-3"><a href="../persistence.1.html#__codelineno-19-3" id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span> <span class="s2">"user_id"</span><span class="p">:</span> <span class="n">user_id</span><span class="p">}}</span>
+</span><span id="__span-19-4"><a href="../persistence.1.html#__codelineno-19-4" id="__codelineno-19-4" name="__codelineno-19-4"></a>
+</span><span id="__span-19-5"><a href="../persistence.1.html#__codelineno-19-5" id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="c1"># First let's just say hi to the AI</span>
+</span><span id="__span-19-6"><a href="../persistence.1.html#__codelineno-19-6" id="__codelineno-19-6" name="__codelineno-19-6"></a><span class="k">for</span> <span class="n">update</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span>
+</span><span id="__span-19-7"><a href="../persistence.1.html#__codelineno-19-7" id="__codelineno-19-7" name="__codelineno-19-7"></a>    <span class="p">{</span><span class="s2">"messages"</span><span class="p">:</span> <span class="p">[{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"hi"</span><span class="p">}]},</span> <span class="n">config</span><span class="p">,</span> <span class="n">stream_mode</span><span class="o">=</span><span class="s2">"updates"</span>
+</span><span id="__span-19-8"><a href="../persistence.1.html#__codelineno-19-8" id="__codelineno-19-8" name="__codelineno-19-8"></a><span class="p">):</span>
+</span><span id="__span-19-9"><a href="../persistence.1.html#__codelineno-19-9" id="__codelineno-19-9" name="__codelineno-19-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">update</span><span class="p">)</span>
+</span></code></pre></div>
+<p>我们可以通过将 <code>store: BaseStore</code> 和 <code>config: RunnableConfig</code> 作为节点参数传入，在*任何节点*中访问 <code>in_memory_store</code> 和 <code>user_id</code>。以下是如何在节点中使用语义搜索来查找相关记忆的示例</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a href="../persistence.1.html#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">update_memory</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">MessagesState</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">RunnableConfig</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="n">BaseStore</span><span class="p">):</span>
+</span><span id="__span-20-2"><a href="../persistence.1.html#__codelineno-20-2" id="__codelineno-20-2" name="__codelineno-20-2"></a>
+</span><span id="__span-20-3"><a href="../persistence.1.html#__codelineno-20-3" id="__codelineno-20-3" name="__codelineno-20-3"></a>    <span class="c1"># Get the user id from the config</span>
+</span><span id="__span-20-4"><a href="../persistence.1.html#__codelineno-20-4" id="__codelineno-20-4" name="__codelineno-20-4"></a>    <span class="n">user_id</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">"configurable"</span><span class="p">][</span><span class="s2">"user_id"</span><span class="p">]</span>
+</span><span id="__span-20-5"><a href="../persistence.1.html#__codelineno-20-5" id="__codelineno-20-5" name="__codelineno-20-5"></a>
+</span><span id="__span-20-6"><a href="../persistence.1.html#__codelineno-20-6" id="__codelineno-20-6" name="__codelineno-20-6"></a>    <span class="c1"># Namespace the memory</span>
+</span><span id="__span-20-7"><a href="../persistence.1.html#__codelineno-20-7" id="__codelineno-20-7" name="__codelineno-20-7"></a>    <span class="n">namespace</span> <span class="o">=</span> <span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="s2">"memories"</span><span class="p">)</span>
+</span><span id="__span-20-8"><a href="../persistence.1.html#__codelineno-20-8" id="__codelineno-20-8" name="__codelineno-20-8"></a>
+</span><span id="__span-20-9"><a href="../persistence.1.html#__codelineno-20-9" id="__codelineno-20-9" name="__codelineno-20-9"></a>    <span class="c1"># ... Analyze conversation and create a new memory</span>
+</span><span id="__span-20-10"><a href="../persistence.1.html#__codelineno-20-10" id="__codelineno-20-10" name="__codelineno-20-10"></a>
+</span><span id="__span-20-11"><a href="../persistence.1.html#__codelineno-20-11" id="__codelineno-20-11" name="__codelineno-20-11"></a>    <span class="c1"># Create a new memory ID</span>
+</span><span id="__span-20-12"><a href="../persistence.1.html#__codelineno-20-12" id="__codelineno-20-12" name="__codelineno-20-12"></a>    <span class="n">memory_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+</span><span id="__span-20-13"><a href="../persistence.1.html#__codelineno-20-13" id="__codelineno-20-13" name="__codelineno-20-13"></a>
+</span><span id="__span-20-14"><a href="../persistence.1.html#__codelineno-20-14" id="__codelineno-20-14" name="__codelineno-20-14"></a>    <span class="c1"># We create a new memory</span>
+</span><span id="__span-20-15"><a href="../persistence.1.html#__codelineno-20-15" id="__codelineno-20-15" name="__codelineno-20-15"></a>    <span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">memory_id</span><span class="p">,</span> <span class="p">{</span><span class="s2">"memory"</span><span class="p">:</span> <span class="n">memory</span><span class="p">})</span>
+</span></code></pre></div>
+<p>如上所示，我们还可以在任何节点中访问存储，并使用 <code>store.search</code> 方法获取记忆。请记住，记忆会作为可转换为字典的对象列表返回。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a href="../persistence.1.html#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="n">memories</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">dict</span><span class="p">()</span>
+</span><span id="__span-21-2"><a href="../persistence.1.html#__codelineno-21-2" id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="p">{</span><span class="s1">'value'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'food_preference'</span><span class="p">:</span> <span class="s1">'I like pizza'</span><span class="p">},</span>
+</span><span id="__span-21-3"><a href="../persistence.1.html#__codelineno-21-3" id="__codelineno-21-3" name="__codelineno-21-3"></a> <span class="s1">'key'</span><span class="p">:</span> <span class="s1">'07e0caf4-1631-47b7-b15f-65515d4c1843'</span><span class="p">,</span>
+</span><span id="__span-21-4"><a href="../persistence.1.html#__codelineno-21-4" id="__codelineno-21-4" name="__codelineno-21-4"></a> <span class="s1">'namespace'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'1'</span><span class="p">,</span> <span class="s1">'memories'</span><span class="p">],</span>
+</span><span id="__span-21-5"><a href="../persistence.1.html#__codelineno-21-5" id="__codelineno-21-5" name="__codelineno-21-5"></a> <span class="s1">'created_at'</span><span class="p">:</span> <span class="s1">'2024-10-02T17:22:31.590602+00:00'</span><span class="p">,</span>
+</span><span id="__span-21-6"><a href="../persistence.1.html#__codelineno-21-6" id="__codelineno-21-6" name="__codelineno-21-6"></a> <span class="s1">'updated_at'</span><span class="p">:</span> <span class="s1">'2024-10-02T17:22:31.590605+00:00'</span><span class="p">}</span>
+</span></code></pre></div>
+<p>我们可以访问这些记忆并在我们的模型调用中使用它们。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a href="../persistence.1.html#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">call_model</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">MessagesState</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">RunnableConfig</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="n">BaseStore</span><span class="p">):</span>
+</span><span id="__span-22-2"><a href="../persistence.1.html#__codelineno-22-2" id="__codelineno-22-2" name="__codelineno-22-2"></a>    <span class="c1"># Get the user id from the config</span>
+</span><span id="__span-22-3"><a href="../persistence.1.html#__codelineno-22-3" id="__codelineno-22-3" name="__codelineno-22-3"></a>    <span class="n">user_id</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">"configurable"</span><span class="p">][</span><span class="s2">"user_id"</span><span class="p">]</span>
+</span><span id="__span-22-4"><a href="../persistence.1.html#__codelineno-22-4" id="__codelineno-22-4" name="__codelineno-22-4"></a>
+</span><span id="__span-22-5"><a href="../persistence.1.html#__codelineno-22-5" id="__codelineno-22-5" name="__codelineno-22-5"></a>    <span class="c1"># Namespace the memory</span>
+</span><span id="__span-22-6"><a href="../persistence.1.html#__codelineno-22-6" id="__codelineno-22-6" name="__codelineno-22-6"></a>    <span class="n">namespace</span> <span class="o">=</span> <span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="s2">"memories"</span><span class="p">)</span>
+</span><span id="__span-22-7"><a href="../persistence.1.html#__codelineno-22-7" id="__codelineno-22-7" name="__codelineno-22-7"></a>
+</span><span id="__span-22-8"><a href="../persistence.1.html#__codelineno-22-8" id="__codelineno-22-8" name="__codelineno-22-8"></a>    <span class="c1"># Search based on the most recent message</span>
+</span><span id="__span-22-9"><a href="../persistence.1.html#__codelineno-22-9" id="__codelineno-22-9" name="__codelineno-22-9"></a>    <span class="n">memories</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+</span><span id="__span-22-10"><a href="../persistence.1.html#__codelineno-22-10" id="__codelineno-22-10" name="__codelineno-22-10"></a>        <span class="n">namespace</span><span class="p">,</span>
+</span><span id="__span-22-11"><a href="../persistence.1.html#__codelineno-22-11" id="__codelineno-22-11" name="__codelineno-22-11"></a>        <span class="n">query</span><span class="o">=</span><span class="n">state</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+</span><span id="__span-22-12"><a href="../persistence.1.html#__codelineno-22-12" id="__codelineno-22-12" name="__codelineno-22-12"></a>        <span class="n">limit</span><span class="o">=</span><span class="mi">3</span>
+</span><span id="__span-22-13"><a href="../persistence.1.html#__codelineno-22-13" id="__codelineno-22-13" name="__codelineno-22-13"></a>    <span class="p">)</span>
+</span><span id="__span-22-14"><a href="../persistence.1.html#__codelineno-22-14" id="__codelineno-22-14" name="__codelineno-22-14"></a>    <span class="n">info</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="s2">"memory"</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">memories</span><span class="p">])</span>
+</span><span id="__span-22-15"><a href="../persistence.1.html#__codelineno-22-15" id="__codelineno-22-15" name="__codelineno-22-15"></a>
+</span><span id="__span-22-16"><a href="../persistence.1.html#__codelineno-22-16" id="__codelineno-22-16" name="__codelineno-22-16"></a>    <span class="c1"># ... Use memories in the model call</span>
+</span></code></pre></div>
+<p>如果我们创建一个新线程，只要 <code>user_id</code> 相同，我们仍然可以访问相同的记忆。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a href="../persistence.1.html#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="c1"># Invoke the graph</span>
+</span><span id="__span-23-2"><a href="../persistence.1.html#__codelineno-23-2" id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span> <span class="s2">"user_id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">}}</span>
+</span><span id="__span-23-3"><a href="../persistence.1.html#__codelineno-23-3" id="__codelineno-23-3" name="__codelineno-23-3"></a>
+</span><span id="__span-23-4"><a href="../persistence.1.html#__codelineno-23-4" id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="c1"># Let's say hi again</span>
+</span><span id="__span-23-5"><a href="../persistence.1.html#__codelineno-23-5" id="__codelineno-23-5" name="__codelineno-23-5"></a><span class="k">for</span> <span class="n">update</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span>
+</span><span id="__span-23-6"><a href="../persistence.1.html#__codelineno-23-6" id="__codelineno-23-6" name="__codelineno-23-6"></a>    <span class="p">{</span><span class="s2">"messages"</span><span class="p">:</span> <span class="p">[{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"hi, tell me about my memories"</span><span class="p">}]},</span> <span class="n">config</span><span class="p">,</span> <span class="n">stream_mode</span><span class="o">=</span><span class="s2">"updates"</span>
+</span><span id="__span-23-7"><a href="../persistence.1.html#__codelineno-23-7" id="__codelineno-23-7" name="__codelineno-23-7"></a><span class="p">):</span>
+</span><span id="__span-23-8"><a href="../persistence.1.html#__codelineno-23-8" id="__codelineno-23-8" name="__codelineno-23-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">update</span><span class="p">)</span>
+</span></code></pre></div>
+<p>当我们使用 LangGraph 平台时，无论是在本地（例如，在 LangGraph Studio 中）还是使用 LangGraph 平台，基本存储都默认可用，无需在图编译期间指定。然而，要启用语义搜索，你<strong>确实</strong>需要在 <code>langgraph.json</code> 文件中配置索引设置。例如</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-24-1"><a href="../persistence.1.html#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="p">{</span>
+</span><span id="__span-24-2"><a href="../persistence.1.html#__codelineno-24-2" id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="w">    </span><span class="err">...</span>
+</span><span id="__span-24-3"><a href="../persistence.1.html#__codelineno-24-3" id="__codelineno-24-3" name="__codelineno-24-3"></a><span class="w">    </span><span class="nt">"store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-24-4"><a href="../persistence.1.html#__codelineno-24-4" id="__codelineno-24-4" name="__codelineno-24-4"></a><span class="w">        </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-24-5"><a href="../persistence.1.html#__codelineno-24-5" id="__codelineno-24-5" name="__codelineno-24-5"></a><span class="w">            </span><span class="nt">"embed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openai:text-embeddings-3-small"</span><span class="p">,</span>
+</span><span id="__span-24-6"><a href="../persistence.1.html#__codelineno-24-6" id="__codelineno-24-6" name="__codelineno-24-6"></a><span class="w">            </span><span class="nt">"dims"</span><span class="p">:</span><span class="w"> </span><span class="mi">1536</span><span class="p">,</span>
+</span><span id="__span-24-7"><a href="../persistence.1.html#__codelineno-24-7" id="__codelineno-24-7" name="__codelineno-24-7"></a><span class="w">            </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"$"</span><span class="p">]</span>
+</span><span id="__span-24-8"><a href="../persistence.1.html#__codelineno-24-8" id="__codelineno-24-8" name="__codelineno-24-8"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-24-9"><a href="../persistence.1.html#__codelineno-24-9" id="__codelineno-24-9" name="__codelineno-24-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-24-10"><a href="../persistence.1.html#__codelineno-24-10" id="__codelineno-24-10" name="__codelineno-24-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>有关更多详细信息和配置选项，请参阅<a href="../../cloud/deployment/semantic_search/index.html">部署指南</a>。</p>
+<h2 id="checkpointer-libraries">检查点库<a class="headerlink" href="../persistence.1.html#checkpointer-libraries" title="Permanent link">¶</a></h2>
+<p>在底层，检查点功能由符合<a class="autorefs autorefs-internal" href="../../reference/checkpoints/index.html#langgraph.checkpoint.base.BaseCheckpointSaver" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>BaseCheckpointSaver</span>">BaseCheckpointSaver</a> 接口的检查点对象提供支持。LangGraph 提供了多种检查点实现，所有这些都通过独立的、可安装的库实现</p>
+<ul>
+<li><code>langgraph-checkpoint</code>：检查点保存器 (<a class="autorefs autorefs-internal" href="../../reference/checkpoints/index.html#langgraph.checkpoint.base.BaseCheckpointSaver" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>BaseCheckpointSaver</span>">BaseCheckpointSaver</a>) 和序列化/反序列化接口 (<a class="autorefs autorefs-internal" href="../../reference/checkpoints/index.html#langgraph.checkpoint.serde.base.SerializerProtocol" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>SerializerProtocol</span>">SerializerProtocol</a>) 的基础接口。包括用于实验的内存中检查点实现 (<a class="autorefs autorefs-internal" href="../../reference/checkpoints/index.html#langgraph.checkpoint.memory.InMemorySaver" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>InMemorySaver</span>">InMemorySaver</a>)。LangGraph 包含 <code>langgraph-checkpoint</code>。</li>
+<li><code>langgraph-checkpoint-sqlite</code>：使用 SQLite 数据库 (<a class="autorefs autorefs-internal" href="../../reference/checkpoints/index.html#langgraph.checkpoint.sqlite.SqliteSaver" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>SqliteSaver</span>">SqliteSaver</a> / <a class="autorefs autorefs-internal" href="../../reference/checkpoints/index.html#langgraph.checkpoint.sqlite.aio.AsyncSqliteSaver" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>AsyncSqliteSaver</span>">AsyncSqliteSaver</a>) 的 LangGraph 检查点实现。非常适合实验和本地工作流。需要单独安装。</li>
+<li><code>langgraph-checkpoint-postgres</code>：一种使用 Postgres 数据库 (<a class="autorefs autorefs-internal" href="../../reference/checkpoints/index.html#langgraph.checkpoint.postgres.PostgresSaver" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>PostgresSaver</span>">PostgresSaver</a> / <a class="autorefs autorefs-internal" href="../../reference/checkpoints/index.html#langgraph.checkpoint.postgres.aio.AsyncPostgresSaver" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>AsyncPostgresSaver</span>">AsyncPostgresSaver</a>) 的高级检查点器，在 LangGraph 平台中使用。非常适合在生产环境中使用。需要单独安装。</li>
+</ul>
+<h3 id="checkpointer-interface">检查点接口<a class="headerlink" href="../persistence.1.html#checkpointer-interface" title="Permanent link">¶</a></h3>
+<p>每个检查点器都符合<a class="autorefs autorefs-internal" href="../../reference/checkpoints/index.html#langgraph.checkpoint.base.BaseCheckpointSaver" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>BaseCheckpointSaver</span>">BaseCheckpointSaver</a> 接口，并实现了以下方法</p>
+<ul>
+<li><code>.put</code> - 存储带配置和元数据的检查点。</li>
+<li><code>.put_writes</code> - 存储与检查点关联的中间写入（即<a href="../persistence.1.html#pending-writes">待处理写入</a>）。</li>
+<li><code>.get_tuple</code> - 使用给定配置（<code>thread_id</code> 和 <code>checkpoint_id</code>）获取检查点元组。这用于在 <code>graph.get_state()</code> 中填充 <code>StateSnapshot</code>。</li>
+<li><code>.list</code> - 列出与给定配置和过滤条件匹配的检查点。这用于在 <code>graph.get_state_history()</code> 中填充状态历史。</li>
+</ul>
+<p>如果检查点器用于异步图执行（即通过 <code>.ainvoke</code>、<code>.astream</code>、<code>.abatch</code> 执行图），则将使用上述方法的异步版本（<code>.aput</code>、<code>.aput_writes</code>、<code>.aget_tuple</code>、<code>.alist</code>）。</p>
+<div class="admonition note note">
+<p class="admonition-title">注意</p>
+<p>对于异步运行你的图，你可以使用 <code>InMemorySaver</code>，或者 Sqlite/Postgres 检查点器的异步版本 -- <code>AsyncSqliteSaver</code> / <code>AsyncPostgresSaver</code> 检查点器。</p>
+</div>
+<h3 id="serializer">序列化器<a class="headerlink" href="../persistence.1.html#serializer" title="Permanent link">¶</a></h3>
+<p>当检查点器保存图状态时，它们需要序列化状态中的通道值。这通过序列化器对象完成。<code>langgraph_checkpoint</code> 定义了用于实现序列化器的<a class="autorefs autorefs-internal" href="../../reference/checkpoints/index.html#langgraph.checkpoint.serde.base.SerializerProtocol" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>SerializerProtocol</span>">协议</a>，并提供了一个默认实现 (<a class="autorefs autorefs-internal" href="../../reference/checkpoints/index.html#langgraph.checkpoint.serde.jsonplus.JsonPlusSerializer" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>JsonPlusSerializer</span>">JsonPlusSerializer</a>)，该实现处理各种类型，包括 LangChain 和 LangGraph 基本类型、日期时间、枚举等。</p>
+<h4 id="encryption">加密<a class="headerlink" href="../persistence.1.html#encryption" title="Permanent link">¶</a></h4>
+<p>检查点器可以选择加密所有持久化状态。要启用此功能，请将 <a class="autorefs autorefs-internal" href="../../reference/checkpoints/index.html#langgraph.checkpoint.serde.encrypted.EncryptedSerializer" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>EncryptedSerializer</span>"><code>EncryptedSerializer</code></a> 实例传递给任何 <code>BaseCheckpointSaver</code> 实现的 <code>serde</code> 参数。创建加密序列化器的最简单方法是通过 <a class="autorefs autorefs-internal" href="../../reference/checkpoints/index.html#langgraph.checkpoint.serde.encrypted.EncryptedSerializer.from_pycryptodome_aes" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-method&quot;></code> <span class=&quot;doc doc-object-name doc-function-name&quot;>from_pycryptodome_aes</span> <span class=&quot;doc doc-labels&quot;> <small class=&quot;doc doc-label doc-label-classmethod&quot;><code>classmethod</code></small> </span>"><code>from_pycryptodome_aes</code></a>，它从 <code>LANGGRAPH_AES_KEY</code> 环境变量中读取 AES 密钥（或接受 <code>key</code> 参数）。</p>
+<p><sup><i>API 参考：<a href="../../reference/checkpoints/index.html#langgraph.checkpoint.sqlite.SqliteSaver">SqliteSaver</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-25-1"><a href="../persistence.1.html#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+</span><span id="__span-25-2"><a href="../persistence.1.html#__codelineno-25-2" id="__codelineno-25-2" name="__codelineno-25-2"></a>
+</span><span id="__span-25-3"><a href="../persistence.1.html#__codelineno-25-3" id="__codelineno-25-3" name="__codelineno-25-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.checkpoint.serde.encrypted</span><span class="w"> </span><span class="kn">import</span> <span class="n">EncryptedSerializer</span>
+</span><span id="__span-25-4"><a href="../persistence.1.html#__codelineno-25-4" id="__codelineno-25-4" name="__codelineno-25-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.checkpoint.sqlite</span><span class="w"> </span><span class="kn">import</span> <span class="n">SqliteSaver</span>
+</span><span id="__span-25-5"><a href="../persistence.1.html#__codelineno-25-5" id="__codelineno-25-5" name="__codelineno-25-5"></a>
+</span><span id="__span-25-6"><a href="../persistence.1.html#__codelineno-25-6" id="__codelineno-25-6" name="__codelineno-25-6"></a><span class="n">serde</span> <span class="o">=</span> <span class="n">EncryptedSerializer</span><span class="o">.</span><span class="n">from_pycryptodome_aes</span><span class="p">()</span>  <span class="c1"># reads LANGGRAPH_AES_KEY</span>
+</span><span id="__span-25-7"><a href="../persistence.1.html#__codelineno-25-7" id="__codelineno-25-7" name="__codelineno-25-7"></a><span class="n">checkpointer</span> <span class="o">=</span> <span class="n">SqliteSaver</span><span class="p">(</span><span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"checkpoint.db"</span><span class="p">),</span> <span class="n">serde</span><span class="o">=</span><span class="n">serde</span><span class="p">)</span>
+</span></code></pre></div>
+<p><sup><i>API 参考：<a href="../../reference/checkpoints/index.html#langgraph.checkpoint.postgres.PostgresSaver">PostgresSaver</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-26-1"><a href="../persistence.1.html#__codelineno-26-1" id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.checkpoint.serde.encrypted</span><span class="w"> </span><span class="kn">import</span> <span class="n">EncryptedSerializer</span>
+</span><span id="__span-26-2"><a href="../persistence.1.html#__codelineno-26-2" id="__codelineno-26-2" name="__codelineno-26-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.checkpoint.postgres</span><span class="w"> </span><span class="kn">import</span> <span class="n">PostgresSaver</span>
+</span><span id="__span-26-3"><a href="../persistence.1.html#__codelineno-26-3" id="__codelineno-26-3" name="__codelineno-26-3"></a>
+</span><span id="__span-26-4"><a href="../persistence.1.html#__codelineno-26-4" id="__codelineno-26-4" name="__codelineno-26-4"></a><span class="n">serde</span> <span class="o">=</span> <span class="n">EncryptedSerializer</span><span class="o">.</span><span class="n">from_pycryptodome_aes</span><span class="p">()</span>
+</span><span id="__span-26-5"><a href="../persistence.1.html#__codelineno-26-5" id="__codelineno-26-5" name="__codelineno-26-5"></a><span class="n">checkpointer</span> <span class="o">=</span> <span class="n">PostgresSaver</span><span class="o">.</span><span class="n">from_conn_string</span><span class="p">(</span><span class="s2">"postgresql://..."</span><span class="p">,</span> <span class="n">serde</span><span class="o">=</span><span class="n">serde</span><span class="p">)</span>
+</span><span id="__span-26-6"><a href="../persistence.1.html#__codelineno-26-6" id="__codelineno-26-6" name="__codelineno-26-6"></a><span class="n">checkpointer</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
+</span></code></pre></div>
+<p>在 LangGraph 平台上运行时，只要存在 <code>LANGGRAPH_AES_KEY</code>，加密就会自动启用，因此你只需提供环境变量。其他加密方案可以通过实现 <a class="autorefs autorefs-internal" href="../../reference/checkpoints/index.html#langgraph.checkpoint.serde.base.CipherProtocol" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>CipherProtocol</span>"><code>CipherProtocol</code></a> 并将其提供给 <code>EncryptedSerializer</code> 来使用。</p>
+<h2 id="capabilities">功能<a class="headerlink" href="../persistence.1.html#capabilities" title="Permanent link">¶</a></h2>
+<h3 id="human-in-the-loop">人机协作<a class="headerlink" href="../persistence.1.html#human-in-the-loop" title="Permanent link">¶</a></h3>
+<p>首先，检查点器通过允许人类检查、中断和批准图步骤来促进<a href="../agentic_concepts.1.html#human-in-the-loop">人机协作工作流</a>。这些工作流需要检查点器，因为人类必须能够随时查看图的状态，并且图必须能够在人类对状态进行任何更新后恢复执行。有关具体示例，请参阅<a href="../../how-tos/human_in_the_loop/breakpoints/index.html">这些操作指南</a>。</p>
+<h3 id="memory">记忆<a class="headerlink" href="../persistence.1.html#memory" title="Permanent link">¶</a></h3>
+<p>其次，检查点器允许在交互之间拥有<a href="../agentic_concepts.1.html#memory">“记忆”</a>。在重复的人机交互（如对话）中，任何后续消息都可以发送到该线程，该线程将保留其对先前消息的记忆。请参阅<a href="../../how-tos/memory/index.html">此操作指南</a>，了解如何使用检查点器添加和管理对话记忆的端到端示例。</p>
+<h3 id="time-travel">时间旅行<a class="headerlink" href="../persistence.1.html#time-travel" title="Permanent link">¶</a></h3>
+<p>第三，检查点器允许<a href="../time-travel/index.html">“时间旅行”</a>，允许用户回放之前的图执行以审查和/或调试特定的图步骤。此外，检查点器使得在任意检查点分叉图状态以探索替代轨迹成为可能。</p>
+<h3 id="fault-tolerance">容错性<a class="headerlink" href="../persistence.1.html#fault-tolerance" title="Permanent link">¶</a></h3>
+<p>最后，检查点还提供容错和错误恢复：如果在给定超级步骤中一个或多个节点失败，你可以从最后一个成功的步骤重新启动图。此外，当图节点在给定超级步骤中执行中途失败时，LangGraph 会存储在该超级步骤中成功完成的任何其他节点的待处理检查点写入，这样无论何时我们从该超级步骤恢复图执行时，我们都不会重新运行那些成功的节点。</p>
+<h4 id="pending-writes">待处理写入<a class="headerlink" href="../persistence.1.html#pending-writes" title="Permanent link">¶</a></h4>
+<p>此外，当图节点在给定超级步骤中执行中途失败时，LangGraph 会存储在该超级步骤中成功完成的任何其他节点的待处理检查点写入，这样无论何时我们从该超级步骤恢复图执行时，我们都不会重新运行那些成功的节点。</p>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>返回顶部</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="上一页：流式输出" class="md-footer__link md-footer__link--prev" href="../../how-tos/streaming.1.html"> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg> </div> <div class="md-footer__title"> <span class="md-footer__direction"> 上一页 </span> <div class="md-ellipsis"> 流式输出 </div> </div> </a> <a aria-label="下一页：持久执行" class="md-footer__link md-footer__link--next" href="../durable_execution/index.html"> <div class="md-footer__title"> <span class="md-footer__direction"> 下一页 </span> <div class="md-ellipsis"> 持久执行 </div> </div> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg> </div> </a></nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">版权所有 © 2025 LangChain, Inc | <a href="../persistence.1.html#__consent">同意偏好设置</a></div>使用 <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank"> Material for MkDocs </a> 制作</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.langchain.ac.cn/langgraphjs/" rel="noopener" target="_blank" title="langchain-ai.github.io">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 32v448h448V32zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6"></path></svg>
+</a>
+<a class="md-social__link" href="https://github.com/langchain-ai/langgraph" rel="noopener" target="_blank" title="github.com">
+<svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+<a class="md-social__link" href="https://twitter.com/LangChainAI" rel="noopener" target="_blank" title="twitter.com">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-progress" data-md-component="progress" role="progressbar"></div>
+<div class="md-consent" data-md-component="consent" hidden="" id="__consent">
+<div class="md-consent__overlay"></div>
+<aside class="md-consent__inner">
+<form class="md-consent__form md-grid md-typeset" name="consent">
+<h4>Cookie 同意</h4>
+<p>我们使用 Cookie 来识别你的重复访问和偏好，并衡量我们文档的有效性以及用户是否找到了他们正在寻找的内容。<strong>点击“接受”使我们的文档更好。谢谢！</strong> ❤️</p>
+<input checked="" class="md-toggle" id="__settings" type="checkbox" />
+<div class="md-consent__settings">
+<ul class="task-list">
+<li class="task-list-item">
+<label class="task-list-control">
+<input checked="" name="github" type="checkbox" />
+<span class="task-list-indicator"></span> GitHub</label>
+</li>
+</ul>
+</div>
+<div class="md-consent__controls">
+<button class="md-button md-button--primary">接受</button>
+<button class="md-button md-button--primary" type="reset">拒绝</button>
+</div>
+</form>
+</aside>
+</div>
+<script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.action.edit", "content.tooltips", "navigation.indexes", "navigation.footer", "navigation.instant", "navigation.sections", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.prune", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+
+</body></html>

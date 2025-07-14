@@ -1,0 +1,1109 @@
+<!DOCTYPE html><html lang="zh-hans" class="no-js"><head><script>(l=location)[p='protocol'][5]||(l[p]='https')</script><meta name="referrer" content="no-referrer"><style>
+div[data-md-component=announce] {
+  display: none !important;
+}
+</style><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8543159550507237" crossorigin="anonymous"></script>
+
+<script>window.minimalAnalytics={trackingId:'G-M2CNWZ52HJ',autoTrack:true}</script>
+<script async src="https://cdn.jsdelivr.net.cn/npm/@minimal-analytics/ga4/dist/index.js"></script>
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<link href="index.html" rel="canonical" />
+<link href="../../../concepts/breakpoints/index.html" rel="prev" />
+<link href="../../../concepts/time-travel/index.html" rel="next" />
+<link href="../../../static/favicon.png" rel="icon" />
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator" />
+<title>使用断点 - LangChain 框架</title>
+<link href="../../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet" />
+<link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Public+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet" />
+<style>:root{--md-text-font:"Public Sans";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../assets/_mkdocstrings.css" rel="stylesheet" />
+<link href="../../../stylesheets/navigation_title_ovverides.css" rel="stylesheet" />
+<link href="../../../stylesheets/version_admonitions.css" rel="stylesheet" />
+<link href="../../../stylesheets/logos.css" rel="stylesheet" />
+<link href="../../../stylesheets/sticky_navigation.css" rel="stylesheet" />
+<link href="../../../stylesheets/agent_graph_widget.css" rel="stylesheet" />
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://#/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T35S4S46');</script>
+<!-- End Google Tag Manager -->
+<meta content="165B7E7C89E49946" name="algolia-site-verification" />
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Public+Sans&display=swap");
+    :root {
+      --md-primary-fg-color: #333333;
+      --md-accent-fg-color: #1E88E5;
+      --md-default-bg-color: #FFFFFF;
+      --md-default-fg-color: #333333;
+      --md-text-font-family: "Public Sans", sans-serif;
+    }
+
+    body {
+      font-family: var(--md-text-font-family);
+      background-color: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+    }
+
+    .md-main {
+      background-color: #FFFFFF;
+    }
+
+    .md-footer {
+      background-color: #F5F5F5;
+      color: #666666;
+    }
+
+    .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    .md-typeset a {
+      color: #1E88E5;
+    }
+
+    .md-typeset a:hover {
+      color: #1565C0;
+    }
+
+    .md-nav__link--active,
+    .md-nav__link:active {
+      color: #1E88E5;
+    }
+
+    .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    .md-search__input:hover,
+    .md-search__input:focus {
+      background-color: #EEEEEE;
+    }
+    /* Table of contents styles */
+    .md-nav--secondary .md-nav__item--active > .md-nav__link {
+      font-weight: bold;
+      color: var(--md-primary-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link {
+      font-weight: normal;
+      color: var(--md-default-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: var(--md-default-fg-color);
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+
+    [data-md-color-scheme="slate"] {
+      --md-default-bg-color: #1E1E1E;
+      --md-default-fg-color: #FFFFFF;
+      --md-accent-fg-color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-main {
+      background-color: #1E1E1E;
+    }
+
+    [data-md-color-scheme="slate"] .navbar {
+      background-color: #1E1E1E;
+      color: #FFFFFF;
+      box-shadow: none;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-header {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-tabs {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__icon {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input::placeholder {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a {
+      color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a:hover {
+      color: #90CAF9;
+    }
+
+    .notebook-links {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+    }
+    .notebook-links .md-content__button {
+      margin-left: 0.5rem;
+    }
+
+    [data-md-color-scheme=default] .logo-dark {
+      display: none !important;
+    }
+
+    [data-md-color-scheme=slate] .logo-light {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-CodeCell .jp-Cell-inputWrapper .jp-InputPrompt.jp-InputArea-prompt {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-Notebook .jp-Cell .jp-OutputPrompt {
+      display: none !important;
+    }
+
+    .md-banner {
+      background-color: #CFC9FA;
+      color: #000000;
+    }
+
+    .md-banner a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    .md-banner a:hover {
+      color: #000000;
+    }
+
+    .md-header__title {
+      visibility: hidden;
+    }
+
+    /* Dark mode banner links */
+    [data-md-color-scheme="slate"] .md-banner a {
+      color: #000000;
+    }
+
+    [data-md-color-scheme="slate"] .md-banner a:hover {
+      color: #000000;
+    }
+
+  </style>
+</head>
+<body data-md-color-accent="gray" data-md-color-primary="white" data-md-color-scheme="default" dir="ltr">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://#/ns.html?id=GTM-T35S4S46" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox" />
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox" />
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="index.html#use-breakpoints">跳到内容</a>
+</div>
+<div data-md-component="announce">
+<aside class="md-banner">
+<div class="md-banner__inner md-grid md-typeset">
+<button aria-label="Don&#39;t show this again" class="md-banner__button md-icon">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+<strong>我们正在为 LangChain、LangGraph 和 LangSmith 招聘多个职位并不断发展壮大。 <a href="https://langchain.ac.cn/careers" rel="noopener noreferrer" target="_blank"> 加入我们的团队！</a></strong>
+</div>
+<script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+</aside>
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="LangGraph" class="md-header__button md-logo" data-md-component="logo" href="../../../index.html" title="LangGraph">
+<img alt="logo" class="logo-light" src="../../../static/wordmark_dark.svg">
+<img alt="logo" class="logo-dark" src="../../../static/wordmark_light.svg">
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">LangGraph</span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">使用断点</span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="gray" data-md-color-media="" data-md-color-primary="white" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="grey" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text" />
+<label class="md-search__icon md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">正在初始化搜索</div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../../index.html">指南</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../reference/index.html">参考</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tutorials/rag/langgraph_agentic_rag/index.html">示例</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../concepts/faq/index.html">资源</a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="LangGraph" class="md-nav__button md-logo" data-md-component="logo" href="../../../index.html" title="LangGraph"> <img alt="标志" class="logo-light" src="../../../static/wordmark_dark.svg"> <img alt="标志" class="logo-dark" src="../../../static/wordmark_light.svg"> </a> LangGraph</label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox" />
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../index.html">
+<span class="md-ellipsis">指南</span>
+</a>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span> 指南</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_2" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="">
+<span class="md-ellipsis"> 开始使用 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_2">
+<span class="md-nav__icon md-icon"></span> 开始使用</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../agents/agents.1.html">
+<span class="md-ellipsis">快速入门</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/why-langgraph.1.html">
+<span class="md-ellipsis"> LangGraph 基础 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tutorials/deployment/index.html">
+<span class="md-ellipsis">部署</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_3" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="">
+<span class="md-ellipsis"> 预构建代理 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_3">
+<span class="md-nav__icon md-icon"></span> 预构建代理</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../agents/overview.1.html">
+<span class="md-ellipsis">概述</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../agents/run_agents.1.html">
+<span class="md-ellipsis">运行代理</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../agents/streaming/index.html">
+<span class="md-ellipsis">流式传输</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../agents/models/index.html">
+<span class="md-ellipsis">模型</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../agents/tools.1.html">
+<span class="md-ellipsis">工具</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../agents/mcp/index.html">
+<span class="md-ellipsis">MCP 集成</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../agents/context/index.html">
+<span class="md-ellipsis">上下文</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../agents/memory/index.html">
+<span class="md-ellipsis">内存</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../agents/human-in-the-loop/index.html">
+<span class="md-ellipsis">人机协作</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../agents/multi-agent.1.html">
+<span class="md-ellipsis">多代理</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../agents/evals/index.html">
+<span class="md-ellipsis">评估</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../agents/deployment/index.html">
+<span class="md-ellipsis">部署</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../agents/ui/index.html">
+<span class="md-ellipsis">UI</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1_4" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="">
+<span class="md-ellipsis"> LangGraph 框架 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="true" aria-labelledby="__nav_1_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_4">
+<span class="md-nav__icon md-icon"></span> LangGraph 框架</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/agentic_concepts.1.html">
+<span class="md-ellipsis"> 代理架构 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/low_level.1.html">
+<span class="md-ellipsis"> 图 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/streaming.1.html">
+<span class="md-ellipsis"> 流式传输 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/persistence.1.html">
+<span class="md-ellipsis"> 持久化 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/memory.1.html">
+<span class="md-ellipsis"> 内存 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/human_in_the_loop.1.html">
+<span class="md-ellipsis"> 人机协作 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1_4_7" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_4_7" id="__nav_1_4_7_label" tabindex="0">
+<span class="md-ellipsis"> 断点 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="true" aria-labelledby="__nav_1_4_7_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_1_4_7">
+<span class="md-nav__icon md-icon"></span> 断点</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../concepts/breakpoints/index.html">
+<span class="md-ellipsis">概述</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox" />
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis"> 使用断点 </span> <span class="md-nav__icon md-icon"></span></label>
+<a class="md-nav__link md-nav__link--active" href="index.html">
+<span class="md-ellipsis">使用断点</span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#requirements">
+<span class="md-ellipsis">要求</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#setting-breakpoints">
+<span class="md-ellipsis">设置断点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#static-breakpoints">
+<span class="md-ellipsis">静态断点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#dynamic-breakpoints">
+<span class="md-ellipsis">动态断点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#use-with-subgraphs">
+<span class="md-ellipsis">与子图一起使用</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/time-travel/index.html">
+<span class="md-ellipsis"> 时间回溯 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/tools/index.html">
+<span class="md-ellipsis"> 工具 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/subgraphs.1.html">
+<span class="md-ellipsis"> 子图 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/multi_agent.1.html">
+<span class="md-ellipsis"> 多代理 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/functional_api.1.html">
+<span class="md-ellipsis"> 函数式 API </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_5" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="">
+<span class="md-ellipsis"> LangGraph 平台 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_5">
+<span class="md-nav__icon md-icon"></span> LangGraph 平台</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../concepts/langgraph_platform/index.html">
+<span class="md-ellipsis">概述</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../tutorials/langgraph-platform/local-server/index.html">
+<span class="md-ellipsis"> 开始使用 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/langgraph_components/index.html">
+<span class="md-ellipsis"> 组件 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../cloud/deployment/semantic_search/index.html">
+<span class="md-ellipsis"> 数据管理 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/auth/index.html">
+<span class="md-ellipsis"> 身份验证与访问控制 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/assistants/index.html">
+<span class="md-ellipsis"> 助手 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../cloud/concepts/threads/index.html">
+<span class="md-ellipsis"> 线程 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../cloud/concepts/runs/index.html">
+<span class="md-ellipsis"> 运行 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../cloud/concepts/streaming/index.html">
+<span class="md-ellipsis"> 流式传输 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../cloud/how-tos/add-human-in-the-loop/index.html">
+<span class="md-ellipsis">人机协作</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../cloud/how-tos/human_in_the_loop_breakpoint/index.html">
+<span class="md-ellipsis">断点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../cloud/how-tos/human_in_the_loop_time_travel/index.html">
+<span class="md-ellipsis">时间回溯</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../concepts/server-mcp/index.html">
+<span class="md-ellipsis">MCP</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/double_texting/index.html">
+<span class="md-ellipsis"> 重复发送 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../cloud/concepts/webhooks/index.html">
+<span class="md-ellipsis"> Webhooks </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../cloud/concepts/cron_jobs/index.html">
+<span class="md-ellipsis"> 定时任务 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../http/custom_lifespan/index.html">
+<span class="md-ellipsis"> 服务器自定义 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/deployment_options/index.html">
+<span class="md-ellipsis"> 部署 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../reference/index.html">
+<span class="md-ellipsis"> 参考 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../tutorials/rag/langgraph_agentic_rag/index.html">
+<span class="md-ellipsis"> 示例 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/faq/index.html">
+<span class="md-ellipsis"> 资源 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#requirements">
+<span class="md-ellipsis">要求</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#setting-breakpoints">
+<span class="md-ellipsis">设置断点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#static-breakpoints">
+<span class="md-ellipsis">静态断点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#dynamic-breakpoints">
+<span class="md-ellipsis">动态断点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#use-with-subgraphs">
+<span class="md-ellipsis">与子图一起使用</span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<div class="notebook-links">
+</div>
+<a class="md-content__button md-icon" href="https://github.com/langchain-ai/langgraph/edit/main/docs/docs/how-tos/human_in_the_loop/breakpoints.ipynb" title="Edit this page">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<h1 id="use-breakpoints">使用断点<a class="headerlink" href="index.html#use-breakpoints" title="永久链接">¶</a></h1>
+<h2 id="requirements">要求<a class="headerlink" href="index.html#requirements" title="永久链接">¶</a></h2>
+<p>要使用断点，你需要</p>
+<ol>
+<li><a href="../../../concepts/persistence.1.html#checkpoints"><strong>指定一个检查点器</strong></a> 来保存每一步后的图状态。</li>
+<li><a href="index.html#setting-breakpoints"><strong>设置断点</strong></a> 来指定执行应暂停的位置。</li>
+<li>使用 <a href="../../../concepts/persistence.1.html#threads"><strong>线程 ID</strong></a> <strong>运行图</strong> 以在断点处暂停执行。</li>
+<li>使用 <code>invoke</code>/<code>ainvoke</code>/<code>stream</code>/<code>astream</code> 恢复执行，将 <code>None</code> 作为输入参数传入。</li>
+</ol>
+<h2 id="setting-breakpoints">设置断点<a class="headerlink" href="index.html#setting-breakpoints" title="永久链接">¶</a></h2>
+<p>你可以在两个地方设置断点</p>
+<ol>
+<li>在节点执行**之前**或**之后**，通过在**编译时**或**运行时**设置断点。我们称之为 <a href="index.html#static-breakpoints">**静态断点**</a>。</li>
+<li>在节点**内部**使用 <code>NodeInterrupt</code> 异常。我们称之为 <a href="index.html#dynamic-breakpoints">**动态断点**</a>。</li>
+</ol>
+<h2 id="static-breakpoints">静态断点<a class="headerlink" href="index.html#static-breakpoints" title="永久链接">¶</a></h2>
+<p>静态断点在节点执行**之前**或**之后**触发。你可以通过在**“编译”时**或**运行时**指定 <code>interrupt_before</code> 和 <code>interrupt_after</code> 来设置静态断点。</p>
+<p>如果你想一次一个节点地逐步执行图，或者想在特定节点暂停图的执行，静态断点会特别有用。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">编译时</label><label for="__tabbed_1_2">运行时</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="hll"><span class="n">graph</span> <span class="o">=</span> <span class="n">graph_builder</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span> <span class="c1"># (1)!</span>
+</span></span><span id="__span-0-2"><a href="index.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="hll">    <span class="n">interrupt_before</span><span class="o">=</span><span class="p">[</span><span class="s2">"node_a"</span><span class="p">],</span> <span class="c1"># (2)!</span>
+</span></span><span id="__span-0-3"><a href="index.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="hll">    <span class="n">interrupt_after</span><span class="o">=</span><span class="p">[</span><span class="s2">"node_b"</span><span class="p">,</span> <span class="s2">"node_c"</span><span class="p">],</span> <span class="c1"># (3)!</span>
+</span></span><span id="__span-0-4"><a href="index.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">,</span> <span class="c1"># (4)!</span>
+</span><span id="__span-0-5"><a href="index.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="p">)</span>
+</span><span id="__span-0-6"><a href="index.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a href="index.html#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-0-8"><a href="index.html#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-0-9"><a href="index.html#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"some_thread"</span>
+</span><span id="__span-0-10"><a href="index.html#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="p">}</span>
+</span><span id="__span-0-11"><a href="index.html#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="p">}</span>
+</span><span id="__span-0-12"><a href="index.html#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a href="index.html#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="c1"># Run the graph until the breakpoint</span>
+</span><span id="__span-0-14"><a href="index.html#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">thread_config</span><span class="p">)</span> <span class="c1"># (5)!</span>
+</span><span id="__span-0-15"><a href="index.html#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a href="index.html#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="c1"># Resume the graph</span>
+</span><span id="__span-0-17"><a href="index.html#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">thread_config</span><span class="p">)</span> <span class="c1"># (6)!</span>
+</span></code></pre></div>
+<ol>
+<li>断点在编译时设置。</li>
+<li><code>interrupt_before</code> 指定在节点执行前应暂停执行的节点。</li>
+<li><code>interrupt_after</code> 指定在节点执行后应暂停执行的节点。</li>
+<li>需要检查点器才能启用断点。</li>
+<li>图将一直运行直到命中第一个断点。</li>
+<li>通过为输入传入 <code>None</code> 来恢复图。这将使图运行直到命中下一个断点。</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a href="index.html#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="hll"><span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span> <span class="c1"># (1)!</span>
+</span></span><span id="__span-1-2"><a href="index.html#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>    <span class="n">inputs</span><span class="p">,</span> 
+</span><span id="__span-1-3"><a href="index.html#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="hll">    <span class="n">interrupt_before</span><span class="o">=</span><span class="p">[</span><span class="s2">"node_a"</span><span class="p">],</span> <span class="c1"># (2)!</span>
+</span></span><span id="__span-1-4"><a href="index.html#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="hll">    <span class="n">interrupt_after</span><span class="o">=</span><span class="p">[</span><span class="s2">"node_b"</span><span class="p">,</span> <span class="s2">"node_c"</span><span class="p">]</span> <span class="c1"># (3)!</span>
+</span></span><span id="__span-1-5"><a href="index.html#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>    <span class="n">config</span><span class="o">=</span><span class="p">{</span>
+</span><span id="__span-1-6"><a href="index.html#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a>        <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"some_thread"</span><span class="p">}</span>
+</span><span id="__span-1-7"><a href="index.html#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a>    <span class="p">},</span> 
+</span><span id="__span-1-8"><a href="index.html#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="p">)</span>
+</span><span id="__span-1-9"><a href="index.html#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a href="index.html#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-1-11"><a href="index.html#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-1-12"><a href="index.html#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"some_thread"</span>
+</span><span id="__span-1-13"><a href="index.html#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a>    <span class="p">}</span>
+</span><span id="__span-1-14"><a href="index.html#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="p">}</span>
+</span><span id="__span-1-15"><a href="index.html#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a>
+</span><span id="__span-1-16"><a href="index.html#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="c1"># Run the graph until the breakpoint</span>
+</span><span id="__span-1-17"><a href="index.html#__codelineno-1-17" id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span> <span class="c1"># (4)!</span>
+</span><span id="__span-1-18"><a href="index.html#__codelineno-1-18" id="__codelineno-1-18" name="__codelineno-1-18"></a>
+</span><span id="__span-1-19"><a href="index.html#__codelineno-1-19" id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="c1"># Resume the graph</span>
+</span><span id="__span-1-20"><a href="index.html#__codelineno-1-20" id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span> <span class="c1"># (5)!</span>
+</span></code></pre></div>
+<ol>
+<li>调用 <code>graph.invoke</code> 时带上 <code>interrupt_before</code> 和 <code>interrupt_after</code> 参数。这是一个运行时配置，可以为每次调用进行更改。</li>
+<li><code>interrupt_before</code> 指定在节点执行前应暂停执行的节点。</li>
+<li><code>interrupt_after</code> 指定在节点执行后应暂停执行的节点。</li>
+<li>图将一直运行直到命中第一个断点。</li>
+<li>通过为输入传入 <code>None</code> 来恢复图。这将使图运行直到命中下一个断点。</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>你不能在运行时为**子图**设置静态断点。如果存在子图，你必须在编译时设置断点。</p>
+</div>
+</div>
+</div>
+</div>
+<details class="example">
+<summary>设置静态断点</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a href="index.html#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+</span><span id="__span-2-2"><a href="index.html#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
+</span><span id="__span-2-3"><a href="index.html#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a href="index.html#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.checkpoint.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">InMemorySaver</span> 
+</span><span id="__span-2-5"><a href="index.html#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">StateGraph</span><span class="p">,</span> <span class="n">START</span><span class="p">,</span> <span class="n">END</span>
+</span><span id="__span-2-6"><a href="index.html#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a href="index.html#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a href="index.html#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-2-9"><a href="index.html#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="nb">input</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-2-10"><a href="index.html#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a>
+</span><span id="__span-2-11"><a href="index.html#__codelineno-2-11" id="__codelineno-2-11" name="__codelineno-2-11"></a>
+</span><span id="__span-2-12"><a href="index.html#__codelineno-2-12" id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">step_1</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+</span><span id="__span-2-13"><a href="index.html#__codelineno-2-13" id="__codelineno-2-13" name="__codelineno-2-13"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"---Step 1---"</span><span class="p">)</span>
+</span><span id="__span-2-14"><a href="index.html#__codelineno-2-14" id="__codelineno-2-14" name="__codelineno-2-14"></a>    <span class="k">pass</span>
+</span><span id="__span-2-15"><a href="index.html#__codelineno-2-15" id="__codelineno-2-15" name="__codelineno-2-15"></a>
+</span><span id="__span-2-16"><a href="index.html#__codelineno-2-16" id="__codelineno-2-16" name="__codelineno-2-16"></a>
+</span><span id="__span-2-17"><a href="index.html#__codelineno-2-17" id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="k">def</span><span class="w"> </span><span class="nf">step_2</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+</span><span id="__span-2-18"><a href="index.html#__codelineno-2-18" id="__codelineno-2-18" name="__codelineno-2-18"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"---Step 2---"</span><span class="p">)</span>
+</span><span id="__span-2-19"><a href="index.html#__codelineno-2-19" id="__codelineno-2-19" name="__codelineno-2-19"></a>    <span class="k">pass</span>
+</span><span id="__span-2-20"><a href="index.html#__codelineno-2-20" id="__codelineno-2-20" name="__codelineno-2-20"></a>
+</span><span id="__span-2-21"><a href="index.html#__codelineno-2-21" id="__codelineno-2-21" name="__codelineno-2-21"></a>
+</span><span id="__span-2-22"><a href="index.html#__codelineno-2-22" id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="k">def</span><span class="w"> </span><span class="nf">step_3</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+</span><span id="__span-2-23"><a href="index.html#__codelineno-2-23" id="__codelineno-2-23" name="__codelineno-2-23"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"---Step 3---"</span><span class="p">)</span>
+</span><span id="__span-2-24"><a href="index.html#__codelineno-2-24" id="__codelineno-2-24" name="__codelineno-2-24"></a>    <span class="k">pass</span>
+</span><span id="__span-2-25"><a href="index.html#__codelineno-2-25" id="__codelineno-2-25" name="__codelineno-2-25"></a>
+</span><span id="__span-2-26"><a href="index.html#__codelineno-2-26" id="__codelineno-2-26" name="__codelineno-2-26"></a>
+</span><span id="__span-2-27"><a href="index.html#__codelineno-2-27" id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="n">builder</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">State</span><span class="p">)</span>
+</span><span id="__span-2-28"><a href="index.html#__codelineno-2-28" id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"step_1"</span><span class="p">,</span> <span class="n">step_1</span><span class="p">)</span>
+</span><span id="__span-2-29"><a href="index.html#__codelineno-2-29" id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"step_2"</span><span class="p">,</span> <span class="n">step_2</span><span class="p">)</span>
+</span><span id="__span-2-30"><a href="index.html#__codelineno-2-30" id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"step_3"</span><span class="p">,</span> <span class="n">step_3</span><span class="p">)</span>
+</span><span id="__span-2-31"><a href="index.html#__codelineno-2-31" id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="s2">"step_1"</span><span class="p">)</span>
+</span><span id="__span-2-32"><a href="index.html#__codelineno-2-32" id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"step_1"</span><span class="p">,</span> <span class="s2">"step_2"</span><span class="p">)</span>
+</span><span id="__span-2-33"><a href="index.html#__codelineno-2-33" id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"step_2"</span><span class="p">,</span> <span class="s2">"step_3"</span><span class="p">)</span>
+</span><span id="__span-2-34"><a href="index.html#__codelineno-2-34" id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"step_3"</span><span class="p">,</span> <span class="n">END</span><span class="p">)</span>
+</span><span id="__span-2-35"><a href="index.html#__codelineno-2-35" id="__codelineno-2-35" name="__codelineno-2-35"></a>
+</span><span id="__span-2-36"><a href="index.html#__codelineno-2-36" id="__codelineno-2-36" name="__codelineno-2-36"></a><span class="c1"># Set up a checkpointer </span>
+</span><span id="__span-2-37"><a href="index.html#__codelineno-2-37" id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="n">checkpointer</span> <span class="o">=</span> <span class="n">InMemorySaver</span><span class="p">()</span> <span class="c1"># (1)!</span>
+</span><span id="__span-2-38"><a href="index.html#__codelineno-2-38" id="__codelineno-2-38" name="__codelineno-2-38"></a>
+</span><span id="__span-2-39"><a href="index.html#__codelineno-2-39" id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="n">graph</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+</span><span id="__span-2-40"><a href="index.html#__codelineno-2-40" id="__codelineno-2-40" name="__codelineno-2-40"></a>    <span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">,</span> <span class="c1"># (2)!</span>
+</span><span id="__span-2-41"><a href="index.html#__codelineno-2-41" id="__codelineno-2-41" name="__codelineno-2-41"></a>    <span class="n">interrupt_before</span><span class="o">=</span><span class="p">[</span><span class="s2">"step_3"</span><span class="p">]</span> <span class="c1"># (3)!</span>
+</span><span id="__span-2-42"><a href="index.html#__codelineno-2-42" id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="p">)</span>
+</span><span id="__span-2-43"><a href="index.html#__codelineno-2-43" id="__codelineno-2-43" name="__codelineno-2-43"></a>
+</span><span id="__span-2-44"><a href="index.html#__codelineno-2-44" id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="c1"># View</span>
+</span><span id="__span-2-45"><a href="index.html#__codelineno-2-45" id="__codelineno-2-45" name="__codelineno-2-45"></a><span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">get_graph</span><span class="p">()</span><span class="o">.</span><span class="n">draw_mermaid_png</span><span class="p">()))</span>
+</span><span id="__span-2-46"><a href="index.html#__codelineno-2-46" id="__codelineno-2-46" name="__codelineno-2-46"></a>
+</span><span id="__span-2-47"><a href="index.html#__codelineno-2-47" id="__codelineno-2-47" name="__codelineno-2-47"></a>
+</span><span id="__span-2-48"><a href="index.html#__codelineno-2-48" id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="c1"># Input</span>
+</span><span id="__span-2-49"><a href="index.html#__codelineno-2-49" id="__codelineno-2-49" name="__codelineno-2-49"></a><span class="n">initial_input</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"input"</span><span class="p">:</span> <span class="s2">"hello world"</span><span class="p">}</span>
+</span><span id="__span-2-50"><a href="index.html#__codelineno-2-50" id="__codelineno-2-50" name="__codelineno-2-50"></a>
+</span><span id="__span-2-51"><a href="index.html#__codelineno-2-51" id="__codelineno-2-51" name="__codelineno-2-51"></a><span class="c1"># Thread</span>
+</span><span id="__span-2-52"><a href="index.html#__codelineno-2-52" id="__codelineno-2-52" name="__codelineno-2-52"></a><span class="n">thread</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">}}</span>
+</span><span id="__span-2-53"><a href="index.html#__codelineno-2-53" id="__codelineno-2-53" name="__codelineno-2-53"></a>
+</span><span id="__span-2-54"><a href="index.html#__codelineno-2-54" id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="c1"># Run the graph until the first interruption</span>
+</span><span id="__span-2-55"><a href="index.html#__codelineno-2-55" id="__codelineno-2-55" name="__codelineno-2-55"></a><span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">initial_input</span><span class="p">,</span> <span class="n">thread</span><span class="p">,</span> <span class="n">stream_mode</span><span class="o">=</span><span class="s2">"values"</span><span class="p">):</span>
+</span><span id="__span-2-56"><a href="index.html#__codelineno-2-56" id="__codelineno-2-56" name="__codelineno-2-56"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span><span id="__span-2-57"><a href="index.html#__codelineno-2-57" id="__codelineno-2-57" name="__codelineno-2-57"></a>
+</span><span id="__span-2-58"><a href="index.html#__codelineno-2-58" id="__codelineno-2-58" name="__codelineno-2-58"></a><span class="c1"># This will run until the breakpoint</span>
+</span><span id="__span-2-59"><a href="index.html#__codelineno-2-59" id="__codelineno-2-59" name="__codelineno-2-59"></a><span class="c1"># You can get the state of the graph at this point</span>
+</span><span id="__span-2-60"><a href="index.html#__codelineno-2-60" id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="nb">print</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">get_state</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
+</span><span id="__span-2-61"><a href="index.html#__codelineno-2-61" id="__codelineno-2-61" name="__codelineno-2-61"></a>
+</span><span id="__span-2-62"><a href="index.html#__codelineno-2-62" id="__codelineno-2-62" name="__codelineno-2-62"></a><span class="c1"># You can continue the graph execution by passing in `None` for the input</span>
+</span><span id="__span-2-63"><a href="index.html#__codelineno-2-63" id="__codelineno-2-63" name="__codelineno-2-63"></a><span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">thread</span><span class="p">,</span> <span class="n">stream_mode</span><span class="o">=</span><span class="s2">"values"</span><span class="p">):</span>
+</span><span id="__span-2-64"><a href="index.html#__codelineno-2-64" id="__codelineno-2-64" name="__codelineno-2-64"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span></code></pre></div>
+</details>
+<h2 id="dynamic-breakpoints">动态断点<a class="headerlink" href="index.html#dynamic-breakpoints" title="永久链接">¶</a></h2>
+<p>如果你需要根据条件从给定节点内部中断图，请使用动态断点。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a href="index.html#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.errors</span><span class="w"> </span><span class="kn">import</span> <span class="n">NodeInterrupt</span>
+</span><span id="__span-3-2"><a href="index.html#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a href="index.html#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">step_2</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">State</span><span class="p">:</span>
+</span><span id="__span-3-4"><a href="index.html#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="hll">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"input"</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+</span></span><span id="__span-3-5"><a href="index.html#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="hll">        <span class="k">raise</span> <span class="n">NodeInterrupt</span><span class="p">(</span> <span class="c1"># (1)!</span>
+</span></span><span id="__span-3-6"><a href="index.html#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>            <span class="sa">f</span><span class="s2">"Received input that is longer than 5 characters: </span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="s1">'foo'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-3-7"><a href="index.html#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>        <span class="p">)</span>
+</span><span id="__span-3-8"><a href="index.html#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>    <span class="k">return</span> <span class="n">state</span>
+</span></code></pre></div>
+<ol>
+<li>根据某个条件抛出 <code>NodeInterrupt</code> 异常。在此示例中，如果属性 <code>input</code> 的长度超过 5 个字符，我们将创建一个动态断点。</li>
+</ol>
+<details class="example"><summary>使用动态断点</summary>
+<sup><i>API 参考：<a href="../../../reference/graphs/index.html#langgraph.graph.state.StateGraph">StateGraph</a> | <a href="../../../reference/constants/index.html#langgraph.constants.START">START</a> | <a href="../../../reference/constants/index.html#langgraph.constants.END">END</a> | <a href="../../../reference/checkpoints/index.html#langgraph.checkpoint.memory.MemorySaver">MemorySaver</a></i></sup>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a href="index.html#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
+</span><span id="__span-4-2"><a href="index.html#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+</span><span id="__span-4-3"><a href="index.html#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a href="index.html#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">StateGraph</span><span class="p">,</span> <span class="n">START</span><span class="p">,</span> <span class="n">END</span>
+</span><span id="__span-4-5"><a href="index.html#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.checkpoint.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">MemorySaver</span>
+</span><span id="__span-4-6"><a href="index.html#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.errors</span><span class="w"> </span><span class="kn">import</span> <span class="n">NodeInterrupt</span>
+</span><span id="__span-4-7"><a href="index.html#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a href="index.html#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a href="index.html#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-4-10"><a href="index.html#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a>    <span class="nb">input</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-4-11"><a href="index.html#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a>
+</span><span id="__span-4-12"><a href="index.html#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a>
+</span><span id="__span-4-13"><a href="index.html#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">step_1</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">State</span><span class="p">:</span>
+</span><span id="__span-4-14"><a href="index.html#__codelineno-4-14" id="__codelineno-4-14" name="__codelineno-4-14"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"---Step 1---"</span><span class="p">)</span>
+</span><span id="__span-4-15"><a href="index.html#__codelineno-4-15" id="__codelineno-4-15" name="__codelineno-4-15"></a>    <span class="k">return</span> <span class="n">state</span>
+</span><span id="__span-4-16"><a href="index.html#__codelineno-4-16" id="__codelineno-4-16" name="__codelineno-4-16"></a>
+</span><span id="__span-4-17"><a href="index.html#__codelineno-4-17" id="__codelineno-4-17" name="__codelineno-4-17"></a>
+</span><span id="__span-4-18"><a href="index.html#__codelineno-4-18" id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="k">def</span><span class="w"> </span><span class="nf">step_2</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">State</span><span class="p">:</span>
+</span><span id="__span-4-19"><a href="index.html#__codelineno-4-19" id="__codelineno-4-19" name="__codelineno-4-19"></a>    <span class="c1"># Let's optionally raise a NodeInterrupt</span>
+</span><span id="__span-4-20"><a href="index.html#__codelineno-4-20" id="__codelineno-4-20" name="__codelineno-4-20"></a>    <span class="c1"># if the length of the input is longer than 5 characters</span>
+</span><span id="__span-4-21"><a href="index.html#__codelineno-4-21" id="__codelineno-4-21" name="__codelineno-4-21"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"input"</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+</span><span id="__span-4-22"><a href="index.html#__codelineno-4-22" id="__codelineno-4-22" name="__codelineno-4-22"></a>        <span class="k">raise</span> <span class="n">NodeInterrupt</span><span class="p">(</span>
+</span><span id="__span-4-23"><a href="index.html#__codelineno-4-23" id="__codelineno-4-23" name="__codelineno-4-23"></a>            <span class="sa">f</span><span class="s2">"Received input that is longer than 5 characters: </span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="s1">'input'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-4-24"><a href="index.html#__codelineno-4-24" id="__codelineno-4-24" name="__codelineno-4-24"></a>        <span class="p">)</span>
+</span><span id="__span-4-25"><a href="index.html#__codelineno-4-25" id="__codelineno-4-25" name="__codelineno-4-25"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"---Step 2---"</span><span class="p">)</span>
+</span><span id="__span-4-26"><a href="index.html#__codelineno-4-26" id="__codelineno-4-26" name="__codelineno-4-26"></a>    <span class="k">return</span> <span class="n">state</span>
+</span><span id="__span-4-27"><a href="index.html#__codelineno-4-27" id="__codelineno-4-27" name="__codelineno-4-27"></a>
+</span><span id="__span-4-28"><a href="index.html#__codelineno-4-28" id="__codelineno-4-28" name="__codelineno-4-28"></a>
+</span><span id="__span-4-29"><a href="index.html#__codelineno-4-29" id="__codelineno-4-29" name="__codelineno-4-29"></a><span class="k">def</span><span class="w"> </span><span class="nf">step_3</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">State</span><span class="p">:</span>
+</span><span id="__span-4-30"><a href="index.html#__codelineno-4-30" id="__codelineno-4-30" name="__codelineno-4-30"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"---Step 3---"</span><span class="p">)</span>
+</span><span id="__span-4-31"><a href="index.html#__codelineno-4-31" id="__codelineno-4-31" name="__codelineno-4-31"></a>    <span class="k">return</span> <span class="n">state</span>
+</span><span id="__span-4-32"><a href="index.html#__codelineno-4-32" id="__codelineno-4-32" name="__codelineno-4-32"></a>
+</span><span id="__span-4-33"><a href="index.html#__codelineno-4-33" id="__codelineno-4-33" name="__codelineno-4-33"></a>
+</span><span id="__span-4-34"><a href="index.html#__codelineno-4-34" id="__codelineno-4-34" name="__codelineno-4-34"></a><span class="n">builder</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">State</span><span class="p">)</span>
+</span><span id="__span-4-35"><a href="index.html#__codelineno-4-35" id="__codelineno-4-35" name="__codelineno-4-35"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"step_1"</span><span class="p">,</span> <span class="n">step_1</span><span class="p">)</span>
+</span><span id="__span-4-36"><a href="index.html#__codelineno-4-36" id="__codelineno-4-36" name="__codelineno-4-36"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"step_2"</span><span class="p">,</span> <span class="n">step_2</span><span class="p">)</span>
+</span><span id="__span-4-37"><a href="index.html#__codelineno-4-37" id="__codelineno-4-37" name="__codelineno-4-37"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"step_3"</span><span class="p">,</span> <span class="n">step_3</span><span class="p">)</span>
+</span><span id="__span-4-38"><a href="index.html#__codelineno-4-38" id="__codelineno-4-38" name="__codelineno-4-38"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="s2">"step_1"</span><span class="p">)</span>
+</span><span id="__span-4-39"><a href="index.html#__codelineno-4-39" id="__codelineno-4-39" name="__codelineno-4-39"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"step_1"</span><span class="p">,</span> <span class="s2">"step_2"</span><span class="p">)</span>
+</span><span id="__span-4-40"><a href="index.html#__codelineno-4-40" id="__codelineno-4-40" name="__codelineno-4-40"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"step_2"</span><span class="p">,</span> <span class="s2">"step_3"</span><span class="p">)</span>
+</span><span id="__span-4-41"><a href="index.html#__codelineno-4-41" id="__codelineno-4-41" name="__codelineno-4-41"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"step_3"</span><span class="p">,</span> <span class="n">END</span><span class="p">)</span>
+</span><span id="__span-4-42"><a href="index.html#__codelineno-4-42" id="__codelineno-4-42" name="__codelineno-4-42"></a>
+</span><span id="__span-4-43"><a href="index.html#__codelineno-4-43" id="__codelineno-4-43" name="__codelineno-4-43"></a><span class="c1"># Set up memory</span>
+</span><span id="__span-4-44"><a href="index.html#__codelineno-4-44" id="__codelineno-4-44" name="__codelineno-4-44"></a><span class="n">memory</span> <span class="o">=</span> <span class="n">MemorySaver</span><span class="p">()</span>
+</span><span id="__span-4-45"><a href="index.html#__codelineno-4-45" id="__codelineno-4-45" name="__codelineno-4-45"></a>
+</span><span id="__span-4-46"><a href="index.html#__codelineno-4-46" id="__codelineno-4-46" name="__codelineno-4-46"></a><span class="c1"># Compile the graph with memory</span>
+</span><span id="__span-4-47"><a href="index.html#__codelineno-4-47" id="__codelineno-4-47" name="__codelineno-4-47"></a><span class="n">graph</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">memory</span><span class="p">)</span>
+</span><span id="__span-4-48"><a href="index.html#__codelineno-4-48" id="__codelineno-4-48" name="__codelineno-4-48"></a>
+</span><span id="__span-4-49"><a href="index.html#__codelineno-4-49" id="__codelineno-4-49" name="__codelineno-4-49"></a><span class="c1"># View</span>
+</span><span id="__span-4-50"><a href="index.html#__codelineno-4-50" id="__codelineno-4-50" name="__codelineno-4-50"></a><span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">get_graph</span><span class="p">()</span><span class="o">.</span><span class="n">draw_mermaid_png</span><span class="p">()))</span>
+</span></code></pre></div>
+<p>
+<img src="data:image/png;base64,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">
+</p>首先，让我们运行图，输入长度不超过 5 个字符。这应该会安全地忽略我们定义的中断条件，并在图执行结束时返回原始输入。<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a href="index.html#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="n">initial_input</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"input"</span><span class="p">:</span> <span class="s2">"hello"</span><span class="p">}</span>
+</span><span id="__span-5-2"><a href="index.html#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="n">thread_config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">}}</span>
+</span><span id="__span-5-3"><a href="index.html#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a href="index.html#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">initial_input</span><span class="p">,</span> <span class="n">thread_config</span><span class="p">,</span> <span class="n">stream_mode</span><span class="o">=</span><span class="s2">"values"</span><span class="p">):</span>
+</span><span id="__span-5-5"><a href="index.html#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-output highlight"><pre><span></span><code><span id="__span-6-1"><a href="index.html#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="go">{'input': 'hello'}</span>
+</span><span id="__span-6-2"><a href="index.html#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="go">---Step 1---</span>
+</span><span id="__span-6-3"><a href="index.html#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="go">{'input': 'hello'}</span>
+</span><span id="__span-6-4"><a href="index.html#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="go">---Step 2---</span>
+</span><span id="__span-6-5"><a href="index.html#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="go">{'input': 'hello'}</span>
+</span><span id="__span-6-6"><a href="index.html#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="go">---Step 3---</span>
+</span><span id="__span-6-7"><a href="index.html#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="go">{'input': 'hello'}</span>
+</span></code></pre></div>如果我们此时检查图，可以看到没有剩余任务可运行，并且图确实已完成执行。<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a href="index.html#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="n">state</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">get_state</span><span class="p">(</span><span class="n">thread_config</span><span class="p">)</span>
+</span><span id="__span-7-2"><a href="index.html#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">next</span><span class="p">)</span>
+</span><span id="__span-7-3"><a href="index.html#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">tasks</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-output highlight"><pre><span></span><code><span id="__span-8-1"><a href="index.html#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="go">()</span>
+</span><span id="__span-8-2"><a href="index.html#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="go">()</span>
+</span></code></pre></div>现在，让我们运行图，输入长度超过 5 个字符。这应该会通过在 <code>step_2</code> 节点内抛出 `NodeInterrupt` 错误来触发我们定义的动态中断。<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a href="index.html#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="n">initial_input</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"input"</span><span class="p">:</span> <span class="s2">"hello world"</span><span class="p">}</span>
+</span><span id="__span-9-2"><a href="index.html#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="n">thread_config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">}}</span>
+</span><span id="__span-9-3"><a href="index.html#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a href="index.html#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="c1"># Run the graph until the first interruption</span>
+</span><span id="__span-9-5"><a href="index.html#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">initial_input</span><span class="p">,</span> <span class="n">thread_config</span><span class="p">,</span> <span class="n">stream_mode</span><span class="o">=</span><span class="s2">"values"</span><span class="p">):</span>
+</span><span id="__span-9-6"><a href="index.html#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-output highlight"><pre><span></span><code><span id="__span-10-1"><a href="index.html#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="go">{'input': 'hello world'}</span>
+</span><span id="__span-10-2"><a href="index.html#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="go">---Step 1---</span>
+</span><span id="__span-10-3"><a href="index.html#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="go">{'input': 'hello world'}</span>
+</span><span id="__span-10-4"><a href="index.html#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="go">{'__interrupt__': (Interrupt(value='Received input that is longer than 5 characters: hello world', resumable=False, ns=None),)}</span>
+</span></code></pre></div>我们可以看到图现在在执行 `step_2` 时停止了。如果我们此时检查图状态，可以看到关于下一个要执行的节点 (`step_2`) 的信息，以及哪个节点引发了中断（也是 `step_2`），以及关于中断的额外信息。<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a href="index.html#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="n">state</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">get_state</span><span class="p">(</span><span class="n">thread_config</span><span class="p">)</span>
+</span><span id="__span-11-2"><a href="index.html#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">next</span><span class="p">)</span>
+</span><span id="__span-11-3"><a href="index.html#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">tasks</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-output highlight"><pre><span></span><code><span id="__span-12-1"><a href="index.html#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="go">('step_2',)</span>
+</span><span id="__span-12-2"><a href="index.html#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="go">(PregelTask(id='bfc767e3-a6c4-c5af-dbbf-0d20ea64501e', name='step_2', path=('__pregel_pull', 'step_2'), error=None, interrupts=(Interrupt(value='Received input that is longer than 5 characters: hello world', resumable=False, ns=None),), state=None, result=None),)</span>
+</span></code></pre></div>如果从断点恢复图，我们将再次中断，因为我们的输入和图状态没有改变。<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a href="index.html#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="c1"># NOTE: to resume the graph from a dynamic interrupt we use the same syntax as with regular interrupts -- we pass None as the input</span>
+</span><span id="__span-13-2"><a href="index.html#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">thread_config</span><span class="p">,</span> <span class="n">stream_mode</span><span class="o">=</span><span class="s2">"values"</span><span class="p">):</span>
+</span><span id="__span-13-3"><a href="index.html#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-output highlight"><pre><span></span><code><span id="__span-14-1"><a href="index.html#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="go">{'input': 'hello world'}</span>
+</span><span id="__span-14-2"><a href="index.html#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="go">{'__interrupt__': (Interrupt(value='Received input that is longer than 5 characters: hello world', resumable=False, ns=None),)}</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a href="index.html#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="n">state</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">get_state</span><span class="p">(</span><span class="n">thread_config</span><span class="p">)</span>
+</span><span id="__span-15-2"><a href="index.html#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">next</span><span class="p">)</span>
+</span><span id="__span-15-3"><a href="index.html#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">tasks</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-output highlight"><pre><span></span><code><span id="__span-16-1"><a href="index.html#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="go">('step_2',)</span>
+</span><span id="__span-16-2"><a href="index.html#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="go">(PregelTask(id='bfc767e3-a6c4-c5af-dbbf-0d20ea64501e', name='step_2', path=('__pregel_pull', 'step_2'), error=None, interrupts=(Interrupt(value='Received input that is longer than 5 characters: hello world', resumable=False, ns=None),), state=None, result=None),)</span>
+</span></code></pre></div>
+</details>
+<h2 id="use-with-subgraphs">与子图一起使用<a class="headerlink" href="index.html#use-with-subgraphs" title="永久链接">¶</a></h2>
+<p>要向子图添加断点，可以</p>
+<ul>
+<li>通过在**编译**子图时指定来定义 <a href="index.html#static-breakpoints">静态断点</a>。</li>
+<li>定义 <a href="index.html#dynamic-breakpoints">动态断点</a>。</li>
+</ul>
+<details class="example"><summary>向子图添加断点</summary>
+<sup><i>API 参考：<a href="../../../reference/constants/index.html#langgraph.constants.START">START</a> | <a href="../../../reference/graphs/index.html#langgraph.graph.state.StateGraph">StateGraph</a> | <a href="../../../reference/checkpoints/index.html#langgraph.checkpoint.memory.InMemorySaver">InMemorySaver</a> | <a href="../../../reference/types/index.html#langgraph.types.interrupt">interrupt</a></i></sup>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a href="index.html#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
+</span><span id="__span-17-2"><a href="index.html#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a>
+</span><span id="__span-17-3"><a href="index.html#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">START</span><span class="p">,</span> <span class="n">StateGraph</span>
+</span><span id="__span-17-4"><a href="index.html#__codelineno-17-4" id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.checkpoint.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">InMemorySaver</span>
+</span><span id="__span-17-5"><a href="index.html#__codelineno-17-5" id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">interrupt</span>
+</span><span id="__span-17-6"><a href="index.html#__codelineno-17-6" id="__codelineno-17-6" name="__codelineno-17-6"></a>
+</span><span id="__span-17-7"><a href="index.html#__codelineno-17-7" id="__codelineno-17-7" name="__codelineno-17-7"></a>
+</span><span id="__span-17-8"><a href="index.html#__codelineno-17-8" id="__codelineno-17-8" name="__codelineno-17-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-17-9"><a href="index.html#__codelineno-17-9" id="__codelineno-17-9" name="__codelineno-17-9"></a>    <span class="n">foo</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-17-10"><a href="index.html#__codelineno-17-10" id="__codelineno-17-10" name="__codelineno-17-10"></a>
+</span><span id="__span-17-11"><a href="index.html#__codelineno-17-11" id="__codelineno-17-11" name="__codelineno-17-11"></a>
+</span><span id="__span-17-12"><a href="index.html#__codelineno-17-12" id="__codelineno-17-12" name="__codelineno-17-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">subgraph_node_1</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">):</span>
+</span><span id="__span-17-13"><a href="index.html#__codelineno-17-13" id="__codelineno-17-13" name="__codelineno-17-13"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"foo"</span><span class="p">:</span> <span class="n">state</span><span class="p">[</span><span class="s2">"foo"</span><span class="p">]}</span>
+</span><span id="__span-17-14"><a href="index.html#__codelineno-17-14" id="__codelineno-17-14" name="__codelineno-17-14"></a>
+</span><span id="__span-17-15"><a href="index.html#__codelineno-17-15" id="__codelineno-17-15" name="__codelineno-17-15"></a>
+</span><span id="__span-17-16"><a href="index.html#__codelineno-17-16" id="__codelineno-17-16" name="__codelineno-17-16"></a><span class="n">subgraph_builder</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">State</span><span class="p">)</span>
+</span><span id="__span-17-17"><a href="index.html#__codelineno-17-17" id="__codelineno-17-17" name="__codelineno-17-17"></a><span class="n">subgraph_builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">subgraph_node_1</span><span class="p">)</span>
+</span><span id="__span-17-18"><a href="index.html#__codelineno-17-18" id="__codelineno-17-18" name="__codelineno-17-18"></a><span class="n">subgraph_builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="s2">"subgraph_node_1"</span><span class="p">)</span>
+</span><span id="__span-17-19"><a href="index.html#__codelineno-17-19" id="__codelineno-17-19" name="__codelineno-17-19"></a>
+</span><span id="__span-17-20"><a href="index.html#__codelineno-17-20" id="__codelineno-17-20" name="__codelineno-17-20"></a><span class="n">subgraph</span> <span class="o">=</span> <span class="n">subgraph_builder</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">interrupt_before</span><span class="o">=</span><span class="p">[</span><span class="s2">"subgraph_node_1"</span><span class="p">])</span>
+</span><span id="__span-17-21"><a href="index.html#__codelineno-17-21" id="__codelineno-17-21" name="__codelineno-17-21"></a>
+</span><span id="__span-17-22"><a href="index.html#__codelineno-17-22" id="__codelineno-17-22" name="__codelineno-17-22"></a><span class="n">builder</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">State</span><span class="p">)</span>
+</span><span id="__span-17-23"><a href="index.html#__codelineno-17-23" id="__codelineno-17-23" name="__codelineno-17-23"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"node_1"</span><span class="p">,</span> <span class="n">subgraph</span><span class="p">)</span>  <span class="c1"># directly include subgraph as a node</span>
+</span><span id="__span-17-24"><a href="index.html#__codelineno-17-24" id="__codelineno-17-24" name="__codelineno-17-24"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="s2">"node_1"</span><span class="p">)</span>
+</span><span id="__span-17-25"><a href="index.html#__codelineno-17-25" id="__codelineno-17-25" name="__codelineno-17-25"></a>
+</span><span id="__span-17-26"><a href="index.html#__codelineno-17-26" id="__codelineno-17-26" name="__codelineno-17-26"></a><span class="n">checkpointer</span> <span class="o">=</span> <span class="n">InMemorySaver</span><span class="p">()</span>
+</span><span id="__span-17-27"><a href="index.html#__codelineno-17-27" id="__codelineno-17-27" name="__codelineno-17-27"></a><span class="n">graph</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">)</span>
+</span><span id="__span-17-28"><a href="index.html#__codelineno-17-28" id="__codelineno-17-28" name="__codelineno-17-28"></a>
+</span><span id="__span-17-29"><a href="index.html#__codelineno-17-29" id="__codelineno-17-29" name="__codelineno-17-29"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">}}</span>
+</span><span id="__span-17-30"><a href="index.html#__codelineno-17-30" id="__codelineno-17-30" name="__codelineno-17-30"></a>
+</span><span id="__span-17-31"><a href="index.html#__codelineno-17-31" id="__codelineno-17-31" name="__codelineno-17-31"></a><span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">"foo"</span><span class="p">:</span> <span class="s2">""</span><span class="p">},</span> <span class="n">config</span><span class="p">)</span>
+</span><span id="__span-17-32"><a href="index.html#__codelineno-17-32" id="__codelineno-17-32" name="__codelineno-17-32"></a>
+</span><span id="__span-17-33"><a href="index.html#__codelineno-17-33" id="__codelineno-17-33" name="__codelineno-17-33"></a><span class="c1"># Fetch state including subgraph state.</span>
+</span><span id="__span-17-34"><a href="index.html#__codelineno-17-34" id="__codelineno-17-34" name="__codelineno-17-34"></a><span class="nb">print</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">get_state</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">subgraphs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">tasks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
+</span><span id="__span-17-35"><a href="index.html#__codelineno-17-35" id="__codelineno-17-35" name="__codelineno-17-35"></a>
+</span><span id="__span-17-36"><a href="index.html#__codelineno-17-36" id="__codelineno-17-36" name="__codelineno-17-36"></a><span class="c1"># resume the subgraph</span>
+</span><span id="__span-17-37"><a href="index.html#__codelineno-17-37" id="__codelineno-17-37" name="__codelineno-17-37"></a><span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-output highlight"><pre><span></span><code><span id="__span-18-1"><a href="index.html#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="go">StateSnapshot(values={'foo': ''}, next=('subgraph_node_1',), config={'configurable': {'thread_id': '1', 'checkpoint_ns': 'node_1:dfc321bb-7c91-ccfe-23b8-c2374ae3f1cc', 'checkpoint_id': '1f02a8d1-985a-6e2c-8000-77034088c0ce', 'checkpoint_map': {'': '1f02a8d1-9856-6264-8000-ed1534455427', 'node_1:dfc321bb-7c91-ccfe-23b8-c2374ae3f1cc': '1f02a8d1-985a-6e2c-8000-77034088c0ce'}}}, metadata={'source': 'loop', 'writes': None, 'step': 0, 'parents': {'': '1f02a8d1-9856-6264-8000-ed1534455427'}, 'thread_id': '1', 'langgraph_step': 1, 'langgraph_node': 'node_1', 'langgraph_triggers': ['branch:to:node_1'], 'langgraph_path': ['__pregel_pull', 'node_1'], 'langgraph_checkpoint_ns': 'node_1:dfc321bb-7c91-ccfe-23b8-c2374ae3f1cc'}, created_at='2025-05-06T15:16:35.543192+00:00', parent_config={'configurable': {'thread_id': '1', 'checkpoint_ns': 'node_1:dfc321bb-7c91-ccfe-23b8-c2374ae3f1cc', 'checkpoint_id': '1f02a8d1-9859-6d41-bfff-872b2e8f4db6', 'checkpoint_map': {'': '1f02a8d1-9856-6264-8000-ed1534455427', 'node_1:dfc321bb-7c91-ccfe-23b8-c2374ae3f1cc': '1f02a8d1-9859-6d41-bfff-872b2e8f4db6'}}}, tasks=(PregelTask(id='33218e09-8747-5161-12b1-5dc705d30b51', name='subgraph_node_1', path=('__pregel_pull', 'subgraph_node_1'), error=None, interrupts=(), state=None, result=None),), interrupts=())</span>
+</span></code></pre></div>
+<div class="language-output highlight"><pre><span></span><code><span id="__span-19-1"><a href="index.html#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="go">{'foo': ''}</span>
+</span></code></pre></div>
+</details>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>回到顶部</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="上一篇：概述" class="md-footer__link md-footer__link--prev" href="../../../concepts/breakpoints/index.html"> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg> </div> <div class="md-footer__title"> <span class="md-footer__direction"> 上一篇 </span> <div class="md-ellipsis"> 概述 </div> </div> </a> <a aria-label="下一篇：概述" class="md-footer__link md-footer__link--next" href="../../../concepts/time-travel/index.html"> <div class="md-footer__title"> <span class="md-footer__direction"> 下一篇 </span> <div class="md-ellipsis"> 概述 </div> </div> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg> </div> </a></nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">版权所有 © 2025 LangChain, Inc | <a href="index.html#__consent">同意偏好设置</a></div>使用 <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank"> Material for MkDocs </a> 制作</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.langchain.ac.cn/langgraphjs/" rel="noopener" target="_blank" title="langchain-ai.github.io">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 32v448h448V32zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6"></path></svg>
+</a>
+<a class="md-social__link" href="https://github.com/langchain-ai/langgraph" rel="noopener" target="_blank" title="github.com">
+<svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+<a class="md-social__link" href="https://twitter.com/LangChainAI" rel="noopener" target="_blank" title="twitter.com">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-progress" data-md-component="progress" role="progressbar"></div>
+<div class="md-consent" data-md-component="consent" hidden="" id="__consent">
+<div class="md-consent__overlay"></div>
+<aside class="md-consent__inner">
+<form class="md-consent__form md-grid md-typeset" name="consent">
+<h4>Cookie 同意</h4>
+<p>我们使用 cookie 来识别您的重复访问和偏好，并衡量我们文档的有效性以及用户是否找到了他们正在寻找的内容。**点击“接受”将使我们的文档变得更好。谢谢您！** ❤️</p>
+<input checked="" class="md-toggle" id="__settings" type="checkbox" />
+<div class="md-consent__settings">
+<ul class="task-list">
+<li class="task-list-item">
+<label class="task-list-control">
+<input checked="" name="github" type="checkbox" />
+<span class="task-list-indicator"></span> GitHub</label>
+</li>
+</ul>
+</div>
+<div class="md-consent__controls">
+<button class="md-button md-button--primary">接受</button>
+<button class="md-button md-button--primary" type="reset">拒绝</button>
+</div>
+</form>
+</aside>
+</div>
+<script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.action.edit", "content.tooltips", "navigation.indexes", "navigation.footer", "navigation.instant", "navigation.sections", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.prune", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+
+</body></html>

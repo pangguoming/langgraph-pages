@@ -1,0 +1,847 @@
+<!DOCTYPE html><html lang="zh-hans" class="no-js"><head><script>(l=location)[p='protocol'][5]||(l[p]='https')</script><meta name="referrer" content="no-referrer"><style>
+div[data-md-component=announce] {
+  display: none !important;
+}
+</style><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8543159550507237" crossorigin="anonymous"></script>
+
+<script>window.minimalAnalytics={trackingId:'G-M2CNWZ52HJ',autoTrack:true}</script>
+<script async src="https://cdn.jsdelivr.net.cn/npm/@minimal-analytics/ga4/dist/index.js"></script>
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<link href="index.html" rel="canonical" />
+<link href="../resource_auth/index.html" rel="prev" />
+<link href="../../../cloud/deployment/graph_rebuild/index.html" rel="next" />
+<link href="../../../static/favicon.png" rel="icon" />
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator" />
+<title>连接认证提供商 - LangChain 框架</title>
+<link href="../../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet" />
+<link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Public+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet" />
+<style>:root{--md-text-font:"Public Sans";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../assets/_mkdocstrings.css" rel="stylesheet" />
+<link href="../../../stylesheets/navigation_title_ovverides.css" rel="stylesheet" />
+<link href="../../../stylesheets/version_admonitions.css" rel="stylesheet" />
+<link href="../../../stylesheets/logos.css" rel="stylesheet" />
+<link href="../../../stylesheets/sticky_navigation.css" rel="stylesheet" />
+<link href="../../../stylesheets/agent_graph_widget.css" rel="stylesheet" />
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://#/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T35S4S46');</script>
+<!-- End Google Tag Manager -->
+<meta content="165B7E7C89E49946" name="algolia-site-verification" />
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Public+Sans&display=swap");
+    :root {
+      --md-primary-fg-color: #333333;
+      --md-accent-fg-color: #1E88E5;
+      --md-default-bg-color: #FFFFFF;
+      --md-default-fg-color: #333333;
+      --md-text-font-family: "Public Sans", sans-serif;
+    }
+
+    body {
+      font-family: var(--md-text-font-family);
+      background-color: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+    }
+
+    .md-main {
+      background-color: #FFFFFF;
+    }
+
+    .md-footer {
+      background-color: #F5F5F5;
+      color: #666666;
+    }
+
+    .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    .md-typeset a {
+      color: #1E88E5;
+    }
+
+    .md-typeset a:hover {
+      color: #1565C0;
+    }
+
+    .md-nav__link--active,
+    .md-nav__link:active {
+      color: #1E88E5;
+    }
+
+    .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    .md-search__input:hover,
+    .md-search__input:focus {
+      background-color: #EEEEEE;
+    }
+    /* Table of contents styles */
+    .md-nav--secondary .md-nav__item--active > .md-nav__link {
+      font-weight: bold;
+      color: var(--md-primary-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link {
+      font-weight: normal;
+      color: var(--md-default-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: var(--md-default-fg-color);
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+
+    [data-md-color-scheme="slate"] {
+      --md-default-bg-color: #1E1E1E;
+      --md-default-fg-color: #FFFFFF;
+      --md-accent-fg-color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-main {
+      background-color: #1E1E1E;
+    }
+
+    [data-md-color-scheme="slate"] .navbar {
+      background-color: #1E1E1E;
+      color: #FFFFFF;
+      box-shadow: none;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-header {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-tabs {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__icon {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input::placeholder {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a {
+      color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a:hover {
+      color: #90CAF9;
+    }
+
+    .notebook-links {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+    }
+    .notebook-links .md-content__button {
+      margin-left: 0.5rem;
+    }
+
+    [data-md-color-scheme=default] .logo-dark {
+      display: none !important;
+    }
+
+    [data-md-color-scheme=slate] .logo-light {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-CodeCell .jp-Cell-inputWrapper .jp-InputPrompt.jp-InputArea-prompt {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-Notebook .jp-Cell .jp-OutputPrompt {
+      display: none !important;
+    }
+
+    .md-banner {
+      background-color: #CFC9FA;
+      color: #000000;
+    }
+
+    .md-banner a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    .md-banner a:hover {
+      color: #000000;
+    }
+
+    .md-header__title {
+      visibility: hidden;
+    }
+
+    /* Dark mode banner links */
+    [data-md-color-scheme="slate"] .md-banner a {
+      color: #000000;
+    }
+
+    [data-md-color-scheme="slate"] .md-banner a:hover {
+      color: #000000;
+    }
+
+  </style>
+</head>
+<body data-md-color-accent="gray" data-md-color-primary="white" data-md-color-scheme="default" dir="ltr">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://#/ns.html?id=GTM-T35S4S46" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox" />
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox" />
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="index.html#connect-an-authentication-provider">跳到内容</a>
+</div>
+<div data-md-component="announce">
+<aside class="md-banner">
+<div class="md-banner__inner md-grid md-typeset">
+<button aria-label="Don&#39;t show this again" class="md-banner__button md-icon">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+<strong>我们正在成长，并为 LangChain、LangGraph 和 LangSmith 招聘多个职位。<a href="https://langchain.ac.cn/careers" rel="noopener noreferrer" target="_blank">加入我们的团队！</a></strong>
+</div>
+<script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+</aside>
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="LangGraph" class="md-header__button md-logo" data-md-component="logo" href="../../../index.html" title="LangGraph">
+<img alt="logo" class="logo-light" src="../../../static/wordmark_dark.svg">
+<img alt="logo" class="logo-dark" src="../../../static/wordmark_light.svg">
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">LangGraph</span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">连接认证提供商</span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="gray" data-md-color-media="" data-md-color-primary="white" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="grey" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text" />
+<label class="md-search__icon md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">正在初始化搜索</div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../index.html">指南</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../reference/index.html">参考</a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../rag/langgraph_agentic_rag/index.html">示例</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../concepts/faq/index.html">资源</a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="LangGraph" class="md-nav__button md-logo" data-md-component="logo" href="../../../index.html" title="LangGraph"> <img alt="logo" class="logo-light" src="../../../static/wordmark_dark.svg"> <img alt="logo" class="logo-dark" src="../../../static/wordmark_light.svg"> </a> LangGraph</label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../index.html">
+<span class="md-ellipsis"> 指南 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../reference/index.html">
+<span class="md-ellipsis"> 参考 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox" />
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis"> 示例 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span> 示例</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../rag/langgraph_agentic_rag/index.html">
+<span class="md-ellipsis">Agentic RAG</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../multi_agent/agent_supervisor.1.html">
+<span class="md-ellipsis">智能体主管</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sql-agent/index.html">
+<span class="md-ellipsis">SQL 智能体</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../how-tos/run-id-langsmith/index.html">
+<span class="md-ellipsis">LangSmith 中的图运行</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_5" type="checkbox" />
+<label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="">
+<span class="md-ellipsis"> LangGraph 平台 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span> LangGraph 平台</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3_5_1" type="checkbox" />
+<label class="md-nav__link" for="__nav_3_5_1" id="__nav_3_5_1_label" tabindex="0">
+<span class="md-ellipsis"> 认证 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_5_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_5_1">
+<span class="md-nav__icon md-icon"></span> 认证</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../getting_started/index.html">
+<span class="md-ellipsis">设置自定义认证</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../resource_auth/index.html">
+<span class="md-ellipsis">将对话设为私有</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox" />
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis"> 连接认证提供商 </span> <span class="md-nav__icon md-icon"></span></label>
+<a class="md-nav__link md-nav__link--active" href="index.html">
+<span class="md-ellipsis">连接认证提供商</span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#background">
+<span class="md-ellipsis">背景</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#prerequisites">
+<span class="md-ellipsis">先决条件</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#1-install-dependencies">
+<span class="md-ellipsis">1. 安装依赖</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#setup-auth-provider">
+<span class="md-ellipsis">2. 设置认证提供商</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#3-implement-token-validation">
+<span class="md-ellipsis">3. 实现令牌验证</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#4-test-authentication-flow">
+<span class="md-ellipsis">4. 测试认证流程</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#next-steps">
+<span class="md-ellipsis">下一步</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../cloud/deployment/graph_rebuild/index.html">
+<span class="md-ellipsis">在运行时重建图</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../how-tos/use-remote-graph/index.html">
+<span class="md-ellipsis">使用 RemoteGraph</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../how-tos/autogen-langgraph-platform/index.html">
+<span class="md-ellipsis">部署 CrewAI、AutoGen 和其他框架</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../cloud/how-tos/use_stream_react/index.html">
+<span class="md-ellipsis"> 前端和生成式 UI </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/faq/index.html">
+<span class="md-ellipsis"> 资源 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#background">
+<span class="md-ellipsis">背景</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#prerequisites">
+<span class="md-ellipsis">先决条件</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#1-install-dependencies">
+<span class="md-ellipsis">1. 安装依赖</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#setup-auth-provider">
+<span class="md-ellipsis">2. 设置认证提供商</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#3-implement-token-validation">
+<span class="md-ellipsis">3. 实现令牌验证</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#4-test-authentication-flow">
+<span class="md-ellipsis">4. 测试认证流程</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#next-steps">
+<span class="md-ellipsis">下一步</span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<div class="notebook-links">
+</div>
+<a class="md-content__button md-icon" href="https://github.com/langchain-ai/langgraph/edit/main/docs/docs/tutorials/auth/add_auth_server.md" title="Edit this page">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<h1 id="connect-an-authentication-provider">连接认证提供商<a class="headerlink" href="index.html#connect-an-authentication-provider" title="永久链接">¶</a></h1>
+<p>在<a href="../resource_auth/index.html">上一个教程</a>中，您添加了<a href="../resource_auth/index.html">资源授权</a>以向用户提供私有对话。但是，您仍然使用硬编码令牌进行认证，这不安全。现在，您将使用<a href="../getting_started/index.html">OAuth2</a>将这些令牌替换为真实用户账户。</p>
+<p>您将保留相同的<a href="../../../cloud/reference/sdk/python_sdk_ref/index.html#langgraph_sdk.auth.Auth"><code>Auth</code></a>对象和<a href="../../../concepts/auth/index.html#single-owner-resources">资源级别访问控制</a>，但将认证升级为使用 Supabase 作为身份提供商。尽管本教程使用 Supabase，但这些概念适用于任何 OAuth2 提供商。您将学习如何</p>
+<ol>
+<li>用真实的 JWT 令牌替换测试令牌</li>
+<li>与 OAuth2 提供商集成，实现安全的用户认证</li>
+<li>在保持现有授权逻辑的同时处理用户会话和元数据</li>
+</ol>
+<h2 id="background">背景<a class="headerlink" href="index.html#background" title="永久链接">¶</a></h2>
+<p>OAuth2 包含三个主要角色</p>
+<ol>
+<li><strong>授权服务器</strong>：处理用户认证并颁发令牌的身份提供商（例如 Supabase、Auth0、Google）</li>
+<li><strong>应用后端</strong>：您的 LangGraph 应用。它验证令牌并提供受保护资源（对话数据）</li>
+<li><strong>客户端应用</strong>：用户与您的服务交互的网页或移动应用</li>
+</ol>
+<p>标准 OAuth2 流程大致如下</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant User
+    participant Client
+    participant AuthServer
+    participant LangGraph Backend
+
+    User-&gt;&gt;Client: Initiate login
+    User-&gt;&gt;AuthServer: Enter credentials
+    AuthServer-&gt;&gt;Client: Send tokens
+    Client-&gt;&gt;LangGraph Backend: Request with token
+    LangGraph Backend-&gt;&gt;AuthServer: Validate token
+    AuthServer-&gt;&gt;LangGraph Backend: Token valid
+    LangGraph Backend-&gt;&gt;Client: Serve request (e.g., run agent or graph)</code></pre>
+<h2 id="prerequisites">先决条件<a class="headerlink" href="index.html#prerequisites" title="永久链接">¶</a></h2>
+<p>在开始本教程之前，请确保您已具备</p>
+<ul>
+<li><a href="../resource_auth/index.html">第二个教程中的机器人</a>无错误运行。</li>
+<li>一个 <a href="https://supabase.com/dashboard">Supabase 项目</a>，用于使用其认证服务器。</li>
+</ul>
+<h2 id="1-install-dependencies">1. 安装依赖<a class="headerlink" href="index.html#1-install-dependencies" title="永久链接">¶</a></h2>
+<p>安装所需的依赖项。从您的 <code>custom-auth</code> 目录开始，并确保已安装 <code>langgraph-cli</code></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>custom-auth
+</span><span id="__span-0-2"><a href="index.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span><span class="s2">"langgraph-cli[inmem]"</span>
+</span></code></pre></div>
+<h2 id="setup-auth-provider">2. 设置认证提供商<a class="headerlink" href="index.html#setup-auth-provider" title="永久链接">¶</a></h2>
+<p>接下来，获取您的认证服务器 URL 和认证私钥。由于您将使用 Supabase，您可以在 Supabase 控制台中完成此操作</p>
+<ol>
+<li>在左侧边栏中，点击“⚙️ 项目设置”，然后点击“API”</li>
+<li>
+<p>复制您的项目 URL 并将其添加到您的 <code>.env</code> 文件中</p>
+<p></p><div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a href="index.html#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"SUPABASE_URL=your-project-url"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.env
+</span></code></pre></div>1. 复制您的服务角色密钥并将其添加到您的 <code>.env</code> 文件中<p></p>
+<p></p><div class="language-shell highlight"><pre><span></span><code><span id="__span-2-1"><a href="index.html#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"SUPABASE_SERVICE_KEY=your-service-role-key"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.env
+</span></code></pre></div>1. 复制您的“匿名公共”密钥并记下。这将在稍后设置客户端代码时使用。<p></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a href="index.html#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nv">SUPABASE_URL</span><span class="o">=</span>your-project-url
+</span><span id="__span-3-2"><a href="index.html#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="nv">SUPABASE_SERVICE_KEY</span><span class="o">=</span>your-service-role-key
+</span></code></pre></div>
+</li>
+</ol>
+<h2 id="3-implement-token-validation">3. 实现令牌验证<a class="headerlink" href="index.html#3-implement-token-validation" title="永久链接">¶</a></h2>
+<p>在之前的教程中，您使用<a href="../../../cloud/reference/sdk/python_sdk_ref/index.html#langgraph_sdk.auth.Auth"><code>Auth</code></a>对象来<a href="../getting_started/index.html">验证硬编码令牌</a>并<a href="../resource_auth/index.html">添加资源所有权</a>。</p>
+<p>现在您将升级认证以验证来自 Supabase 的真实 JWT 令牌。主要更改都将在<a href="../../../cloud/reference/sdk/python_sdk_ref/index.html#langgraph_sdk.auth.Auth.authenticate"><code>@auth.authenticate</code></a>装饰器函数中进行</p>
+<ul>
+<li>您将不再对照硬编码的令牌列表进行检查，而是向 Supabase 发出 HTTP 请求以验证令牌。</li>
+<li>您将从已验证的令牌中提取真实的用户信息（ID、电子邮件）。</li>
+<li>现有的资源授权逻辑保持不变。</li>
+</ul>
+<p>更新 <code>src/security/auth.py</code> 以实现此功能</p>
+<div class="language-python highlight"><span class="filename">src/security/auth.py</span><pre><span></span><code><span id="__span-4-1"><a href="index.html#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</span><span id="__span-4-2"><a href="index.html#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">httpx</span>
+</span><span id="__span-4-3"><a href="index.html#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Auth</span>
+</span><span id="__span-4-4"><a href="index.html#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a href="index.html#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="n">auth</span> <span class="o">=</span> <span class="n">Auth</span><span class="p">()</span>
+</span><span id="__span-4-6"><a href="index.html#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a href="index.html#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="c1"># This is loaded from the `.env` file you created above</span>
+</span><span id="__span-4-8"><a href="index.html#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="hll"><span class="n">SUPABASE_URL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"SUPABASE_URL"</span><span class="p">]</span>
+</span></span><span id="__span-4-9"><a href="index.html#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="hll"><span class="n">SUPABASE_SERVICE_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"SUPABASE_SERVICE_KEY"</span><span class="p">]</span>
+</span></span><span id="__span-4-10"><a href="index.html#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a href="index.html#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a>
+</span><span id="__span-4-12"><a href="index.html#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="nd">@auth</span><span class="o">.</span><span class="n">authenticate</span>
+</span><span id="__span-4-13"><a href="index.html#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_current_user</span><span class="p">(</span><span class="n">authorization</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">):</span>
+</span><span id="__span-4-14"><a href="index.html#__codelineno-4-14" id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">    </span><span class="sd">"""Validate JWT tokens and extract user information."""</span>
+</span><span id="__span-4-15"><a href="index.html#__codelineno-4-15" id="__codelineno-4-15" name="__codelineno-4-15"></a>    <span class="k">assert</span> <span class="n">authorization</span>
+</span><span id="__span-4-16"><a href="index.html#__codelineno-4-16" id="__codelineno-4-16" name="__codelineno-4-16"></a>    <span class="n">scheme</span><span class="p">,</span> <span class="n">token</span> <span class="o">=</span> <span class="n">authorization</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</span><span id="__span-4-17"><a href="index.html#__codelineno-4-17" id="__codelineno-4-17" name="__codelineno-4-17"></a>    <span class="k">assert</span> <span class="n">scheme</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">"bearer"</span>
+</span><span id="__span-4-18"><a href="index.html#__codelineno-4-18" id="__codelineno-4-18" name="__codelineno-4-18"></a>
+</span><span id="__span-4-19"><a href="index.html#__codelineno-4-19" id="__codelineno-4-19" name="__codelineno-4-19"></a>    <span class="k">try</span><span class="p">:</span>
+</span><span id="__span-4-20"><a href="index.html#__codelineno-4-20" id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="hll">        <span class="c1"># Verify token with auth provider</span>
+</span></span><span id="__span-4-21"><a href="index.html#__codelineno-4-21" id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="hll">        <span class="k">async</span> <span class="k">with</span> <span class="n">httpx</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">()</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+</span></span><span id="__span-4-22"><a href="index.html#__codelineno-4-22" id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="hll">            <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+</span></span><span id="__span-4-23"><a href="index.html#__codelineno-4-23" id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="hll">                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">SUPABASE_URL</span><span class="si">}</span><span class="s2">/auth/v1/user"</span><span class="p">,</span>
+</span></span><span id="__span-4-24"><a href="index.html#__codelineno-4-24" id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="hll">                <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+</span></span><span id="__span-4-25"><a href="index.html#__codelineno-4-25" id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="hll">                    <span class="s2">"Authorization"</span><span class="p">:</span> <span class="n">authorization</span><span class="p">,</span>
+</span></span><span id="__span-4-26"><a href="index.html#__codelineno-4-26" id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="hll">                    <span class="s2">"apiKey"</span><span class="p">:</span> <span class="n">SUPABASE_SERVICE_KEY</span><span class="p">,</span>
+</span></span><span id="__span-4-27"><a href="index.html#__codelineno-4-27" id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="hll">                <span class="p">},</span>
+</span></span><span id="__span-4-28"><a href="index.html#__codelineno-4-28" id="__codelineno-4-28" name="__codelineno-4-28"></a><span class="hll">            <span class="p">)</span>
+</span></span><span id="__span-4-29"><a href="index.html#__codelineno-4-29" id="__codelineno-4-29" name="__codelineno-4-29"></a><span class="hll">            <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+</span></span><span id="__span-4-30"><a href="index.html#__codelineno-4-30" id="__codelineno-4-30" name="__codelineno-4-30"></a><span class="hll">            <span class="n">user</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</span></span><span id="__span-4-31"><a href="index.html#__codelineno-4-31" id="__codelineno-4-31" name="__codelineno-4-31"></a>            <span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-4-32"><a href="index.html#__codelineno-4-32" id="__codelineno-4-32" name="__codelineno-4-32"></a>                <span class="s2">"identity"</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span>  <span class="c1"># Unique user identifier</span>
+</span><span id="__span-4-33"><a href="index.html#__codelineno-4-33" id="__codelineno-4-33" name="__codelineno-4-33"></a>                <span class="s2">"email"</span><span class="p">:</span> <span class="n">user</span><span class="p">[</span><span class="s2">"email"</span><span class="p">],</span>
+</span><span id="__span-4-34"><a href="index.html#__codelineno-4-34" id="__codelineno-4-34" name="__codelineno-4-34"></a>                <span class="s2">"is_authenticated"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-4-35"><a href="index.html#__codelineno-4-35" id="__codelineno-4-35" name="__codelineno-4-35"></a>            <span class="p">}</span>
+</span><span id="__span-4-36"><a href="index.html#__codelineno-4-36" id="__codelineno-4-36" name="__codelineno-4-36"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-4-37"><a href="index.html#__codelineno-4-37" id="__codelineno-4-37" name="__codelineno-4-37"></a>        <span class="k">raise</span> <span class="n">Auth</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">401</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+</span><span id="__span-4-38"><a href="index.html#__codelineno-4-38" id="__codelineno-4-38" name="__codelineno-4-38"></a>
+</span><span id="__span-4-39"><a href="index.html#__codelineno-4-39" id="__codelineno-4-39" name="__codelineno-4-39"></a><span class="c1"># ... the rest is the same as before</span>
+</span><span id="__span-4-40"><a href="index.html#__codelineno-4-40" id="__codelineno-4-40" name="__codelineno-4-40"></a>
+</span><span id="__span-4-41"><a href="index.html#__codelineno-4-41" id="__codelineno-4-41" name="__codelineno-4-41"></a><span class="c1"># Keep our resource authorization from the previous tutorial</span>
+</span><span id="__span-4-42"><a href="index.html#__codelineno-4-42" id="__codelineno-4-42" name="__codelineno-4-42"></a><span class="nd">@auth</span><span class="o">.</span><span class="n">on</span>
+</span><span id="__span-4-43"><a href="index.html#__codelineno-4-43" id="__codelineno-4-43" name="__codelineno-4-43"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">add_owner</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+</span><span id="__span-4-44"><a href="index.html#__codelineno-4-44" id="__codelineno-4-44" name="__codelineno-4-44"></a><span class="w">    </span><span class="sd">"""Make resources private to their creator using resource metadata."""</span>
+</span><span id="__span-4-45"><a href="index.html#__codelineno-4-45" id="__codelineno-4-45" name="__codelineno-4-45"></a>    <span class="n">filters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"owner"</span><span class="p">:</span> <span class="n">ctx</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">identity</span><span class="p">}</span>
+</span><span id="__span-4-46"><a href="index.html#__codelineno-4-46" id="__codelineno-4-46" name="__codelineno-4-46"></a>    <span class="n">metadata</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">"metadata"</span><span class="p">,</span> <span class="p">{})</span>
+</span><span id="__span-4-47"><a href="index.html#__codelineno-4-47" id="__codelineno-4-47" name="__codelineno-4-47"></a>    <span class="n">metadata</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">filters</span><span class="p">)</span>
+</span><span id="__span-4-48"><a href="index.html#__codelineno-4-48" id="__codelineno-4-48" name="__codelineno-4-48"></a>    <span class="k">return</span> <span class="n">filters</span>
+</span></code></pre></div>
+<p>最重要的变化是，我们现在使用真实的认证服务器验证令牌。我们的认证处理程序拥有 Supabase 项目的私钥，我们可以使用它来验证用户的令牌并提取其信息。</p>
+<h2 id="4-test-authentication-flow">4. 测试认证流程<a class="headerlink" href="index.html#4-test-authentication-flow" title="永久链接">¶</a></h2>
+<p>让我们测试新的认证流程。您可以在文件或笔记本中运行以下代码。您需要提供</p>
+<ul>
+<li>一个有效的电子邮件地址</li>
+<li>一个 Supabase 项目 URL（来自<a href="index.html#setup-auth-provider">上方</a>）</li>
+<li>一个 Supabase 匿名<strong>公共密钥</strong>（也来自<a href="index.html#setup-auth-provider">上方</a>）</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a href="index.html#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</span><span id="__span-5-2"><a href="index.html#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">httpx</span>
+</span><span id="__span-5-3"><a href="index.html#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">getpass</span><span class="w"> </span><span class="kn">import</span> <span class="n">getpass</span>
+</span><span id="__span-5-4"><a href="index.html#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph_sdk</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_client</span>
+</span><span id="__span-5-5"><a href="index.html#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a href="index.html#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a href="index.html#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="c1"># Get email from command line</span>
+</span><span id="__span-5-8"><a href="index.html#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="n">email</span> <span class="o">=</span> <span class="n">getpass</span><span class="p">(</span><span class="s2">"Enter your email: "</span><span class="p">)</span>
+</span><span id="__span-5-9"><a href="index.html#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="n">base_email</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"@"</span><span class="p">)</span>
+</span><span id="__span-5-10"><a href="index.html#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="n">password</span> <span class="o">=</span> <span class="s2">"secure-password"</span>  <span class="c1"># CHANGEME</span>
+</span><span id="__span-5-11"><a href="index.html#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="n">email1</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_email</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">+1@</span><span class="si">{</span><span class="n">base_email</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-5-12"><a href="index.html#__codelineno-5-12" id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="n">email2</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_email</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">+2@</span><span class="si">{</span><span class="n">base_email</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-5-13"><a href="index.html#__codelineno-5-13" id="__codelineno-5-13" name="__codelineno-5-13"></a>
+</span><span id="__span-5-14"><a href="index.html#__codelineno-5-14" id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="n">SUPABASE_URL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"SUPABASE_URL"</span><span class="p">)</span>
+</span><span id="__span-5-15"><a href="index.html#__codelineno-5-15" id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">SUPABASE_URL</span><span class="p">:</span>
+</span><span id="__span-5-16"><a href="index.html#__codelineno-5-16" id="__codelineno-5-16" name="__codelineno-5-16"></a>    <span class="n">SUPABASE_URL</span> <span class="o">=</span> <span class="n">getpass</span><span class="p">(</span><span class="s2">"Enter your Supabase project URL: "</span><span class="p">)</span>
+</span><span id="__span-5-17"><a href="index.html#__codelineno-5-17" id="__codelineno-5-17" name="__codelineno-5-17"></a>
+</span><span id="__span-5-18"><a href="index.html#__codelineno-5-18" id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="c1"># This is your PUBLIC anon key (which is safe to use client-side)</span>
+</span><span id="__span-5-19"><a href="index.html#__codelineno-5-19" id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="c1"># Do NOT mistake this for the secret service role key</span>
+</span><span id="__span-5-20"><a href="index.html#__codelineno-5-20" id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="n">SUPABASE_ANON_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"SUPABASE_ANON_KEY"</span><span class="p">)</span>
+</span><span id="__span-5-21"><a href="index.html#__codelineno-5-21" id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">SUPABASE_ANON_KEY</span><span class="p">:</span>
+</span><span id="__span-5-22"><a href="index.html#__codelineno-5-22" id="__codelineno-5-22" name="__codelineno-5-22"></a>    <span class="n">SUPABASE_ANON_KEY</span> <span class="o">=</span> <span class="n">getpass</span><span class="p">(</span><span class="s2">"Enter your public Supabase anon  key: "</span><span class="p">)</span>
+</span><span id="__span-5-23"><a href="index.html#__codelineno-5-23" id="__codelineno-5-23" name="__codelineno-5-23"></a>
+</span><span id="__span-5-24"><a href="index.html#__codelineno-5-24" id="__codelineno-5-24" name="__codelineno-5-24"></a>
+</span><span id="__span-5-25"><a href="index.html#__codelineno-5-25" id="__codelineno-5-25" name="__codelineno-5-25"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">sign_up</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="__span-5-26"><a href="index.html#__codelineno-5-26" id="__codelineno-5-26" name="__codelineno-5-26"></a><span class="w">    </span><span class="sd">"""Create a new user account."""</span>
+</span><span id="__span-5-27"><a href="index.html#__codelineno-5-27" id="__codelineno-5-27" name="__codelineno-5-27"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">httpx</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">()</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+</span><span id="__span-5-28"><a href="index.html#__codelineno-5-28" id="__codelineno-5-28" name="__codelineno-5-28"></a>        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+</span><span id="__span-5-29"><a href="index.html#__codelineno-5-29" id="__codelineno-5-29" name="__codelineno-5-29"></a>            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">SUPABASE_URL</span><span class="si">}</span><span class="s2">/auth/v1/signup"</span><span class="p">,</span>
+</span><span id="__span-5-30"><a href="index.html#__codelineno-5-30" id="__codelineno-5-30" name="__codelineno-5-30"></a>            <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"email"</span><span class="p">:</span> <span class="n">email</span><span class="p">,</span> <span class="s2">"password"</span><span class="p">:</span> <span class="n">password</span><span class="p">},</span>
+</span><span id="__span-5-31"><a href="index.html#__codelineno-5-31" id="__codelineno-5-31" name="__codelineno-5-31"></a>            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"apiKey"</span><span class="p">:</span> <span class="n">SUPABASE_ANON_KEY</span><span class="p">},</span>
+</span><span id="__span-5-32"><a href="index.html#__codelineno-5-32" id="__codelineno-5-32" name="__codelineno-5-32"></a>        <span class="p">)</span>
+</span><span id="__span-5-33"><a href="index.html#__codelineno-5-33" id="__codelineno-5-33" name="__codelineno-5-33"></a>        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+</span><span id="__span-5-34"><a href="index.html#__codelineno-5-34" id="__codelineno-5-34" name="__codelineno-5-34"></a>        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</span><span id="__span-5-35"><a href="index.html#__codelineno-5-35" id="__codelineno-5-35" name="__codelineno-5-35"></a>
+</span><span id="__span-5-36"><a href="index.html#__codelineno-5-36" id="__codelineno-5-36" name="__codelineno-5-36"></a><span class="c1"># Create two test users</span>
+</span><span id="__span-5-37"><a href="index.html#__codelineno-5-37" id="__codelineno-5-37" name="__codelineno-5-37"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Creating test users: </span><span class="si">{</span><span class="n">email1</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">email2</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-5-38"><a href="index.html#__codelineno-5-38" id="__codelineno-5-38" name="__codelineno-5-38"></a><span class="k">await</span> <span class="n">sign_up</span><span class="p">(</span><span class="n">email1</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+</span><span id="__span-5-39"><a href="index.html#__codelineno-5-39" id="__codelineno-5-39" name="__codelineno-5-39"></a><span class="k">await</span> <span class="n">sign_up</span><span class="p">(</span><span class="n">email2</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+</span></code></pre></div>
+<p>⚠️ 在继续之前：请检查您的电子邮件并点击两个确认链接。在您确认用户电子邮件之前，Supabase 将拒绝 <code>/login</code> 请求。</p>
+<p>现在测试用户是否只能看到自己的数据。在继续之前，请确保服务器正在运行（运行 <code>langgraph dev</code>）。以下代码片段需要您之前在<a href="index.html#setup-auth-provider">设置认证提供商</a>时从 Supabase 控制台复制的“匿名公共”密钥。</p>
+<p></p><div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a href="index.html#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="__span-6-2"><a href="index.html#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">    </span><span class="sd">"""Get an access token for an existing user."""</span>
+</span><span id="__span-6-3"><a href="index.html#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">httpx</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">()</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+</span><span id="__span-6-4"><a href="index.html#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a>        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+</span><span id="__span-6-5"><a href="index.html#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a>            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">SUPABASE_URL</span><span class="si">}</span><span class="s2">/auth/v1/token?grant_type=password"</span><span class="p">,</span>
+</span><span id="__span-6-6"><a href="index.html#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a>            <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+</span><span id="__span-6-7"><a href="index.html#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a>                <span class="s2">"email"</span><span class="p">:</span> <span class="n">email</span><span class="p">,</span>
+</span><span id="__span-6-8"><a href="index.html#__codelineno-6-8" id="__codelineno-6-8" name="__codelineno-6-8"></a>                <span class="s2">"password"</span><span class="p">:</span> <span class="n">password</span>
+</span><span id="__span-6-9"><a href="index.html#__codelineno-6-9" id="__codelineno-6-9" name="__codelineno-6-9"></a>            <span class="p">},</span>
+</span><span id="__span-6-10"><a href="index.html#__codelineno-6-10" id="__codelineno-6-10" name="__codelineno-6-10"></a>            <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+</span><span id="__span-6-11"><a href="index.html#__codelineno-6-11" id="__codelineno-6-11" name="__codelineno-6-11"></a>                <span class="s2">"apikey"</span><span class="p">:</span> <span class="n">SUPABASE_ANON_KEY</span><span class="p">,</span>
+</span><span id="__span-6-12"><a href="index.html#__codelineno-6-12" id="__codelineno-6-12" name="__codelineno-6-12"></a>                <span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"application/json"</span>
+</span><span id="__span-6-13"><a href="index.html#__codelineno-6-13" id="__codelineno-6-13" name="__codelineno-6-13"></a>            <span class="p">},</span>
+</span><span id="__span-6-14"><a href="index.html#__codelineno-6-14" id="__codelineno-6-14" name="__codelineno-6-14"></a>        <span class="p">)</span>
+</span><span id="__span-6-15"><a href="index.html#__codelineno-6-15" id="__codelineno-6-15" name="__codelineno-6-15"></a>        <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+</span><span id="__span-6-16"><a href="index.html#__codelineno-6-16" id="__codelineno-6-16" name="__codelineno-6-16"></a>        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"access_token"</span><span class="p">]</span>
+</span><span id="__span-6-17"><a href="index.html#__codelineno-6-17" id="__codelineno-6-17" name="__codelineno-6-17"></a>
+</span><span id="__span-6-18"><a href="index.html#__codelineno-6-18" id="__codelineno-6-18" name="__codelineno-6-18"></a>
+</span><span id="__span-6-19"><a href="index.html#__codelineno-6-19" id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="c1"># Log in as user 1</span>
+</span><span id="__span-6-20"><a href="index.html#__codelineno-6-20" id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="n">user1_token</span> <span class="o">=</span> <span class="k">await</span> <span class="n">login</span><span class="p">(</span><span class="n">email1</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+</span><span id="__span-6-21"><a href="index.html#__codelineno-6-21" id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="n">user1_client</span> <span class="o">=</span> <span class="n">get_client</span><span class="p">(</span>
+</span><span id="__span-6-22"><a href="index.html#__codelineno-6-22" id="__codelineno-6-22" name="__codelineno-6-22"></a>    <span class="n">url</span><span class="o">=</span><span class="s2">"https://:2024"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="n">user1_token</span><span class="si">}</span><span class="s2">"</span><span class="p">}</span>
+</span><span id="__span-6-23"><a href="index.html#__codelineno-6-23" id="__codelineno-6-23" name="__codelineno-6-23"></a><span class="p">)</span>
+</span><span id="__span-6-24"><a href="index.html#__codelineno-6-24" id="__codelineno-6-24" name="__codelineno-6-24"></a>
+</span><span id="__span-6-25"><a href="index.html#__codelineno-6-25" id="__codelineno-6-25" name="__codelineno-6-25"></a><span class="c1"># Create a thread as user 1</span>
+</span><span id="__span-6-26"><a href="index.html#__codelineno-6-26" id="__codelineno-6-26" name="__codelineno-6-26"></a><span class="n">thread</span> <span class="o">=</span> <span class="k">await</span> <span class="n">user1_client</span><span class="o">.</span><span class="n">threads</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+</span><span id="__span-6-27"><a href="index.html#__codelineno-6-27" id="__codelineno-6-27" name="__codelineno-6-27"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"✅ User 1 created thread: </span><span class="si">{</span><span class="n">thread</span><span class="p">[</span><span class="s1">'thread_id'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-6-28"><a href="index.html#__codelineno-6-28" id="__codelineno-6-28" name="__codelineno-6-28"></a>
+</span><span id="__span-6-29"><a href="index.html#__codelineno-6-29" id="__codelineno-6-29" name="__codelineno-6-29"></a><span class="c1"># Try to access without a token</span>
+</span><span id="__span-6-30"><a href="index.html#__codelineno-6-30" id="__codelineno-6-30" name="__codelineno-6-30"></a><span class="n">unauthenticated_client</span> <span class="o">=</span> <span class="n">get_client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">"https://:2024"</span><span class="p">)</span>
+</span><span id="__span-6-31"><a href="index.html#__codelineno-6-31" id="__codelineno-6-31" name="__codelineno-6-31"></a><span class="k">try</span><span class="p">:</span>
+</span><span id="__span-6-32"><a href="index.html#__codelineno-6-32" id="__codelineno-6-32" name="__codelineno-6-32"></a>    <span class="k">await</span> <span class="n">unauthenticated_client</span><span class="o">.</span><span class="n">threads</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+</span><span id="__span-6-33"><a href="index.html#__codelineno-6-33" id="__codelineno-6-33" name="__codelineno-6-33"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"❌ Unauthenticated access should fail!"</span><span class="p">)</span>
+</span><span id="__span-6-34"><a href="index.html#__codelineno-6-34" id="__codelineno-6-34" name="__codelineno-6-34"></a><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-6-35"><a href="index.html#__codelineno-6-35" id="__codelineno-6-35" name="__codelineno-6-35"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"✅ Unauthenticated access blocked:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</span><span id="__span-6-36"><a href="index.html#__codelineno-6-36" id="__codelineno-6-36" name="__codelineno-6-36"></a>
+</span><span id="__span-6-37"><a href="index.html#__codelineno-6-37" id="__codelineno-6-37" name="__codelineno-6-37"></a><span class="c1"># Try to access user 1's thread as user 2</span>
+</span><span id="__span-6-38"><a href="index.html#__codelineno-6-38" id="__codelineno-6-38" name="__codelineno-6-38"></a><span class="n">user2_token</span> <span class="o">=</span> <span class="k">await</span> <span class="n">login</span><span class="p">(</span><span class="n">email2</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+</span><span id="__span-6-39"><a href="index.html#__codelineno-6-39" id="__codelineno-6-39" name="__codelineno-6-39"></a><span class="n">user2_client</span> <span class="o">=</span> <span class="n">get_client</span><span class="p">(</span>
+</span><span id="__span-6-40"><a href="index.html#__codelineno-6-40" id="__codelineno-6-40" name="__codelineno-6-40"></a>    <span class="n">url</span><span class="o">=</span><span class="s2">"https://:2024"</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="n">user2_token</span><span class="si">}</span><span class="s2">"</span><span class="p">}</span>
+</span><span id="__span-6-41"><a href="index.html#__codelineno-6-41" id="__codelineno-6-41" name="__codelineno-6-41"></a><span class="p">)</span>
+</span><span id="__span-6-42"><a href="index.html#__codelineno-6-42" id="__codelineno-6-42" name="__codelineno-6-42"></a>
+</span><span id="__span-6-43"><a href="index.html#__codelineno-6-43" id="__codelineno-6-43" name="__codelineno-6-43"></a><span class="k">try</span><span class="p">:</span>
+</span><span id="__span-6-44"><a href="index.html#__codelineno-6-44" id="__codelineno-6-44" name="__codelineno-6-44"></a>    <span class="k">await</span> <span class="n">user2_client</span><span class="o">.</span><span class="n">threads</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">thread</span><span class="p">[</span><span class="s2">"thread_id"</span><span class="p">])</span>
+</span><span id="__span-6-45"><a href="index.html#__codelineno-6-45" id="__codelineno-6-45" name="__codelineno-6-45"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"❌ User 2 shouldn't see User 1's thread!"</span><span class="p">)</span>
+</span><span id="__span-6-46"><a href="index.html#__codelineno-6-46" id="__codelineno-6-46" name="__codelineno-6-46"></a><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="__span-6-47"><a href="index.html#__codelineno-6-47" id="__codelineno-6-47" name="__codelineno-6-47"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"✅ User 2 blocked from User 1's thread:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</span></code></pre></div>输出应如下所示<p></p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-7-1"><a href="index.html#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>✅<span class="w"> </span>User<span class="w"> </span><span class="m">1</span><span class="w"> </span>created<span class="w"> </span>thread:<span class="w"> </span>d6af3754-95df-4176-aa10-dbd8dca40f1a
+</span><span id="__span-7-2"><a href="index.html#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>✅<span class="w"> </span>Unauthenticated<span class="w"> </span>access<span class="w"> </span>blocked:<span class="w"> </span>Client<span class="w"> </span>error<span class="w"> </span><span class="s1">'403 Forbidden'</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>url<span class="w"> </span><span class="s1">'https://:2024/threads'</span>
+</span><span id="__span-7-3"><a href="index.html#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a>✅<span class="w"> </span>User<span class="w"> </span><span class="m">2</span><span class="w"> </span>blocked<span class="w"> </span>from<span class="w"> </span>User<span class="w"> </span><span class="m">1</span><span class="s1">'s thread: Client error '</span><span class="m">404</span><span class="w"> </span>Not<span class="w"> </span>Found<span class="s1">' for url '</span>https://:2024/threads/d6af3754-95df-4176-aa10-dbd8dca40f1a<span class="err">'</span>
+</span></code></pre></div>
+<p>您的认证和授权正在协同工作</p>
+<ol>
+<li>用户必须登录才能访问机器人</li>
+<li>每个用户只能看到自己的会话</li>
+</ol>
+<p>所有用户都由 Supabase 认证提供商管理，因此您无需实现任何额外的用户管理逻辑。</p>
+<h2 id="next-steps">下一步<a class="headerlink" href="index.html#next-steps" title="永久链接">¶</a></h2>
+<p>您已成功为您的 LangGraph 应用构建了一个生产就绪的认证系统！让我们回顾一下您所完成的工作</p>
+<ol>
+<li>设置认证提供商（在本例中为 Supabase）</li>
+<li>添加了带有电子邮件/密码认证的真实用户账户</li>
+<li>将 JWT 令牌验证集成到您的 LangGraph 服务器中</li>
+<li>实现了适当的授权，以确保用户只能访问自己的数据</li>
+<li>打下了坚实的基础，为应对您的下一个认证挑战 🚀</li>
+</ol>
+<p>既然您已拥有生产级认证，请考虑</p>
+<ol>
+<li>使用您偏好的框架构建 Web UI（请参阅<a href="https://github.com/langchain-ai/custom-auth">自定义认证</a>模板以获取示例）</li>
+<li>在<a href="../../../concepts/auth/index.html">认证概念指南</a>中了解有关认证和授权的其他方面。</li>
+<li>阅读<a href="../../../cloud/reference/sdk/python_sdk_ref/index.html#langgraph_sdk.auth.Auth">参考文档</a>后，进一步自定义您的处理程序和设置。</li>
+</ol>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>返回顶部</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="上一页：将对话设为私有" class="md-footer__link md-footer__link--prev" href="../resource_auth/index.html"> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg> </div> <div class="md-footer__title"> <span class="md-footer__direction"> 上一页 </span> <div class="md-ellipsis"> 将对话设为私有 </div> </div> </a> <a aria-label="下一页：在运行时重建图" class="md-footer__link md-footer__link--next" href="../../../cloud/deployment/graph_rebuild/index.html"> <div class="md-footer__title"> <span class="md-footer__direction"> 下一步 </span> <div class="md-ellipsis"> 在运行时重建图 </div> </div> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg> </div> </a></nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">版权所有 © 2025 LangChain, Inc | <a href="index.html#__consent">同意偏好</a></div>使用 <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank"> Material for MkDocs </a> 构建</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.langchain.ac.cn/langgraphjs/" rel="noopener" target="_blank" title="langchain-ai.github.io">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 32v448h448V32zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6"></path></svg>
+</a>
+<a class="md-social__link" href="https://github.com/langchain-ai/langgraph" rel="noopener" target="_blank" title="github.com">
+<svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+<a class="md-social__link" href="https://twitter.com/LangChainAI" rel="noopener" target="_blank" title="twitter.com">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-progress" data-md-component="progress" role="progressbar"></div>
+<div class="md-consent" data-md-component="consent" hidden="" id="__consent">
+<div class="md-consent__overlay"></div>
+<aside class="md-consent__inner">
+<form class="md-consent__form md-grid md-typeset" name="consent">
+<h4>Cookie 同意</h4>
+<p>我们使用 Cookie 来识别您的重复访问和偏好，并衡量我们文档的有效性以及用户是否找到了他们正在寻找的内容。<strong>点击“接受”将使我们的文档变得更好。谢谢您！</strong> ❤️</p>
+<input checked="" class="md-toggle" id="__settings" type="checkbox" />
+<div class="md-consent__settings">
+<ul class="task-list">
+<li class="task-list-item">
+<label class="task-list-control">
+<input checked="" name="github" type="checkbox" />
+<span class="task-list-indicator"></span> GitHub</label>
+</li>
+</ul>
+</div>
+<div class="md-consent__controls">
+<button class="md-button md-button--primary">接受</button>
+<button class="md-button md-button--primary" type="reset">拒绝</button>
+</div>
+</form>
+</aside>
+</div>
+<script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.action.edit", "content.tooltips", "navigation.indexes", "navigation.footer", "navigation.instant", "navigation.sections", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.prune", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+
+</body></html>

@@ -1,0 +1,2200 @@
+<!DOCTYPE html><html lang="zh-hans" class="no-js"><head><script>(l=location)[p='protocol'][5]||(l[p]='https')</script><meta name="referrer" content="no-referrer"><style>
+div[data-md-component=announce] {
+  display: none !important;
+}
+</style><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8543159550507237" crossorigin="anonymous"></script>
+
+<script>window.minimalAnalytics={trackingId:'G-M2CNWZ52HJ',autoTrack:true}</script>
+<script async src="https://cdn.jsdelivr.net.cn/npm/@minimal-analytics/ga4/dist/index.js"></script>
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<link href="../agents.1.html" rel="canonical" />
+<link href="../channels/index.html" rel="prev" />
+<link href="../supervisor/index.html" rel="next" />
+<link href="../../static/favicon.png" rel="icon" />
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator" />
+<title>代理 - LangChain 框架</title>
+<link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet" />
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Public+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet" />
+<style>:root{--md-text-font:"Public Sans";--md-code-font:"Roboto Mono"}</style>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+<link href="../../stylesheets/navigation_title_ovverides.css" rel="stylesheet" />
+<link href="../../stylesheets/version_admonitions.css" rel="stylesheet" />
+<link href="../../stylesheets/logos.css" rel="stylesheet" />
+<link href="../../stylesheets/sticky_navigation.css" rel="stylesheet" />
+<link href="../../stylesheets/agent_graph_widget.css" rel="stylesheet" />
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://#/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T35S4S46');</script>
+<!-- End Google Tag Manager -->
+<meta content="165B7E7C89E49946" name="algolia-site-verification" />
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Public+Sans&display=swap");
+    :root {
+      --md-primary-fg-color: #333333;
+      --md-accent-fg-color: #1E88E5;
+      --md-default-bg-color: #FFFFFF;
+      --md-default-fg-color: #333333;
+      --md-text-font-family: "Public Sans", sans-serif;
+    }
+
+    body {
+      font-family: var(--md-text-font-family);
+      background-color: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+    }
+
+    .md-main {
+      background-color: #FFFFFF;
+    }
+
+    .md-footer {
+      background-color: #F5F5F5;
+      color: #666666;
+    }
+
+    .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    .md-typeset a {
+      color: #1E88E5;
+    }
+
+    .md-typeset a:hover {
+      color: #1565C0;
+    }
+
+    .md-nav__link--active,
+    .md-nav__link:active {
+      color: #1E88E5;
+    }
+
+    .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    .md-search__input:hover,
+    .md-search__input:focus {
+      background-color: #EEEEEE;
+    }
+    /* Table of contents styles */
+    .md-nav--secondary .md-nav__item--active > .md-nav__link {
+      font-weight: bold;
+      color: var(--md-primary-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link {
+      font-weight: normal;
+      color: var(--md-default-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: var(--md-default-fg-color);
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+
+    [data-md-color-scheme="slate"] {
+      --md-default-bg-color: #1E1E1E;
+      --md-default-fg-color: #FFFFFF;
+      --md-accent-fg-color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-main {
+      background-color: #1E1E1E;
+    }
+
+    [data-md-color-scheme="slate"] .navbar {
+      background-color: #1E1E1E;
+      color: #FFFFFF;
+      box-shadow: none;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-header {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-tabs {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__icon {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input::placeholder {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a {
+      color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a:hover {
+      color: #90CAF9;
+    }
+
+    .notebook-links {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+    }
+    .notebook-links .md-content__button {
+      margin-left: 0.5rem;
+    }
+
+    [data-md-color-scheme=default] .logo-dark {
+      display: none !important;
+    }
+
+    [data-md-color-scheme=slate] .logo-light {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-CodeCell .jp-Cell-inputWrapper .jp-InputPrompt.jp-InputArea-prompt {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-Notebook .jp-Cell .jp-OutputPrompt {
+      display: none !important;
+    }
+
+    .md-banner {
+      background-color: #CFC9FA;
+      color: #000000;
+    }
+
+    .md-banner a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    .md-banner a:hover {
+      color: #000000;
+    }
+
+    .md-header__title {
+      visibility: hidden;
+    }
+
+    /* Dark mode banner links */
+    [data-md-color-scheme="slate"] .md-banner a {
+      color: #000000;
+    }
+
+    [data-md-color-scheme="slate"] .md-banner a:hover {
+      color: #000000;
+    }
+
+  </style>
+</head>
+<body data-md-color-accent="gray" data-md-color-primary="white" data-md-color-scheme="default" dir="ltr">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://#/ns.html?id=GTM-T35S4S46" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox" />
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox" />
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="../agents.1.html#agents">跳到内容</a>
+</div>
+<div data-md-component="announce">
+<aside class="md-banner">
+<div class="md-banner__inner md-grid md-typeset">
+<button aria-label="Don&#39;t show this again" class="md-banner__button md-icon">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+<strong>我们正在发展壮大，为 LangChain、LangGraph 和 LangSmith 招聘多个职位。 <a href="https://langchain.ac.cn/careers" rel="noopener noreferrer" target="_blank">加入我们的团队！</a></strong>
+</div>
+<script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+</aside>
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="LangGraph" class="md-header__button md-logo" data-md-component="logo" href="../../index.html" title="LangGraph">
+<img alt="logo" class="logo-light" src="../../static/wordmark_dark.svg">
+<img alt="logo" class="logo-dark" src="../../static/wordmark_light.svg">
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">LangGraph</span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">代理</span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="gray" data-md-color-media="" data-md-color-primary="white" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="grey" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text" />
+<label class="md-search__icon md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">正在初始化搜索</div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../index.html">指南</a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../index.html">参考</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tutorials/rag/langgraph_agentic_rag/index.html">示例</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../concepts/faq/index.html">资源</a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="LangGraph" class="md-nav__button md-logo" data-md-component="logo" href="../../index.html" title="LangGraph"> <img alt="logo" class="logo-light" src="../../static/wordmark_dark.svg"> <img alt="logo" class="logo-dark" src="../../static/wordmark_light.svg"> </a> LangGraph</label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../index.html">
+<span class="md-ellipsis"> 指南 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox" />
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../index.html">
+<span class="md-ellipsis">参考</span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span> 参考</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox" />
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+<span class="md-ellipsis"> LangGraph </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span> LangGraph</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../graphs/index.html">
+<span class="md-ellipsis">图</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../func/index.html">
+<span class="md-ellipsis">函数式API</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pregel/index.html">
+<span class="md-ellipsis">Pregel</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../checkpoints/index.html">
+<span class="md-ellipsis">检查点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../store/index.html">
+<span class="md-ellipsis">存储</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cache/index.html">
+<span class="md-ellipsis">缓存</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../types/index.html">
+<span class="md-ellipsis">类型</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../config/index.html">
+<span class="md-ellipsis">配置</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../errors/index.html">
+<span class="md-ellipsis">错误</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../constants/index.html">
+<span class="md-ellipsis">常量</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../channels/index.html">
+<span class="md-ellipsis">通道</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox" />
+<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+<span class="md-ellipsis"> 预置 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span> 预置</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox" />
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis"> 代理 </span> <span class="md-nav__icon md-icon"></span></label>
+<a class="md-nav__link md-nav__link--active" href="../agents.1.html">
+<span class="md-ellipsis">代理</span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.chat_agent_executor.AgentState">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;AgentState</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.chat_agent_executor.create_react_agent">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;create_react_agent</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.tool_node.ToolNode">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;ToolNode</span>
+</a>
+<nav aria-label=" ToolNode" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.tool_node.ToolNode.inject_tool_args">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;inject_tool_args</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.tool_node.InjectedState">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;InjectedState</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.tool_node.InjectedStore">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;InjectedStore</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.tool_node.tools_condition">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;tools_condition</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.tool_validator.ValidationNode">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;ValidationNode</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.interrupt.HumanInterruptConfig">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;HumanInterruptConfig</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.interrupt.ActionRequest">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;ActionRequest</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.interrupt.HumanInterrupt">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;HumanInterrupt</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.interrupt.HumanResponse">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;HumanResponse</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../supervisor/index.html">
+<span class="md-ellipsis">主管</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../swarm/index.html">
+<span class="md-ellipsis">群集</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mcp/index.html">
+<span class="md-ellipsis">MCP适配器</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox" />
+<label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+<span class="md-ellipsis"> LangGraph 平台 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span> LangGraph 平台</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/reference/api/api_ref/index.html">
+<span class="md-ellipsis">服务器API</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/reference/cli/index.html">
+<span class="md-ellipsis">CLI</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/reference/sdk/python_sdk_ref/index.html">
+<span class="md-ellipsis">SDK (Python)</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/reference/sdk/js_ts_sdk_ref/index.html">
+<span class="md-ellipsis">SDK (JS/TS)</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../remote_graph/index.html">
+<span class="md-ellipsis">RemoteGraph</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/reference/env_var/index.html">
+<span class="md-ellipsis">环境变量</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../tutorials/rag/langgraph_agentic_rag/index.html">
+<span class="md-ellipsis"> 示例 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../concepts/faq/index.html">
+<span class="md-ellipsis"> 资源 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.chat_agent_executor.AgentState">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;AgentState</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.chat_agent_executor.create_react_agent">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;create_react_agent</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.tool_node.ToolNode">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;ToolNode</span>
+</a>
+<nav aria-label=" ToolNode" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.tool_node.ToolNode.inject_tool_args">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;inject_tool_args</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.tool_node.InjectedState">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;InjectedState</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.tool_node.InjectedStore">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;InjectedStore</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.tool_node.tools_condition">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;tools_condition</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.tool_validator.ValidationNode">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;ValidationNode</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.interrupt.HumanInterruptConfig">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;HumanInterruptConfig</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.interrupt.ActionRequest">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;ActionRequest</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.interrupt.HumanInterrupt">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;HumanInterrupt</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html#langgraph.prebuilt.interrupt.HumanResponse">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;HumanResponse</span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<div class="notebook-links">
+</div>
+<a class="md-content__button md-icon" href="https://github.com/langchain-ai/langgraph/edit/main/docs/docs/reference/agents.md" title="Edit this page">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<h1 id="agents">代理<a class="headerlink" href="../agents.1.html#agents" title="永久链接">¶</a></h1>
+<div class="doc doc-object doc-module">
+<div class="doc doc-contents first">
+<p><span class="doc-section-title">类</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="../agents.1.html#langgraph.prebuilt.chat_agent_executor.AgentState" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;AgentState&lt;/span&gt; (&lt;code&gt;langgraph.prebuilt.chat_agent_executor.AgentState&lt;/code&gt;)">AgentState</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>代理的状态。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">函数</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="../agents.1.html#langgraph.prebuilt.chat_agent_executor.create_react_agent" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-function&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;create_react_agent&lt;/span&gt; (&lt;code&gt;langgraph.prebuilt.chat_agent_executor.create_react_agent&lt;/code&gt;)">create_react_agent</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>创建一个代理图，该图循环调用工具直到满足停止条件。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="doc doc-children">
+<div class="doc doc-object doc-class">
+<h2 class="doc doc-heading" id="langgraph.prebuilt.chat_agent_executor.AgentState">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code> <span class="doc doc-object-name doc-class-name">AgentState</span> <a class="headerlink" href="../agents.1.html#langgraph.prebuilt.chat_agent_executor.AgentState" title="永久链接">¶</a></h2>
+<div class="doc doc-contents">
+<p class="doc doc-class-bases">基类: <code><span title="typing_extensions.TypedDict">TypedDict</span></code></p>
+<p>代理的状态。</p>
+<div class="doc doc-children">
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="langgraph.prebuilt.chat_agent_executor.create_react_agent">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code> <span class="doc doc-object-name doc-function-name">create_react_agent</span> <a class="headerlink" href="../agents.1.html#langgraph.prebuilt.chat_agent_executor.create_react_agent" title="永久链接">¶</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="../agents.1.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nf">create_react_agent</span><span class="p">(</span>
+</span><span id="__span-0-2"><a href="../agents.1.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="n">model</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n"><span title="langchain_core.language_models.LanguageModelLike">LanguageModelLike</span></span><span class="p">],</span>
+</span><span id="__span-0-3"><a href="../agents.1.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="n">tools</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a></span><span class="p">[</span>
+</span><span id="__span-0-4"><a href="../agents.1.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>        <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Sequence" title="<code>typing.Sequence</code>">Sequence</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/tools/langchain_core.tools.base.BaseTool.html#langchain_core.tools.base.BaseTool" title="<code>langchain_core.tools.BaseTool</code>">BaseTool</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Callable" title="<code>typing.Callable</code>">Callable</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#dict">dict</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a></span><span class="p">]]],</span>
+</span><span id="__span-0-5"><a href="../agents.1.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>        <span class="n"><a class="autorefs autorefs-internal" href="../agents.1.html#langgraph.prebuilt.tool_node.ToolNode" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code>            <span class=&quot;doc doc-object-name doc-class-name&quot;>ToolNode</span> (<code>langgraph.prebuilt.tool_node.ToolNode</code>)">ToolNode</a></span><span class="p">,</span>
+</span><span id="__span-0-6"><a href="../agents.1.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="p">],</span>
+</span><span id="__span-0-7"><a href="../agents.1.html#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-8"><a href="../agents.1.html#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="n">prompt</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a></span><span class="p">[</span><span class="n"><span title="langgraph.prebuilt.chat_agent_executor.Prompt">Prompt</span></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-9"><a href="../agents.1.html#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="n">response_format</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a></span><span class="p">[</span>
+</span><span id="__span-0-10"><a href="../agents.1.html#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>        <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a></span><span class="p">[</span>
+</span><span id="__span-0-11"><a href="../agents.1.html#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>            <span class="n"><span title="langgraph.prebuilt.chat_agent_executor.StructuredResponseSchema">StructuredResponseSchema</span></span><span class="p">,</span>
+</span><span id="__span-0-12"><a href="../agents.1.html#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a>            <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n"><span title="langgraph.prebuilt.chat_agent_executor.StructuredResponseSchema">StructuredResponseSchema</span></span><span class="p">],</span>
+</span><span id="__span-0-13"><a href="../agents.1.html#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>        <span class="p">]</span>
+</span><span id="__span-0-14"><a href="../agents.1.html#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-15"><a href="../agents.1.html#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="n">pre_model_hook</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a></span><span class="p">[</span><span class="n"><span title="langgraph.utils.runnable.RunnableLike">RunnableLike</span></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-16"><a href="../agents.1.html#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a>    <span class="n">post_model_hook</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a></span><span class="p">[</span><span class="n"><span title="langgraph.utils.runnable.RunnableLike">RunnableLike</span></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-17"><a href="../agents.1.html#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a>    <span class="n">state_schema</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a></span><span class="p">[</span><span class="n"><span title="langgraph.prebuilt.chat_agent_executor.StateSchemaType">StateSchemaType</span></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-18"><a href="../agents.1.html#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a>    <span class="n">config_schema</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Type" title="<code>typing.Type</code>">Type</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a></span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-19"><a href="../agents.1.html#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a>    <span class="n">checkpointer</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a></span><span class="p">[</span><span class="n"><span title="langgraph.types.Checkpointer">Checkpointer</span></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-20"><a href="../agents.1.html#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a>    <span class="n">store</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" href="../store/index.html#langgraph.store.base.BaseStore" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code>            <span class=&quot;doc doc-object-name doc-class-name&quot;>BaseStore</span> (<code>langgraph.store.base.BaseStore</code>)">BaseStore</a></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-21"><a href="../agents.1.html#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a>    <span class="n">interrupt_before</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" href="../../cloud/reference/sdk/js_ts_sdk_ref/index.html#list" title="list()">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-22"><a href="../agents.1.html#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a>    <span class="n">interrupt_after</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" href="../../cloud/reference/sdk/js_ts_sdk_ref/index.html#list" title="list()">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-23"><a href="../agents.1.html#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a>    <span class="n">debug</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#bool">bool</a></span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-0-24"><a href="../agents.1.html#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a>    <span class="n">version</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Literal" title="<code>typing.Literal</code>">Literal</a></span><span class="p">[</span><span class="s2">"v1"</span><span class="p">,</span> <span class="s2">"v2"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"v2"</span><span class="p">,</span>
+</span><span id="__span-0-25"><a href="../agents.1.html#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a>    <span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="__span-0-26"><a href="../agents.1.html#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" href="../graphs/index.html#langgraph.graph.graph.CompiledGraph" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code>            <span class=&quot;doc doc-object-name doc-class-name&quot;>CompiledGraph</span> (<code>langgraph.graph.graph.CompiledGraph</code>)">CompiledGraph</a></span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>创建一个代理图，该图循环调用工具直到满足停止条件。</p>
+<p>有关使用 <code>create_react_agent</code> 的更多详细信息，请访问<a href="../../agents/overview.1.html">代理</a>文档。</p>
+<p><span class="doc-section-title">参数</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>模型</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>, <span title="langchain_core.language_models.LanguageModelLike">LanguageModelLike</span>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>支持工具调用的 <code>LangChain</code> 聊天模型。</p>
+</div>
+</td>
+<td>
+<em>必需</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>工具</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a>[<a class="autorefs autorerefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Sequence" title="<code>typing.Sequence</code>">Sequence</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a>[<a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/tools/langchain_core.tools.base.BaseTool.html#langchain_core.tools.base.BaseTool" title="<code>langchain_core.tools.BaseTool</code>">BaseTool</a>, <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Callable" title="<code>typing.Callable</code>">Callable</a>, <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a>]]], <a class="autorefs autorefs-internal" href="../agents.1.html#langgraph.prebuilt.tool_node.ToolNode" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>ToolNode</span> (<code>langgraph.prebuilt.tool_node.ToolNode</code>)">ToolNode</a>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>工具列表或 ToolNode 实例。如果提供空列表，代理将由一个不带工具调用的单一 LLM 节点组成。</p>
+</div>
+</td>
+<td>
+<em>必需</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>提示</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<span title="langgraph.prebuilt.chat_agent_executor.Prompt">Prompt</span>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>LLM 的可选提示。可以采用几种不同的形式</p>
+<ul>
+<li>str：这将被转换为 SystemMessage 并添加到状态["messages"]中的消息列表的开头。</li>
+<li>SystemMessage：这将被添加到状态["messages"]中的消息列表的开头。</li>
+<li>Callable：此函数应接收完整的图状态，其输出随后传递给语言模型。</li>
+<li>Runnable：此可运行对象应接收完整的图状态，其输出随后传递给语言模型。</li>
+</ul>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>响应格式</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a>[<span title="langgraph.prebuilt.chat_agent_executor.StructuredResponseSchema">StructuredResponseSchema</span>, <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#tuple">tuple</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>, <span title="langgraph.prebuilt.chat_agent_executor.StructuredResponseSchema">StructuredResponseSchema</span>]]]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>最终代理输出的可选模式。</p>
+<p>如果提供，输出将格式化以匹配给定的模式，并以“structured_response”状态键返回。如果未提供，输出状态中将不存在<code>structured_response</code>。可以作为以下形式传递</p>
+<div class="language-text highlight"><pre><span></span><code>- an OpenAI function/tool schema,
+- a JSON Schema,
+- a TypedDict class,
+- or a Pydantic class.
+- a tuple (prompt, schema), where schema is one of the above.
+    The prompt will be used together with the model that is being used to generate the structured response.
+</code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<p><code>response_format</code> 要求模型支持 <code>.with_structured_output</code></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>图将在代理循环结束后单独调用LLM以生成结构化响应。这并非获取结构化响应的唯一策略，更多选项请参见<a href="../../how-tos/react-agent-structured-output/index.html">此指南</a>。</p>
+</div>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>pre_model_hook</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<span title="langgraph.utils.runnable.RunnableLike">RunnableLike</span>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>一个可选节点，添加到<code>agent</code>节点（即调用LLM的节点）之前。对于管理长消息历史（例如，消息修剪、摘要等）非常有用。前置模型钩子必须是可调用对象或可运行对象，它接收当前图状态并以以下形式返回状态更新</p><div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a href="../agents.1.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># At least one of `messages` or `llm_input_messages` MUST be provided</span>
+</span><span id="__span-0-2"><a href="../agents.1.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="p">{</span>
+</span><span id="__span-0-3"><a href="../agents.1.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="c1"># If provided, will UPDATE the `messages` in the state</span>
+</span><span id="__span-0-4"><a href="../agents.1.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="s2">"messages"</span><span class="p">:</span> <span class="p">[</span><span class="n">RemoveMessage</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">REMOVE_ALL_MESSAGES</span><span class="p">),</span> <span class="o">...</span><span class="p">],</span>
+</span><span id="__span-0-5"><a href="../agents.1.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="c1"># If provided, will be used as the input to the LLM,</span>
+</span><span id="__span-0-6"><a href="../agents.1.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="c1"># and will NOT UPDATE `messages` in the state</span>
+</span><span id="__span-0-7"><a href="../agents.1.html#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="s2">"llm_input_messages"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+</span><span id="__span-0-8"><a href="../agents.1.html#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="c1"># Any other state keys that need to be propagated</span>
+</span><span id="__span-0-9"><a href="../agents.1.html#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="o">...</span>
+</span><span id="__span-0-10"><a href="../agents.1.html#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="p">}</span>
+</span></code></pre></div><p></p>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>必须提供<code>messages</code>或<code>llm_input_messages</code>中的至少一个，并将作为<code>agent</code>节点的输入。其余键将添加到图状态中。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>如果您在 pre-model hook 中返回 <code>messages</code>，您应该通过以下方式覆盖 <code>messages</code> 键</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a href="../agents.1.html#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="p">{</span>
+</span><span id="__span-1-2"><a href="../agents.1.html#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>    <span class="s2">"messages"</span><span class="p">:</span> <span class="p">[</span><span class="n">RemoveMessage</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">REMOVE_ALL_MESSAGES</span><span class="p">),</span> <span class="o">*</span><span class="n">new_messages</span><span class="p">]</span>
+</span><span id="__span-1-3"><a href="../agents.1.html#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="o">...</span>
+</span><span id="__span-1-4"><a href="../agents.1.html#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>post_model_hook</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<span title="langgraph.utils.runnable.RunnableLike">RunnableLike</span>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>一个可选节点，添加到<code>agent</code>节点（即调用LLM的节点）之后。对于实现人机交互、防护栏、验证或其他后处理非常有用。后置模型钩子必须是可调用对象或可运行对象，它接收当前图状态并返回状态更新。</p>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>仅适用于 <code>version="v2"</code>。</p>
+</div>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>state_schema</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<span title="langgraph.prebuilt.chat_agent_executor.StateSchemaType">StateSchemaType</span>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>一个可选的状态模式，用于定义图状态。必须包含 <code>messages</code> 和 <code>remaining_steps</code> 键。默认使用定义这两个键的 <code>AgentState</code>。</p>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>config_schema</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Type" title="<code>typing.Type</code>">Type</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a>]]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>一个可选的配置模式。使用它通过 agent.config_specs 公开可配置参数。</p>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>检查器</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<span title="langgraph.types.Checkpointer">Checkpointer</span>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>一个可选的检查点保存对象。这用于持久化图的状态（例如，作为聊天记忆），用于单个线程（例如，单个对话）。</p>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>存储</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-internal" href="../store/index.html#langgraph.store.base.BaseStore" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>BaseStore</span> (<code>langgraph.store.base.BaseStore</code>)">BaseStore</a>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>一个可选的存储对象。这用于在多个线程（例如，多个对话/用户）之间持久化数据。</p>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>interrupt_before</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-internal" href="../../cloud/reference/sdk/js_ts_sdk_ref/index.html#list" title="list()">list</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>]]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>一个可选的节点名称列表，用于在这些节点之前中断。应为以下之一：“agent”、“tools”。如果您想在执行操作之前添加用户确认或其他中断，这会很有用。</p>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>interrupt_after</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-internal" href="../../cloud/reference/sdk/js_ts_sdk_ref/index.html#list" title="list()">list</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>]]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>一个可选的节点名称列表，用于在这些节点之后中断。应为以下之一：“agent”、“tools”。如果您想直接返回或对输出执行额外处理，这会很有用。</p>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>调试</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#bool">布尔值</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>指示是否启用调试模式的标志。</p>
+</div>
+</td>
+<td>
+<code>False</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>版本</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Literal" title="<code>typing.Literal</code>">Literal</a>['v1', 'v2']</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>确定要创建的图的版本。可以是以下之一</p>
+<ul>
+<li><code>"v1"</code>：工具节点处理单个消息。消息中的所有工具调用都在工具节点内并行执行。</li>
+<li><code>"v2"</code>：工具节点处理工具调用。工具调用通过 <a href="../../concepts/low_level.1.html#send">Send</a> API 分布到多个工具节点实例中。</li>
+</ul>
+</div>
+</td>
+<td>
+<code>'v2'</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>名称</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>CompiledStateGraph 的可选名称。当将 ReAct 代理图作为子图节点添加到另一个图时，此名称将自动使用——这对于构建多代理系统特别有用。</p>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">返回</span></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code><a class="autorefs autorefs-internal" href="../graphs/index.html#langgraph.graph.graph.CompiledGraph" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;CompiledGraph&lt;/span&gt; (&lt;code&gt;langgraph.graph.graph.CompiledGraph&lt;/code&gt;)">CompiledGraph</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>一个编译后的 LangChain 可运行对象，可用于聊天交互。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>“agent”节点用消息列表（应用提示后）调用语言模型。如果结果 AIMessage 包含 <code>tool_calls</code>，则图将调用 <a class="autorefs autorefs-internal" href="../agents.1.html#langgraph.prebuilt.tool_node.ToolNode" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>ToolNode</span>">“tools”</a>。“tools”节点执行工具（每个 <code>tool_call</code> 对应一个工具），并将响应作为 <code>ToolMessage</code> 对象添加到消息列表中。然后代理节点再次调用语言模型。这个过程重复，直到响应中不再存在 <code>tool_calls</code>。然后代理返回完整的消息列表，作为一个包含键“messages”的字典。</p>
+<pre class="mermaid"><code>    sequenceDiagram
+        participant U as User
+        participant A as LLM
+        participant T as Tools
+        U-&gt;&gt;A: Initial input
+        Note over A: Prompt + LLM
+        loop while tool_calls present
+            A-&gt;&gt;T: Execute tools
+            T--&gt;&gt;A: ToolMessage for each tool_calls
+        end
+        A-&gt;&gt;U: Return final state</code></pre>
+<details class="example" open="">
+<summary>示例</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a href="../agents.1.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.prebuilt</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_react_agent</span>
+</span><span id="__span-0-2"><a href="../agents.1.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a href="../agents.1.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">check_weather</span><span class="p">(</span><span class="n">location</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-0-4"><a href="../agents.1.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="sd">'''Return the weather forecast for the specified location.'''</span>
+</span><span id="__span-0-5"><a href="../agents.1.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">"It's always sunny in </span><span class="si">{</span><span class="n">location</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-0-6"><a href="../agents.1.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a href="../agents.1.html#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="n">graph</span> <span class="o">=</span> <span class="n">create_react_agent</span><span class="p">(</span>
+</span><span id="__span-0-8"><a href="../agents.1.html#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="s2">"anthropic:claude-3-7-sonnet-latest"</span><span class="p">,</span>
+</span><span id="__span-0-9"><a href="../agents.1.html#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="n">tools</span><span class="o">=</span><span class="p">[</span><span class="n">check_weather</span><span class="p">],</span>
+</span><span id="__span-0-10"><a href="../agents.1.html#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="n">prompt</span><span class="o">=</span><span class="s2">"You are a helpful assistant"</span><span class="p">,</span>
+</span><span id="__span-0-11"><a href="../agents.1.html#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="p">)</span>
+</span><span id="__span-0-12"><a href="../agents.1.html#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"messages"</span><span class="p">:</span> <span class="p">[{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"what is the weather in sf"</span><span class="p">}]}</span>
+</span><span id="__span-0-13"><a href="../agents.1.html#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">stream_mode</span><span class="o">=</span><span class="s2">"updates"</span><span class="p">):</span>
+</span><span id="__span-0-14"><a href="../agents.1.html#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</span></code></pre></div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-class">
+<h2 class="doc doc-heading" id="langgraph.prebuilt.tool_node.ToolNode">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code> <span class="doc doc-object-name doc-class-name">ToolNode</span> <a class="headerlink" href="../agents.1.html#langgraph.prebuilt.tool_node.ToolNode" title="永久链接">¶</a></h2>
+<div class="doc doc-contents first">
+<p class="doc doc-class-bases">基类: <code><span title="langgraph.utils.runnable.RunnableCallable">RunnableCallable</span></code></p>
+<p>一个运行最后 AIMessage 中调用的工具的节点。</p>
+<p>它可以在 StateGraph 中使用“messages”状态键（或通过 ToolNode 的“messages_key”传递的自定义键），也可以在 MessageGraph 中使用。如果请求了多个工具调用，它们将并行运行。输出将是一个 ToolMessages 列表，每个工具调用对应一个。</p>
+<p>工具调用也可以直接作为 <code>ToolCall</code> 字典列表传递。</p>
+<p><span class="doc-section-title">参数</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>工具</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Sequence" title="<code>typing.Sequence</code>">Sequence</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a>[<a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/tools/langchain_core.tools.base.BaseTool.html#langchain_core.tools.base.BaseTool" title="<code>langchain_core.tools.BaseTool</code>">BaseTool</a>, <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Callable" title="<code>typing.Callable</code>">Callable</a>]]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>ToolNode 可以调用的工具序列。</p>
+</div>
+</td>
+<td>
+<em>必需</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>名称</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>图中的 ToolNode 名称。默认为“tools”。</p>
+</div>
+</td>
+<td>
+<code>'tools'</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>标签</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-internal" href="../../cloud/reference/sdk/js_ts_sdk_ref/index.html#list" title="list()">list</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>]]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>与节点关联的可选标签。默认为None。</p>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>handle_tool_errors</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#bool">bool</a>, <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Callable" title="<code>typing.Callable</code>">Callable</a>[..., <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>], <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#tuple">tuple</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#type">type</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/exceptions.html#Exception">Exception</a>], ...]]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>如何处理节点内部工具引发的工具错误。默认为True。必须是以下之一</p>
+<ul>
+<li>True：所有错误都将被捕获，并返回带有默认错误消息 (TOOL_CALL_ERROR_TEMPLATE) 的 ToolMessage。</li>
+<li>str：所有错误都将被捕获，并返回带有 'handle_tool_errors' 字符串值的 ToolMessage。</li>
+<li>tuple[type[Exception], ...]: 元组中的异常将被捕获，并返回带有默认错误消息 (TOOL_CALL_ERROR_TEMPLATE) 的 ToolMessage。</li>
+<li>Callable[..., str]：可调用对象签名中的异常将被捕获，并返回带有 'handle_tool_errors' 可调用对象结果字符串值的 ToolMessage。</li>
+<li>False：工具引发的错误都不会被捕获</li>
+</ul>
+</div>
+</td>
+<td>
+<code>True</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>messages_key</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>输入中包含消息列表的状态键。ToolNode 的输出也将使用相同的键。默认为“messages”。</p>
+</div>
+</td>
+<td>
+<code>'messages'</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><code>ToolNode</code> 大致类似于</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a href="../agents.1.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">tools_by_name</span> <span class="o">=</span> <span class="p">{</span><span class="n">tool</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">tool</span> <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">tools</span><span class="p">}</span>
+</span><span id="__span-0-2"><a href="../agents.1.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">tool_node</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+</span><span id="__span-0-3"><a href="../agents.1.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-0-4"><a href="../agents.1.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="k">for</span> <span class="n">tool_call</span> <span class="ow">in</span> <span class="n">state</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">:</span>
+</span><span id="__span-0-5"><a href="../agents.1.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>        <span class="n">tool</span> <span class="o">=</span> <span class="n">tools_by_name</span><span class="p">[</span><span class="n">tool_call</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]]</span>
+</span><span id="__span-0-6"><a href="../agents.1.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>        <span class="n">observation</span> <span class="o">=</span> <span class="n">tool</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">tool_call</span><span class="p">[</span><span class="s2">"args"</span><span class="p">])</span>
+</span><span id="__span-0-7"><a href="../agents.1.html#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ToolMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">observation</span><span class="p">,</span> <span class="n">tool_call_id</span><span class="o">=</span><span class="n">tool_call</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]))</span>
+</span><span id="__span-0-8"><a href="../agents.1.html#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"messages"</span><span class="p">:</span> <span class="n">result</span><span class="p">}</span>
+</span></code></pre></div>
+<p>工具调用也可以直接传递给 ToolNode。这在使用 Send API 时很有用，例如在条件边缘中</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a href="../agents.1.html#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">example_conditional_edge</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Send</span><span class="p">]:</span>
+</span><span id="__span-1-2"><a href="../agents.1.html#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>    <span class="n">tool_calls</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tool_calls</span>
+</span><span id="__span-1-3"><a href="../agents.1.html#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="c1"># If tools rely on state or store variables (whose values are not generated</span>
+</span><span id="__span-1-4"><a href="../agents.1.html#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>    <span class="c1"># directly by a model), you can inject them into the tool calls.</span>
+</span><span id="__span-1-5"><a href="../agents.1.html#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>    <span class="n">tool_calls</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-1-6"><a href="../agents.1.html#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a>        <span class="n">tool_node</span><span class="o">.</span><span class="n">inject_tool_args</span><span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">store</span><span class="p">)</span>
+</span><span id="__span-1-7"><a href="../agents.1.html#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a>        <span class="k">for</span> <span class="n">call</span> <span class="ow">in</span> <span class="n">last_message</span><span class="o">.</span><span class="n">tool_calls</span>
+</span><span id="__span-1-8"><a href="../agents.1.html#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a>    <span class="p">]</span>
+</span><span id="__span-1-9"><a href="../agents.1.html#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a>    <span class="k">return</span> <span class="p">[</span><span class="n">Send</span><span class="p">(</span><span class="s2">"tools"</span><span class="p">,</span> <span class="p">[</span><span class="n">tool_call</span><span class="p">])</span> <span class="k">for</span> <span class="n">tool_call</span> <span class="ow">in</span> <span class="n">tool_calls</span><span class="p">]</span>
+</span></code></pre></div>
+<details class="important" open="">
+<summary>重要</summary>
+<ul>
+<li>输入状态可以是以下之一<ul>
+<li>一个包含消息列表的字典，键为 messages。</li>
+<li>消息列表。</li>
+<li>工具调用列表。</li>
+</ul>
+</li>
+<li>如果对消息列表进行操作，最后一条消息必须是包含 <code>tool_calls</code> 的 <code>AIMessage</code>。</li>
+</ul>
+</details>
+<p><span class="doc-section-title">方法</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="../agents.1.html#langgraph.prebuilt.tool_node.ToolNode.inject_tool_args" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-method&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;inject_tool_args&lt;/span&gt; (&lt;code&gt;langgraph.prebuilt.tool_node.ToolNode.inject_tool_args&lt;/code&gt;)">inject_tool_args</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>将状态和存储注入工具调用。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="doc doc-children">
+<div class="doc doc-object doc-function">
+<h3 class="doc doc-heading" id="langgraph.prebuilt.tool_node.ToolNode.inject_tool_args">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code> <span class="doc doc-object-name doc-function-name">inject_tool_args</span> <a class="headerlink" href="../agents.1.html#langgraph.prebuilt.tool_node.ToolNode.inject_tool_args" title="永久链接">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="../agents.1.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nf">inject_tool_args</span><span class="p">(</span>
+</span><span id="__span-0-2"><a href="../agents.1.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="n">tool_call</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/messages/langchain_core.messages.tool.ToolCall.html#langchain_core.messages.tool.ToolCall" title="<code>langchain_core.messages.ToolCall</code>">ToolCall</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a href="../agents.1.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="nb">input</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a></span><span class="p">[</span>
+</span><span id="__span-0-4"><a href="../agents.1.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>        <span class="n"><a class="autorefs autorefs-internal" href="../../cloud/reference/sdk/js_ts_sdk_ref/index.html#list" title="list()">list</a></span><span class="p">[</span><span class="n"><span title="langchain_core.messages.AnyMessage">AnyMessage</span></span><span class="p">],</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#dict">dict</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a></span><span class="p">],</span> <span class="n"><span title="pydantic.BaseModel">BaseModel</span></span>
+</span><span id="__span-0-5"><a href="../agents.1.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="p">],</span>
+</span><span id="__span-0-6"><a href="../agents.1.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="n">store</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" href="../store/index.html#langgraph.store.base.BaseStore" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code>            <span class=&quot;doc doc-object-name doc-class-name&quot;>BaseStore</span> (<code>langgraph.store.base.BaseStore</code>)">BaseStore</a></span><span class="p">],</span>
+</span><span id="__span-0-7"><a href="../agents.1.html#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/messages/langchain_core.messages.tool.ToolCall.html#langchain_core.messages.tool.ToolCall" title="<code>langchain_core.messages.ToolCall</code>">ToolCall</a></span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>将状态和存储注入工具调用。</p>
+<p>带有 <code>InjectedState</code> 和 <code>InjectedStore</code> 类型注释的工具参数在工具模式中用于生成目的时会被忽略。此方法将它们注入工具调用中以进行工具调用。</p>
+<p><span class="doc-section-title">参数</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>工具调用</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/messages/langchain_core.messages.tool.ToolCall.html#langchain_core.messages.tool.ToolCall" title="&lt;code&gt;langchain_core.messages.ToolCall&lt;/code&gt;">ToolCall</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>要注入状态和存储的工具调用。</p>
+</div>
+</td>
+<td>
+<em>必需</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>输入</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a>[<a class="autorefs autorefs-internal" href="../../cloud/reference/sdk/js_ts_sdk_ref/index.html#list" title="list()">list</a>[<span title="langchain_core.messages.AnyMessage">AnyMessage</span>], <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a>], <span title="pydantic.BaseModel">BaseModel</span>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>要注入的输入状态。</p>
+</div>
+</td>
+<td>
+<em>必需</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>存储</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-internal" href="../store/index.html#langgraph.store.base.BaseStore" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>BaseStore</span> (<code>langgraph.store.base.BaseStore</code>)">BaseStore</a>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>要注入的存储。</p>
+</div>
+</td>
+<td>
+<em>必需</em>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">返回</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th> <th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>ToolCall</code></td> <td>
+<code><a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/messages/langchain_core.messages.tool.ToolCall.html#langchain_core.messages.tool.ToolCall" title="&lt;code&gt;langchain_core.messages.ToolCall&lt;/code&gt;">ToolCall</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>已注入状态和存储的工具调用。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-module">
+<div class="doc doc-contents first">
+<p><span class="doc-section-title">类</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="../agents.1.html#langgraph.prebuilt.tool_node.InjectedState" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;InjectedState&lt;/span&gt; (&lt;code&gt;langgraph.prebuilt.tool_node.InjectedState&lt;/code&gt;)">InjectedState</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>工具参数的注释，用于填充图状态。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="../agents.1.html#langgraph.prebuilt.tool_node.InjectedStore" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;InjectedStore&lt;/span&gt; (&lt;code&gt;langgraph.prebuilt.tool_node.InjectedStore&lt;/code&gt;)">InjectedStore</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>用于工具参数的注释，旨在用 LangGraph 存储填充。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">函数</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="../agents.1.html#langgraph.prebuilt.tool_node.tools_condition" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-function&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;tools_condition&lt;/span&gt; (&lt;code&gt;langgraph.prebuilt.tool_node.tools_condition&lt;/code&gt;)">tools_condition</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>在 conditional_edge 中使用，如果最后一条消息是工具调用，则路由到 ToolNode。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="doc doc-children">
+<div class="doc doc-object doc-class">
+<h2 class="doc doc-heading" id="langgraph.prebuilt.tool_node.InjectedState">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code> <span class="doc doc-object-name doc-class-name">InjectedState</span> <a class="headerlink" href="../agents.1.html#langgraph.prebuilt.tool_node.InjectedState" title="永久链接">¶</a></h2>
+<div class="doc doc-contents">
+<p class="doc doc-class-bases">基类: <code><a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/tools/langchain_core.tools.base.InjectedToolArg.html#langchain_core.tools.base.InjectedToolArg" title="<code>langchain_core.tools.InjectedToolArg</code>">InjectedToolArg</a></code></p>
+<p>工具参数的注释，用于填充图状态。</p>
+<p>任何用 InjectedState 注释的工具参数都将对工具调用模型隐藏，这样模型就不会尝试生成该参数。如果使用 ToolNode，则会将适当的图状态字段自动注入到模型生成的工具参数中。</p>
+<p><span class="doc-section-title">参数</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>字段</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>要插入的状态键。如果为 None，则预期传递整个状态。</p>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="example" open="">
+<summary>示例</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a href="../agents.1.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+</span><span id="__span-0-2"><a href="../agents.1.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">TypedDict</span>
+</span><span id="__span-0-3"><a href="../agents.1.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a href="../agents.1.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseMessage</span><span class="p">,</span> <span class="n">AIMessage</span>
+</span><span id="__span-0-5"><a href="../agents.1.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">tool</span>
+</span><span id="__span-0-6"><a href="../agents.1.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a href="../agents.1.html#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.prebuilt</span><span class="w"> </span><span class="kn">import</span> <span class="n">InjectedState</span><span class="p">,</span> <span class="n">ToolNode</span>
+</span><span id="__span-0-8"><a href="../agents.1.html#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a href="../agents.1.html#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a href="../agents.1.html#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="k">class</span><span class="w"> </span><span class="nc">AgentState</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-0-11"><a href="../agents.1.html#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>    <span class="n">messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseMessage</span><span class="p">]</span>
+</span><span id="__span-0-12"><a href="../agents.1.html#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a>    <span class="n">foo</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-0-13"><a href="../agents.1.html#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a href="../agents.1.html#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="nd">@tool</span>
+</span><span id="__span-0-15"><a href="../agents.1.html#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="k">def</span><span class="w"> </span><span class="nf">state_tool</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">dict</span><span class="p">,</span> <span class="n">InjectedState</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-0-16"><a href="../agents.1.html#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="sd">'''Do something with state.'''</span>
+</span><span id="__span-0-17"><a href="../agents.1.html#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+</span><span id="__span-0-18"><a href="../agents.1.html#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a>        <span class="k">return</span> <span class="n">state</span><span class="p">[</span><span class="s2">"foo"</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span id="__span-0-19"><a href="../agents.1.html#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-0-20"><a href="../agents.1.html#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a>        <span class="k">return</span> <span class="s2">"not enough messages"</span>
+</span><span id="__span-0-21"><a href="../agents.1.html#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a>
+</span><span id="__span-0-22"><a href="../agents.1.html#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="nd">@tool</span>
+</span><span id="__span-0-23"><a href="../agents.1.html#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="k">def</span><span class="w"> </span><span class="nf">foo_tool</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">foo</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">InjectedState</span><span class="p">(</span><span class="s2">"foo"</span><span class="p">)])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-0-24"><a href="../agents.1.html#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">    </span><span class="sd">'''Do something else with state.'''</span>
+</span><span id="__span-0-25"><a href="../agents.1.html#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a>    <span class="k">return</span> <span class="n">foo</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="__span-0-26"><a href="../agents.1.html#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a>
+</span><span id="__span-0-27"><a href="../agents.1.html#__codelineno-0-27" id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="n">node</span> <span class="o">=</span> <span class="n">ToolNode</span><span class="p">([</span><span class="n">state_tool</span><span class="p">,</span> <span class="n">foo_tool</span><span class="p">])</span>
+</span><span id="__span-0-28"><a href="../agents.1.html#__codelineno-0-28" id="__codelineno-0-28" name="__codelineno-0-28"></a>
+</span><span id="__span-0-29"><a href="../agents.1.html#__codelineno-0-29" id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="n">tool_call1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"state_tool"</span><span class="p">,</span> <span class="s2">"args"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"tool_call"</span><span class="p">}</span>
+</span><span id="__span-0-30"><a href="../agents.1.html#__codelineno-0-30" id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="n">tool_call2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"foo_tool"</span><span class="p">,</span> <span class="s2">"args"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"tool_call"</span><span class="p">}</span>
+</span><span id="__span-0-31"><a href="../agents.1.html#__codelineno-0-31" id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="n">state</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-0-32"><a href="../agents.1.html#__codelineno-0-32" id="__codelineno-0-32" name="__codelineno-0-32"></a>    <span class="s2">"messages"</span><span class="p">:</span> <span class="p">[</span><span class="n">AIMessage</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span> <span class="n">tool_calls</span><span class="o">=</span><span class="p">[</span><span class="n">tool_call1</span><span class="p">,</span> <span class="n">tool_call2</span><span class="p">])],</span>
+</span><span id="__span-0-33"><a href="../agents.1.html#__codelineno-0-33" id="__codelineno-0-33" name="__codelineno-0-33"></a>    <span class="s2">"foo"</span><span class="p">:</span> <span class="s2">"bar"</span><span class="p">,</span>
+</span><span id="__span-0-34"><a href="../agents.1.html#__codelineno-0-34" id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="p">}</span>
+</span><span id="__span-0-35"><a href="../agents.1.html#__codelineno-0-35" id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="n">node</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-1-1"><a href="../agents.1.html#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">[</span>
+</span><span id="__span-1-2"><a href="../agents.1.html#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="go">    ToolMessage(content='not enough messages', name='state_tool', tool_call_id='1'),</span>
+</span><span id="__span-1-3"><a href="../agents.1.html#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="go">    ToolMessage(content='bar2', name='foo_tool', tool_call_id='2')</span>
+</span><span id="__span-1-4"><a href="../agents.1.html#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="go">]</span>
+</span></code></pre></div>
+</details>
+<div class="doc doc-children">
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-class">
+<h2 class="doc doc-heading" id="langgraph.prebuilt.tool_node.InjectedStore">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code> <span class="doc doc-object-name doc-class-name">InjectedStore</span> <a class="headerlink" href="../agents.1.html#langgraph.prebuilt.tool_node.InjectedStore" title="永久链接">¶</a></h2>
+<div class="doc doc-contents">
+<p class="doc doc-class-bases">基类: <code><a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/tools/langchain_core.tools.base.InjectedToolArg.html#langchain_core.tools.base.InjectedToolArg" title="<code>langchain_core.tools.InjectedToolArg</code>">InjectedToolArg</a></code></p>
+<p>用于工具参数的注释，旨在用 LangGraph 存储填充。</p>
+<p>任何用 InjectedStore 注释的工具参数都将对工具调用模型隐藏，这样模型就不会尝试生成该参数。如果使用 ToolNode，则会将适当的存储字段自动注入到模型生成的工具参数中。注意：如果图是用存储对象编译的，那么在使用 ToolNode 时，存储将自动传播到带有 InjectedStore 参数的工具。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p><code>InjectedStore</code> 注释要求 <code>langchain-core >= 0.3.8</code></p>
+</div>
+<details class="example" open="">
+<summary>示例</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a href="../agents.1.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+</span><span id="__span-0-2"><a href="../agents.1.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span>
+</span><span id="__span-0-3"><a href="../agents.1.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a href="../agents.1.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">AIMessage</span>
+</span><span id="__span-0-5"><a href="../agents.1.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">tool</span>
+</span><span id="__span-0-6"><a href="../agents.1.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a href="../agents.1.html#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.store.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">InMemoryStore</span>
+</span><span id="__span-0-8"><a href="../agents.1.html#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.prebuilt</span><span class="w"> </span><span class="kn">import</span> <span class="n">InjectedStore</span><span class="p">,</span> <span class="n">ToolNode</span>
+</span><span id="__span-0-9"><a href="../agents.1.html#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a href="../agents.1.html#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="n">store</span> <span class="o">=</span> <span class="n">InMemoryStore</span><span class="p">()</span>
+</span><span id="__span-0-11"><a href="../agents.1.html#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="s2">"values"</span><span class="p">,),</span> <span class="s2">"foo"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"bar"</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+</span><span id="__span-0-12"><a href="../agents.1.html#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a href="../agents.1.html#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="nd">@tool</span>
+</span><span id="__span-0-14"><a href="../agents.1.html#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">store_tool</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">my_store</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">InjectedStore</span><span class="p">()])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-0-15"><a href="../agents.1.html#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="sd">'''Do something with store.'''</span>
+</span><span id="__span-0-16"><a href="../agents.1.html#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a>    <span class="n">stored_value</span> <span class="o">=</span> <span class="n">my_store</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="s2">"values"</span><span class="p">,),</span> <span class="s2">"foo"</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="s2">"bar"</span><span class="p">]</span>
+</span><span id="__span-0-17"><a href="../agents.1.html#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a>    <span class="k">return</span> <span class="n">stored_value</span> <span class="o">+</span> <span class="n">x</span>
+</span><span id="__span-0-18"><a href="../agents.1.html#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a>
+</span><span id="__span-0-19"><a href="../agents.1.html#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="n">node</span> <span class="o">=</span> <span class="n">ToolNode</span><span class="p">([</span><span class="n">store_tool</span><span class="p">])</span>
+</span><span id="__span-0-20"><a href="../agents.1.html#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a>
+</span><span id="__span-0-21"><a href="../agents.1.html#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="n">tool_call</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"store_tool"</span><span class="p">,</span> <span class="s2">"args"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span> <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"tool_call"</span><span class="p">}</span>
+</span><span id="__span-0-22"><a href="../agents.1.html#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="n">state</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-0-23"><a href="../agents.1.html#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a>    <span class="s2">"messages"</span><span class="p">:</span> <span class="p">[</span><span class="n">AIMessage</span><span class="p">(</span><span class="s2">""</span><span class="p">,</span> <span class="n">tool_calls</span><span class="o">=</span><span class="p">[</span><span class="n">tool_call</span><span class="p">])],</span>
+</span><span id="__span-0-24"><a href="../agents.1.html#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="p">}</span>
+</span><span id="__span-0-25"><a href="../agents.1.html#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a>
+</span><span id="__span-0-26"><a href="../agents.1.html#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="n">node</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="n">store</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-1-1"><a href="../agents.1.html#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">{</span>
+</span><span id="__span-1-2"><a href="../agents.1.html#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="go">    "messages": [</span>
+</span><span id="__span-1-3"><a href="../agents.1.html#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="go">        ToolMessage(content='3', name='store_tool', tool_call_id='1'),</span>
+</span><span id="__span-1-4"><a href="../agents.1.html#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="go">    ]</span>
+</span><span id="__span-1-5"><a href="../agents.1.html#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="go">}</span>
+</span></code></pre></div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="langgraph.prebuilt.tool_node.tools_condition">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code> <span class="doc doc-object-name doc-function-name">tools_condition</span> <a class="headerlink" href="../agents.1.html#langgraph.prebuilt.tool_node.tools_condition" title="永久链接">¶</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="../agents.1.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nf">tools_condition</span><span class="p">(</span>
+</span><span id="__span-0-2"><a href="../agents.1.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="n">state</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a></span><span class="p">[</span>
+</span><span id="__span-0-3"><a href="../agents.1.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>        <span class="n"><a class="autorefs autorefs-internal" href="../../cloud/reference/sdk/js_ts_sdk_ref/index.html#list" title="list()">list</a></span><span class="p">[</span><span class="n"><span title="langchain_core.messages.AnyMessage">AnyMessage</span></span><span class="p">],</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#dict">dict</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a></span><span class="p">],</span> <span class="n"><span title="pydantic.BaseModel">BaseModel</span></span>
+</span><span id="__span-0-4"><a href="../agents.1.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="p">],</span>
+</span><span id="__span-0-5"><a href="../agents.1.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="n">messages_key</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></span> <span class="o">=</span> <span class="s2">"messages"</span><span class="p">,</span>
+</span><span id="__span-0-6"><a href="../agents.1.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Literal" title="<code>typing.Literal</code>">Literal</a></span><span class="p">[</span><span class="s2">"tools"</span><span class="p">,</span> <span class="s2">"__end__"</span><span class="p">]</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>在 conditional_edge 中使用，如果最后一条消息是工具调用，则路由到 ToolNode。</p>
+<p>具有工具调用。否则，路由到末尾。</p>
+<p><span class="doc-section-title">参数</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>状态</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a>[<a class="autorefs autorefs-internal" href="../../cloud/reference/sdk/js_ts_sdk_ref/index.html#list" title="list()">list</a>[<span title="langchain_core.messages.AnyMessage">AnyMessage</span>], <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a>], <span title="pydantic.BaseModel">BaseModel</span>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>要检查工具调用的状态。必须有消息列表 (MessageGraph) 或有“messages”键 (StateGraph)。</p>
+</div>
+</td>
+<td>
+<em>必需</em>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">返回</span></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Literal" title="<code>typing.Literal</code>">Literal</a>['tools', '__end__']</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>要路由到的下一个节点。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">示例</span></p>
+<p>使用工具创建自定义的 ReAct 风格代理。</p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a href="../agents.1.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_anthropic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatAnthropic</span>
+</span><span id="__span-0-2"><a href="../agents.1.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">tool</span>
+</span><span id="__span-0-3"><a href="../agents.1.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="gp">...</span>
+</span><span id="__span-0-4"><a href="../agents.1.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">StateGraph</span>
+</span><span id="__span-0-5"><a href="../agents.1.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.prebuilt</span><span class="w"> </span><span class="kn">import</span> <span class="n">ToolNode</span><span class="p">,</span> <span class="n">tools_condition</span>
+</span><span id="__span-0-6"><a href="../agents.1.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph.message</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_messages</span>
+</span><span id="__span-0-7"><a href="../agents.1.html#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="gp">...</span>
+</span><span id="__span-0-8"><a href="../agents.1.html#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span>
+</span><span id="__span-0-9"><a href="../agents.1.html#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
+</span><span id="__span-0-10"><a href="../agents.1.html#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="gp">...</span>
+</span><span id="__span-0-11"><a href="../agents.1.html#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="gp">&gt;&gt;&gt; </span><span class="nd">@tool</span>
+</span><span id="__span-0-12"><a href="../agents.1.html#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-0-13"><a href="../agents.1.html#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="gp">... </span><span class="w">    </span><span class="sd">"""Return a / b."""</span>
+</span><span id="__span-0-14"><a href="../agents.1.html#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="gp">... </span>    <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
+</span><span id="__span-0-15"><a href="../agents.1.html#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="gp">...</span>
+</span><span id="__span-0-16"><a href="../agents.1.html#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">llm</span> <span class="o">=</span> <span class="n">ChatAnthropic</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"claude-3-haiku-20240307"</span><span class="p">)</span>
+</span><span id="__span-0-17"><a href="../agents.1.html#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">tools</span> <span class="o">=</span> <span class="p">[</span><span class="n">divide</span><span class="p">]</span>
+</span><span id="__span-0-18"><a href="../agents.1.html#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="gp">...</span>
+</span><span id="__span-0-19"><a href="../agents.1.html#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-0-20"><a href="../agents.1.html#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="gp">... </span>    <span class="n">messages</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="n">add_messages</span><span class="p">]</span>
+</span><span id="__span-0-21"><a href="../agents.1.html#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="gp">&gt;&gt;&gt;</span>
+</span><span id="__span-0-22"><a href="../agents.1.html#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">graph_builder</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">State</span><span class="p">)</span>
+</span><span id="__span-0-23"><a href="../agents.1.html#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">graph_builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"tools"</span><span class="p">,</span> <span class="n">ToolNode</span><span class="p">(</span><span class="n">tools</span><span class="p">))</span>
+</span><span id="__span-0-24"><a href="../agents.1.html#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">graph_builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"chatbot"</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">state</span><span class="p">:</span> <span class="p">{</span><span class="s2">"messages"</span><span class="p">:</span><span class="n">llm</span><span class="o">.</span><span class="n">bind_tools</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s1">'messages'</span><span class="p">])})</span>
+</span><span id="__span-0-25"><a href="../agents.1.html#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">graph_builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"tools"</span><span class="p">,</span> <span class="s2">"chatbot"</span><span class="p">)</span>
+</span><span id="__span-0-26"><a href="../agents.1.html#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">graph_builder</span><span class="o">.</span><span class="n">add_conditional_edges</span><span class="p">(</span>
+</span><span id="__span-0-27"><a href="../agents.1.html#__codelineno-0-27" id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="gp">... </span>    <span class="s2">"chatbot"</span><span class="p">,</span> <span class="n">tools_condition</span>
+</span><span id="__span-0-28"><a href="../agents.1.html#__codelineno-0-28" id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="gp">... </span><span class="p">)</span>
+</span><span id="__span-0-29"><a href="../agents.1.html#__codelineno-0-29" id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">graph_builder</span><span class="o">.</span><span class="n">set_entry_point</span><span class="p">(</span><span class="s2">"chatbot"</span><span class="p">)</span>
+</span><span id="__span-0-30"><a href="../agents.1.html#__codelineno-0-30" id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">graph_builder</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+</span><span id="__span-0-31"><a href="../agents.1.html#__codelineno-0-31" id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">"messages"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"What's 329993 divided by 13662?"</span><span class="p">}})</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-class">
+<h2 class="doc doc-heading" id="langgraph.prebuilt.tool_validator.ValidationNode">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code> <span class="doc doc-object-name doc-class-name">ValidationNode</span> <a class="headerlink" href="../agents.1.html#langgraph.prebuilt.tool_validator.ValidationNode" title="永久链接">¶</a></h2>
+<div class="doc doc-contents first">
+<p class="doc doc-class-bases">基类: <code><span title="langgraph.utils.runnable.RunnableCallable">RunnableCallable</span></code></p>
+<p>一个验证上次 AIMessage 中所有工具请求的节点。</p>
+<p>它可以在 StateGraph 中与“messages”键一起使用，也可以在 MessageGraph 中使用。</p>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>此节点实际上不<strong>运行</strong>工具，它只验证工具调用，这对于提取和其他用例很有用，在这些用例中，您需要生成符合复杂模式的结构化输出，而不会丢失原始消息和工具 ID（用于多轮对话）。</p>
+</div>
+<p><span class="doc-section-title">参数</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>模式</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Sequence" title="<code>typing.Sequence</code>">Sequence</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a>[<a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/tools/langchain_core.tools.base.BaseTool.html#langchain_core.tools.base.BaseTool" title="<code>langchain_core.tools.BaseTool</code>">BaseTool</a>, <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Type" title="<code>typing.Type</code>">Type</a>[<span title="pydantic.BaseModel">BaseModel</span>], <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Callable" title="<code>typing.Callable</code>">Callable</a>]]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>用于验证工具调用的模式列表。它们可以是以下任何一种： - Pydantic BaseModel 类 - BaseTool 实例（将使用 args_schema） - 函数（将根据函数签名创建模式）</p>
+</div>
+</td>
+<td>
+<em>必需</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>format_error</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Callable" title="<code>typing.Callable</code>">Callable</a>[[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/exceptions.html#BaseException">BaseException</a>, <a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/messages/langchain_core.messages.tool.ToolCall.html#langchain_core.messages.tool.ToolCall" title="<code>langchain_core.messages.ToolCall</code>">ToolCall</a>, <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Type" title="<code>typing.Type</code>">Type</a>[<span title="pydantic.BaseModel">BaseModel</span>]], <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>]]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>一个函数，它接受一个异常、一个 ToolCall 和一个模式，并返回一个格式化的错误字符串。默认情况下，它返回异常的 repr 和一条在修复验证错误后进行响应的消息。</p>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>名称</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>节点的名称。</p>
+</div>
+</td>
+<td>
+<code>'validation'</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>标签</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-internal" href="../../cloud/reference/sdk/js_ts_sdk_ref/index.html#list" title="list()">list</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>]]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>要添加到节点的标签列表。</p>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">返回</span></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Dict" title="<code>typing.Dict</code>">Dict</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>, <span title="List">List</span>[<a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/messages/langchain_core.messages.tool.ToolMessage.html#langchain_core.messages.tool.ToolMessage" title="<code>langchain_core.messages.ToolMessage</code>">ToolMessage</a>]], <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Sequence" title="<code>typing.Sequence</code>">Sequence</a>[<a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/messages/langchain_core.messages.tool.ToolMessage.html#langchain_core.messages.tool.ToolMessage" title="<code>langchain_core.messages.ToolMessage</code>">ToolMessage</a>]]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>包含验证内容或错误消息的 ToolMessages 列表。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="example" open="">
+<summary>示例</summary>
+<div class="language-python highlight"><span class="filename">重新提示模型以生成有效响应的示例用法</span><pre><span></span><code><span id="__span-0-1"><a href="../agents.1.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Annotated</span>
+</span><span id="__span-0-2"><a href="../agents.1.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
+</span><span id="__span-0-3"><a href="../agents.1.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a href="../agents.1.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_anthropic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatAnthropic</span>
+</span><span id="__span-0-5"><a href="../agents.1.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">field_validator</span>
+</span><span id="__span-0-6"><a href="../agents.1.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a href="../agents.1.html#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">END</span><span class="p">,</span> <span class="n">START</span><span class="p">,</span> <span class="n">StateGraph</span>
+</span><span id="__span-0-8"><a href="../agents.1.html#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.prebuilt</span><span class="w"> </span><span class="kn">import</span> <span class="n">ValidationNode</span>
+</span><span id="__span-0-9"><a href="../agents.1.html#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph.message</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_messages</span>
+</span><span id="__span-0-10"><a href="../agents.1.html#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a href="../agents.1.html#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="k">class</span><span class="w"> </span><span class="nc">SelectNumber</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="__span-0-12"><a href="../agents.1.html#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a>    <span class="n">a</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-0-13"><a href="../agents.1.html#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a href="../agents.1.html#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="nd">@field_validator</span><span class="p">(</span><span class="s2">"a"</span><span class="p">)</span>
+</span><span id="__span-0-15"><a href="../agents.1.html#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">a_must_be_meaningful</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+</span><span id="__span-0-16"><a href="../agents.1.html#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a>        <span class="k">if</span> <span class="n">v</span> <span class="o">!=</span> <span class="mi">37</span><span class="p">:</span>
+</span><span id="__span-0-17"><a href="../agents.1.html#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Only 37 is allowed"</span><span class="p">)</span>
+</span><span id="__span-0-18"><a href="../agents.1.html#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a>        <span class="k">return</span> <span class="n">v</span>
+</span><span id="__span-0-19"><a href="../agents.1.html#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a href="../agents.1.html#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="n">builder</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">Annotated</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="n">add_messages</span><span class="p">])</span>
+</span><span id="__span-0-21"><a href="../agents.1.html#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="n">llm</span> <span class="o">=</span> <span class="n">ChatAnthropic</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"claude-3-5-haiku-latest"</span><span class="p">)</span><span class="o">.</span><span class="n">bind_tools</span><span class="p">([</span><span class="n">SelectNumber</span><span class="p">])</span>
+</span><span id="__span-0-22"><a href="../agents.1.html#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"model"</span><span class="p">,</span> <span class="n">llm</span><span class="p">)</span>
+</span><span id="__span-0-23"><a href="../agents.1.html#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"validation"</span><span class="p">,</span> <span class="n">ValidationNode</span><span class="p">([</span><span class="n">SelectNumber</span><span class="p">]))</span>
+</span><span id="__span-0-24"><a href="../agents.1.html#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="s2">"model"</span><span class="p">)</span>
+</span><span id="__span-0-25"><a href="../agents.1.html#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a>
+</span><span id="__span-0-26"><a href="../agents.1.html#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="k">def</span><span class="w"> </span><span class="nf">should_validate</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">"validation"</span><span class="p">,</span> <span class="s2">"__end__"</span><span class="p">]:</span>
+</span><span id="__span-0-27"><a href="../agents.1.html#__codelineno-0-27" id="__codelineno-0-27" name="__codelineno-0-27"></a>    <span class="k">if</span> <span class="n">state</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">:</span>
+</span><span id="__span-0-28"><a href="../agents.1.html#__codelineno-0-28" id="__codelineno-0-28" name="__codelineno-0-28"></a>        <span class="k">return</span> <span class="s2">"validation"</span>
+</span><span id="__span-0-29"><a href="../agents.1.html#__codelineno-0-29" id="__codelineno-0-29" name="__codelineno-0-29"></a>    <span class="k">return</span> <span class="n">END</span>
+</span><span id="__span-0-30"><a href="../agents.1.html#__codelineno-0-30" id="__codelineno-0-30" name="__codelineno-0-30"></a>
+</span><span id="__span-0-31"><a href="../agents.1.html#__codelineno-0-31" id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_conditional_edges</span><span class="p">(</span><span class="s2">"model"</span><span class="p">,</span> <span class="n">should_validate</span><span class="p">)</span>
+</span><span id="__span-0-32"><a href="../agents.1.html#__codelineno-0-32" id="__codelineno-0-32" name="__codelineno-0-32"></a>
+</span><span id="__span-0-33"><a href="../agents.1.html#__codelineno-0-33" id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="k">def</span><span class="w"> </span><span class="nf">should_reprompt</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">"model"</span><span class="p">,</span> <span class="s2">"__end__"</span><span class="p">]:</span>
+</span><span id="__span-0-34"><a href="../agents.1.html#__codelineno-0-34" id="__codelineno-0-34" name="__codelineno-0-34"></a>    <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">state</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+</span><span id="__span-0-35"><a href="../agents.1.html#__codelineno-0-35" id="__codelineno-0-35" name="__codelineno-0-35"></a>        <span class="c1"># None of the tool calls were errors</span>
+</span><span id="__span-0-36"><a href="../agents.1.html#__codelineno-0-36" id="__codelineno-0-36" name="__codelineno-0-36"></a>        <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">"ai"</span><span class="p">:</span>
+</span><span id="__span-0-37"><a href="../agents.1.html#__codelineno-0-37" id="__codelineno-0-37" name="__codelineno-0-37"></a>            <span class="k">return</span> <span class="n">END</span>
+</span><span id="__span-0-38"><a href="../agents.1.html#__codelineno-0-38" id="__codelineno-0-38" name="__codelineno-0-38"></a>        <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">additional_kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"is_error"</span><span class="p">):</span>
+</span><span id="__span-0-39"><a href="../agents.1.html#__codelineno-0-39" id="__codelineno-0-39" name="__codelineno-0-39"></a>            <span class="k">return</span> <span class="s2">"model"</span>
+</span><span id="__span-0-40"><a href="../agents.1.html#__codelineno-0-40" id="__codelineno-0-40" name="__codelineno-0-40"></a>    <span class="k">return</span> <span class="n">END</span>
+</span><span id="__span-0-41"><a href="../agents.1.html#__codelineno-0-41" id="__codelineno-0-41" name="__codelineno-0-41"></a>
+</span><span id="__span-0-42"><a href="../agents.1.html#__codelineno-0-42" id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_conditional_edges</span><span class="p">(</span><span class="s2">"validation"</span><span class="p">,</span> <span class="n">should_reprompt</span><span class="p">)</span>
+</span><span id="__span-0-43"><a href="../agents.1.html#__codelineno-0-43" id="__codelineno-0-43" name="__codelineno-0-43"></a>
+</span><span id="__span-0-44"><a href="../agents.1.html#__codelineno-0-44" id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="n">graph</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+</span><span id="__span-0-45"><a href="../agents.1.html#__codelineno-0-45" id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="n">res</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">((</span><span class="s2">"user"</span><span class="p">,</span> <span class="s2">"Select a number, any number"</span><span class="p">))</span>
+</span><span id="__span-0-46"><a href="../agents.1.html#__codelineno-0-46" id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="c1"># Show the retry logic</span>
+</span><span id="__span-0-47"><a href="../agents.1.html#__codelineno-0-47" id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+</span><span id="__span-0-48"><a href="../agents.1.html#__codelineno-0-48" id="__codelineno-0-48" name="__codelineno-0-48"></a>    <span class="n">msg</span><span class="o">.</span><span class="n">pretty_print</span><span class="p">()</span>
+</span></code></pre></div>
+</details>
+<div class="doc doc-children">
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-module">
+<div class="doc doc-contents first">
+<p><span class="doc-section-title">类</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="../agents.1.html#langgraph.prebuilt.interrupt.HumanInterruptConfig" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;HumanInterruptConfig&lt;/span&gt; (&lt;code&gt;langgraph.prebuilt.interrupt.HumanInterruptConfig&lt;/code&gt;)">HumanInterruptConfig</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>定义人类中断允许哪些操作的配置。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="../agents.1.html#langgraph.prebuilt.interrupt.ActionRequest" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;ActionRequest&lt;/span&gt; (&lt;code&gt;langgraph.prebuilt.interrupt.ActionRequest&lt;/code&gt;)">ActionRequest</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>表示图执行中对人类操作的请求。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="../agents.1.html#langgraph.prebuilt.interrupt.HumanInterrupt" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;HumanInterrupt&lt;/span&gt; (&lt;code&gt;langgraph.prebuilt.interrupt.HumanInterrupt&lt;/code&gt;)">HumanInterrupt</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>表示由图触发的需要人工干预的中断。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="../agents.1.html#langgraph.prebuilt.interrupt.HumanResponse" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;HumanResponse&lt;/span&gt; (&lt;code&gt;langgraph.prebuilt.interrupt.HumanResponse&lt;/code&gt;)">HumanResponse</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>人类对中断提供的响应，在图执行恢复时返回。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="doc doc-children">
+<div class="doc doc-object doc-class">
+<h2 class="doc doc-heading" id="langgraph.prebuilt.interrupt.HumanInterruptConfig">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code> <span class="doc doc-object-name doc-class-name">HumanInterruptConfig</span> <a class="headerlink" href="../agents.1.html#langgraph.prebuilt.interrupt.HumanInterruptConfig" title="永久链接">¶</a></h2>
+<div class="doc doc-contents">
+<p class="doc doc-class-bases">基类: <code><span title="typing_extensions.TypedDict">TypedDict</span></code></p>
+<p>定义人类中断允许哪些操作的配置。</p>
+<p>这控制了当图暂停等待人类输入时可用的交互选项。</p>
+<p><span class="doc-section-title">属性</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><span title="langgraph.prebuilt.interrupt.HumanInterruptConfig.allow_ignore">allow_ignore</span></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#bool">布尔值</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>人类是否可以选择忽略/跳过当前步骤</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><span title="langgraph.prebuilt.interrupt.HumanInterruptConfig.allow_respond">allow_respond</span></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#bool">布尔值</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>人类是否可以提供文本响应/反馈</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><span title="langgraph.prebuilt.interrupt.HumanInterruptConfig.allow_edit">allow_edit</span></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#bool">布尔值</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>人类是否可以编辑提供的内容/状态</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><span title="langgraph.prebuilt.interrupt.HumanInterruptConfig.allow_accept">allow_accept</span></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#bool">布尔值</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>人类是否可以接受/批准当前状态</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="doc doc-children">
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-class">
+<h2 class="doc doc-heading" id="langgraph.prebuilt.interrupt.ActionRequest">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code> <span class="doc doc-object-name doc-class-name">ActionRequest</span> <a class="headerlink" href="../agents.1.html#langgraph.prebuilt.interrupt.ActionRequest" title="永久链接">¶</a></h2>
+<div class="doc doc-contents">
+<p class="doc doc-class-bases">基类: <code><span title="typing_extensions.TypedDict">TypedDict</span></code></p>
+<p>表示图执行中对人类操作的请求。</p>
+<p>包含操作类型和操作所需的任何相关参数。</p>
+<p><span class="doc-section-title">属性</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><span title="langgraph.prebuilt.interrupt.ActionRequest.action">操作</span></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>请求的操作类型或名称（例如，“批准 XYZ 操作”）</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><span title="langgraph.prebuilt.interrupt.ActionRequest.args">参数</span></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#dict">字典</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>操作所需的参数键值对</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="doc doc-children">
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-class">
+<h2 class="doc doc-heading" id="langgraph.prebuilt.interrupt.HumanInterrupt">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code> <span class="doc doc-object-name doc-class-name">HumanInterrupt</span> <a class="headerlink" href="../agents.1.html#langgraph.prebuilt.interrupt.HumanInterrupt" title="永久链接">¶</a></h2>
+<div class="doc doc-contents">
+<p class="doc doc-class-bases">基类: <code><span title="typing_extensions.TypedDict">TypedDict</span></code></p>
+<p>表示由图触发的需要人工干预的中断。</p>
+<p>当执行因人工输入而暂停时，此项会传递给 <code>interrupt</code> 函数。</p>
+<p><span class="doc-section-title">属性</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><span title="langgraph.prebuilt.interrupt.HumanInterrupt.action_request">action_request</span></code></td>
+<td>
+<code><a class="autorefs autorefs-internal" href="../agents.1.html#langgraph.prebuilt.interrupt.ActionRequest" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;ActionRequest&lt;/span&gt; (&lt;code&gt;langgraph.prebuilt.interrupt.ActionRequest&lt;/code&gt;)">ActionRequest</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>向人类请求的具体行动</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><span title="langgraph.prebuilt.interrupt.HumanInterrupt.config">配置</span></code></td>
+<td>
+<code><a class="autorefs autorefs-internal" href="../agents.1.html#langgraph.prebuilt.interrupt.HumanInterruptConfig" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;HumanInterruptConfig&lt;/span&gt; (&lt;code&gt;langgraph.prebuilt.interrupt.HumanInterruptConfig&lt;/code&gt;)">HumanInterruptConfig</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>定义允许哪些操作的配置</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><span title="langgraph.prebuilt.interrupt.HumanInterrupt.description">描述</span></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>对所需输入的可选详细描述</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="example" open="">
+<summary>示例</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a href="../agents.1.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># Extract a tool call from the state and create an interrupt request</span>
+</span><span id="__span-0-2"><a href="../agents.1.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">request</span> <span class="o">=</span> <span class="n">HumanInterrupt</span><span class="p">(</span>
+</span><span id="__span-0-3"><a href="../agents.1.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="n">action_request</span><span class="o">=</span><span class="n">ActionRequest</span><span class="p">(</span>
+</span><span id="__span-0-4"><a href="../agents.1.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>        <span class="n">action</span><span class="o">=</span><span class="s2">"run_command"</span><span class="p">,</span>  <span class="c1"># The action being requested</span>
+</span><span id="__span-0-5"><a href="../agents.1.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>        <span class="n">args</span><span class="o">=</span><span class="p">{</span><span class="s2">"command"</span><span class="p">:</span> <span class="s2">"ls"</span><span class="p">,</span> <span class="s2">"args"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"-l"</span><span class="p">]}</span>  <span class="c1"># Arguments for the action</span>
+</span><span id="__span-0-6"><a href="../agents.1.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="p">),</span>
+</span><span id="__span-0-7"><a href="../agents.1.html#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="n">config</span><span class="o">=</span><span class="n">HumanInterruptConfig</span><span class="p">(</span>
+</span><span id="__span-0-8"><a href="../agents.1.html#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>        <span class="n">allow_ignore</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>    <span class="c1"># Allow skipping this step</span>
+</span><span id="__span-0-9"><a href="../agents.1.html#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>        <span class="n">allow_respond</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>   <span class="c1"># Allow text feedback</span>
+</span><span id="__span-0-10"><a href="../agents.1.html#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>        <span class="n">allow_edit</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>     <span class="c1"># Don't allow editing</span>
+</span><span id="__span-0-11"><a href="../agents.1.html#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>        <span class="n">allow_accept</span><span class="o">=</span><span class="kc">True</span>     <span class="c1"># Allow direct acceptance</span>
+</span><span id="__span-0-12"><a href="../agents.1.html#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a>    <span class="p">),</span>
+</span><span id="__span-0-13"><a href="../agents.1.html#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="n">description</span><span class="o">=</span><span class="s2">"Please review the command before execution"</span>
+</span><span id="__span-0-14"><a href="../agents.1.html#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="p">)</span>
+</span><span id="__span-0-15"><a href="../agents.1.html#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="c1"># Send the interrupt request and get the response</span>
+</span><span id="__span-0-16"><a href="../agents.1.html#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="n">response</span> <span class="o">=</span> <span class="n">interrupt</span><span class="p">([</span><span class="n">request</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+</span></code></pre></div>
+</details>
+<div class="doc doc-children">
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-class">
+<h2 class="doc doc-heading" id="langgraph.prebuilt.interrupt.HumanResponse">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code> <span class="doc doc-object-name doc-class-name">HumanResponse</span> <a class="headerlink" href="../agents.1.html#langgraph.prebuilt.interrupt.HumanResponse" title="永久链接">¶</a></h2>
+<div class="doc doc-contents">
+<p class="doc doc-class-bases">基类: <code><span title="typing_extensions.TypedDict">TypedDict</span></code></p>
+<p>人类对中断提供的响应，在图执行恢复时返回。</p>
+<p><span class="doc-section-title">属性</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><span title="langgraph.prebuilt.interrupt.HumanResponse.type">类型</span></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Literal" title="<code>typing.Literal</code>">Literal</a>['accept', 'ignore', 'response', 'edit']</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>响应类型： - "accept"：不作任何更改地批准当前状态 - "ignore"：跳过/忽略当前步骤 - "response"：提供文本反馈或指令 - "edit"：修改当前状态/内容</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><span title="langgraph.prebuilt.interrupt.HumanResponse.arg">参数</span></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Literal" title="<code>typing.Literal</code>">Literal</a>['accept', 'ignore', 'response', 'edit']</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>响应负载： - None：用于忽略/接受操作 - str：用于文本响应 - ActionRequest：用于带有更新内容的编辑操作</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="doc doc-children">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>回到顶部</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="上一页: 通道" class="md-footer__link md-footer__link--prev" href="../channels/index.html"> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg> </div> <div class="md-footer__title"> <span class="md-footer__direction"> 上一页 </span> <div class="md-ellipsis"> 通道 </div> </div> </a> <a aria-label="下一页: 主管" class="md-footer__link md-footer__link--next" href="../supervisor/index.html"> <div class="md-footer__title"> <span class="md-footer__direction"> 下一页 </span> <div class="md-ellipsis"> 主管 </div> </div> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg> </div> </a></nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">版权所有 © 2025 LangChain, Inc | <a href="../agents.1.html#__consent">同意偏好</a></div>使用 <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank"> Material for MkDocs </a> 制作</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.langchain.ac.cn/langgraphjs/" rel="noopener" target="_blank" title="langchain-ai.github.io">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 32v448h448V32zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6"></path></svg>
+</a>
+<a class="md-social__link" href="https://github.com/langchain-ai/langgraph" rel="noopener" target="_blank" title="github.com">
+<svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+<a class="md-social__link" href="https://twitter.com/LangChainAI" rel="noopener" target="_blank" title="twitter.com">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-progress" data-md-component="progress" role="progressbar"></div>
+<div class="md-consent" data-md-component="consent" hidden="" id="__consent">
+<div class="md-consent__overlay"></div>
+<aside class="md-consent__inner">
+<form class="md-consent__form md-grid md-typeset" name="consent">
+<h4>Cookie 同意</h4>
+<p>我们使用 Cookie 来识别您的重复访问和偏好，并衡量我们文档的有效性以及用户是否找到了他们正在寻找的内容。<strong>点击“接受”将使我们的文档更好。谢谢您！</strong> ❤️</p>
+<input checked="" class="md-toggle" id="__settings" type="checkbox" />
+<div class="md-consent__settings">
+<ul class="task-list">
+<li class="task-list-item">
+<label class="task-list-control">
+<input checked="" name="github" type="checkbox" />
+<span class="task-list-indicator"></span> GitHub</label>
+</li>
+</ul>
+</div>
+<div class="md-consent__controls">
+<button class="md-button md-button--primary">接受</button>
+<button class="md-button md-button--primary" type="reset">拒绝</button>
+</div>
+</form>
+</aside>
+</div>
+<script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.action.edit", "content.tooltips", "navigation.indexes", "navigation.footer", "navigation.instant", "navigation.sections", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.prune", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+
+</body></html>

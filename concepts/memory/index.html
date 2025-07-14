@@ -1,0 +1,1218 @@
+<!DOCTYPE html><html lang="zh-hans" class="no-js"><head><script>(l=location)[p='protocol'][5]||(l[p]='https')</script><meta name="referrer" content="no-referrer"><style>
+div[data-md-component=announce] {
+  display: none !important;
+}
+</style><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8543159550507237" crossorigin="anonymous"></script>
+
+<script>window.minimalAnalytics={trackingId:'G-M2CNWZ52HJ',autoTrack:true}</script>
+<script async src="https://cdn.jsdelivr.net.cn/npm/@minimal-analytics/ga4/dist/index.js"></script>
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<link href="../memory.1.html" rel="canonical" />
+<link href="../../how-tos/persistence.1.html" rel="prev" />
+<link href="../../how-tos/memory/index.html" rel="next" />
+<link href="../../static/favicon.png" rel="icon" />
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator" />
+<title>概述 - LangChain 框架</title>
+<link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet" />
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Public+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet" />
+<style>:root{--md-text-font:"Public Sans";--md-code-font:"Roboto Mono"}</style>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+<link href="../../stylesheets/navigation_title_ovverides.css" rel="stylesheet" />
+<link href="../../stylesheets/version_admonitions.css" rel="stylesheet" />
+<link href="../../stylesheets/logos.css" rel="stylesheet" />
+<link href="../../stylesheets/sticky_navigation.css" rel="stylesheet" />
+<link href="../../stylesheets/agent_graph_widget.css" rel="stylesheet" />
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://#/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T35S4S46');</script>
+<!-- End Google Tag Manager -->
+<meta content="165B7E7C89E49946" name="algolia-site-verification" />
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Public+Sans&display=swap");
+    :root {
+      --md-primary-fg-color: #333333;
+      --md-accent-fg-color: #1E88E5;
+      --md-default-bg-color: #FFFFFF;
+      --md-default-fg-color: #333333;
+      --md-text-font-family: "Public Sans", sans-serif;
+    }
+
+    body {
+      font-family: var(--md-text-font-family);
+      background-color: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+    }
+
+    .md-main {
+      background-color: #FFFFFF;
+    }
+
+    .md-footer {
+      background-color: #F5F5F5;
+      color: #666666;
+    }
+
+    .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    .md-typeset a {
+      color: #1E88E5;
+    }
+
+    .md-typeset a:hover {
+      color: #1565C0;
+    }
+
+    .md-nav__link--active,
+    .md-nav__link:active {
+      color: #1E88E5;
+    }
+
+    .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    .md-search__input:hover,
+    .md-search__input:focus {
+      background-color: #EEEEEE;
+    }
+    /* Table of contents styles */
+    .md-nav--secondary .md-nav__item--active > .md-nav__link {
+      font-weight: bold;
+      color: var(--md-primary-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link {
+      font-weight: normal;
+      color: var(--md-default-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: var(--md-default-fg-color);
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+
+    [data-md-color-scheme="slate"] {
+      --md-default-bg-color: #1E1E1E;
+      --md-default-fg-color: #FFFFFF;
+      --md-accent-fg-color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-main {
+      background-color: #1E1E1E;
+    }
+
+    [data-md-color-scheme="slate"] .navbar {
+      background-color: #1E1E1E;
+      color: #FFFFFF;
+      box-shadow: none;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-header {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-tabs {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__icon {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input::placeholder {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a {
+      color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a:hover {
+      color: #90CAF9;
+    }
+
+    .notebook-links {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+    }
+    .notebook-links .md-content__button {
+      margin-left: 0.5rem;
+    }
+
+    [data-md-color-scheme=default] .logo-dark {
+      display: none !important;
+    }
+
+    [data-md-color-scheme=slate] .logo-light {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-CodeCell .jp-Cell-inputWrapper .jp-InputPrompt.jp-InputArea-prompt {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-Notebook .jp-Cell .jp-OutputPrompt {
+      display: none !important;
+    }
+
+    .md-banner {
+      background-color: #CFC9FA;
+      color: #000000;
+    }
+
+    .md-banner a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    .md-banner a:hover {
+      color: #000000;
+    }
+
+    .md-header__title {
+      visibility: hidden;
+    }
+
+    /* Dark mode banner links */
+    [data-md-color-scheme="slate"] .md-banner a {
+      color: #000000;
+    }
+
+    [data-md-color-scheme="slate"] .md-banner a:hover {
+      color: #000000;
+    }
+
+  </style>
+</head>
+<body data-md-color-accent="gray" data-md-color-primary="white" data-md-color-scheme="default" dir="ltr">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://#/ns.html?id=GTM-T35S4S46" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox" />
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox" />
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="../memory.1.html#memory">跳到内容</a>
+</div>
+<div data-md-component="announce">
+<aside class="md-banner">
+<div class="md-banner__inner md-grid md-typeset">
+<button aria-label="Don&#39;t show this again" class="md-banner__button md-icon">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+<strong>我们正在发展壮大，为LangChain、LangGraph和LangSmith招聘多个职位。 <a href="https://langchain.ac.cn/careers" rel="noopener noreferrer" target="_blank">加入我们的团队！</a></strong>
+</div>
+<script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+</aside>
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="LangGraph" class="md-header__button md-logo" data-md-component="logo" href="../../index.html" title="LangGraph">
+<img alt="logo" class="logo-light" src="../../static/wordmark_dark.svg">
+<img alt="logo" class="logo-dark" src="../../static/wordmark_light.svg">
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">LangGraph</span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">概述</span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="gray" data-md-color-media="" data-md-color-primary="white" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="grey" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text" />
+<label class="md-search__icon md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">正在初始化搜索</div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../index.html">指南</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../reference/index.html">参考</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tutorials/rag/langgraph_agentic_rag/index.html">示例</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../faq/index.html">资源</a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="LangGraph" class="md-nav__button md-logo" data-md-component="logo" href="../../index.html" title="LangGraph"> <img alt="logo" class="logo-light" src="../../static/wordmark_dark.svg"> <img alt="logo" class="logo-dark" src="../../static/wordmark_light.svg"> </a> LangGraph</label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox" />
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../index.html">
+<span class="md-ellipsis">指南</span>
+</a>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span> 指南</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_2" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="">
+<span class="md-ellipsis"> 入门 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_2">
+<span class="md-nav__icon md-icon"></span> 入门</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/agents.1.html">
+<span class="md-ellipsis">快速入门</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../why-langgraph.1.html">
+<span class="md-ellipsis"> LangGraph基础 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorials/deployment/index.html">
+<span class="md-ellipsis">部署</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_3" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="">
+<span class="md-ellipsis"> 预构建代理 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_3">
+<span class="md-nav__icon md-icon"></span> 预构建代理</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/overview.1.html">
+<span class="md-ellipsis">概述</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/run_agents.1.html">
+<span class="md-ellipsis">运行代理</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/streaming/index.html">
+<span class="md-ellipsis">流式传输</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/models/index.html">
+<span class="md-ellipsis">模型</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/tools.1.html">
+<span class="md-ellipsis">工具</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/mcp/index.html">
+<span class="md-ellipsis">MCP集成</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/context/index.html">
+<span class="md-ellipsis">上下文</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/memory/index.html">
+<span class="md-ellipsis">内存</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/human-in-the-loop/index.html">
+<span class="md-ellipsis">人在回路</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/multi-agent.1.html">
+<span class="md-ellipsis">多代理</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/evals/index.html">
+<span class="md-ellipsis">评估</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/deployment/index.html">
+<span class="md-ellipsis">部署</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/ui/index.html">
+<span class="md-ellipsis">UI</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1_4" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="">
+<span class="md-ellipsis"> LangGraph框架 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="true" aria-labelledby="__nav_1_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_4">
+<span class="md-nav__icon md-icon"></span> LangGraph框架</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../agentic_concepts.1.html">
+<span class="md-ellipsis"> 代理架构 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../low_level.1.html">
+<span class="md-ellipsis"> 图 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../streaming.1.html">
+<span class="md-ellipsis"> 流式传输 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../persistence.1.html">
+<span class="md-ellipsis"> 持久性 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1_4_5" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_4_5" id="__nav_1_4_5_label" tabindex="0">
+<span class="md-ellipsis"> 内存 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="true" aria-labelledby="__nav_1_4_5_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_1_4_5">
+<span class="md-nav__icon md-icon"></span> 内存</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox" />
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis"> 概述 </span> <span class="md-nav__icon md-icon"></span></label>
+<a class="md-nav__link md-nav__link--active" href="../memory.1.html">
+<span class="md-ellipsis">概述</span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#what-is-memory">
+<span class="md-ellipsis">什么是内存？</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#short-term-memory">
+<span class="md-ellipsis">短期记忆</span>
+</a>
+<nav aria-label="Short-term memory" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#managing-long-conversation-history">
+<span class="md-ellipsis">管理长对话历史记录</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#editing-message-lists">
+<span class="md-ellipsis">编辑消息列表</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#summarizing-past-conversations">
+<span class="md-ellipsis">总结过往对话</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#knowing-when-to-remove-messages">
+<span class="md-ellipsis">何时移除消息</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#long-term-memory">
+<span class="md-ellipsis">长期记忆</span>
+</a>
+<nav aria-label="Long-term memory" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#storing-memories">
+<span class="md-ellipsis">存储记忆</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#framework-for-thinking-about-long-term-memory">
+<span class="md-ellipsis">长期记忆的思考框架</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#memory-types">
+<span class="md-ellipsis">记忆类型</span>
+</a>
+<nav aria-label="Memory types" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#semantic-memory">
+<span class="md-ellipsis">语义记忆</span>
+</a>
+<nav aria-label="Semantic Memory" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#profile">
+<span class="md-ellipsis">个人资料</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#collection">
+<span class="md-ellipsis">集合</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#episodic-memory">
+<span class="md-ellipsis">情景记忆</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#procedural-memory">
+<span class="md-ellipsis">程序记忆</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#writing-memories">
+<span class="md-ellipsis">写入记忆</span>
+</a>
+<nav aria-label="Writing memories" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#writing-memories-in-the-hot-path">
+<span class="md-ellipsis">在热路径中写入记忆</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#writing-memories-in-the-background">
+<span class="md-ellipsis">在后台写入记忆</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../how-tos/memory/index.html">
+<span class="md-ellipsis">管理内存</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../human_in_the_loop.1.html">
+<span class="md-ellipsis"> 人在回路 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../breakpoints/index.html">
+<span class="md-ellipsis"> 断点 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../time-travel/index.html">
+<span class="md-ellipsis"> 时间旅行 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../tools/index.html">
+<span class="md-ellipsis"> 工具 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../subgraphs.1.html">
+<span class="md-ellipsis"> 子图 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../multi_agent.1.html">
+<span class="md-ellipsis"> 多代理 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../functional_api.1.html">
+<span class="md-ellipsis"> 函数式API </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_5" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="">
+<span class="md-ellipsis"> LangGraph平台 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_5">
+<span class="md-nav__icon md-icon"></span> LangGraph平台</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../langgraph_platform/index.html">
+<span class="md-ellipsis">概述</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../tutorials/langgraph-platform/local-server/index.html">
+<span class="md-ellipsis"> 入门 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../langgraph_components/index.html">
+<span class="md-ellipsis"> 组件 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/deployment/semantic_search/index.html">
+<span class="md-ellipsis"> 数据管理 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../auth/index.html">
+<span class="md-ellipsis"> 认证 &amp; 访问控制 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../assistants/index.html">
+<span class="md-ellipsis"> 助手 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/threads/index.html">
+<span class="md-ellipsis"> 线程 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/runs/index.html">
+<span class="md-ellipsis"> 运行 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/streaming/index.html">
+<span class="md-ellipsis"> 流式传输 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/how-tos/add-human-in-the-loop/index.html">
+<span class="md-ellipsis">人在回路</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/how-tos/human_in_the_loop_breakpoint/index.html">
+<span class="md-ellipsis">断点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/how-tos/human_in_the_loop_time_travel/index.html">
+<span class="md-ellipsis">时间旅行</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../server-mcp/index.html">
+<span class="md-ellipsis">MCP</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../double_texting/index.html">
+<span class="md-ellipsis"> 双重文本 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/webhooks/index.html">
+<span class="md-ellipsis"> Webhooks </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/cron_jobs/index.html">
+<span class="md-ellipsis"> Cron作业 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../how-tos/http/custom_lifespan/index.html">
+<span class="md-ellipsis"> 服务器定制 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../deployment_options/index.html">
+<span class="md-ellipsis"> 部署 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../reference/index.html">
+<span class="md-ellipsis"> 参考 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../tutorials/rag/langgraph_agentic_rag/index.html">
+<span class="md-ellipsis"> 示例 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../faq/index.html">
+<span class="md-ellipsis"> 资源 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#what-is-memory">
+<span class="md-ellipsis">什么是内存？</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#short-term-memory">
+<span class="md-ellipsis">短期记忆</span>
+</a>
+<nav aria-label="Short-term memory" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#managing-long-conversation-history">
+<span class="md-ellipsis">管理长对话历史记录</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#editing-message-lists">
+<span class="md-ellipsis">编辑消息列表</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#summarizing-past-conversations">
+<span class="md-ellipsis">总结过往对话</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#knowing-when-to-remove-messages">
+<span class="md-ellipsis">何时移除消息</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#long-term-memory">
+<span class="md-ellipsis">长期记忆</span>
+</a>
+<nav aria-label="Long-term memory" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#storing-memories">
+<span class="md-ellipsis">存储记忆</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#framework-for-thinking-about-long-term-memory">
+<span class="md-ellipsis">长期记忆的思考框架</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#memory-types">
+<span class="md-ellipsis">记忆类型</span>
+</a>
+<nav aria-label="Memory types" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#semantic-memory">
+<span class="md-ellipsis">语义记忆</span>
+</a>
+<nav aria-label="Semantic Memory" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#profile">
+<span class="md-ellipsis">个人资料</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#collection">
+<span class="md-ellipsis">集合</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#episodic-memory">
+<span class="md-ellipsis">情景记忆</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#procedural-memory">
+<span class="md-ellipsis">程序记忆</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#writing-memories">
+<span class="md-ellipsis">写入记忆</span>
+</a>
+<nav aria-label="Writing memories" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#writing-memories-in-the-hot-path">
+<span class="md-ellipsis">在热路径中写入记忆</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../memory.1.html#writing-memories-in-the-background">
+<span class="md-ellipsis">在后台写入记忆</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<div class="notebook-links">
+</div>
+<a class="md-content__button md-icon" href="https://github.com/langchain-ai/langgraph/edit/main/docs/docs/concepts/memory.md" title="Edit this page">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<h1 id="memory">内存<a class="headerlink" href="../memory.1.html#memory" title="Permanent link">¶</a></h1>
+<h2 id="what-is-memory">什么是内存？<a class="headerlink" href="../memory.1.html#what-is-memory" title="Permanent link">¶</a></h2>
+<p><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10410470/">内存</a>是一种认知功能，它使人们能够存储、检索和使用信息来理解他们的现在和未来。想想看，与一个总是忘记你告诉他们的事情、需要不断重复的同事共事是多么令人沮丧！随着AI代理承担涉及大量用户交互的更复杂任务，为它们配备内存对于效率和用户满意度同样至关重要。通过内存，代理可以从反馈中学习并适应用户的偏好。本指南涵盖了基于召回范围的两种内存类型</p>
+<p><strong>短期记忆</strong>，或<a href="../persistence.1.html#threads">线程</a>范围的记忆，可以随时<strong>从</strong>单个用户对话线程中召回。LangGraph将短期记忆作为代理<a href="../low_level.1.html#state">状态</a>的一部分进行管理。状态通过<a href="../persistence.1.html#checkpoints">检查点</a>持久化到数据库中，以便线程可以随时恢复。短期记忆在图被调用或步骤完成时更新，并在每个步骤开始时读取状态。</p>
+<p><strong>长期记忆</strong>在对话线程<strong>之间共享</strong>。它可以在<em>任何时候</em>和<strong>任何线程中</strong>召回。记忆可以限定在任何自定义命名空间，而不仅仅是单个线程ID。LangGraph提供<a href="../persistence.1.html#memory-store">存储</a>（<a href="../../reference/store/index.html#langgraph.store.base.BaseStore">参考文档</a>）来让你保存和召回长期记忆。</p>
+<p>这两种记忆对于你的应用程序都非常重要，需要理解并实现。</p>
+<p><img alt="" src="../img/memory/short-vs-long.png"></p>
+<h2 id="short-term-memory">短期记忆<a class="headerlink" href="../memory.1.html#short-term-memory" title="Permanent link">¶</a></h2>
+<p>短期记忆允许你的应用程序记住单个<a href="../persistence.1.html#threads">线程</a>或对话中的先前交互。<a href="../persistence.1.html#threads">线程</a>在一个会话中组织多个交互，类似于电子邮件将消息分组到单个对话中的方式。</p>
+<p>LangGraph将短期记忆作为代理状态的一部分进行管理，通过线程范围的检查点持久化。这种状态通常可以包括对话历史以及其他有状态数据，例如上传的文件、检索到的文档或生成的工件。通过将这些存储在图的状态中，机器人可以访问给定对话的完整上下文，同时保持不同线程之间的分离。</p>
+<p>由于对话历史是表示短期记忆最常见的形式，在下一节中，我们将介绍在消息列表变得<strong>很长</strong>时管理对话历史的技术。如果你想坚持高层概念，请继续阅读<a href="../memory.1.html#long-term-memory">长期记忆</a>部分。</p>
+<h3 id="managing-long-conversation-history">管理长对话历史记录<a class="headerlink" href="../memory.1.html#managing-long-conversation-history" title="Permanent link">¶</a></h3>
+<p>长对话对当今的LLM构成了挑战。完整的历史记录甚至可能无法完全放入LLM的上下文窗口中，导致不可恢复的错误。即使你的LLM技术上支持完整的上下文长度，大多数LLM在长上下文下表现仍然不佳。它们会被过时或偏离主题的内容“分散注意力”，同时响应时间变慢，成本也更高。</p>
+<p>管理短期记忆是平衡<a href="https://en.wikipedia.org/wiki/Precision_and_recall#:~:text=Precision%20can%20be%20seen%20as,irrelevant%20ones%20are%20also%20returned">精确度与召回率</a>与应用程序其他性能要求（延迟和成本）之间的练习。一如既往，批判性地思考如何为你的LLM表示信息并查看你的数据非常重要。我们将在下面介绍一些管理消息列表的常用技术，并希望为你提供足够的上下文，以便你为应用程序选择最佳的权衡方案</p>
+<ul>
+<li><a href="../memory.1.html#editing-message-lists">编辑消息列表</a>：如何考虑在传递给语言模型之前修剪和过滤消息列表。</li>
+<li><a href="../memory.1.html#summarizing-past-conversations">总结过往对话</a>：当你不仅仅想过滤消息列表时，一种常用的技术。</li>
+</ul>
+<h3 id="editing-message-lists">编辑消息列表<a class="headerlink" href="../memory.1.html#editing-message-lists" title="Permanent link">¶</a></h3>
+<p>聊天模型使用<a href="https://python.langchain.ac.cn/docs/concepts/#messages">消息</a>接受上下文，其中包括开发者提供的指令（系统消息）和用户输入（人类消息）。在聊天应用程序中，消息在人类输入和模型响应之间交替，导致消息列表随时间增长。由于上下文窗口有限，并且包含大量token的消息列表可能成本高昂，许多应用程序可以通过使用手动删除或忘记过时信息的技术而受益。</p>
+<p><img alt="" src="../img/memory/filter.png"></p>
+<p>最直接的方法是从列表中删除旧消息（类似于<a href="https://en.wikipedia.org/wiki/Page_replacement_algorithm#Least_recently_used">最近最少使用缓存</a>）。</p>
+<p>在LangGraph中，从列表中删除内容的典型技术是从节点返回一个更新，告诉系统删除列表的某些部分。你可以定义这种更新的样式，但一种常见的方法是让你返回一个对象或字典，指定要保留哪些值。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a href="../memory.1.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">manage_list</span><span class="p">(</span><span class="n">existing</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">updates</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]):</span>
+</span><span id="__span-0-2"><a href="../memory.1.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">updates</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+</span><span id="__span-0-3"><a href="../memory.1.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>        <span class="c1"># Normal case, add to the history</span>
+</span><span id="__span-0-4"><a href="../memory.1.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>        <span class="k">return</span> <span class="n">existing</span> <span class="o">+</span> <span class="n">updates</span>
+</span><span id="__span-0-5"><a href="../memory.1.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">updates</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="n">updates</span><span class="p">[</span><span class="s2">"type"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"keep"</span><span class="p">:</span>
+</span><span id="__span-0-6"><a href="../memory.1.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>        <span class="c1"># You get to decide what this looks like.</span>
+</span><span id="__span-0-7"><a href="../memory.1.html#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>        <span class="c1"># For example, you could simplify and just accept a string "DELETE"</span>
+</span><span id="__span-0-8"><a href="../memory.1.html#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>        <span class="c1"># and clear the entire list.</span>
+</span><span id="__span-0-9"><a href="../memory.1.html#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>        <span class="k">return</span> <span class="n">existing</span><span class="p">[</span><span class="n">updates</span><span class="p">[</span><span class="s2">"from"</span><span class="p">]:</span><span class="n">updates</span><span class="p">[</span><span class="s2">"to"</span><span class="p">]]</span>
+</span><span id="__span-0-10"><a href="../memory.1.html#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="c1"># etc. We define how to interpret updates</span>
+</span><span id="__span-0-11"><a href="../memory.1.html#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a href="../memory.1.html#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-0-13"><a href="../memory.1.html#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="n">my_list</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="n">manage_list</span><span class="p">]</span>
+</span><span id="__span-0-14"><a href="../memory.1.html#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a href="../memory.1.html#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_node</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">):</span>
+</span><span id="__span-0-16"><a href="../memory.1.html#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a>    <span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-0-17"><a href="../memory.1.html#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a>        <span class="c1"># We return an update for the field "my_list" saying to</span>
+</span><span id="__span-0-18"><a href="../memory.1.html#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a>        <span class="c1"># keep only values from index -5 to the end (deleting the rest)</span>
+</span><span id="__span-0-19"><a href="../memory.1.html#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a>        <span class="s2">"my_list"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"keep"</span><span class="p">,</span> <span class="s2">"from"</span><span class="p">:</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="s2">"to"</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+</span><span id="__span-0-20"><a href="../memory.1.html#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a>    <span class="p">}</span>
+</span></code></pre></div>
+<p>只要在"my_list"键下返回更新，LangGraph就会调用<code>manage_list</code> "<a href="../low_level.1.html#reducers">reducer</a>"函数。在该函数中，我们定义接受哪些类型的更新。通常，消息会被添加到现有列表中（对话会增长）；但是，我们也添加了对接受字典的支持，该字典允许你"保留"状态的某些部分。这允许你通过编程方式删除旧的消息上下文。</p>
+<p>另一种常见的方法是让你返回一个“移除”对象的列表，该列表指定要删除的所有消息的ID。如果你在LangGraph中使用LangChain消息和<a href="../../reference/graphs/index.html#langgraph.graph.message.add_messages"><code>add_messages</code></a> reducer（或<code>MessagesState</code>，它使用相同的基础功能），你可以使用<code>RemoveMessage</code>来完成此操作。</p>
+<p><sup><i>API参考：<a href="https://python.langchain.ac.cn/api_reference/core/messages/langchain_core.messages.modifier.RemoveMessage.html">RemoveMessage</a> | <a href="https://python.langchain.ac.cn/api_reference/core/messages/langchain_core.messages.ai.AIMessage.html">AIMessage</a> | <a href="../../reference/graphs/index.html#langgraph.graph.message.add_messages">add_messages</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a href="../memory.1.html#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">RemoveMessage</span><span class="p">,</span> <span class="n">AIMessage</span>
+</span><span id="__span-1-2"><a href="../memory.1.html#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_messages</span>
+</span><span id="__span-1-3"><a href="../memory.1.html#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="c1"># ... other imports</span>
+</span><span id="__span-1-4"><a href="../memory.1.html#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a href="../memory.1.html#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-1-6"><a href="../memory.1.html#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a>    <span class="c1"># add_messages will default to upserting messages by ID to the existing list</span>
+</span><span id="__span-1-7"><a href="../memory.1.html#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a>    <span class="c1"># if a RemoveMessage is returned, it will delete the message in the list by ID</span>
+</span><span id="__span-1-8"><a href="../memory.1.html#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a>    <span class="n">messages</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">list</span><span class="p">,</span> <span class="n">add_messages</span><span class="p">]</span>
+</span><span id="__span-1-9"><a href="../memory.1.html#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a href="../memory.1.html#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_node_1</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">):</span>
+</span><span id="__span-1-11"><a href="../memory.1.html#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a>    <span class="c1"># Add an AI message to the `messages` list in the state</span>
+</span><span id="__span-1-12"><a href="../memory.1.html#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"messages"</span><span class="p">:</span> <span class="p">[</span><span class="n">AIMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">"Hi"</span><span class="p">)]}</span>
+</span><span id="__span-1-13"><a href="../memory.1.html#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a href="../memory.1.html#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_node_2</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">):</span>
+</span><span id="__span-1-15"><a href="../memory.1.html#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a>    <span class="c1"># Delete all but the last 2 messages from the `messages` list in the state</span>
+</span><span id="__span-1-16"><a href="../memory.1.html#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a>    <span class="n">delete_messages</span> <span class="o">=</span> <span class="p">[</span><span class="n">RemoveMessage</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">state</span><span class="p">[</span><span class="s1">'messages'</span><span class="p">][:</span><span class="o">-</span><span class="mi">2</span><span class="p">]]</span>
+</span><span id="__span-1-17"><a href="../memory.1.html#__codelineno-1-17" id="__codelineno-1-17" name="__codelineno-1-17"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"messages"</span><span class="p">:</span> <span class="n">delete_messages</span><span class="p">}</span>
+</span></code></pre></div>
+<p>在上面的示例中，<code>add_messages</code> reducer允许我们将新消息<a href="../low_level.1.html#serialization">追加</a>到<code>messages</code>状态键，如<code>my_node_1</code>中所示。当它看到一个<code>RemoveMessage</code>时，它将从列表中删除该ID的消息（然后<code>RemoveMessage</code>将被丢弃）。有关LangChain特定消息处理的更多信息，请查看<a href="../../how-tos/memory/delete-messages/index.html">此关于使用<code>RemoveMessage</code>的操作指南</a>。</p>
+<p>有关示例用法，请参阅此操作<a href="../../how-tos/memory/manage-conversation-history/index.html">指南</a>以及我们<a href="https://github.com/langchain-ai/langchain-academy/tree/main/module-2">LangChain Academy</a>课程的模块2。</p>
+<h3 id="summarizing-past-conversations">总结过往对话<a class="headerlink" href="../memory.1.html#summarizing-past-conversations" title="Permanent link">¶</a></h3>
+<p>如上所示，修剪或移除消息的问题在于，我们可能会因为消息队列的淘汰而丢失信息。因此，一些应用程序受益于使用聊天模型总结消息历史的更复杂方法。</p>
+<p><img alt="" src="../img/memory/summary.png"></p>
+<p>可以使用简单的提示和编排逻辑来实现此目的。例如，在LangGraph中，我们可以扩展<a href="../low_level.1.html#working-with-messages-in-graph-state">MessagesState</a>以包含一个<code>summary</code>键。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a href="../memory.1.html#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessagesState</span>
+</span><span id="__span-2-2"><a href="../memory.1.html#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">MessagesState</span><span class="p">):</span>
+</span><span id="__span-2-3"><a href="../memory.1.html#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="n">summary</span><span class="p">:</span> <span class="nb">str</span>
+</span></code></pre></div>
+<p>然后，我们可以生成聊天历史的摘要，使用任何现有摘要作为下一个摘要的上下文。这个<code>summarize_conversation</code>节点可以在<code>messages</code>状态键中积累一定数量的消息后被调用。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a href="../memory.1.html#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">summarize_conversation</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">):</span>
+</span><span id="__span-3-2"><a href="../memory.1.html#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a href="../memory.1.html#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="c1"># First, we get any existing summary</span>
+</span><span id="__span-3-4"><a href="../memory.1.html#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>    <span class="n">summary</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"summary"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
+</span><span id="__span-3-5"><a href="../memory.1.html#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a href="../memory.1.html#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>    <span class="c1"># Create our summarization prompt</span>
+</span><span id="__span-3-7"><a href="../memory.1.html#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>    <span class="k">if</span> <span class="n">summary</span><span class="p">:</span>
+</span><span id="__span-3-8"><a href="../memory.1.html#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a href="../memory.1.html#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a>        <span class="c1"># A summary already exists</span>
+</span><span id="__span-3-10"><a href="../memory.1.html#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a>        <span class="n">summary_message</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-3-11"><a href="../memory.1.html#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a>            <span class="sa">f</span><span class="s2">"This is a summary of the conversation to date: </span><span class="si">{</span><span class="n">summary</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">"</span>
+</span><span id="__span-3-12"><a href="../memory.1.html#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a>            <span class="s2">"Extend the summary by taking into account the new messages above:"</span>
+</span><span id="__span-3-13"><a href="../memory.1.html#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a>        <span class="p">)</span>
+</span><span id="__span-3-14"><a href="../memory.1.html#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a>
+</span><span id="__span-3-15"><a href="../memory.1.html#__codelineno-3-15" id="__codelineno-3-15" name="__codelineno-3-15"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-3-16"><a href="../memory.1.html#__codelineno-3-16" id="__codelineno-3-16" name="__codelineno-3-16"></a>        <span class="n">summary_message</span> <span class="o">=</span> <span class="s2">"Create a summary of the conversation above:"</span>
+</span><span id="__span-3-17"><a href="../memory.1.html#__codelineno-3-17" id="__codelineno-3-17" name="__codelineno-3-17"></a>
+</span><span id="__span-3-18"><a href="../memory.1.html#__codelineno-3-18" id="__codelineno-3-18" name="__codelineno-3-18"></a>    <span class="c1"># Add prompt to our history</span>
+</span><span id="__span-3-19"><a href="../memory.1.html#__codelineno-3-19" id="__codelineno-3-19" name="__codelineno-3-19"></a>    <span class="n">messages</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">HumanMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="n">summary_message</span><span class="p">)]</span>
+</span><span id="__span-3-20"><a href="../memory.1.html#__codelineno-3-20" id="__codelineno-3-20" name="__codelineno-3-20"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
+</span><span id="__span-3-21"><a href="../memory.1.html#__codelineno-3-21" id="__codelineno-3-21" name="__codelineno-3-21"></a>
+</span><span id="__span-3-22"><a href="../memory.1.html#__codelineno-3-22" id="__codelineno-3-22" name="__codelineno-3-22"></a>    <span class="c1"># Delete all but the 2 most recent messages</span>
+</span><span id="__span-3-23"><a href="../memory.1.html#__codelineno-3-23" id="__codelineno-3-23" name="__codelineno-3-23"></a>    <span class="n">delete_messages</span> <span class="o">=</span> <span class="p">[</span><span class="n">RemoveMessage</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">state</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">][:</span><span class="o">-</span><span class="mi">2</span><span class="p">]]</span>
+</span><span id="__span-3-24"><a href="../memory.1.html#__codelineno-3-24" id="__codelineno-3-24" name="__codelineno-3-24"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"summary"</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">"messages"</span><span class="p">:</span> <span class="n">delete_messages</span><span class="p">}</span>
+</span></code></pre></div>
+<p>有关示例用法，请参阅<a href="../../how-tos/memory/add-summary-conversation-history/index.html">此处</a>的此操作指南，以及我们<a href="https://github.com/langchain-ai/langchain-academy/tree/main/module-2">LangChain Academy</a>课程的模块2。</p>
+<h3 id="knowing-when-to-remove-messages">知道<strong>何时</strong>移除消息<a class="headerlink" href="../memory.1.html#knowing-when-to-remove-messages" title="Permanent link">¶</a></h3>
+<p>大多数LLM都有一个最大支持的上下文窗口（以token计）。一个决定何时截断消息的简单方法是计算消息历史中的token数量，并在接近该限制时进行截断。简单的截断很容易自行实现，尽管有一些“陷阱”。一些模型API进一步限制了消息类型的顺序（必须以人类消息开始，不能有连续的相同类型的消息等）。如果你正在使用LangChain，你可以使用<a href="https://python.langchain.ac.cn/docs/how_to/trim_messages/#trimming-based-on-token-count"><code>trim_messages</code></a>实用程序，并指定要从列表中保留的token数量，以及用于处理边界的<code>strategy</code>（例如，保留最后<code>max_tokens</code>）。</p>
+<p>下面是一个例子。</p>
+<p><sup><i>API参考：<a href="https://python.langchain.ac.cn/api_reference/core/messages/langchain_core.messages.utils.trim_messages.html">trim_messages</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a href="../memory.1.html#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">trim_messages</span>
+</span><span id="__span-4-2"><a href="../memory.1.html#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="n">trim_messages</span><span class="p">(</span>
+</span><span id="__span-4-3"><a href="../memory.1.html#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="n">messages</span><span class="p">,</span>
+</span><span id="__span-4-4"><a href="../memory.1.html#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>    <span class="c1"># Keep the last &lt;= n_count tokens of the messages.</span>
+</span><span id="__span-4-5"><a href="../memory.1.html#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a>    <span class="n">strategy</span><span class="o">=</span><span class="s2">"last"</span><span class="p">,</span>
+</span><span id="__span-4-6"><a href="../memory.1.html#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a>    <span class="c1"># Remember to adjust based on your model</span>
+</span><span id="__span-4-7"><a href="../memory.1.html#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a>    <span class="c1"># or else pass a custom token_encoder</span>
+</span><span id="__span-4-8"><a href="../memory.1.html#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a>    <span class="n">token_counter</span><span class="o">=</span><span class="n">ChatOpenAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"gpt-4"</span><span class="p">),</span>
+</span><span id="__span-4-9"><a href="../memory.1.html#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a>    <span class="c1"># Remember to adjust based on the desired conversation</span>
+</span><span id="__span-4-10"><a href="../memory.1.html#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a>    <span class="c1"># length</span>
+</span><span id="__span-4-11"><a href="../memory.1.html#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a>    <span class="n">max_tokens</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span>
+</span><span id="__span-4-12"><a href="../memory.1.html#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a>    <span class="c1"># Most chat models expect that chat history starts with either:</span>
+</span><span id="__span-4-13"><a href="../memory.1.html#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a>    <span class="c1"># (1) a HumanMessage or</span>
+</span><span id="__span-4-14"><a href="../memory.1.html#__codelineno-4-14" id="__codelineno-4-14" name="__codelineno-4-14"></a>    <span class="c1"># (2) a SystemMessage followed by a HumanMessage</span>
+</span><span id="__span-4-15"><a href="../memory.1.html#__codelineno-4-15" id="__codelineno-4-15" name="__codelineno-4-15"></a>    <span class="n">start_on</span><span class="o">=</span><span class="s2">"human"</span><span class="p">,</span>
+</span><span id="__span-4-16"><a href="../memory.1.html#__codelineno-4-16" id="__codelineno-4-16" name="__codelineno-4-16"></a>    <span class="c1"># Most chat models expect that chat history ends with either:</span>
+</span><span id="__span-4-17"><a href="../memory.1.html#__codelineno-4-17" id="__codelineno-4-17" name="__codelineno-4-17"></a>    <span class="c1"># (1) a HumanMessage or</span>
+</span><span id="__span-4-18"><a href="../memory.1.html#__codelineno-4-18" id="__codelineno-4-18" name="__codelineno-4-18"></a>    <span class="c1"># (2) a ToolMessage</span>
+</span><span id="__span-4-19"><a href="../memory.1.html#__codelineno-4-19" id="__codelineno-4-19" name="__codelineno-4-19"></a>    <span class="n">end_on</span><span class="o">=</span><span class="p">(</span><span class="s2">"human"</span><span class="p">,</span> <span class="s2">"tool"</span><span class="p">),</span>
+</span><span id="__span-4-20"><a href="../memory.1.html#__codelineno-4-20" id="__codelineno-4-20" name="__codelineno-4-20"></a>    <span class="c1"># Usually, we want to keep the SystemMessage</span>
+</span><span id="__span-4-21"><a href="../memory.1.html#__codelineno-4-21" id="__codelineno-4-21" name="__codelineno-4-21"></a>    <span class="c1"># if it's present in the original history.</span>
+</span><span id="__span-4-22"><a href="../memory.1.html#__codelineno-4-22" id="__codelineno-4-22" name="__codelineno-4-22"></a>    <span class="c1"># The SystemMessage has special instructions for the model.</span>
+</span><span id="__span-4-23"><a href="../memory.1.html#__codelineno-4-23" id="__codelineno-4-23" name="__codelineno-4-23"></a>    <span class="n">include_system</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-4-24"><a href="../memory.1.html#__codelineno-4-24" id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="long-term-memory">长期记忆<a class="headerlink" href="../memory.1.html#long-term-memory" title="Permanent link">¶</a></h2>
+<p>LangGraph中的长期记忆允许系统在不同的对话或会话中保留信息。与<strong>线程范围</strong>的短期记忆不同，长期记忆保存在自定义的“命名空间”中。</p>
+<h3 id="storing-memories">存储记忆<a class="headerlink" href="../memory.1.html#storing-memories" title="Permanent link">¶</a></h3>
+<p>LangGraph将长期记忆作为JSON文档存储在<a href="../persistence.1.html#memory-store">存储</a>中（<a href="../../reference/store/index.html#langgraph.store.base.BaseStore">参考文档</a>）。每个记忆都组织在一个自定义的<code>namespace</code>（类似于文件夹）和一个独特的<code>key</code>（像文件名）之下。命名空间通常包括用户或组织ID或其他标签，以便于组织信息。这种结构实现了记忆的层次化组织。通过内容过滤器支持跨命名空间搜索。请参阅下面的示例。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a href="../memory.1.html#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.store.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">InMemoryStore</span>
+</span><span id="__span-5-2"><a href="../memory.1.html#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a href="../memory.1.html#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a href="../memory.1.html#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">embed</span><span class="p">(</span><span class="n">texts</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+</span><span id="__span-5-5"><a href="../memory.1.html#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>    <span class="c1"># Replace with an actual embedding function or LangChain embeddings object</span>
+</span><span id="__span-5-6"><a href="../memory.1.html#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a>    <span class="k">return</span> <span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">texts</span><span class="p">)]</span>
+</span><span id="__span-5-7"><a href="../memory.1.html#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a href="../memory.1.html#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a>
+</span><span id="__span-5-9"><a href="../memory.1.html#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="c1"># InMemoryStore saves data to an in-memory dictionary. Use a DB-backed store in production use.</span>
+</span><span id="__span-5-10"><a href="../memory.1.html#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="n">store</span> <span class="o">=</span> <span class="n">InMemoryStore</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">{</span><span class="s2">"embed"</span><span class="p">:</span> <span class="n">embed</span><span class="p">,</span> <span class="s2">"dims"</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+</span><span id="__span-5-11"><a href="../memory.1.html#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="n">user_id</span> <span class="o">=</span> <span class="s2">"my-user"</span>
+</span><span id="__span-5-12"><a href="../memory.1.html#__codelineno-5-12" id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="n">application_context</span> <span class="o">=</span> <span class="s2">"chitchat"</span>
+</span><span id="__span-5-13"><a href="../memory.1.html#__codelineno-5-13" id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="n">namespace</span> <span class="o">=</span> <span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">application_context</span><span class="p">)</span>
+</span><span id="__span-5-14"><a href="../memory.1.html#__codelineno-5-14" id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">(</span>
+</span><span id="__span-5-15"><a href="../memory.1.html#__codelineno-5-15" id="__codelineno-5-15" name="__codelineno-5-15"></a>    <span class="n">namespace</span><span class="p">,</span>
+</span><span id="__span-5-16"><a href="../memory.1.html#__codelineno-5-16" id="__codelineno-5-16" name="__codelineno-5-16"></a>    <span class="s2">"a-memory"</span><span class="p">,</span>
+</span><span id="__span-5-17"><a href="../memory.1.html#__codelineno-5-17" id="__codelineno-5-17" name="__codelineno-5-17"></a>    <span class="p">{</span>
+</span><span id="__span-5-18"><a href="../memory.1.html#__codelineno-5-18" id="__codelineno-5-18" name="__codelineno-5-18"></a>        <span class="s2">"rules"</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="__span-5-19"><a href="../memory.1.html#__codelineno-5-19" id="__codelineno-5-19" name="__codelineno-5-19"></a>            <span class="s2">"User likes short, direct language"</span><span class="p">,</span>
+</span><span id="__span-5-20"><a href="../memory.1.html#__codelineno-5-20" id="__codelineno-5-20" name="__codelineno-5-20"></a>            <span class="s2">"User only speaks English &amp; python"</span><span class="p">,</span>
+</span><span id="__span-5-21"><a href="../memory.1.html#__codelineno-5-21" id="__codelineno-5-21" name="__codelineno-5-21"></a>        <span class="p">],</span>
+</span><span id="__span-5-22"><a href="../memory.1.html#__codelineno-5-22" id="__codelineno-5-22" name="__codelineno-5-22"></a>        <span class="s2">"my-key"</span><span class="p">:</span> <span class="s2">"my-value"</span><span class="p">,</span>
+</span><span id="__span-5-23"><a href="../memory.1.html#__codelineno-5-23" id="__codelineno-5-23" name="__codelineno-5-23"></a>    <span class="p">},</span>
+</span><span id="__span-5-24"><a href="../memory.1.html#__codelineno-5-24" id="__codelineno-5-24" name="__codelineno-5-24"></a><span class="p">)</span>
+</span><span id="__span-5-25"><a href="../memory.1.html#__codelineno-5-25" id="__codelineno-5-25" name="__codelineno-5-25"></a><span class="c1"># get the "memory" by ID</span>
+</span><span id="__span-5-26"><a href="../memory.1.html#__codelineno-5-26" id="__codelineno-5-26" name="__codelineno-5-26"></a><span class="n">item</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="s2">"a-memory"</span><span class="p">)</span>
+</span><span id="__span-5-27"><a href="../memory.1.html#__codelineno-5-27" id="__codelineno-5-27" name="__codelineno-5-27"></a><span class="c1"># search for "memories" within this namespace, filtering on content equivalence, sorted by vector similarity</span>
+</span><span id="__span-5-28"><a href="../memory.1.html#__codelineno-5-28" id="__codelineno-5-28" name="__codelineno-5-28"></a><span class="n">items</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
+</span><span id="__span-5-29"><a href="../memory.1.html#__codelineno-5-29" id="__codelineno-5-29" name="__codelineno-5-29"></a>    <span class="n">namespace</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="p">{</span><span class="s2">"my-key"</span><span class="p">:</span> <span class="s2">"my-value"</span><span class="p">},</span> <span class="n">query</span><span class="o">=</span><span class="s2">"language preferences"</span>
+</span><span id="__span-5-30"><a href="../memory.1.html#__codelineno-5-30" id="__codelineno-5-30" name="__codelineno-5-30"></a><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="framework-for-thinking-about-long-term-memory">长期记忆的思考框架<a class="headerlink" href="../memory.1.html#framework-for-thinking-about-long-term-memory" title="Permanent link">¶</a></h3>
+<p>长期记忆是一个复杂的挑战，没有一劳永逸的解决方案。然而，以下问题提供了一个结构化框架，帮助你探索不同的技术</p>
+<p><strong>记忆的类型是什么？</strong></p>
+<p>人类利用记忆来记住<a href="https://en.wikipedia.org/wiki/Semantic_memory">事实</a>、<a href="https://en.wikipedia.org/wiki/Episodic_memory">经验</a>和<a href="https://en.wikipedia.org/wiki/Procedural_memory">规则</a>。AI代理也可以以相同的方式使用记忆。例如，AI代理可以使用记忆来记住关于用户的具体事实以完成任务。我们将在<a href="../memory.1.html#memory-types">下面的部分</a>中详细介绍几种记忆类型。</p>
+<p><strong>你希望何时更新记忆？</strong></p>
+<p>记忆可以作为代理应用程序逻辑的一部分进行更新（例如，“在热路径上”）。在这种情况下，代理通常在响应用户之前决定记住事实。或者，记忆可以作为后台任务进行更新（在后台/异步运行并生成记忆的逻辑）。我们将在<a href="../memory.1.html#writing-memories">下面的部分</a>中解释这些方法之间的权衡。</p>
+<h2 id="memory-types">记忆类型<a class="headerlink" href="../memory.1.html#memory-types" title="Permanent link">¶</a></h2>
+<p>不同的应用程序需要各种类型的记忆。尽管类比并不完美，但研究<a href="https://www.psychologytoday.com/us/basics/memory/types-of-memory?ref=blog.langchain.dev">人类记忆类型</a>可以提供深刻的见解。一些研究（例如，<a href="https://arxiv.org/pdf/2309.02427">CoALA论文</a>）甚至将这些人类记忆类型映射到了AI代理中使用的类型。</p>
+<table>
+<thead>
+<tr>
+<th>记忆类型</th>
+<th>存储内容</th>
+<th>人类示例</th>
+<th>代理示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>语义</td>
+<td>事实</td>
+<td>我在学校学到的东西</td>
+<td>关于用户的事实</td>
+</tr>
+<tr>
+<td>情景</td>
+<td>经验</td>
+<td>我做过的事情</td>
+<td>代理过去的行动</td>
+</tr>
+<tr>
+<td>程序</td>
+<td>指令</td>
+<td>本能或运动技能</td>
+<td>代理系统提示</td>
+</tr>
+</tbody>
+</table>
+<h3 id="semantic-memory">语义记忆<a class="headerlink" href="../memory.1.html#semantic-memory" title="Permanent link">¶</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/Semantic_memory">语义记忆</a>，无论是对人类还是AI代理，都涉及特定事实和概念的保留。在人类中，它可能包括在学校学到的信息以及对概念及其关系的理解。对于AI代理，语义记忆通常用于通过记住过去交互中的事实或概念来个性化应用程序。</p>
+<blockquote>
+<p>注意：不要与“语义搜索”混淆，后者是使用“意义”（通常作为嵌入）查找相似内容的技术。语义记忆是心理学中的一个术语，指的是存储事实和知识，而语义搜索是根据意义而非精确匹配检索信息的方法。</p>
+</blockquote>
+<h4 id="profile">个人资料<a class="headerlink" href="../memory.1.html#profile" title="Permanent link">¶</a></h4>
+<p>语义记忆可以通过不同方式进行管理。例如，记忆可以是一个单一的、持续更新的“配置文件”，其中包含关于用户、组织或其他实体（包括代理本身）的范围明确且具体的信息。配置文件通常只是一个JSON文档，包含你为表示你的领域而选择的各种键值对。</p>
+<p>在记忆配置文件时，你会希望确保每次都<strong>更新</strong>配置文件。因此，你会希望传入先前的配置文件并<a href="https://github.com/langchain-ai/memory-template">要求模型生成新的配置文件</a>（或应用于旧配置文件的某些<a href="https://github.com/hinthornw/trustcall">JSON补丁</a>）。随着配置文件变大，这可能会变得容易出错，并且可能受益于将配置文件拆分为多个文档或生成文档时进行<strong>严格</strong>解码，以确保记忆模式保持有效。</p>
+<p><img alt="" src="../img/memory/update-profile.png"></p>
+<h4 id="collection">集合<a class="headerlink" href="../memory.1.html#collection" title="Permanent link">¶</a></h4>
+<p>或者，记忆可以是一个文档集合，随着时间的推移不断更新和扩展。每个单独的记忆可以更狭窄地限定范围，更容易生成，这意味着你随着时间的推移<strong>丢失</strong>信息的可能性更小。LLM更容易为新信息生成<em>新</em>对象，而不是将新信息与现有配置文件进行协调。因此，文档集合往往会带来<a href="https://en.wikipedia.org/wiki/Precision_and_recall">更高的下游召回率</a>。</p>
+<p>然而，这会增加内存更新的复杂性。模型现在必须<em>删除</em>或<em>更新</em>列表中的现有项目，这可能很棘手。此外，某些模型可能默认过度插入，而另一些模型可能默认过度更新。请参阅<a href="https://github.com/hinthornw/trustcall">Trustcall</a>包以了解一种管理此问题的方法，并考虑使用评估工具（例如，使用<a href="https://langsmith.langchain.ac.cn/tutorials/Developers/evaluation">LangSmith</a>）来帮助你调整行为。</p>
+<p>处理文档集合也将复杂性转移到了列表的内存<strong>搜索</strong>上。<code>Store</code>目前支持<a href="../../reference/store/index.html#langgraph.store.base.SearchOp.query">语义搜索</a>和<a href="../../reference/store/index.html#langgraph.store.base.SearchOp.filter">按内容过滤</a>。</p>
+<p>最后，使用记忆集合可能会给模型提供全面的上下文带来挑战。尽管单个记忆可能遵循特定的模式，但这种结构可能无法捕捉记忆之间的完整上下文或关系。因此，在使用这些记忆生成响应时，模型可能缺乏在统一配置文件方法中更容易获得的重要上下文信息。</p>
+<p><img alt="" src="../img/memory/update-list.png"></p>
+<p>无论记忆管理方法如何，核心点是代理将使用语义记忆来<a href="https://python.langchain.ac.cn/docs/concepts/rag/">支撑其响应</a>，这通常会带来更个性化和相关的交互。</p>
+<h3 id="episodic-memory">情景记忆<a class="headerlink" href="../memory.1.html#episodic-memory" title="Permanent link">¶</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/Episodic_memory">情景记忆</a>，无论是对人类还是AI代理，都涉及回忆过去的事件或行动。<a href="https://arxiv.org/pdf/2309.02427">CoALA论文</a>对此作了很好的阐述：事实可以写入语义记忆，而<em>经验</em>可以写入情景记忆。对于AI代理，情景记忆通常用于帮助代理记住如何完成任务。</p>
+<p>在实践中，情景记忆通常通过<a href="https://python.langchain.ac.cn/docs/concepts/few_shot_prompting/">少样本提示</a>来实现，代理通过过去的序列学习来正确执行任务。有时“展示”比“告知”更容易，LLM从示例中学习得很好。少样本学习让你通过用输入-输出示例更新提示来<a href="https://x.com/karpathy/status/1627366413840322562">“编程”</a>你的LLM，以说明预期的行为。虽然可以使用各种<a href="https://python.langchain.ac.cn/docs/concepts/#1-generating-examples">最佳实践</a>来生成少样本示例，但挑战通常在于根据用户输入选择最相关的示例。</p>
+<p>请注意，记忆<a href="../persistence.1.html#memory-store">存储</a>只是将数据存储为少样本示例的一种方式。如果你想让开发者有更多参与，或者将少样本更紧密地与你的评估工具联系起来，你还可以使用<a href="https://langsmith.langchain.ac.cn/evaluation/how_to_guides/datasets/index_datasets_for_dynamic_few_shot_example_selection">LangSmith数据集</a>来存储你的数据。然后，动态少样本示例选择器可以开箱即用地实现此目标。LangSmith会为你索引数据集，并能够根据关键词相似性（<a href="https://langsmith.langchain.ac.cn/how_to_guides/datasets/index_datasets_for_dynamic_few_shot_example_selection">使用类似BM25的算法</a>进行关键词相似性）检索与用户输入最相关的少样本示例。</p>
+<p>有关LangSmith中动态少样本示例选择的示例用法，请参阅此操作<a href="https://www.youtube.com/watch?v=37VaU7e7t5o">视频</a>。此外，请参阅这篇<a href="https://blog.langchain.ac.cn/few-shot-prompting-to-improve-tool-calling-performance/">博客文章</a>，展示了如何使用少样本提示来提高工具调用性能，以及这篇<a href="https://blog.langchain.ac.cn/aligning-llm-as-a-judge-with-human-preferences/">博客文章</a>，如何使用少样本示例使LLM与人类偏好保持一致。</p>
+<h3 id="procedural-memory">程序记忆<a class="headerlink" href="../memory.1.html#procedural-memory" title="Permanent link">¶</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/Procedural_memory">程序记忆</a>，无论是对人类还是AI代理，都涉及记住执行任务所用的规则。在人类中，程序记忆就像内化的执行任务的知识，例如通过基本运动技能和平衡来骑自行车。另一方面，情景记忆涉及回忆特定经历，例如第一次成功不带辅助轮骑自行车，或者一次难忘的风景优美的自行车之旅。对于AI代理，程序记忆是模型权重、代理代码和代理提示的组合，它们共同决定了代理的功能。</p>
+<p>在实践中，代理修改其模型权重或重写其代码是相当不常见的。然而，代理修改自己的提示则更为常见。</p>
+<p>完善代理指令的一种有效方法是通过<a href="https://blog.langchain.ac.cn/reflection-agents/">“反思”</a>或元提示。这涉及用其当前指令（例如，系统提示）以及最近的对话或明确的用户反馈来提示代理。然后，代理根据这些输入完善自己的指令。这种方法对于难以预先指定指令的任务特别有用，因为它允许代理从其交互中学习和适应。</p>
+<p>例如，我们构建了一个<a href="https://www.youtube.com/watch?v=Vn8A3BxfplE">推文生成器</a>，它使用外部反馈和提示重写来生成高质量的论文摘要，用于Twitter。在这种情况下，特定的摘要提示很难<em>先验</em>指定，但用户很容易批评生成的推文并提供如何改进摘要过程的反馈。</p>
+<p>下面的伪代码展示了如何使用LangGraph内存<a href="../persistence.1.html#memory-store">存储</a>实现这一点，使用存储来保存提示，<code>update_instructions</code>节点获取当前提示（以及从与用户对话中捕获的<code>state["messages"]</code>中的反馈），更新提示，并将新提示保存回存储。然后，<code>call_model</code>从存储中获取更新的提示并使用它来生成响应。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a href="../memory.1.html#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1"># Node that *uses* the instructions</span>
+</span><span id="__span-6-2"><a href="../memory.1.html#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">call_model</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="n">BaseStore</span><span class="p">):</span>
+</span><span id="__span-6-3"><a href="../memory.1.html#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a>    <span class="n">namespace</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"agent_instructions"</span><span class="p">,</span> <span class="p">)</span>
+</span><span id="__span-6-4"><a href="../memory.1.html#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a>    <span class="n">instructions</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">namespace</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">"agent_a"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-6-5"><a href="../memory.1.html#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a>    <span class="c1"># Application logic</span>
+</span><span id="__span-6-6"><a href="../memory.1.html#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a>    <span class="n">prompt</span> <span class="o">=</span> <span class="n">prompt_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">instructions</span><span class="o">=</span><span class="n">instructions</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="s2">"instructions"</span><span class="p">])</span>
+</span><span id="__span-6-7"><a href="../memory.1.html#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a>    <span class="o">...</span>
+</span><span id="__span-6-8"><a href="../memory.1.html#__codelineno-6-8" id="__codelineno-6-8" name="__codelineno-6-8"></a>
+</span><span id="__span-6-9"><a href="../memory.1.html#__codelineno-6-9" id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="c1"># Node that updates instructions</span>
+</span><span id="__span-6-10"><a href="../memory.1.html#__codelineno-6-10" id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">update_instructions</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="n">BaseStore</span><span class="p">):</span>
+</span><span id="__span-6-11"><a href="../memory.1.html#__codelineno-6-11" id="__codelineno-6-11" name="__codelineno-6-11"></a>    <span class="n">namespace</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"instructions"</span><span class="p">,)</span>
+</span><span id="__span-6-12"><a href="../memory.1.html#__codelineno-6-12" id="__codelineno-6-12" name="__codelineno-6-12"></a>    <span class="n">current_instructions</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">namespace</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-6-13"><a href="../memory.1.html#__codelineno-6-13" id="__codelineno-6-13" name="__codelineno-6-13"></a>    <span class="c1"># Memory logic</span>
+</span><span id="__span-6-14"><a href="../memory.1.html#__codelineno-6-14" id="__codelineno-6-14" name="__codelineno-6-14"></a>    <span class="n">prompt</span> <span class="o">=</span> <span class="n">prompt_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">instructions</span><span class="o">=</span><span class="n">instructions</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="s2">"instructions"</span><span class="p">],</span> <span class="n">conversation</span><span class="o">=</span><span class="n">state</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">])</span>
+</span><span id="__span-6-15"><a href="../memory.1.html#__codelineno-6-15" id="__codelineno-6-15" name="__codelineno-6-15"></a>    <span class="n">output</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+</span><span id="__span-6-16"><a href="../memory.1.html#__codelineno-6-16" id="__codelineno-6-16" name="__codelineno-6-16"></a>    <span class="n">new_instructions</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="s1">'new_instructions'</span><span class="p">]</span>
+</span><span id="__span-6-17"><a href="../memory.1.html#__codelineno-6-17" id="__codelineno-6-17" name="__codelineno-6-17"></a>    <span class="n">store</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="s2">"agent_instructions"</span><span class="p">,),</span> <span class="s2">"agent_a"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"instructions"</span><span class="p">:</span> <span class="n">new_instructions</span><span class="p">})</span>
+</span><span id="__span-6-18"><a href="../memory.1.html#__codelineno-6-18" id="__codelineno-6-18" name="__codelineno-6-18"></a>    <span class="o">...</span>
+</span></code></pre></div>
+<p><img alt="" src="../img/memory/update-instructions.png"></p>
+<h2 id="writing-memories">写入记忆<a class="headerlink" href="../memory.1.html#writing-memories" title="Permanent link">¶</a></h2>
+<p>虽然<a href="https://medicine.yale.edu/news-article/sleeps-crucial-role-in-preserving-memory/">人类通常在睡眠期间形成长期记忆</a>，但AI代理需要不同的方法。代理何时以及如何创建新记忆？代理至少有两种主要方法来写入记忆：“热路径上”和“后台中”。</p>
+<p><img alt="" src="../img/memory/hot_path_vs_background.png"></p>
+<h3 id="writing-memories-in-the-hot-path">在热路径中写入记忆<a class="headerlink" href="../memory.1.html#writing-memories-in-the-hot-path" title="Permanent link">¶</a></h3>
+<p>在运行时创建记忆既有优点也有挑战。积极的一面是，这种方法允许实时更新，使新记忆立即可用于后续交互。它还实现了透明性，因为可以在创建和存储记忆时通知用户。</p>
+<p>然而，这种方法也带来了挑战。如果代理需要一个新工具来决定提交什么内容到内存中，它可能会增加复杂性。此外，思考要保存到内存中的过程可能会影响代理的延迟。最后，代理必须在记忆创建和其其他职责之间进行多任务处理，这可能会影响所创建记忆的数量和质量。</p>
+<p>例如，ChatGPT使用<a href="https://openai.com/index/memory-and-new-controls-for-chatgpt/">save_memories</a>工具将记忆作为内容字符串进行插入更新，并根据每条用户消息决定是否以及如何使用此工具。请参阅我们的<a href="https://github.com/langchain-ai/memory-agent">memory-agent</a>模板作为参考实现。</p>
+<h3 id="writing-memories-in-the-background">在后台写入记忆<a class="headerlink" href="../memory.1.html#writing-memories-in-the-background" title="Permanent link">¶</a></h3>
+<p>将记忆创建作为单独的后台任务具有多种优势。它消除了主应用程序中的延迟，将应用程序逻辑与内存管理分离，并允许代理更专注地完成任务。这种方法还提供了灵活的内存创建时间安排，以避免重复工作。</p>
+<p>然而，这种方法也有其自身的挑战。确定记忆写入的频率变得至关重要，因为不频繁的更新可能会导致其他线程缺少新的上下文。决定何时触发记忆形成也很重要。常见的策略包括在设定的时间段后安排（如果发生新事件则重新安排）、使用cron调度，或允许用户或应用程序逻辑手动触发。</p>
+<p>请参阅我们的<a href="https://github.com/langchain-ai/memory-template">memory-service</a>模板作为参考实现。</p>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>回到顶部</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Add persistence" class="md-footer__link md-footer__link--prev" href="../../how-tos/persistence.1.html"> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg> </div> <div class="md-footer__title"> <span class="md-footer__direction"> 上一个 </span> <div class="md-ellipsis"> 添加持久性 </div> </div> </a> <a aria-label="Next: Manage memory" class="md-footer__link md-footer__link--next" href="../../how-tos/memory/index.html"> <div class="md-footer__title"> <span class="md-footer__direction"> 下一个 </span> <div class="md-ellipsis"> 管理内存 </div> </div> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg> </div> </a></nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">版权所有 © 2025 LangChain, Inc | <a href="../memory.1.html#__consent">同意偏好</a></div>使用<a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank"> Material for MkDocs </a>制作</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.langchain.ac.cn/langgraphjs/" rel="noopener" target="_blank" title="langchain-ai.github.io">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 32v448h448V32zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6"></path></svg>
+</a>
+<a class="md-social__link" href="https://github.com/langchain-ai/langgraph" rel="noopener" target="_blank" title="github.com">
+<svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+<a class="md-social__link" href="https://twitter.com/LangChainAI" rel="noopener" target="_blank" title="twitter.com">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-progress" data-md-component="progress" role="progressbar"></div>
+<div class="md-consent" data-md-component="consent" hidden="" id="__consent">
+<div class="md-consent__overlay"></div>
+<aside class="md-consent__inner">
+<form class="md-consent__form md-grid md-typeset" name="consent">
+<h4>Cookie 同意</h4>
+<p>我们使用Cookie来识别您的重复访问和偏好，并衡量我们文档的有效性以及用户是否找到了他们正在寻找的内容。<strong>点击“接受”会使我们的文档变得更好。谢谢！</strong> ❤️</p>
+<input checked="" class="md-toggle" id="__settings" type="checkbox" />
+<div class="md-consent__settings">
+<ul class="task-list">
+<li class="task-list-item">
+<label class="task-list-control">
+<input checked="" name="github" type="checkbox" />
+<span class="task-list-indicator"></span> GitHub</label>
+</li>
+</ul>
+</div>
+<div class="md-consent__controls">
+<button class="md-button md-button--primary">接受</button>
+<button class="md-button md-button--primary" type="reset">拒绝</button>
+</div>
+</form>
+</aside>
+</div>
+<script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.action.edit", "content.tooltips", "navigation.indexes", "navigation.footer", "navigation.instant", "navigation.sections", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.prune", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+
+</body></html>

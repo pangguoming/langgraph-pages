@@ -1,0 +1,784 @@
+<!DOCTYPE html><html lang="zh-hans" class="no-js"><head><script>(l=location)[p='protocol'][5]||(l[p]='https')</script><meta name="referrer" content="no-referrer"><style>
+div[data-md-component=announce] {
+  display: none !important;
+}
+</style><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8543159550507237" crossorigin="anonymous"></script>
+
+<script>window.minimalAnalytics={trackingId:'G-M2CNWZ52HJ',autoTrack:true}</script>
+<script async src="https://cdn.jsdelivr.net.cn/npm/@minimal-analytics/ga4/dist/index.js"></script>
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<link href="index.html" rel="canonical" />
+<link href="../../static/favicon.png" rel="icon" />
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator" />
+<title>如何在多智能体应用中添加多轮对话（函数式 API） - LangChain 框架</title>
+<link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet" />
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Public+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet" />
+<style>:root{--md-text-font:"Public Sans";--md-code-font:"Roboto Mono"}</style>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+<link href="../../stylesheets/navigation_title_ovverides.css" rel="stylesheet" />
+<link href="../../stylesheets/version_admonitions.css" rel="stylesheet" />
+<link href="../../stylesheets/logos.css" rel="stylesheet" />
+<link href="../../stylesheets/sticky_navigation.css" rel="stylesheet" />
+<link href="../../stylesheets/agent_graph_widget.css" rel="stylesheet" />
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://#/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T35S4S46');</script>
+<!-- End Google Tag Manager -->
+<meta content="165B7E7C89E49946" name="algolia-site-verification" />
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Public+Sans&display=swap");
+    :root {
+      --md-primary-fg-color: #333333;
+      --md-accent-fg-color: #1E88E5;
+      --md-default-bg-color: #FFFFFF;
+      --md-default-fg-color: #333333;
+      --md-text-font-family: "Public Sans", sans-serif;
+    }
+
+    body {
+      font-family: var(--md-text-font-family);
+      background-color: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+    }
+
+    .md-main {
+      background-color: #FFFFFF;
+    }
+
+    .md-footer {
+      background-color: #F5F5F5;
+      color: #666666;
+    }
+
+    .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    .md-typeset a {
+      color: #1E88E5;
+    }
+
+    .md-typeset a:hover {
+      color: #1565C0;
+    }
+
+    .md-nav__link--active,
+    .md-nav__link:active {
+      color: #1E88E5;
+    }
+
+    .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    .md-search__input:hover,
+    .md-search__input:focus {
+      background-color: #EEEEEE;
+    }
+    /* Table of contents styles */
+    .md-nav--secondary .md-nav__item--active > .md-nav__link {
+      font-weight: bold;
+      color: var(--md-primary-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link {
+      font-weight: normal;
+      color: var(--md-default-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: var(--md-default-fg-color);
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+
+    [data-md-color-scheme="slate"] {
+      --md-default-bg-color: #1E1E1E;
+      --md-default-fg-color: #FFFFFF;
+      --md-accent-fg-color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-main {
+      background-color: #1E1E1E;
+    }
+
+    [data-md-color-scheme="slate"] .navbar {
+      background-color: #1E1E1E;
+      color: #FFFFFF;
+      box-shadow: none;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-header {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-tabs {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__icon {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input::placeholder {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a {
+      color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a:hover {
+      color: #90CAF9;
+    }
+
+    .notebook-links {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+    }
+    .notebook-links .md-content__button {
+      margin-left: 0.5rem;
+    }
+
+    [data-md-color-scheme=default] .logo-dark {
+      display: none !important;
+    }
+
+    [data-md-color-scheme=slate] .logo-light {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-CodeCell .jp-Cell-inputWrapper .jp-InputPrompt.jp-InputArea-prompt {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-Notebook .jp-Cell .jp-OutputPrompt {
+      display: none !important;
+    }
+
+    .md-banner {
+      background-color: #CFC9FA;
+      color: #000000;
+    }
+
+    .md-banner a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    .md-banner a:hover {
+      color: #000000;
+    }
+
+    .md-header__title {
+      visibility: hidden;
+    }
+
+    /* Dark mode banner links */
+    [data-md-color-scheme="slate"] .md-banner a {
+      color: #000000;
+    }
+
+    [data-md-color-scheme="slate"] .md-banner a:hover {
+      color: #000000;
+    }
+
+  </style>
+</head>
+<body data-md-color-accent="gray" data-md-color-primary="white" data-md-color-scheme="default" dir="ltr">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://#/ns.html?id=GTM-T35S4S46" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox" />
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox" />
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="index.html#how-to-add-multi-turn-conversation-in-a-multi-agent-application-functional-api">跳过内容</a>
+</div>
+<div data-md-component="announce">
+<aside class="md-banner">
+<div class="md-banner__inner md-grid md-typeset">
+<button aria-label="Don&#39;t show this again" class="md-banner__button md-icon">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+<strong>LangChain、LangGraph 和 LangSmith 正在发展壮大，并招聘多个职位。 <a href="https://langchain.ac.cn/careers" rel="noopener noreferrer" target="_blank"> 加入我们的团队！</a></strong>
+</div>
+<script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+</aside>
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="LangGraph" class="md-header__button md-logo" data-md-component="logo" href="../../index.html" title="LangGraph">
+<img alt="logo" class="logo-light" src="../../static/wordmark_dark.svg">
+<img alt="logo" class="logo-dark" src="../../static/wordmark_light.svg">
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">LangGraph</span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">如何在多智能体应用中添加多轮对话（函数式 API）</span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="gray" data-md-color-media="" data-md-color-primary="white" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="grey" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text" />
+<label class="md-search__icon md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">正在初始化搜索</div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../index.html">指南</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../reference/index.html">参考</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tutorials/rag/langgraph_agentic_rag/index.html">示例</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../concepts/faq/index.html">资源</a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="LangGraph" class="md-nav__button md-logo" data-md-component="logo" href="../../index.html" title="LangGraph"> <img alt="logo" class="logo-light" src="../../static/wordmark_dark.svg"> <img alt="logo" class="logo-dark" src="../../static/wordmark_light.svg"> </a> LangGraph</label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../index.html">
+<span class="md-ellipsis"> 指南 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../reference/index.html">
+<span class="md-ellipsis"> 参考 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../tutorials/rag/langgraph_agentic_rag/index.html">
+<span class="md-ellipsis"> 示例 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../concepts/faq/index.html">
+<span class="md-ellipsis"> 资源 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#setup">
+<span class="md-ellipsis">设置</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#test-multi-turn-conversation">
+<span class="md-ellipsis">测试多轮对话</span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<div class="notebook-links">
+</div>
+<a class="md-content__button md-icon" href="https://github.com/langchain-ai/langgraph/edit/main/docs/docs/how-tos/multi-agent-multi-turn-convo-functional.ipynb" title="Edit this page">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<h1 id="how-to-add-multi-turn-conversation-in-a-multi-agent-application-functional-api">如何在多智能体应用中添加多轮对话（函数式 API）<a class="headerlink" href="index.html#how-to-add-multi-turn-conversation-in-a-multi-agent-application-functional-api" title="永久链接">¶</a></h1>
+<div class="admonition info">
+<p class="admonition-title">先决条件</p>
+<p>本指南假定您熟悉以下内容</p>
+<ul>
+<li><a href="../../concepts/multi_agent.1.html">多智能体系统</a></li>
+<li><a href="../../concepts/human_in_the_loop.1.html">人在循环</a></li>
+<li><a href="../../concepts/functional_api.1.html">函数式 API</a></li>
+<li><a href="../../concepts/low_level.1.html#command">命令</a></li>
+<li><a href="../../concepts/low_level.1.html">LangGraph 词汇表</a></li>
+</ul>
+</div>
+<p>在本操作指南中，我们将构建一个应用程序，允许最终用户与一个或多个智能体进行<em>多轮对话</em>。我们将创建一个节点，它使用<a href="../../reference/types/index.html#langgraph.types.interrupt"><code>interrupt</code></a>来收集用户输入并路由回<strong>活动</strong>智能体。</p>
+<p>智能体将作为工作流中的任务实现，该工作流执行智能体步骤并确定下一步操作</p>
+<ol>
+<li><strong>等待用户输入</strong>以继续对话，或者</li>
+<li>通过<a href="../../concepts/multi_agent.1.html#handoffs"><strong>移交</strong></a><strong>路由到另一个智能体</strong>（或回到自身，例如在循环中）。</li>
+</ol>
+<p><sup><i>API 参考：<a href="../../reference/func/index.html#langgraph.func.entrypoint">entrypoint</a> | <a href="../../reference/func/index.html#langgraph.func.task">task</a> | <a href="../../reference/prebuilt/index.html#langgraph.prebuilt.chat_agent_executor.create_react_agent">create_react_agent</a> | <a href="https://python.langchain.ac.cn/api_reference/core/tools/langchain_core.tools.convert.tool.html">tool</a> | <a href="../../reference/types/index.html#langgraph.types.interrupt">interrupt</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.func</span><span class="w"> </span><span class="kn">import</span> <span class="n">entrypoint</span><span class="p">,</span> <span class="n">task</span>
+</span><span id="__span-0-2"><a href="index.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.prebuilt</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_react_agent</span>
+</span><span id="__span-0-3"><a href="index.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">tool</span>
+</span><span id="__span-0-4"><a href="index.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">interrupt</span>
+</span><span id="__span-0-5"><a href="index.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a href="index.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a href="index.html#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="c1"># Define a tool to signal intent to hand off to a different agent</span>
+</span><span id="__span-0-8"><a href="index.html#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="c1"># Note: this is not using Command(goto) syntax for navigating to different agents:</span>
+</span><span id="__span-0-9"><a href="index.html#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="c1"># `workflow()` below handles the handoffs explicitly</span>
+</span><span id="__span-0-10"><a href="index.html#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="nd">@tool</span><span class="p">(</span><span class="n">return_direct</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-0-11"><a href="index.html#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">transfer_to_hotel_advisor</span><span class="p">():</span>
+</span><span id="__span-0-12"><a href="index.html#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="sd">"""Ask hotel advisor agent for help."""</span>
+</span><span id="__span-0-13"><a href="index.html#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="k">return</span> <span class="s2">"Successfully transferred to hotel advisor"</span>
+</span><span id="__span-0-14"><a href="index.html#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a href="index.html#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a href="index.html#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="c1"># define an agent</span>
+</span><span id="__span-0-17"><a href="index.html#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="n">travel_advisor_tools</span> <span class="o">=</span> <span class="p">[</span><span class="n">transfer_to_hotel_advisor</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+</span><span id="__span-0-18"><a href="index.html#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="n">travel_advisor</span> <span class="o">=</span> <span class="n">create_react_agent</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">travel_advisor_tools</span><span class="p">)</span>
+</span><span id="__span-0-19"><a href="index.html#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a>
+</span><span id="__span-0-20"><a href="index.html#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a>
+</span><span id="__span-0-21"><a href="index.html#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="c1"># define a task that calls an agent</span>
+</span><span id="__span-0-22"><a href="index.html#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="nd">@task</span>
+</span><span id="__span-0-23"><a href="index.html#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="k">def</span><span class="w"> </span><span class="nf">call_travel_advisor</span><span class="p">(</span><span class="n">messages</span><span class="p">):</span>
+</span><span id="__span-0-24"><a href="index.html#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">travel_advisor</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">"messages"</span><span class="p">:</span> <span class="n">messages</span><span class="p">})</span>
+</span><span id="__span-0-25"><a href="index.html#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a>    <span class="k">return</span> <span class="n">response</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">]</span>
+</span><span id="__span-0-26"><a href="index.html#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a>
+</span><span id="__span-0-27"><a href="index.html#__codelineno-0-27" id="__codelineno-0-27" name="__codelineno-0-27"></a>
+</span><span id="__span-0-28"><a href="index.html#__codelineno-0-28" id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="c1"># define the multi-agent network workflow</span>
+</span><span id="__span-0-29"><a href="index.html#__codelineno-0-29" id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="nd">@entrypoint</span><span class="p">(</span><span class="n">checkpointer</span><span class="p">)</span>
+</span><span id="__span-0-30"><a href="index.html#__codelineno-0-30" id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="k">def</span><span class="w"> </span><span class="nf">workflow</span><span class="p">(</span><span class="n">messages</span><span class="p">):</span>
+</span><span id="__span-0-31"><a href="index.html#__codelineno-0-31" id="__codelineno-0-31" name="__codelineno-0-31"></a>    <span class="n">call_active_agent</span> <span class="o">=</span> <span class="n">call_travel_advisor</span>
+</span><span id="__span-0-32"><a href="index.html#__codelineno-0-32" id="__codelineno-0-32" name="__codelineno-0-32"></a>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-0-33"><a href="index.html#__codelineno-0-33" id="__codelineno-0-33" name="__codelineno-0-33"></a>        <span class="n">agent_messages</span> <span class="o">=</span> <span class="n">call_active_agent</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</span><span id="__span-0-34"><a href="index.html#__codelineno-0-34" id="__codelineno-0-34" name="__codelineno-0-34"></a>        <span class="n">ai_msg</span> <span class="o">=</span> <span class="n">get_last_ai_msg</span><span class="p">(</span><span class="n">agent_messages</span><span class="p">)</span>
+</span><span id="__span-0-35"><a href="index.html#__codelineno-0-35" id="__codelineno-0-35" name="__codelineno-0-35"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">ai_msg</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">:</span>
+</span><span id="__span-0-36"><a href="index.html#__codelineno-0-36" id="__codelineno-0-36" name="__codelineno-0-36"></a>            <span class="n">user_input</span> <span class="o">=</span> <span class="n">interrupt</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">"Ready for user input."</span><span class="p">)</span>
+</span><span id="__span-0-37"><a href="index.html#__codelineno-0-37" id="__codelineno-0-37" name="__codelineno-0-37"></a>            <span class="n">messages</span> <span class="o">=</span> <span class="n">messages</span> <span class="o">+</span> <span class="p">[{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="n">user_input</span><span class="p">}]</span>
+</span><span id="__span-0-38"><a href="index.html#__codelineno-0-38" id="__codelineno-0-38" name="__codelineno-0-38"></a>            <span class="k">continue</span>
+</span><span id="__span-0-39"><a href="index.html#__codelineno-0-39" id="__codelineno-0-39" name="__codelineno-0-39"></a>
+</span><span id="__span-0-40"><a href="index.html#__codelineno-0-40" id="__codelineno-0-40" name="__codelineno-0-40"></a>        <span class="n">messages</span> <span class="o">=</span> <span class="n">messages</span> <span class="o">+</span> <span class="n">agent_messages</span>
+</span><span id="__span-0-41"><a href="index.html#__codelineno-0-41" id="__codelineno-0-41" name="__codelineno-0-41"></a>        <span class="n">call_active_agent</span> <span class="o">=</span> <span class="n">get_next_agent</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
+</span><span id="__span-0-42"><a href="index.html#__codelineno-0-42" id="__codelineno-0-42" name="__codelineno-0-42"></a>    <span class="k">return</span> <span class="n">entrypoint</span><span class="o">.</span><span class="n">final</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">agent_messages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">save</span><span class="o">=</span><span class="n">messages</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="setup">设置<a class="headerlink" href="index.html#setup" title="永久链接">¶</a></h2>
+<p>首先，让我们安装所需的软件包</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a href="index.html#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1"># %%capture --no-stderr</span>
+</span><span id="__span-1-2"><a href="index.html#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="c1"># %pip install -U langgraph langchain-anthropic</span>
+</span></code></pre></div>
+<p></p><div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a href="index.html#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">getpass</span>
+</span><span id="__span-2-2"><a href="index.html#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</span><span id="__span-2-3"><a href="index.html#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a href="index.html#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a href="index.html#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">_set_env</span><span class="p">(</span><span class="n">var</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+</span><span id="__span-2-6"><a href="index.html#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>
+</span><span id="__span-2-7"><a href="index.html#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a>        <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">: "</span><span class="p">)</span>
+</span><span id="__span-2-8"><a href="index.html#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a>
+</span><span id="__span-2-9"><a href="index.html#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a href="index.html#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="n">_set_env</span><span class="p">(</span><span class="s2">"ANTHROPIC_API_KEY"</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-output highlight"><pre><span></span><code><span id="__span-3-1"><a href="index.html#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">ANTHROPIC_API_KEY:  ········</span>
+</span></code></pre></div><p></p>
+<div class="admonition tip">
+<p class="admonition-title">为 LangGraph 开发设置<a href="https://smith.langchain.com">LangSmith</a></p>
+<p style="padding-top: 5px;">注册 LangSmith 以快速发现问题并提高 LangGraph 项目的性能。LangSmith 允许您使用跟踪数据来调试、测试和监控您使用 LangGraph 构建的 LLM 应用程序 — 在此处阅读更多关于如何开始的信息<a href="https://langsmith.langchain.ac.cn">。</a></p>
+</div>
+<p>在此示例中，我们将构建一个旅行助手智能体团队，它们可以相互通信。</p>
+<p>我们将创建 2 个智能体</p>
+<ul>
+<li><code>travel_advisor</code>：可以帮助推荐旅行目的地。可以向<code>hotel_advisor</code>寻求帮助。</li>
+<li><code>hotel_advisor</code>：可以帮助推荐酒店。可以向<code>travel_advisor</code>寻求帮助。</li>
+</ul>
+<p>这是一个完全连接的网络——每个智能体都可以与其他任何智能体对话。</p>
+<p><sup><i>API 参考：<a href="https://python.langchain.ac.cn/api_reference/core/tools/langchain_core.tools.convert.tool.html">tool</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a href="index.html#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+</span><span id="__span-4-2"><a href="index.html#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Literal</span>
+</span><span id="__span-4-3"><a href="index.html#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">tool</span>
+</span><span id="__span-4-4"><a href="index.html#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a href="index.html#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a href="index.html#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="nd">@tool</span>
+</span><span id="__span-4-7"><a href="index.html#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_travel_recommendations</span><span class="p">():</span>
+</span><span id="__span-4-8"><a href="index.html#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">    </span><span class="sd">"""Get recommendation for travel destinations"""</span>
+</span><span id="__span-4-9"><a href="index.html#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a>    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"aruba"</span><span class="p">,</span> <span class="s2">"turks and caicos"</span><span class="p">])</span>
+</span><span id="__span-4-10"><a href="index.html#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a href="index.html#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a>
+</span><span id="__span-4-12"><a href="index.html#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="nd">@tool</span>
+</span><span id="__span-4-13"><a href="index.html#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_hotel_recommendations</span><span class="p">(</span><span class="n">location</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">"aruba"</span><span class="p">,</span> <span class="s2">"turks and caicos"</span><span class="p">]):</span>
+</span><span id="__span-4-14"><a href="index.html#__codelineno-4-14" id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">    </span><span class="sd">"""Get hotel recommendations for a given destination."""</span>
+</span><span id="__span-4-15"><a href="index.html#__codelineno-4-15" id="__codelineno-4-15" name="__codelineno-4-15"></a>    <span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-4-16"><a href="index.html#__codelineno-4-16" id="__codelineno-4-16" name="__codelineno-4-16"></a>        <span class="s2">"aruba"</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="__span-4-17"><a href="index.html#__codelineno-4-17" id="__codelineno-4-17" name="__codelineno-4-17"></a>            <span class="s2">"The Ritz-Carlton, Aruba (Palm Beach)"</span>
+</span><span id="__span-4-18"><a href="index.html#__codelineno-4-18" id="__codelineno-4-18" name="__codelineno-4-18"></a>            <span class="s2">"Bucuti &amp; Tara Beach Resort (Eagle Beach)"</span>
+</span><span id="__span-4-19"><a href="index.html#__codelineno-4-19" id="__codelineno-4-19" name="__codelineno-4-19"></a>        <span class="p">],</span>
+</span><span id="__span-4-20"><a href="index.html#__codelineno-4-20" id="__codelineno-4-20" name="__codelineno-4-20"></a>        <span class="s2">"turks and caicos"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Grace Bay Club"</span><span class="p">,</span> <span class="s2">"COMO Parrot Cay"</span><span class="p">],</span>
+</span><span id="__span-4-21"><a href="index.html#__codelineno-4-21" id="__codelineno-4-21" name="__codelineno-4-21"></a>    <span class="p">}[</span><span class="n">location</span><span class="p">]</span>
+</span><span id="__span-4-22"><a href="index.html#__codelineno-4-22" id="__codelineno-4-22" name="__codelineno-4-22"></a>
+</span><span id="__span-4-23"><a href="index.html#__codelineno-4-23" id="__codelineno-4-23" name="__codelineno-4-23"></a>
+</span><span id="__span-4-24"><a href="index.html#__codelineno-4-24" id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="nd">@tool</span><span class="p">(</span><span class="n">return_direct</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-4-25"><a href="index.html#__codelineno-4-25" id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="k">def</span><span class="w"> </span><span class="nf">transfer_to_hotel_advisor</span><span class="p">():</span>
+</span><span id="__span-4-26"><a href="index.html#__codelineno-4-26" id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="w">    </span><span class="sd">"""Ask hotel advisor agent for help."""</span>
+</span><span id="__span-4-27"><a href="index.html#__codelineno-4-27" id="__codelineno-4-27" name="__codelineno-4-27"></a>    <span class="k">return</span> <span class="s2">"Successfully transferred to hotel advisor"</span>
+</span><span id="__span-4-28"><a href="index.html#__codelineno-4-28" id="__codelineno-4-28" name="__codelineno-4-28"></a>
+</span><span id="__span-4-29"><a href="index.html#__codelineno-4-29" id="__codelineno-4-29" name="__codelineno-4-29"></a>
+</span><span id="__span-4-30"><a href="index.html#__codelineno-4-30" id="__codelineno-4-30" name="__codelineno-4-30"></a><span class="nd">@tool</span><span class="p">(</span><span class="n">return_direct</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-4-31"><a href="index.html#__codelineno-4-31" id="__codelineno-4-31" name="__codelineno-4-31"></a><span class="k">def</span><span class="w"> </span><span class="nf">transfer_to_travel_advisor</span><span class="p">():</span>
+</span><span id="__span-4-32"><a href="index.html#__codelineno-4-32" id="__codelineno-4-32" name="__codelineno-4-32"></a><span class="w">    </span><span class="sd">"""Ask travel advisor agent for help."""</span>
+</span><span id="__span-4-33"><a href="index.html#__codelineno-4-33" id="__codelineno-4-33" name="__codelineno-4-33"></a>    <span class="k">return</span> <span class="s2">"Successfully transferred to travel advisor"</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">移交工具</p>
+<p>您可能已经注意到，我们在移交工具中使用了<code>@tool(return_direct=True)</code>。这样做是为了让单个智能体（例如，<code>travel_advisor</code>）在调用这些工具后可以提前退出 ReAct 循环。这是期望的行为，因为我们希望检测智能体何时调用此工具并<em>立即</em>将控制权移交给不同的智能体。</p>
+<p><strong>注意</strong>：这旨在与预构建的<a class="autorefs autorefs-internal" href="../../reference/agents.1.html#langgraph.prebuilt.chat_agent_executor.create_react_agent" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-function&quot;></code> <span class=&quot;doc doc-object-name doc-function-name&quot;>create_react_agent</span>"><code>create_react_agent</code></a>一起使用——如果您正在构建自定义智能体，请确保手动添加处理带有<code>return_direct</code>标记的工具的提前退出逻辑。</p>
+</div>
+<p>现在，让我们使用预构建的<a class="autorefs autorefs-internal" href="../../reference/agents.1.html#langgraph.prebuilt.chat_agent_executor.create_react_agent" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-function&quot;></code> <span class=&quot;doc doc-object-name doc-function-name&quot;>create_react_agent</span>"><code>create_react_agent</code></a>和我们的多智能体工作流创建智能体。请注意，我们将在每次从每个智能体获得最终响应后调用<a class="autorefs autorefs-internal" href="../../reference/types/index.html#langgraph.types.interrupt" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-function&quot;></code> <span class=&quot;doc doc-object-name doc-function-name&quot;>interrupt</span>"><code>interrupt</code></a>。</p>
+<p><sup><i>API 参考：<a href="https://python.langchain.ac.cn/api_reference/core/messages/langchain_core.messages.ai.AIMessage.html">AIMessage</a> | <a href="https://python.langchain.ac.cn/api_reference/anthropic/chat_models/langchain_anthropic.chat_models.ChatAnthropic.html">ChatAnthropic</a> | <a href="../../reference/prebuilt/index.html#langgraph.prebuilt.chat_agent_executor.create_react_agent">create_react_agent</a> | <a href="../../reference/graphs/index.html#langgraph.graph.message.add_messages">add_messages</a> | <a href="../../reference/func/index.html#langgraph.func.entrypoint">entrypoint</a> | <a href="../../reference/func/index.html#langgraph.func.task">task</a> | <a href="../../reference/checkpoints/index.html#langgraph.checkpoint.memory.MemorySaver">MemorySaver</a> | <a href="../../reference/types/index.html#langgraph.types.interrupt">interrupt</a> | <a href="../../reference/types/index.html#langgraph.types.Command">Command</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a href="index.html#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+</span><span id="__span-5-2"><a href="index.html#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a href="index.html#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">AIMessage</span>
+</span><span id="__span-5-4"><a href="index.html#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_anthropic</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatAnthropic</span>
+</span><span id="__span-5-5"><a href="index.html#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.prebuilt</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_react_agent</span>
+</span><span id="__span-5-6"><a href="index.html#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_messages</span>
+</span><span id="__span-5-7"><a href="index.html#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.func</span><span class="w"> </span><span class="kn">import</span> <span class="n">entrypoint</span><span class="p">,</span> <span class="n">task</span>
+</span><span id="__span-5-8"><a href="index.html#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.checkpoint.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">MemorySaver</span>
+</span><span id="__span-5-9"><a href="index.html#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">interrupt</span><span class="p">,</span> <span class="n">Command</span>
+</span><span id="__span-5-10"><a href="index.html#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a href="index.html#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="n">model</span> <span class="o">=</span> <span class="n">ChatAnthropic</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">"claude-3-5-sonnet-latest"</span><span class="p">)</span>
+</span><span id="__span-5-12"><a href="index.html#__codelineno-5-12" id="__codelineno-5-12" name="__codelineno-5-12"></a>
+</span><span id="__span-5-13"><a href="index.html#__codelineno-5-13" id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="c1"># Define travel advisor ReAct agent</span>
+</span><span id="__span-5-14"><a href="index.html#__codelineno-5-14" id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="n">travel_advisor_tools</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-5-15"><a href="index.html#__codelineno-5-15" id="__codelineno-5-15" name="__codelineno-5-15"></a>    <span class="n">get_travel_recommendations</span><span class="p">,</span>
+</span><span id="__span-5-16"><a href="index.html#__codelineno-5-16" id="__codelineno-5-16" name="__codelineno-5-16"></a>    <span class="n">transfer_to_hotel_advisor</span><span class="p">,</span>
+</span><span id="__span-5-17"><a href="index.html#__codelineno-5-17" id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="p">]</span>
+</span><span id="__span-5-18"><a href="index.html#__codelineno-5-18" id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="n">travel_advisor</span> <span class="o">=</span> <span class="n">create_react_agent</span><span class="p">(</span>
+</span><span id="__span-5-19"><a href="index.html#__codelineno-5-19" id="__codelineno-5-19" name="__codelineno-5-19"></a>    <span class="n">model</span><span class="p">,</span>
+</span><span id="__span-5-20"><a href="index.html#__codelineno-5-20" id="__codelineno-5-20" name="__codelineno-5-20"></a>    <span class="n">travel_advisor_tools</span><span class="p">,</span>
+</span><span id="__span-5-21"><a href="index.html#__codelineno-5-21" id="__codelineno-5-21" name="__codelineno-5-21"></a>    <span class="n">prompt</span><span class="o">=</span><span class="p">(</span>
+</span><span id="__span-5-22"><a href="index.html#__codelineno-5-22" id="__codelineno-5-22" name="__codelineno-5-22"></a>        <span class="s2">"You are a general travel expert that can recommend travel destinations (e.g. countries, cities, etc). "</span>
+</span><span id="__span-5-23"><a href="index.html#__codelineno-5-23" id="__codelineno-5-23" name="__codelineno-5-23"></a>        <span class="s2">"If you need hotel recommendations, ask 'hotel_advisor' for help. "</span>
+</span><span id="__span-5-24"><a href="index.html#__codelineno-5-24" id="__codelineno-5-24" name="__codelineno-5-24"></a>        <span class="s2">"You MUST include human-readable response before transferring to another agent."</span>
+</span><span id="__span-5-25"><a href="index.html#__codelineno-5-25" id="__codelineno-5-25" name="__codelineno-5-25"></a>    <span class="p">),</span>
+</span><span id="__span-5-26"><a href="index.html#__codelineno-5-26" id="__codelineno-5-26" name="__codelineno-5-26"></a><span class="p">)</span>
+</span><span id="__span-5-27"><a href="index.html#__codelineno-5-27" id="__codelineno-5-27" name="__codelineno-5-27"></a>
+</span><span id="__span-5-28"><a href="index.html#__codelineno-5-28" id="__codelineno-5-28" name="__codelineno-5-28"></a>
+</span><span id="__span-5-29"><a href="index.html#__codelineno-5-29" id="__codelineno-5-29" name="__codelineno-5-29"></a><span class="nd">@task</span>
+</span><span id="__span-5-30"><a href="index.html#__codelineno-5-30" id="__codelineno-5-30" name="__codelineno-5-30"></a><span class="k">def</span><span class="w"> </span><span class="nf">call_travel_advisor</span><span class="p">(</span><span class="n">messages</span><span class="p">):</span>
+</span><span id="__span-5-31"><a href="index.html#__codelineno-5-31" id="__codelineno-5-31" name="__codelineno-5-31"></a>    <span class="c1"># You can also add additional logic like changing the input to the agent / output from the agent, etc.</span>
+</span><span id="__span-5-32"><a href="index.html#__codelineno-5-32" id="__codelineno-5-32" name="__codelineno-5-32"></a>    <span class="c1"># NOTE: we're invoking the ReAct agent with the full history of messages in the state</span>
+</span><span id="__span-5-33"><a href="index.html#__codelineno-5-33" id="__codelineno-5-33" name="__codelineno-5-33"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">travel_advisor</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">"messages"</span><span class="p">:</span> <span class="n">messages</span><span class="p">})</span>
+</span><span id="__span-5-34"><a href="index.html#__codelineno-5-34" id="__codelineno-5-34" name="__codelineno-5-34"></a>    <span class="k">return</span> <span class="n">response</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">]</span>
+</span><span id="__span-5-35"><a href="index.html#__codelineno-5-35" id="__codelineno-5-35" name="__codelineno-5-35"></a>
+</span><span id="__span-5-36"><a href="index.html#__codelineno-5-36" id="__codelineno-5-36" name="__codelineno-5-36"></a>
+</span><span id="__span-5-37"><a href="index.html#__codelineno-5-37" id="__codelineno-5-37" name="__codelineno-5-37"></a><span class="c1"># Define hotel advisor ReAct agent</span>
+</span><span id="__span-5-38"><a href="index.html#__codelineno-5-38" id="__codelineno-5-38" name="__codelineno-5-38"></a><span class="n">hotel_advisor_tools</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_hotel_recommendations</span><span class="p">,</span> <span class="n">transfer_to_travel_advisor</span><span class="p">]</span>
+</span><span id="__span-5-39"><a href="index.html#__codelineno-5-39" id="__codelineno-5-39" name="__codelineno-5-39"></a><span class="n">hotel_advisor</span> <span class="o">=</span> <span class="n">create_react_agent</span><span class="p">(</span>
+</span><span id="__span-5-40"><a href="index.html#__codelineno-5-40" id="__codelineno-5-40" name="__codelineno-5-40"></a>    <span class="n">model</span><span class="p">,</span>
+</span><span id="__span-5-41"><a href="index.html#__codelineno-5-41" id="__codelineno-5-41" name="__codelineno-5-41"></a>    <span class="n">hotel_advisor_tools</span><span class="p">,</span>
+</span><span id="__span-5-42"><a href="index.html#__codelineno-5-42" id="__codelineno-5-42" name="__codelineno-5-42"></a>    <span class="n">prompt</span><span class="o">=</span><span class="p">(</span>
+</span><span id="__span-5-43"><a href="index.html#__codelineno-5-43" id="__codelineno-5-43" name="__codelineno-5-43"></a>        <span class="s2">"You are a hotel expert that can provide hotel recommendations for a given destination. "</span>
+</span><span id="__span-5-44"><a href="index.html#__codelineno-5-44" id="__codelineno-5-44" name="__codelineno-5-44"></a>        <span class="s2">"If you need help picking travel destinations, ask 'travel_advisor' for help."</span>
+</span><span id="__span-5-45"><a href="index.html#__codelineno-5-45" id="__codelineno-5-45" name="__codelineno-5-45"></a>        <span class="s2">"You MUST include human-readable response before transferring to another agent."</span>
+</span><span id="__span-5-46"><a href="index.html#__codelineno-5-46" id="__codelineno-5-46" name="__codelineno-5-46"></a>    <span class="p">),</span>
+</span><span id="__span-5-47"><a href="index.html#__codelineno-5-47" id="__codelineno-5-47" name="__codelineno-5-47"></a><span class="p">)</span>
+</span><span id="__span-5-48"><a href="index.html#__codelineno-5-48" id="__codelineno-5-48" name="__codelineno-5-48"></a>
+</span><span id="__span-5-49"><a href="index.html#__codelineno-5-49" id="__codelineno-5-49" name="__codelineno-5-49"></a>
+</span><span id="__span-5-50"><a href="index.html#__codelineno-5-50" id="__codelineno-5-50" name="__codelineno-5-50"></a><span class="nd">@task</span>
+</span><span id="__span-5-51"><a href="index.html#__codelineno-5-51" id="__codelineno-5-51" name="__codelineno-5-51"></a><span class="k">def</span><span class="w"> </span><span class="nf">call_hotel_advisor</span><span class="p">(</span><span class="n">messages</span><span class="p">):</span>
+</span><span id="__span-5-52"><a href="index.html#__codelineno-5-52" id="__codelineno-5-52" name="__codelineno-5-52"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">hotel_advisor</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">"messages"</span><span class="p">:</span> <span class="n">messages</span><span class="p">})</span>
+</span><span id="__span-5-53"><a href="index.html#__codelineno-5-53" id="__codelineno-5-53" name="__codelineno-5-53"></a>    <span class="k">return</span> <span class="n">response</span><span class="p">[</span><span class="s2">"messages"</span><span class="p">]</span>
+</span><span id="__span-5-54"><a href="index.html#__codelineno-5-54" id="__codelineno-5-54" name="__codelineno-5-54"></a>
+</span><span id="__span-5-55"><a href="index.html#__codelineno-5-55" id="__codelineno-5-55" name="__codelineno-5-55"></a>
+</span><span id="__span-5-56"><a href="index.html#__codelineno-5-56" id="__codelineno-5-56" name="__codelineno-5-56"></a><span class="n">checkpointer</span> <span class="o">=</span> <span class="n">MemorySaver</span><span class="p">()</span>
+</span><span id="__span-5-57"><a href="index.html#__codelineno-5-57" id="__codelineno-5-57" name="__codelineno-5-57"></a>
+</span><span id="__span-5-58"><a href="index.html#__codelineno-5-58" id="__codelineno-5-58" name="__codelineno-5-58"></a>
+</span><span id="__span-5-59"><a href="index.html#__codelineno-5-59" id="__codelineno-5-59" name="__codelineno-5-59"></a><span class="k">def</span><span class="w"> </span><span class="nf">string_to_uuid</span><span class="p">(</span><span class="n">input_string</span><span class="p">):</span>
+</span><span id="__span-5-60"><a href="index.html#__codelineno-5-60" id="__codelineno-5-60" name="__codelineno-5-60"></a>    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid5</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">NAMESPACE_URL</span><span class="p">,</span> <span class="n">input_string</span><span class="p">))</span>
+</span><span id="__span-5-61"><a href="index.html#__codelineno-5-61" id="__codelineno-5-61" name="__codelineno-5-61"></a>
+</span><span id="__span-5-62"><a href="index.html#__codelineno-5-62" id="__codelineno-5-62" name="__codelineno-5-62"></a>
+</span><span id="__span-5-63"><a href="index.html#__codelineno-5-63" id="__codelineno-5-63" name="__codelineno-5-63"></a><span class="nd">@entrypoint</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">)</span>
+</span><span id="__span-5-64"><a href="index.html#__codelineno-5-64" id="__codelineno-5-64" name="__codelineno-5-64"></a><span class="k">def</span><span class="w"> </span><span class="nf">multi_turn_graph</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">previous</span><span class="p">):</span>
+</span><span id="__span-5-65"><a href="index.html#__codelineno-5-65" id="__codelineno-5-65" name="__codelineno-5-65"></a>    <span class="n">previous</span> <span class="o">=</span> <span class="n">previous</span> <span class="ow">or</span> <span class="p">[]</span>
+</span><span id="__span-5-66"><a href="index.html#__codelineno-5-66" id="__codelineno-5-66" name="__codelineno-5-66"></a>    <span class="n">messages</span> <span class="o">=</span> <span class="n">add_messages</span><span class="p">(</span><span class="n">previous</span><span class="p">,</span> <span class="n">messages</span><span class="p">)</span>
+</span><span id="__span-5-67"><a href="index.html#__codelineno-5-67" id="__codelineno-5-67" name="__codelineno-5-67"></a>    <span class="n">call_active_agent</span> <span class="o">=</span> <span class="n">call_travel_advisor</span>
+</span><span id="__span-5-68"><a href="index.html#__codelineno-5-68" id="__codelineno-5-68" name="__codelineno-5-68"></a>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span><span id="__span-5-69"><a href="index.html#__codelineno-5-69" id="__codelineno-5-69" name="__codelineno-5-69"></a>        <span class="n">agent_messages</span> <span class="o">=</span> <span class="n">call_active_agent</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</span><span id="__span-5-70"><a href="index.html#__codelineno-5-70" id="__codelineno-5-70" name="__codelineno-5-70"></a>        <span class="n">messages</span> <span class="o">=</span> <span class="n">add_messages</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="n">agent_messages</span><span class="p">)</span>
+</span><span id="__span-5-71"><a href="index.html#__codelineno-5-71" id="__codelineno-5-71" name="__codelineno-5-71"></a>        <span class="c1"># Find the last AI message</span>
+</span><span id="__span-5-72"><a href="index.html#__codelineno-5-72" id="__codelineno-5-72" name="__codelineno-5-72"></a>        <span class="c1"># If one of the handoff tools is called, the last message returned</span>
+</span><span id="__span-5-73"><a href="index.html#__codelineno-5-73" id="__codelineno-5-73" name="__codelineno-5-73"></a>        <span class="c1"># by the agent will be a ToolMessage because we set them to have</span>
+</span><span id="__span-5-74"><a href="index.html#__codelineno-5-74" id="__codelineno-5-74" name="__codelineno-5-74"></a>        <span class="c1"># "return_direct=True". This means that the last AIMessage will</span>
+</span><span id="__span-5-75"><a href="index.html#__codelineno-5-75" id="__codelineno-5-75" name="__codelineno-5-75"></a>        <span class="c1"># have tool calls.</span>
+</span><span id="__span-5-76"><a href="index.html#__codelineno-5-76" id="__codelineno-5-76" name="__codelineno-5-76"></a>        <span class="c1"># Otherwise, the last returned message will be an AIMessage with</span>
+</span><span id="__span-5-77"><a href="index.html#__codelineno-5-77" id="__codelineno-5-77" name="__codelineno-5-77"></a>        <span class="c1"># no tool calls, which means we are ready for new input.</span>
+</span><span id="__span-5-78"><a href="index.html#__codelineno-5-78" id="__codelineno-5-78" name="__codelineno-5-78"></a>        <span class="n">ai_msg</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">agent_messages</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">AIMessage</span><span class="p">))</span>
+</span><span id="__span-5-79"><a href="index.html#__codelineno-5-79" id="__codelineno-5-79" name="__codelineno-5-79"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">ai_msg</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">:</span>
+</span><span id="__span-5-80"><a href="index.html#__codelineno-5-80" id="__codelineno-5-80" name="__codelineno-5-80"></a>            <span class="n">user_input</span> <span class="o">=</span> <span class="n">interrupt</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">"Ready for user input."</span><span class="p">)</span>
+</span><span id="__span-5-81"><a href="index.html#__codelineno-5-81" id="__codelineno-5-81" name="__codelineno-5-81"></a>            <span class="c1"># Add user input as a human message</span>
+</span><span id="__span-5-82"><a href="index.html#__codelineno-5-82" id="__codelineno-5-82" name="__codelineno-5-82"></a>            <span class="c1"># NOTE: we generate unique ID for the human message based on its content</span>
+</span><span id="__span-5-83"><a href="index.html#__codelineno-5-83" id="__codelineno-5-83" name="__codelineno-5-83"></a>            <span class="c1"># it's important, since on subsequent invocations previous user input (interrupt) values</span>
+</span><span id="__span-5-84"><a href="index.html#__codelineno-5-84" id="__codelineno-5-84" name="__codelineno-5-84"></a>            <span class="c1"># will be looked up again and we will attempt to add them again here</span>
+</span><span id="__span-5-85"><a href="index.html#__codelineno-5-85" id="__codelineno-5-85" name="__codelineno-5-85"></a>            <span class="c1"># `add_messages` deduplicates messages based on the ID, ensuring correct message history</span>
+</span><span id="__span-5-86"><a href="index.html#__codelineno-5-86" id="__codelineno-5-86" name="__codelineno-5-86"></a>            <span class="n">human_message</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-5-87"><a href="index.html#__codelineno-5-87" id="__codelineno-5-87" name="__codelineno-5-87"></a>                <span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span>
+</span><span id="__span-5-88"><a href="index.html#__codelineno-5-88" id="__codelineno-5-88" name="__codelineno-5-88"></a>                <span class="s2">"content"</span><span class="p">:</span> <span class="n">user_input</span><span class="p">,</span>
+</span><span id="__span-5-89"><a href="index.html#__codelineno-5-89" id="__codelineno-5-89" name="__codelineno-5-89"></a>                <span class="s2">"id"</span><span class="p">:</span> <span class="n">string_to_uuid</span><span class="p">(</span><span class="n">user_input</span><span class="p">),</span>
+</span><span id="__span-5-90"><a href="index.html#__codelineno-5-90" id="__codelineno-5-90" name="__codelineno-5-90"></a>            <span class="p">}</span>
+</span><span id="__span-5-91"><a href="index.html#__codelineno-5-91" id="__codelineno-5-91" name="__codelineno-5-91"></a>            <span class="n">messages</span> <span class="o">=</span> <span class="n">add_messages</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="p">[</span><span class="n">human_message</span><span class="p">])</span>
+</span><span id="__span-5-92"><a href="index.html#__codelineno-5-92" id="__codelineno-5-92" name="__codelineno-5-92"></a>            <span class="k">continue</span>
+</span><span id="__span-5-93"><a href="index.html#__codelineno-5-93" id="__codelineno-5-93" name="__codelineno-5-93"></a>
+</span><span id="__span-5-94"><a href="index.html#__codelineno-5-94" id="__codelineno-5-94" name="__codelineno-5-94"></a>        <span class="n">tool_call</span> <span class="o">=</span> <span class="n">ai_msg</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-5-95"><a href="index.html#__codelineno-5-95" id="__codelineno-5-95" name="__codelineno-5-95"></a>        <span class="k">if</span> <span class="n">tool_call</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"transfer_to_hotel_advisor"</span><span class="p">:</span>
+</span><span id="__span-5-96"><a href="index.html#__codelineno-5-96" id="__codelineno-5-96" name="__codelineno-5-96"></a>            <span class="n">call_active_agent</span> <span class="o">=</span> <span class="n">call_hotel_advisor</span>
+</span><span id="__span-5-97"><a href="index.html#__codelineno-5-97" id="__codelineno-5-97" name="__codelineno-5-97"></a>        <span class="k">elif</span> <span class="n">tool_call</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"transfer_to_travel_advisor"</span><span class="p">:</span>
+</span><span id="__span-5-98"><a href="index.html#__codelineno-5-98" id="__codelineno-5-98" name="__codelineno-5-98"></a>            <span class="n">call_active_agent</span> <span class="o">=</span> <span class="n">call_travel_advisor</span>
+</span><span id="__span-5-99"><a href="index.html#__codelineno-5-99" id="__codelineno-5-99" name="__codelineno-5-99"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-5-100"><a href="index.html#__codelineno-5-100" id="__codelineno-5-100" name="__codelineno-5-100"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Expected transfer tool, got '</span><span class="si">{</span><span class="n">tool_call</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2">'"</span><span class="p">)</span>
+</span><span id="__span-5-101"><a href="index.html#__codelineno-5-101" id="__codelineno-5-101" name="__codelineno-5-101"></a>
+</span><span id="__span-5-102"><a href="index.html#__codelineno-5-102" id="__codelineno-5-102" name="__codelineno-5-102"></a>    <span class="k">return</span> <span class="n">entrypoint</span><span class="o">.</span><span class="n">final</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">agent_messages</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">save</span><span class="o">=</span><span class="n">messages</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="test-multi-turn-conversation">测试多轮对话<a class="headerlink" href="index.html#test-multi-turn-conversation" title="永久链接">¶</a></h2>
+<p>让我们用这个应用程序测试一个多轮对话。</p>
+<p></p><div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a href="index.html#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="n">thread_config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"thread_id"</span><span class="p">:</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()}}</span>
+</span><span id="__span-6-2"><a href="index.html#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a href="index.html#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-6-4"><a href="index.html#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a>    <span class="c1"># 1st round of conversation,</span>
+</span><span id="__span-6-5"><a href="index.html#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a>    <span class="p">{</span>
+</span><span id="__span-6-6"><a href="index.html#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a>        <span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span>
+</span><span id="__span-6-7"><a href="index.html#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a>        <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"i wanna go somewhere warm in the caribbean"</span><span class="p">,</span>
+</span><span id="__span-6-8"><a href="index.html#__codelineno-6-8" id="__codelineno-6-8" name="__codelineno-6-8"></a>        <span class="s2">"id"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()),</span>
+</span><span id="__span-6-9"><a href="index.html#__codelineno-6-9" id="__codelineno-6-9" name="__codelineno-6-9"></a>    <span class="p">},</span>
+</span><span id="__span-6-10"><a href="index.html#__codelineno-6-10" id="__codelineno-6-10" name="__codelineno-6-10"></a>    <span class="c1"># Since we're using `interrupt`, we'll need to resume using the Command primitive.</span>
+</span><span id="__span-6-11"><a href="index.html#__codelineno-6-11" id="__codelineno-6-11" name="__codelineno-6-11"></a>    <span class="c1"># 2nd round of conversation,</span>
+</span><span id="__span-6-12"><a href="index.html#__codelineno-6-12" id="__codelineno-6-12" name="__codelineno-6-12"></a>    <span class="n">Command</span><span class="p">(</span>
+</span><span id="__span-6-13"><a href="index.html#__codelineno-6-13" id="__codelineno-6-13" name="__codelineno-6-13"></a>        <span class="n">resume</span><span class="o">=</span><span class="s2">"could you recommend a nice hotel in one of the areas and tell me which area it is."</span>
+</span><span id="__span-6-14"><a href="index.html#__codelineno-6-14" id="__codelineno-6-14" name="__codelineno-6-14"></a>    <span class="p">),</span>
+</span><span id="__span-6-15"><a href="index.html#__codelineno-6-15" id="__codelineno-6-15" name="__codelineno-6-15"></a>    <span class="c1"># 3rd round of conversation,</span>
+</span><span id="__span-6-16"><a href="index.html#__codelineno-6-16" id="__codelineno-6-16" name="__codelineno-6-16"></a>    <span class="n">Command</span><span class="p">(</span>
+</span><span id="__span-6-17"><a href="index.html#__codelineno-6-17" id="__codelineno-6-17" name="__codelineno-6-17"></a>        <span class="n">resume</span><span class="o">=</span><span class="s2">"i like the first one. could you recommend something to do near the hotel?"</span>
+</span><span id="__span-6-18"><a href="index.html#__codelineno-6-18" id="__codelineno-6-18" name="__codelineno-6-18"></a>    <span class="p">),</span>
+</span><span id="__span-6-19"><a href="index.html#__codelineno-6-19" id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="p">]</span>
+</span><span id="__span-6-20"><a href="index.html#__codelineno-6-20" id="__codelineno-6-20" name="__codelineno-6-20"></a>
+</span><span id="__span-6-21"><a href="index.html#__codelineno-6-21" id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">user_input</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
+</span><span id="__span-6-22"><a href="index.html#__codelineno-6-22" id="__codelineno-6-22" name="__codelineno-6-22"></a>    <span class="nb">print</span><span class="p">()</span>
+</span><span id="__span-6-23"><a href="index.html#__codelineno-6-23" id="__codelineno-6-23" name="__codelineno-6-23"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"--- Conversation Turn </span><span class="si">{</span><span class="n">idx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> ---"</span><span class="p">)</span>
+</span><span id="__span-6-24"><a href="index.html#__codelineno-6-24" id="__codelineno-6-24" name="__codelineno-6-24"></a>    <span class="nb">print</span><span class="p">()</span>
+</span><span id="__span-6-25"><a href="index.html#__codelineno-6-25" id="__codelineno-6-25" name="__codelineno-6-25"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"User: </span><span class="si">{</span><span class="n">user_input</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-6-26"><a href="index.html#__codelineno-6-26" id="__codelineno-6-26" name="__codelineno-6-26"></a>    <span class="nb">print</span><span class="p">()</span>
+</span><span id="__span-6-27"><a href="index.html#__codelineno-6-27" id="__codelineno-6-27" name="__codelineno-6-27"></a>    <span class="k">for</span> <span class="n">update</span> <span class="ow">in</span> <span class="n">multi_turn_graph</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span>
+</span><span id="__span-6-28"><a href="index.html#__codelineno-6-28" id="__codelineno-6-28" name="__codelineno-6-28"></a>        <span class="n">user_input</span><span class="p">,</span>
+</span><span id="__span-6-29"><a href="index.html#__codelineno-6-29" id="__codelineno-6-29" name="__codelineno-6-29"></a>        <span class="n">config</span><span class="o">=</span><span class="n">thread_config</span><span class="p">,</span>
+</span><span id="__span-6-30"><a href="index.html#__codelineno-6-30" id="__codelineno-6-30" name="__codelineno-6-30"></a>        <span class="n">stream_mode</span><span class="o">=</span><span class="s2">"updates"</span><span class="p">,</span>
+</span><span id="__span-6-31"><a href="index.html#__codelineno-6-31" id="__codelineno-6-31" name="__codelineno-6-31"></a>    <span class="p">):</span>
+</span><span id="__span-6-32"><a href="index.html#__codelineno-6-32" id="__codelineno-6-32" name="__codelineno-6-32"></a>        <span class="k">for</span> <span class="n">node_id</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">update</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span><span id="__span-6-33"><a href="index.html#__codelineno-6-33" id="__codelineno-6-33" name="__codelineno-6-33"></a>            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="n">value</span><span class="p">:</span>
+</span><span id="__span-6-34"><a href="index.html#__codelineno-6-34" id="__codelineno-6-34" name="__codelineno-6-34"></a>                <span class="n">last_message</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-6-35"><a href="index.html#__codelineno-6-35" id="__codelineno-6-35" name="__codelineno-6-35"></a>                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">last_message</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">or</span> <span class="n">last_message</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="s2">"ai"</span><span class="p">:</span>
+</span><span id="__span-6-36"><a href="index.html#__codelineno-6-36" id="__codelineno-6-36" name="__codelineno-6-36"></a>                    <span class="k">continue</span>
+</span><span id="__span-6-37"><a href="index.html#__codelineno-6-37" id="__codelineno-6-37" name="__codelineno-6-37"></a>                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">node_id</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">last_message</span><span class="o">.</span><span class="n">content</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-output highlight"><pre><span></span><code><span id="__span-7-1"><a href="index.html#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="go">--- Conversation Turn 1 ---</span>
+</span><span id="__span-7-2"><a href="index.html#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a href="index.html#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="go">User: {'role': 'user', 'content': 'i wanna go somewhere warm in the caribbean', 'id': 'f48d82a7-7efa-43f5-ad4c-541758c95f61'}</span>
+</span><span id="__span-7-4"><a href="index.html#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a>
+</span><span id="__span-7-5"><a href="index.html#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="go">call_travel_advisor: Based on the recommendations, Aruba would be an excellent choice for your Caribbean getaway! Known as "One Happy Island," Aruba offers:</span>
+</span><span id="__span-7-6"><a href="index.html#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="go">- Year-round warm weather with consistent temperatures around 82°F (28°C)</span>
+</span><span id="__span-7-7"><a href="index.html#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="go">- Beautiful white sand beaches like Eagle Beach and Palm Beach</span>
+</span><span id="__span-7-8"><a href="index.html#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="go">- Crystal clear waters perfect for swimming and snorkeling</span>
+</span><span id="__span-7-9"><a href="index.html#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="go">- Minimal rainfall and location outside the hurricane belt</span>
+</span><span id="__span-7-10"><a href="index.html#__codelineno-7-10" id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="go">- Rich culture blending Dutch and Caribbean influences</span>
+</span><span id="__span-7-11"><a href="index.html#__codelineno-7-11" id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="go">- Various activities from water sports to desert-like landscape exploration</span>
+</span><span id="__span-7-12"><a href="index.html#__codelineno-7-12" id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="go">- Excellent dining and shopping options</span>
+</span><span id="__span-7-13"><a href="index.html#__codelineno-7-13" id="__codelineno-7-13" name="__codelineno-7-13"></a>
+</span><span id="__span-7-14"><a href="index.html#__codelineno-7-14" id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="go">Would you like me to help you find suitable accommodations in Aruba? I can transfer you to our hotel advisor who can recommend specific hotels based on your preferences.</span>
+</span><span id="__span-7-15"><a href="index.html#__codelineno-7-15" id="__codelineno-7-15" name="__codelineno-7-15"></a>
+</span><span id="__span-7-16"><a href="index.html#__codelineno-7-16" id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="go">--- Conversation Turn 2 ---</span>
+</span><span id="__span-7-17"><a href="index.html#__codelineno-7-17" id="__codelineno-7-17" name="__codelineno-7-17"></a>
+</span><span id="__span-7-18"><a href="index.html#__codelineno-7-18" id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="go">User: Command(resume='could you recommend a nice hotel in one of the areas and tell me which area it is.')</span>
+</span><span id="__span-7-19"><a href="index.html#__codelineno-7-19" id="__codelineno-7-19" name="__codelineno-7-19"></a>
+</span><span id="__span-7-20"><a href="index.html#__codelineno-7-20" id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="go">call_hotel_advisor: I can recommend two excellent options in different areas:</span>
+</span><span id="__span-7-21"><a href="index.html#__codelineno-7-21" id="__codelineno-7-21" name="__codelineno-7-21"></a>
+</span><span id="__span-7-22"><a href="index.html#__codelineno-7-22" id="__codelineno-7-22" name="__codelineno-7-22"></a><span class="go">1. The Ritz-Carlton, Aruba - Located in Palm Beach</span>
+</span><span id="__span-7-23"><a href="index.html#__codelineno-7-23" id="__codelineno-7-23" name="__codelineno-7-23"></a><span class="go">- Luxury beachfront resort</span>
+</span><span id="__span-7-24"><a href="index.html#__codelineno-7-24" id="__codelineno-7-24" name="__codelineno-7-24"></a><span class="go">- Located in the vibrant Palm Beach area, known for its lively atmosphere</span>
+</span><span id="__span-7-25"><a href="index.html#__codelineno-7-25" id="__codelineno-7-25" name="__codelineno-7-25"></a><span class="go">- Close to restaurants, shopping, and nightlife</span>
+</span><span id="__span-7-26"><a href="index.html#__codelineno-7-26" id="__codelineno-7-26" name="__codelineno-7-26"></a><span class="go">- Perfect for those who want a more active vacation with plenty of amenities nearby</span>
+</span><span id="__span-7-27"><a href="index.html#__codelineno-7-27" id="__codelineno-7-27" name="__codelineno-7-27"></a>
+</span><span id="__span-7-28"><a href="index.html#__codelineno-7-28" id="__codelineno-7-28" name="__codelineno-7-28"></a><span class="go">2. Bucuti &amp; Tara Beach Resort - Located in Eagle Beach</span>
+</span><span id="__span-7-29"><a href="index.html#__codelineno-7-29" id="__codelineno-7-29" name="__codelineno-7-29"></a><span class="go">- Adults-only boutique resort</span>
+</span><span id="__span-7-30"><a href="index.html#__codelineno-7-30" id="__codelineno-7-30" name="__codelineno-7-30"></a><span class="go">- Situated on the quieter Eagle Beach</span>
+</span><span id="__span-7-31"><a href="index.html#__codelineno-7-31" id="__codelineno-7-31" name="__codelineno-7-31"></a><span class="go">- Known for its romantic atmosphere and excellent service</span>
+</span><span id="__span-7-32"><a href="index.html#__codelineno-7-32" id="__codelineno-7-32" name="__codelineno-7-32"></a><span class="go">- Ideal for couples seeking a more peaceful, intimate setting</span>
+</span><span id="__span-7-33"><a href="index.html#__codelineno-7-33" id="__codelineno-7-33" name="__codelineno-7-33"></a>
+</span><span id="__span-7-34"><a href="index.html#__codelineno-7-34" id="__codelineno-7-34" name="__codelineno-7-34"></a><span class="go">Would you like more specific information about either of these properties or their locations?</span>
+</span><span id="__span-7-35"><a href="index.html#__codelineno-7-35" id="__codelineno-7-35" name="__codelineno-7-35"></a>
+</span><span id="__span-7-36"><a href="index.html#__codelineno-7-36" id="__codelineno-7-36" name="__codelineno-7-36"></a><span class="go">--- Conversation Turn 3 ---</span>
+</span><span id="__span-7-37"><a href="index.html#__codelineno-7-37" id="__codelineno-7-37" name="__codelineno-7-37"></a>
+</span><span id="__span-7-38"><a href="index.html#__codelineno-7-38" id="__codelineno-7-38" name="__codelineno-7-38"></a><span class="go">User: Command(resume='i like the first one. could you recommend something to do near the hotel?')</span>
+</span><span id="__span-7-39"><a href="index.html#__codelineno-7-39" id="__codelineno-7-39" name="__codelineno-7-39"></a>
+</span><span id="__span-7-40"><a href="index.html#__codelineno-7-40" id="__codelineno-7-40" name="__codelineno-7-40"></a><span class="go">call_travel_advisor: Near The Ritz-Carlton in Palm Beach, here are some popular activities you can enjoy:</span>
+</span><span id="__span-7-41"><a href="index.html#__codelineno-7-41" id="__codelineno-7-41" name="__codelineno-7-41"></a>
+</span><span id="__span-7-42"><a href="index.html#__codelineno-7-42" id="__codelineno-7-42" name="__codelineno-7-42"></a><span class="go">1. Palm Beach Strip - Take a walk along this bustling strip filled with restaurants, shops, and bars</span>
+</span><span id="__span-7-43"><a href="index.html#__codelineno-7-43" id="__codelineno-7-43" name="__codelineno-7-43"></a><span class="go">2. Visit the Bubali Bird Sanctuary - Just a short distance away</span>
+</span><span id="__span-7-44"><a href="index.html#__codelineno-7-44" id="__codelineno-7-44" name="__codelineno-7-44"></a><span class="go">3. Try your luck at the Stellaris Casino - Located right in The Ritz-Carlton</span>
+</span><span id="__span-7-45"><a href="index.html#__codelineno-7-45" id="__codelineno-7-45" name="__codelineno-7-45"></a><span class="go">4. Water Sports at Palm Beach - Right in front of the hotel you can:</span>
+</span><span id="__span-7-46"><a href="index.html#__codelineno-7-46" id="__codelineno-7-46" name="__codelineno-7-46"></a><span class="go">   - Go parasailing</span>
+</span><span id="__span-7-47"><a href="index.html#__codelineno-7-47" id="__codelineno-7-47" name="__codelineno-7-47"></a><span class="go">   - Try jet skiing</span>
+</span><span id="__span-7-48"><a href="index.html#__codelineno-7-48" id="__codelineno-7-48" name="__codelineno-7-48"></a><span class="go">   - Take a sunset sailing cruise</span>
+</span><span id="__span-7-49"><a href="index.html#__codelineno-7-49" id="__codelineno-7-49" name="__codelineno-7-49"></a><span class="go">5. Visit the Palm Beach Plaza Mall - High-end shopping just a short walk away</span>
+</span><span id="__span-7-50"><a href="index.html#__codelineno-7-50" id="__codelineno-7-50" name="__codelineno-7-50"></a><span class="go">6. Enjoy dinner at Madame Janette's - One of Aruba's most famous restaurants nearby</span>
+</span><span id="__span-7-51"><a href="index.html#__codelineno-7-51" id="__codelineno-7-51" name="__codelineno-7-51"></a>
+</span><span id="__span-7-52"><a href="index.html#__codelineno-7-52" id="__codelineno-7-52" name="__codelineno-7-52"></a><span class="go">Would you like more specific information about any of these activities or other suggestions in the area?</span>
+</span></code></pre></div><p></p>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>返回顶部</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">版权所有 © 2025 LangChain, Inc | <a href="index.html#__consent">同意偏好设置</a></div>使用<a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank"> Material for MkDocs </a>制作</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.langchain.ac.cn/langgraphjs/" rel="noopener" target="_blank" title="langchain-ai.github.io">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 32v448h448V32zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6"></path></svg>
+</a>
+<a class="md-social__link" href="https://github.com/langchain-ai/langgraph" rel="noopener" target="_blank" title="github.com">
+<svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+<a class="md-social__link" href="https://twitter.com/LangChainAI" rel="noopener" target="_blank" title="twitter.com">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-progress" data-md-component="progress" role="progressbar"></div>
+<div class="md-consent" data-md-component="consent" hidden="" id="__consent">
+<div class="md-consent__overlay"></div>
+<aside class="md-consent__inner">
+<form class="md-consent__form md-grid md-typeset" name="consent">
+<h4>Cookie 同意</h4>
+<p>我们使用 Cookie 来识别您的重复访问和偏好，并衡量我们文档的有效性以及用户是否找到了他们正在寻找的内容。<strong>点击“接受”使我们的文档更好。谢谢！</strong>❤️</p>
+<input checked="" class="md-toggle" id="__settings" type="checkbox" />
+<div class="md-consent__settings">
+<ul class="task-list">
+<li class="task-list-item">
+<label class="task-list-control">
+<input checked="" name="github" type="checkbox" />
+<span class="task-list-indicator"></span> GitHub</label>
+</li>
+</ul>
+</div>
+<div class="md-consent__controls">
+<button class="md-button md-button--primary">接受</button>
+<button class="md-button md-button--primary" type="reset">拒绝</button>
+</div>
+</form>
+</aside>
+</div>
+<script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.action.edit", "content.tooltips", "navigation.indexes", "navigation.footer", "navigation.instant", "navigation.sections", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.prune", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+
+</body></html>

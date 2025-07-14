@@ -1,0 +1,1628 @@
+<!DOCTYPE html><html lang="zh-hans" class="no-js"><head><script>(l=location)[p='protocol'][5]||(l[p]='https')</script><meta name="referrer" content="no-referrer"><style>
+div[data-md-component=announce] {
+  display: none !important;
+}
+</style><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8543159550507237" crossorigin="anonymous"></script>
+
+<script>window.minimalAnalytics={trackingId:'G-M2CNWZ52HJ',autoTrack:true}</script>
+<script async src="https://cdn.jsdelivr.net.cn/npm/@minimal-analytics/ga4/dist/index.js"></script>
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<link href="index.html" rel="canonical" />
+<link href="../api/api_ref/index.html" rel="prev" />
+<link href="../sdk/python_sdk_ref/index.html" rel="next" />
+<link href="../../../static/favicon.png" rel="icon" />
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator" />
+<title>CLI - LangChain 框架</title>
+<link href="../../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet" />
+<link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Public+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet" />
+<style>:root{--md-text-font:"Public Sans";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../assets/_mkdocstrings.css" rel="stylesheet" />
+<link href="../../../stylesheets/navigation_title_ovverides.css" rel="stylesheet" />
+<link href="../../../stylesheets/version_admonitions.css" rel="stylesheet" />
+<link href="../../../stylesheets/logos.css" rel="stylesheet" />
+<link href="../../../stylesheets/sticky_navigation.css" rel="stylesheet" />
+<link href="../../../stylesheets/agent_graph_widget.css" rel="stylesheet" />
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://#/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T35S4S46');</script>
+<!-- End Google Tag Manager -->
+<meta content="165B7E7C89E49946" name="algolia-site-verification" />
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Public+Sans&display=swap");
+    :root {
+      --md-primary-fg-color: #333333;
+      --md-accent-fg-color: #1E88E5;
+      --md-default-bg-color: #FFFFFF;
+      --md-default-fg-color: #333333;
+      --md-text-font-family: "Public Sans", sans-serif;
+    }
+
+    body {
+      font-family: var(--md-text-font-family);
+      background-color: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+    }
+
+    .md-main {
+      background-color: #FFFFFF;
+    }
+
+    .md-footer {
+      background-color: #F5F5F5;
+      color: #666666;
+    }
+
+    .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    .md-typeset a {
+      color: #1E88E5;
+    }
+
+    .md-typeset a:hover {
+      color: #1565C0;
+    }
+
+    .md-nav__link--active,
+    .md-nav__link:active {
+      color: #1E88E5;
+    }
+
+    .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    .md-search__input:hover,
+    .md-search__input:focus {
+      background-color: #EEEEEE;
+    }
+    /* Table of contents styles */
+    .md-nav--secondary .md-nav__item--active > .md-nav__link {
+      font-weight: bold;
+      color: var(--md-primary-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link {
+      font-weight: normal;
+      color: var(--md-default-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: var(--md-default-fg-color);
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+
+    [data-md-color-scheme="slate"] {
+      --md-default-bg-color: #1E1E1E;
+      --md-default-fg-color: #FFFFFF;
+      --md-accent-fg-color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-main {
+      background-color: #1E1E1E;
+    }
+
+    [data-md-color-scheme="slate"] .navbar {
+      background-color: #1E1E1E;
+      color: #FFFFFF;
+      box-shadow: none;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-header {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-tabs {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__icon {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input::placeholder {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a {
+      color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a:hover {
+      color: #90CAF9;
+    }
+
+    .notebook-links {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+    }
+    .notebook-links .md-content__button {
+      margin-left: 0.5rem;
+    }
+
+    [data-md-color-scheme=default] .logo-dark {
+      display: none !important;
+    }
+
+    [data-md-color-scheme=slate] .logo-light {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-CodeCell .jp-Cell-inputWrapper .jp-InputPrompt.jp-InputArea-prompt {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-Notebook .jp-Cell .jp-OutputPrompt {
+      display: none !important;
+    }
+
+    .md-banner {
+      background-color: #CFC9FA;
+      color: #000000;
+    }
+
+    .md-banner a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    .md-banner a:hover {
+      color: #000000;
+    }
+
+    .md-header__title {
+      visibility: hidden;
+    }
+
+    /* Dark mode banner links */
+    [data-md-color-scheme="slate"] .md-banner a {
+      color: #000000;
+    }
+
+    [data-md-color-scheme="slate"] .md-banner a:hover {
+      color: #000000;
+    }
+
+  </style>
+</head>
+<body data-md-color-accent="gray" data-md-color-primary="white" data-md-color-scheme="default" dir="ltr">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://#/ns.html?id=GTM-T35S4S46" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox" />
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox" />
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="index.html#langgraph-cli">跳到内容</a>
+</div>
+<div data-md-component="announce">
+<aside class="md-banner">
+<div class="md-banner__inner md-grid md-typeset">
+<button aria-label="Don&#39;t show this again" class="md-banner__button md-icon">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+<strong>我们正在发展，并为 LangChain、LangGraph 和 LangSmith 招聘多个职位。<a href="https://langchain.ac.cn/careers" rel="noopener noreferrer" target="_blank">加入我们的团队！</a></strong>
+</div>
+<script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+</aside>
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="LangGraph" class="md-header__button md-logo" data-md-component="logo" href="../../../index.html" title="LangGraph">
+<img alt="logo" class="logo-light" src="../../../static/wordmark_dark.svg">
+<img alt="logo" class="logo-dark" src="../../../static/wordmark_light.svg">
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">LangGraph</span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">CLI</span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="gray" data-md-color-media="" data-md-color-primary="white" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="grey" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text" />
+<label class="md-search__icon md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">正在初始化搜索</div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../index.html">指南</a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../../reference/index.html">参考</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../tutorials/rag/langgraph_agentic_rag/index.html">示例</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../concepts/faq/index.html">资源</a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="LangGraph" class="md-nav__button md-logo" data-md-component="logo" href="../../../index.html" title="LangGraph"> <img alt="logo" class="logo-light" src="../../../static/wordmark_dark.svg"> <img alt="logo" class="logo-dark" src="../../../static/wordmark_light.svg"> </a> LangGraph</label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../index.html">
+<span class="md-ellipsis"> 指南 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox" />
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../reference/index.html">
+<span class="md-ellipsis">参考</span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span> 参考</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox" />
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+<span class="md-ellipsis"> LangGraph </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span> LangGraph</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/graphs/index.html">
+<span class="md-ellipsis">图</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/func/index.html">
+<span class="md-ellipsis">函数式 API</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/pregel/index.html">
+<span class="md-ellipsis">Pregel</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/checkpoints/index.html">
+<span class="md-ellipsis">检查点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/store/index.html">
+<span class="md-ellipsis">存储</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/cache/index.html">
+<span class="md-ellipsis">缓存</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/types/index.html">
+<span class="md-ellipsis">类型</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/config/index.html">
+<span class="md-ellipsis">配置</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/errors/index.html">
+<span class="md-ellipsis">错误</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/constants/index.html">
+<span class="md-ellipsis">常量</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/channels/index.html">
+<span class="md-ellipsis">通道</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox" />
+<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+<span class="md-ellipsis"> 预构建 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span> 预构建</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/agents.1.html">
+<span class="md-ellipsis">代理</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/supervisor/index.html">
+<span class="md-ellipsis">主管</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/swarm/index.html">
+<span class="md-ellipsis">蜂群</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/mcp/index.html">
+<span class="md-ellipsis">MCP 适配器</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox" />
+<label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+<span class="md-ellipsis"> LangGraph 平台 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span> LangGraph 平台</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../api/api_ref/index.html">
+<span class="md-ellipsis">服务器 API</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox" />
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis"> CLI </span> <span class="md-nav__icon md-icon"></span></label>
+<a class="md-nav__link md-nav__link--active" href="index.html">
+<span class="md-ellipsis">CLI</span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#installation">
+<span class="md-ellipsis">安装</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#configuration-file">
+<span class="md-ellipsis">配置文件</span>
+</a>
+<nav aria-label="Configuration File" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#examples">
+<span class="md-ellipsis">示例</span>
+</a>
+<nav aria-label="Examples" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#basic-configuration">
+<span class="md-ellipsis">基本配置</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#using-wolfi-base-images">
+<span class="md-ellipsis">使用 Wolfi 基础镜像</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#adding-semantic-search-to-the-store">
+<span class="md-ellipsis">向存储中添加语义搜索</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#semantic-search-with-a-custom-embedding-function">
+<span class="md-ellipsis">使用自定义嵌入函数的语义搜索</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#adding-custom-authentication">
+<span class="md-ellipsis">添加自定义身份验证</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#configuring-store-item-time-to-live-ttl">
+<span class="md-ellipsis">配置存储项生存时间 (TTL)</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#configuring-checkpoint-time-to-live-ttl">
+<span class="md-ellipsis">配置检查点生存时间 (TTL)</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#basic-configuration_1">
+<span class="md-ellipsis">基本配置</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#commands">
+<span class="md-ellipsis">命令</span>
+</a>
+<nav aria-label="Commands" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#dev">
+<span class="md-ellipsis">dev</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#build">
+<span class="md-ellipsis">build</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#up">
+<span class="md-ellipsis">up</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#dockerfile">
+<span class="md-ellipsis">dockerfile</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdk/python_sdk_ref/index.html">
+<span class="md-ellipsis">SDK (Python)</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sdk/js_ts_sdk_ref/index.html">
+<span class="md-ellipsis">SDK (JS/TS)</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../reference/remote_graph/index.html">
+<span class="md-ellipsis">RemoteGraph</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../env_var/index.html">
+<span class="md-ellipsis">环境变量</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../tutorials/rag/langgraph_agentic_rag/index.html">
+<span class="md-ellipsis"> 示例 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../../concepts/faq/index.html">
+<span class="md-ellipsis"> 资源 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#installation">
+<span class="md-ellipsis">安装</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#configuration-file">
+<span class="md-ellipsis">配置文件</span>
+</a>
+<nav aria-label="Configuration File" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#examples">
+<span class="md-ellipsis">示例</span>
+</a>
+<nav aria-label="Examples" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#basic-configuration">
+<span class="md-ellipsis">基本配置</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#using-wolfi-base-images">
+<span class="md-ellipsis">使用 Wolfi 基础镜像</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#adding-semantic-search-to-the-store">
+<span class="md-ellipsis">向存储中添加语义搜索</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#semantic-search-with-a-custom-embedding-function">
+<span class="md-ellipsis">使用自定义嵌入函数的语义搜索</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#adding-custom-authentication">
+<span class="md-ellipsis">添加自定义身份验证</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#configuring-store-item-time-to-live-ttl">
+<span class="md-ellipsis">配置存储项生存时间 (TTL)</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#configuring-checkpoint-time-to-live-ttl">
+<span class="md-ellipsis">配置检查点生存时间 (TTL)</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#basic-configuration_1">
+<span class="md-ellipsis">基本配置</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#commands">
+<span class="md-ellipsis">命令</span>
+</a>
+<nav aria-label="Commands" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#dev">
+<span class="md-ellipsis">dev</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#build">
+<span class="md-ellipsis">build</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#up">
+<span class="md-ellipsis">up</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html#dockerfile">
+<span class="md-ellipsis">dockerfile</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<div class="notebook-links">
+</div>
+<a class="md-content__button md-icon" href="https://github.com/langchain-ai/langgraph/edit/main/docs/docs/cloud/reference/cli.md" title="Edit this page">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<h1 id="langgraph-cli">LangGraph CLI<a class="headerlink" href="index.html#langgraph-cli" title="Permanent link">¶</a></h1>
+<p>LangGraph 命令行界面包括用于在 <a href="https://dockerd.com.cn/">Docker</a> 中本地构建和运行 LangGraph 平台 API 服务器的命令。对于开发和测试，您可以使用 CLI 部署本地 API 服务器。</p>
+<h2 id="installation">安装<a class="headerlink" href="index.html#installation" title="Permanent link">¶</a></h2>
+<ol>
+<li>确保 Docker 已安装（例如 <code>docker --version</code>）。</li>
+<li>
+<p>安装 CLI 包</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">JS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>langgraph-cli
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a href="index.html#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>npx<span class="w"> </span>@langchain/langgraph-cli
+</span><span id="__span-1-2"><a href="index.html#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a href="index.html#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="c1"># Install globally, will be available as `langgraphjs`</span>
+</span><span id="__span-1-4"><a href="index.html#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>@langchain/langgraph-cli
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>运行命令 <code>langgraph --help</code> 或 <code>npx @langchain/langgraph-cli --help</code> 以确认 CLI 正常工作。</p>
+</li>
+</ol>
+<p><a href="index.html" id="langgraph.json"></a></p>
+<h2 id="configuration-file">配置文件<a class="headerlink" href="index.html#configuration-file" title="Permanent link">¶</a></h2>
+<p>LangGraph CLI 需要一个遵循此<a href="https://raw.githubusercontent.com/langchain-ai/langgraph/refs/heads/main/libs/cli/schemas/schema.json">schema</a>的 JSON 配置文件。它包含以下属性</p>
+<div class="admonition tip">
+<p class="admonition-title">注意</p>
+<p>LangGraph CLI 默认使用当前目录中的 <strong>langgraph.json</strong> 配置文件。</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python</label><label for="__tabbed_2_2">JS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>键</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span style="white-space: nowrap;"><code>依赖项</code></span></td>
+<td><strong>必需</strong>。LangGraph 平台 API 服务器的依赖项数组。依赖项可以是以下之一：<ul><li>一个点（<code>"."</code>），它将查找本地 Python 包。</li><li><code>pyproject.toml</code>、<code>setup.py</code> 或 <code>requirements.txt</code> 所在的目录路径。例如，如果 <code>requirements.txt</code> 位于项目根目录，请指定 <code>"./"</code>。如果它位于名为 <code>local_package</code> 的子目录中，请指定 <code>"./local_package"</code>。不要指定字符串 <code>"requirements.txt"</code> 本身。</li><li>一个 Python 包名。</li></ul></td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>图</code></span></td>
+<td><strong>必需</strong>。从图 ID 到定义编译图或生成图的函数的路径的映射。示例：<ul><li><code>./your_package/your_file.py:variable</code>，其中 <code>variable</code> 是 <code>langgraph.graph.state.CompiledStateGraph</code> 的实例</li><li><code>./your_package/your_file.py:make_graph</code>，其中 <code>make_graph</code> 是一个函数，它接受一个配置字典（<code>langchain_core.runnables.RunnableConfig</code>）并返回 <code>langgraph.graph.state.StateGraph</code> 或 <code>langgraph.graph.state.CompiledStateGraph</code> 的实例。有关详细信息，请参阅<a href="../../deployment/graph_rebuild/index.html">如何在运行时重新构建图</a>。</li></ul></td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>auth</code></span></td>
+<td><em>（v0.0.11 中添加）</em> 包含您的身份验证处理程序路径的身份验证配置。示例：<code>./your_package/auth.py:auth</code>，其中 <code>auth</code> 是 <code>langgraph_sdk.Auth</code> 的实例。有关详细信息，请参阅<a href="../../../concepts/auth/index.html">身份验证指南</a>。</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>base_image</code></span></td>
+<td>可选。用于 LangGraph API 服务器的基础镜像。默认为 <code>langchain/langgraph-api</code> 或 <code>langchain/langgraphjs-api</code>。使用此项可将您的构建锁定到特定版本的 LangGraph API，例如 <code>"langchain/langgraph-server:0.2"</code>。有关详细信息，请参阅<a href="https://hub.docker.com/r/langchain/langgraph-server/tags">https://hub.docker.com/r/langchain/langgraph-server/tags</a>。（在 <code>langgraph-cli==0.2.8</code> 中添加）</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>image_distro</code></span></td>
+<td>可选。基础镜像的 Linux 发行版。必须是 <code>"debian"</code> 或 <code>"wolfi"</code>。如果省略，默认为 <code>"debian"</code>。在 <code>langgraph-cli&gt;=0.2.11</code> 中可用。</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>env</code></span></td>
+<td><code>.env</code> 文件路径或从环境变量到其值的映射。</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>store</code></span></td>
+<td>用于向 BaseStore 添加语义搜索和/或生存时间 (TTL) 的配置。包含以下字段：<ul><li><code>index</code>（可选）：用于语义搜索索引的配置，包含 <code>embed</code>、<code>dims</code> 和可选的 <code>fields</code> 字段。</li><li><code>ttl</code>（可选）：用于项目过期的配置。一个包含可选字段的对象：<code>refresh_on_read</code>（布尔值，默认为 <code>true</code>）、<code>default_ttl</code>（浮点数，生命周期以<strong>分钟</strong>为单位，默认为无过期）和 <code>sweep_interval_minutes</code>（整数，检查过期项目的频率，默认为无清除）。</li></ul></td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>ui</code></span></td>
+<td>可选。代理发出的 UI 组件的命名定义，每个都指向一个 JS/TS 文件。（在 <code>langgraph-cli==0.1.84</code> 中添加）</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>python_version</code></span></td>
+<td><code>3.11</code>、<code>3.12</code> 或 <code>3.13</code>。默认为 <code>3.11</code>。</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>node_version</code></span></td>
+<td>指定 <code>node_version: 20</code> 以使用 LangGraph.js。</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>pip_config_file</code></span></td>
+<td><code>pip</code> 配置文件的路径。</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>dockerfile_lines</code></span></td>
+<td>导入父镜像后要添加到 Dockerfile 的额外行数组。</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>checkpointer</code></span></td>
+<td>检查点的配置。包含一个 <code>ttl</code> 字段，该字段是一个包含以下键的对象：<ul><li><code>strategy</code>：如何处理过期检查点（例如，<code>"delete"</code>）。</li><li><code>sweep_interval_minutes</code>：检查过期检查点的频率（整数）。</li><li><code>default_ttl</code>：检查点的默认生存时间，以<strong>分钟</strong>为单位（整数）。定义检查点在应用指定策略之前保留多长时间。</li></ul></td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>http</code></span></td>
+<td>HTTP 服务器配置，包含以下字段：<ul><li><code>app</code>：自定义 Starlette/FastAPI 应用程序的路径（例如，<code>"./src/agent/webapp.py:app"</code>）。请参阅<a href="../../../how-tos/http/custom_routes/index.html">自定义路由指南</a>。</li><li><code>disable_assistants</code>：禁用 <code>/assistants</code> 路由</li><li><code>disable_threads</code>：禁用 <code>/threads</code> 路由</li><li><code>disable_runs</code>：禁用 <code>/runs</code> 路由</li><li><code>disable_store</code>：禁用 <code>/store</code> 路由</li><li><code>disable_meta</code>：禁用 <code>/ok</code>、<code>/info</code>、<code>/metrics</code> 和 <code>/docs</code> 路由</li><li><code>cors</code>：CORS 配置，包含 <code>allow_origins</code>、<code>allow_methods</code>、<code>allow_headers</code> 等字段。</li><li><code>configurable_headers</code>：定义要作为运行的可配置值排除或包含哪些请求头。</li></ul></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>键</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span style="white-space: nowrap;"><code>图</code></span></td>
+<td><strong>必需</strong>。从图 ID 到定义编译图或生成图的函数的路径的映射。示例：<ul><li><code>./src/graph.ts:variable</code>，其中 <code>variable</code> 是 <code>CompiledStateGraph</code> 的实例</li><li><code>./src/graph.ts:makeGraph</code>，其中 <code>makeGraph</code> 是一个函数，它接受一个配置字典（<code>LangGraphRunnableConfig</code>）并返回 <code>StateGraph</code> 或 <code>CompiledStateGraph</code> 的实例。有关详细信息，请参阅<a href="../../deployment/graph_rebuild/index.html">如何在运行时重新构建图</a>。</li></ul></td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>env</code></span></td>
+<td><code>.env</code> 文件路径或从环境变量到其值的映射。</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>store</code></span></td>
+<td>用于向 BaseStore 添加语义搜索和/或生存时间 (TTL) 的配置。包含以下字段：<ul><li><code>index</code>（可选）：用于语义搜索索引的配置，包含 <code>embed</code>、<code>dims</code> 和可选的 <code>fields</code> 字段。</li><li><code>ttl</code>（可选）：用于项目过期的配置。一个包含可选字段的对象：<code>refresh_on_read</code>（布尔值，默认为 <code>true</code>）、<code>default_ttl</code>（浮点数，生命周期以<strong>分钟</strong>为单位，默认为无过期）和 <code>sweep_interval_minutes</code>（整数，检查过期项目的频率，默认为无清除）。</li></ul></td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>node_version</code></span></td>
+<td>指定 <code>node_version: 20</code> 以使用 LangGraph.js。</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>dockerfile_lines</code></span></td>
+<td>导入父镜像后要添加到 Dockerfile 的额外行数组。</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>checkpointer</code></span></td>
+<td>检查点的配置。包含一个 <code>ttl</code> 字段，该字段是一个包含以下键的对象：<ul><li><code>strategy</code>：如何处理过期检查点（例如，<code>"delete"</code>）。</li><li><code>sweep_interval_minutes</code>：检查过期检查点的频率（整数）。</li><li><code>default_ttl</code>：检查点的默认生存时间，以<strong>分钟</strong>为单位（整数）。定义检查点在应用指定策略之前保留多长时间。</li></ul></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<h3 id="examples">示例<a class="headerlink" href="index.html#examples" title="Permanent link">¶</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Python</label><label for="__tabbed_3_2">JS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<h4 id="basic-configuration">基本配置<a class="headerlink" href="index.html#basic-configuration" title="Permanent link">¶</a></h4>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a href="index.html#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">{</span>
+</span><span id="__span-2-2"><a href="index.html#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"."</span><span class="p">],</span>
+</span><span id="__span-2-3"><a href="index.html#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">  </span><span class="nt">"graphs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-4"><a href="index.html#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="nt">"chat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./chat/graph.py:graph"</span>
+</span><span id="__span-2-5"><a href="index.html#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-2-6"><a href="index.html#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="using-wolfi-base-images">使用 Wolfi 基础镜像<a class="headerlink" href="index.html#using-wolfi-base-images" title="Permanent link">¶</a></h4>
+<p>您可以使用 <code>image_distro</code> 字段指定基础镜像的 Linux 发行版。有效选项是 <code>debian</code> 或 <code>wolfi</code>。Wolfi 是推荐选项，因为它提供更小、更安全的镜像。此功能在 <code>langgraph-cli&gt;=0.2.11</code> 中可用。</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a href="index.html#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">{</span>
+</span><span id="__span-3-2"><a href="index.html#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"."</span><span class="p">],</span>
+</span><span id="__span-3-3"><a href="index.html#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">  </span><span class="nt">"graphs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-4"><a href="index.html#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="nt">"chat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./chat/graph.py:graph"</span>
+</span><span id="__span-3-5"><a href="index.html#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-3-6"><a href="index.html#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">  </span><span class="nt">"image_distro"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wolfi"</span>
+</span><span id="__span-3-7"><a href="index.html#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="adding-semantic-search-to-the-store">向存储中添加语义搜索<a class="headerlink" href="index.html#adding-semantic-search-to-the-store" title="Permanent link">¶</a></h4>
+<p>所有部署都附带一个由数据库支持的 BaseStore。在 <code>langgraph.json</code> 中添加“index”配置将启用部署的 BaseStore 中的<a href="../../deployment/semantic_search/index.html">语义搜索</a>。</p>
+<p><code>index.fields</code> 配置决定要嵌入文档的哪些部分</p>
+<ul>
+<li>如果省略或设置为 <code>["$"]</code>，则整个文档将被嵌入</li>
+<li>要嵌入特定字段，请使用 JSON 路径表示法：<code>["metadata.title", "content.text"]</code></li>
+<li>缺少指定字段的文档仍将存储，但这些字段不会有嵌入</li>
+<li>您仍然可以在 <code>put</code> 时使用 <code>index</code> 参数覆盖特定项目要嵌入的字段</li>
+</ul>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-4-1"><a href="index.html#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="p">{</span>
+</span><span id="__span-4-2"><a href="index.html#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"."</span><span class="p">],</span>
+</span><span id="__span-4-3"><a href="index.html#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">  </span><span class="nt">"graphs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-4"><a href="index.html#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="nt">"memory_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./agent/graph.py:graph"</span>
+</span><span id="__span-4-5"><a href="index.html#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-4-6"><a href="index.html#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">  </span><span class="nt">"store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-7"><a href="index.html#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-8"><a href="index.html#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">      </span><span class="nt">"embed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"openai:text-embedding-3-small"</span><span class="p">,</span>
+</span><span id="__span-4-9"><a href="index.html#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">      </span><span class="nt">"dims"</span><span class="p">:</span><span class="w"> </span><span class="mi">1536</span><span class="p">,</span>
+</span><span id="__span-4-10"><a href="index.html#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">      </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"$"</span><span class="p">]</span>
+</span><span id="__span-4-11"><a href="index.html#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-12"><a href="index.html#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-4-13"><a href="index.html#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">常用模型维度</p>
+<ul>
+<li><code>openai:text-embedding-3-large</code>: 3072 </li>
+<li><code>openai:text-embedding-3-small</code>: 1536 </li>
+<li><code>openai:text-embedding-ada-002</code>: 1536 </li>
+<li><code>cohere:embed-english-v3.0</code>: 1024 </li>
+<li><code>cohere:embed-english-light-v3.0</code>: 384 </li>
+<li><code>cohere:embed-multilingual-v3.0</code>: 1024 </li>
+<li><code>cohere:embed-multilingual-light-v3.0</code>: 384</li>
+</ul>
+</div>
+<h4 id="semantic-search-with-a-custom-embedding-function">使用自定义嵌入函数的语义搜索<a class="headerlink" href="index.html#semantic-search-with-a-custom-embedding-function" title="Permanent link">¶</a></h4>
+<p>如果您想使用自定义嵌入函数进行语义搜索，可以传递自定义嵌入函数的路径</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-5-1"><a href="index.html#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="p">{</span>
+</span><span id="__span-5-2"><a href="index.html#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"."</span><span class="p">],</span>
+</span><span id="__span-5-3"><a href="index.html#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">  </span><span class="nt">"graphs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-4"><a href="index.html#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">    </span><span class="nt">"memory_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./agent/graph.py:graph"</span>
+</span><span id="__span-5-5"><a href="index.html#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-5-6"><a href="index.html#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">  </span><span class="nt">"store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-7"><a href="index.html#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">    </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-8"><a href="index.html#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">      </span><span class="nt">"embed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./embeddings.py:embed_texts"</span><span class="p">,</span>
+</span><span id="__span-5-9"><a href="index.html#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">      </span><span class="nt">"dims"</span><span class="p">:</span><span class="w"> </span><span class="mi">768</span><span class="p">,</span>
+</span><span id="__span-5-10"><a href="index.html#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">      </span><span class="nt">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"text"</span><span class="p">,</span><span class="w"> </span><span class="s2">"summary"</span><span class="p">]</span>
+</span><span id="__span-5-11"><a href="index.html#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-12"><a href="index.html#__codelineno-5-12" id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-5-13"><a href="index.html#__codelineno-5-13" id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>存储配置中的 <code>embed</code> 字段可以引用一个自定义函数，该函数接受字符串列表并返回嵌入列表。示例实现：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a href="index.html#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1"># embeddings.py</span>
+</span><span id="__span-6-2"><a href="index.html#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">embed_texts</span><span class="p">(</span><span class="n">texts</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+</span><span id="__span-6-3"><a href="index.html#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="sd">"""Custom embedding function for semantic search."""</span>
+</span><span id="__span-6-4"><a href="index.html#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a>    <span class="c1"># Implementation using your preferred embedding model</span>
+</span><span id="__span-6-5"><a href="index.html#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a>    <span class="k">return</span> <span class="p">[[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">texts</span><span class="p">]</span>  <span class="c1"># dims-dimensional vectors</span>
+</span></code></pre></div>
+<h4 id="adding-custom-authentication">添加自定义身份验证<a class="headerlink" href="index.html#adding-custom-authentication" title="Permanent link">¶</a></h4>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-7-1"><a href="index.html#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="p">{</span>
+</span><span id="__span-7-2"><a href="index.html#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"."</span><span class="p">],</span>
+</span><span id="__span-7-3"><a href="index.html#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">  </span><span class="nt">"graphs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-4"><a href="index.html#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">    </span><span class="nt">"chat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./chat/graph.py:graph"</span>
+</span><span id="__span-7-5"><a href="index.html#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-7-6"><a href="index.html#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">  </span><span class="nt">"auth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-7"><a href="index.html#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">    </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./auth.py:auth"</span><span class="p">,</span>
+</span><span id="__span-7-8"><a href="index.html#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">    </span><span class="nt">"openapi"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-9"><a href="index.html#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">      </span><span class="nt">"securitySchemes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-10"><a href="index.html#__codelineno-7-10" id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">        </span><span class="nt">"apiKeyAuth"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-11"><a href="index.html#__codelineno-7-11" id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apiKey"</span><span class="p">,</span>
+</span><span id="__span-7-12"><a href="index.html#__codelineno-7-12" id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">          </span><span class="nt">"in"</span><span class="p">:</span><span class="w"> </span><span class="s2">"header"</span><span class="p">,</span>
+</span><span id="__span-7-13"><a href="index.html#__codelineno-7-13" id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="w">          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X-API-Key"</span>
+</span><span id="__span-7-14"><a href="index.html#__codelineno-7-14" id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-7-15"><a href="index.html#__codelineno-7-15" id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="w">      </span><span class="p">},</span>
+</span><span id="__span-7-16"><a href="index.html#__codelineno-7-16" id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="w">      </span><span class="nt">"security"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">"apiKeyAuth"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">}]</span>
+</span><span id="__span-7-17"><a href="index.html#__codelineno-7-17" id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-7-18"><a href="index.html#__codelineno-7-18" id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="w">    </span><span class="nt">"disable_studio_auth"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+</span><span id="__span-7-19"><a href="index.html#__codelineno-7-19" id="__codelineno-7-19" name="__codelineno-7-19"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-7-20"><a href="index.html#__codelineno-7-20" id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>有关详细信息，请参阅<a href="../../../concepts/auth/index.html">身份验证概念指南</a>，有关实际操作，请参阅<a href="../../../tutorials/auth/getting_started/index.html">设置自定义身份验证</a>指南。</p>
+<h4 id="configuring-store-item-time-to-live-ttl">配置存储项生存时间 (TTL)<a class="headerlink" href="index.html#configuring-store-item-time-to-live-ttl" title="Permanent link">¶</a></h4>
+<p>您可以使用 <code>store.ttl</code> 键为 BaseStore 中的项目/内存配置默认数据过期。这决定了项目在最后一次访问后保留多长时间（读取操作可能会根据 <code>refresh_on_read</code> 刷新计时器）。请注意，这些默认值可以通过修改 <code>get</code>、<code>search</code> 等中的相应参数来覆盖每个调用。</p>
+<p><code>ttl</code> 配置是一个包含可选字段的对象：</p>
+<ul>
+<li><code>refresh_on_read</code>：如果为 <code>true</code>（默认值），通过 <code>get</code> 或 <code>search</code> 访问项目会重置其过期计时器。设置为 <code>false</code> 则仅在写入（<code>put</code>）时刷新 TTL。</li>
+<li><code>default_ttl</code>：项目的默认生命周期，以<strong>分钟</strong>为单位。如果未设置，项目默认不会过期。</li>
+<li><code>sweep_interval_minutes</code>：系统运行后台进程以删除过期项目的频率（以分钟为单位）。如果未设置，则不会自动清除。</li>
+</ul>
+<p>以下是启用 7 天 TTL（10080 分钟）、在读取时刷新并每小时清除的示例：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-8-1"><a href="index.html#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="p">{</span>
+</span><span id="__span-8-2"><a href="index.html#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"."</span><span class="p">],</span>
+</span><span id="__span-8-3"><a href="index.html#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">  </span><span class="nt">"graphs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-4"><a href="index.html#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">    </span><span class="nt">"memory_agent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./agent/graph.py:graph"</span>
+</span><span id="__span-8-5"><a href="index.html#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-8-6"><a href="index.html#__codelineno-8-6" id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">  </span><span class="nt">"store"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-7"><a href="index.html#__codelineno-8-7" id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="w">    </span><span class="nt">"ttl"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-8"><a href="index.html#__codelineno-8-8" id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">      </span><span class="nt">"refresh_on_read"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-8-9"><a href="index.html#__codelineno-8-9" id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="w">      </span><span class="nt">"sweep_interval_minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+</span><span id="__span-8-10"><a href="index.html#__codelineno-8-10" id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="w">      </span><span class="nt">"default_ttl"</span><span class="p">:</span><span class="w"> </span><span class="mi">10080</span><span class="w"> </span>
+</span><span id="__span-8-11"><a href="index.html#__codelineno-8-11" id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-12"><a href="index.html#__codelineno-8-12" id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-8-13"><a href="index.html#__codelineno-8-13" id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="configuring-checkpoint-time-to-live-ttl">配置检查点生存时间 (TTL)<a class="headerlink" href="index.html#configuring-checkpoint-time-to-live-ttl" title="Permanent link">¶</a></h4>
+<p>您可以使用 <code>checkpointer</code> 键配置检查点的生存时间 (TTL)。这决定了检查点数据在根据指定策略（例如删除）自动处理之前保留多长时间。<code>ttl</code> 配置是一个包含以下内容的对象：</p>
+<ul>
+<li><code>strategy</code>：对过期检查点采取的操作（目前 <code>"delete"</code> 是唯一接受的选项）。</li>
+<li><code>sweep_interval_minutes</code>：系统检查过期检查点的频率（以分钟为单位）。</li>
+<li><code>default_ttl</code>：检查点的默认生存时间，以<strong>分钟</strong>为单位。</li>
+</ul>
+<p>以下是设置 30 天默认 TTL（43200 分钟）的示例：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-9-1"><a href="index.html#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="p">{</span>
+</span><span id="__span-9-2"><a href="index.html#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"."</span><span class="p">],</span>
+</span><span id="__span-9-3"><a href="index.html#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">  </span><span class="nt">"graphs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-4"><a href="index.html#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">    </span><span class="nt">"chat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./chat/graph.py:graph"</span>
+</span><span id="__span-9-5"><a href="index.html#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-9-6"><a href="index.html#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">  </span><span class="nt">"checkpointer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-7"><a href="index.html#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">    </span><span class="nt">"ttl"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-8"><a href="index.html#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="w">      </span><span class="nt">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delete"</span><span class="p">,</span>
+</span><span id="__span-9-9"><a href="index.html#__codelineno-9-9" id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w">      </span><span class="nt">"sweep_interval_minutes"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+</span><span id="__span-9-10"><a href="index.html#__codelineno-9-10" id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="w">      </span><span class="nt">"default_ttl"</span><span class="p">:</span><span class="w"> </span><span class="mi">43200</span>
+</span><span id="__span-9-11"><a href="index.html#__codelineno-9-11" id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-9-12"><a href="index.html#__codelineno-9-12" id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-9-13"><a href="index.html#__codelineno-9-13" id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>在此示例中，超过 30 天的检查点将被删除，并且检查每 10 分钟运行一次。</p>
+</div>
+<div class="tabbed-block">
+<h4 id="basic-configuration_1">基本配置<a class="headerlink" href="index.html#basic-configuration_1" title="Permanent link">¶</a></h4>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-10-1"><a href="index.html#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="p">{</span>
+</span><span id="__span-10-2"><a href="index.html#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">  </span><span class="nt">"graphs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-3"><a href="index.html#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">    </span><span class="nt">"chat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./src/graph.ts:graph"</span>
+</span><span id="__span-10-4"><a href="index.html#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-10-5"><a href="index.html#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="p">}</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="commands">命令<a class="headerlink" href="index.html#commands" title="Permanent link">¶</a></h2>
+<p><strong>用法</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Python</label><label for="__tabbed_4_2">JS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>LangGraph CLI 的基本命令是 <code>langgraph</code>。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a href="index.html#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>langgraph [OPTIONS] COMMAND [ARGS]
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>LangGraph.js CLI 的基本命令是 <code>langgraphjs</code>。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a href="index.html#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>npx @langchain/langgraph-cli [OPTIONS] COMMAND [ARGS]
+</span></code></pre></div>
+<p>我们建议使用 <code>npx</code> 始终使用最新版本的 CLI。</p>
+</div>
+</div>
+</div>
+<h3 id="dev"><code>dev</code><a class="headerlink" href="index.html#dev" title="Permanent link">¶</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Python</label><label for="__tabbed_5_2">JS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>以开发模式运行 LangGraph API 服务器，具有热重载和调试功能。这个轻量级服务器不需要 Docker 安装，适用于开发和测试。状态持久化到本地目录。</p>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>目前，CLI 仅支持 Python >= 3.11。</p>
+</div>
+<p><strong>安装</strong></p>
+<p>此命令需要安装“inmem”附加功能</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a href="index.html#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span><span class="s2">"langgraph-cli[inmem]"</span>
+</span></code></pre></div>
+<p><strong>用法</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a href="index.html#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>langgraph dev [OPTIONS]
+</span></code></pre></div>
+<p><strong>选项</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>默认</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-c, --config 文件</code></td>
+<td><code>langgraph.json</code></td>
+<td>声明依赖项、图和环境变量的配置文件的路径</td>
+</tr>
+<tr>
+<td><code>--host TEXT</code></td>
+<td><code>127.0.0.1</code></td>
+<td>服务器绑定的主机</td>
+</tr>
+<tr>
+<td><code>--port 整数</code></td>
+<td><code>2024</code></td>
+<td>服务器绑定的端口</td>
+</tr>
+<tr>
+<td><code>--no-reload</code></td>
+<td></td>
+<td>禁用自动重载</td>
+</tr>
+<tr>
+<td><code>--n-jobs-per-worker 整数</code></td>
+<td></td>
+<td>每个工作进程的作业数。默认为 10</td>
+</tr>
+<tr>
+<td><code>--debug-port 整数</code></td>
+<td></td>
+<td>调试器监听的端口</td>
+</tr>
+<tr>
+<td><code>--wait-for-client</code></td>
+<td><code>False</code></td>
+<td>等待调试器客户端连接到调试端口后再启动服务器</td>
+</tr>
+<tr>
+<td><code>--no-browser</code></td>
+<td></td>
+<td>服务器启动时跳过自动打开浏览器</td>
+</tr>
+<tr>
+<td><code>--studio-url TEXT</code></td>
+<td></td>
+<td>要连接的 LangGraph Studio 实例的 URL。默认为 <a href="https://smith.langchain.com">https://smith.langchain.com</a></td>
+</tr>
+<tr>
+<td><code>--allow-blocking</code></td>
+<td><code>False</code></td>
+<td>不为代码中的同步 I/O 阻塞操作引发错误（在 <code>0.2.6</code> 中添加）</td>
+</tr>
+<tr>
+<td><code>--tunnel</code></td>
+<td><code>False</code></td>
+<td>通过公共隧道（Cloudflare）暴露本地服务器，以便远程前端访问。这避免了 Safari 等浏览器或网络阻塞 localhost 连接的问题</td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td></td>
+<td>显示命令文档</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>以开发模式运行 LangGraph API 服务器，具有热重载功能。这个轻量级服务器不需要 Docker 安装，适用于开发和测试。状态持久化到本地目录。</p>
+<p><strong>用法</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a href="index.html#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>npx @langchain/langgraph-cli dev [OPTIONS]
+</span></code></pre></div>
+<p><strong>选项</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>默认</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-c, --config 文件</code></td>
+<td><code>langgraph.json</code></td>
+<td>声明依赖项、图和环境变量的配置文件的路径</td>
+</tr>
+<tr>
+<td><code>--host TEXT</code></td>
+<td><code>127.0.0.1</code></td>
+<td>服务器绑定的主机</td>
+</tr>
+<tr>
+<td><code>--port 整数</code></td>
+<td><code>2024</code></td>
+<td>服务器绑定的端口</td>
+</tr>
+<tr>
+<td><code>--no-reload</code></td>
+<td></td>
+<td>禁用自动重载</td>
+</tr>
+<tr>
+<td><code>--n-jobs-per-worker 整数</code></td>
+<td></td>
+<td>每个工作进程的作业数。默认为 10</td>
+</tr>
+<tr>
+<td><code>--debug-port 整数</code></td>
+<td></td>
+<td>调试器监听的端口</td>
+</tr>
+<tr>
+<td><code>--wait-for-client</code></td>
+<td><code>False</code></td>
+<td>等待调试器客户端连接到调试端口后再启动服务器</td>
+</tr>
+<tr>
+<td><code>--no-browser</code></td>
+<td></td>
+<td>服务器启动时跳过自动打开浏览器</td>
+</tr>
+<tr>
+<td><code>--studio-url TEXT</code></td>
+<td></td>
+<td>要连接的 LangGraph Studio 实例的 URL。默认为 <a href="https://smith.langchain.com">https://smith.langchain.com</a></td>
+</tr>
+<tr>
+<td><code>--allow-blocking</code></td>
+<td><code>False</code></td>
+<td>不为代码中的同步 I/O 阻塞操作引发错误</td>
+</tr>
+<tr>
+<td><code>--tunnel</code></td>
+<td><code>False</code></td>
+<td>通过公共隧道（Cloudflare）暴露本地服务器，以便远程前端访问。这避免了浏览器或网络阻塞 localhost 连接的问题</td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td></td>
+<td>显示命令文档</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<h3 id="build"><code>build</code><a class="headerlink" href="index.html#build" title="Permanent link">¶</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Python</label><label for="__tabbed_6_2">JS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>构建 LangGraph 平台 API 服务器 Docker 镜像。</p>
+<p><strong>用法</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a href="index.html#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a>langgraph build [OPTIONS]
+</span></code></pre></div>
+<p><strong>选项</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>默认</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--platform TEXT</code></td>
+<td></td>
+<td>构建 Docker 镜像的目标平台。示例：<code>langgraph build --platform linux/amd64,linux/arm64</code></td>
+</tr>
+<tr>
+<td><code>-t, --tag TEXT</code></td>
+<td></td>
+<td><strong>必需</strong>。Docker 镜像的标签。示例：<code>langgraph build -t my-image</code></td>
+</tr>
+<tr>
+<td><code>--pull / --no-pull</code></td>
+<td><code>--pull</code></td>
+<td>使用最新的远程 Docker 镜像构建。使用 <code>--no-pull</code> 运行本地构建的 LangGraph 平台 API 服务器镜像。</td>
+</tr>
+<tr>
+<td><code>-c, --config 文件</code></td>
+<td><code>langgraph.json</code></td>
+<td>声明依赖项、图和环境变量的配置文件的路径。</td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td></td>
+<td>显示此消息并退出。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>构建 LangGraph 平台 API 服务器 Docker 镜像。</p>
+<p><strong>用法</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a href="index.html#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a>npx @langchain/langgraph-cli build [OPTIONS]
+</span></code></pre></div>
+<p><strong>选项</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>默认</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--platform TEXT</code></td>
+<td></td>
+<td>构建 Docker 镜像的目标平台。示例：<code>langgraph build --platform linux/amd64,linux/arm64</code></td>
+</tr>
+<tr>
+<td><code>-t, --tag TEXT</code></td>
+<td></td>
+<td><strong>必需</strong>。Docker 镜像的标签。示例：<code>langgraph build -t my-image</code></td>
+</tr>
+<tr>
+<td><code>--no-pull</code></td>
+<td></td>
+<td>使用本地构建的镜像。默认为 <code>false</code>，以使用最新的远程 Docker 镜像构建。</td>
+</tr>
+<tr>
+<td><code>-c, --config 文件</code></td>
+<td><code>langgraph.json</code></td>
+<td>声明依赖项、图和环境变量的配置文件的路径。</td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td></td>
+<td>显示此消息并退出。</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<h3 id="up"><code>up</code><a class="headerlink" href="index.html#up" title="Permanent link">¶</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Python</label><label for="__tabbed_7_2">JS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>启动 LangGraph API 服务器。对于本地测试，需要一个具有 LangGraph 平台封闭测试版访问权限的 LangSmith API 密钥。生产使用需要许可证密钥。</p>
+<p><strong>用法</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a href="index.html#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a>langgraph up [OPTIONS]
+</span></code></pre></div>
+<p><strong>选项</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>默认</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--wait</code></td>
+<td></td>
+<td>等待服务启动后再返回。隐含 --detach</td>
+</tr>
+<tr>
+<td><code>--postgres-uri TEXT</code></td>
+<td>本地数据库</td>
+<td>用于数据库的 Postgres URI。</td>
+</tr>
+<tr>
+<td><code>--watch</code></td>
+<td></td>
+<td>文件更改时重启</td>
+</tr>
+<tr>
+<td><code>--debugger-base-url TEXT</code></td>
+<td><code>http://127.0.0.1:[端口]</code></td>
+<td>调试器访问 LangGraph API 使用的 URL。</td>
+</tr>
+<tr>
+<td><code>--debugger-port 整数</code></td>
+<td></td>
+<td>在本地拉取调试器镜像并在指定端口提供 UI</td>
+</tr>
+<tr>
+<td><code>--verbose</code></td>
+<td></td>
+<td>显示更多服务器日志输出。</td>
+</tr>
+<tr>
+<td><code>-c, --config 文件</code></td>
+<td><code>langgraph.json</code></td>
+<td>声明依赖项、图和环境变量的配置文件的路径。</td>
+</tr>
+<tr>
+<td><code>-d, --docker-compose 文件</code></td>
+<td></td>
+<td>包含要启动的其他服务的 docker-compose.yml 文件路径。</td>
+</tr>
+<tr>
+<td><code>-p, --port 整数</code></td>
+<td><code>8123</code></td>
+<td>要暴露的端口。示例：<code>langgraph up --port 8000</code></td>
+</tr>
+<tr>
+<td><code>--pull / --no-pull</code></td>
+<td><code>pull</code></td>
+<td>拉取最新镜像。使用 <code>--no-pull</code> 运行本地构建的服务器镜像。示例：<code>langgraph up --no-pull</code></td>
+</tr>
+<tr>
+<td><code>--recreate / --no-recreate</code></td>
+<td><code>no-recreate</code></td>
+<td>即使容器的配置和镜像没有改变，也要重新创建容器</td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td></td>
+<td>显示此消息并退出。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p>启动 LangGraph API 服务器。对于本地测试，需要一个具有 LangGraph 平台封闭测试版访问权限的 LangSmith API 密钥。生产使用需要许可证密钥。</p>
+<p><strong>用法</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a href="index.html#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a>npx @langchain/langgraph-cli up [OPTIONS]
+</span></code></pre></div>
+<p><strong>选项</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>默认</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span style="white-space: nowrap;"><code>--wait</code></span></td>
+<td></td>
+<td>等待服务启动后再返回。隐含 --detach</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>--postgres-uri TEXT</code></span></td>
+<td>本地数据库</td>
+<td>用于数据库的 Postgres URI。</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>--watch</code></span></td>
+<td></td>
+<td>文件更改时重启</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>-c, --config 文件</code></span></td>
+<td><code>langgraph.json</code></td>
+<td>声明依赖项、图和环境变量的配置文件的路径。</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>-d, --docker-compose 文件</code></span></td>
+<td></td>
+<td>包含要启动的其他服务的 docker-compose.yml 文件路径。</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>-p, --port 整数</code></span></td>
+<td><code>8123</code></td>
+<td>要暴露的端口。示例：<code>langgraph up --port 8000</code></td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>--no-pull</code></span></td>
+<td></td>
+<td>使用本地构建的镜像。默认为 <code>false</code>，以使用最新的远程 Docker 镜像构建。</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>--recreate</code></span></td>
+<td></td>
+<td>即使容器的配置和镜像没有改变，也要重新创建容器</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;"><code>--help</code></span></td>
+<td></td>
+<td>显示此消息并退出。</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<h3 id="dockerfile"><code>dockerfile</code><a class="headerlink" href="index.html#dockerfile" title="Permanent link">¶</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Python</label><label for="__tabbed_8_2">JS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>生成用于构建 LangGraph 平台 API 服务器 Docker 镜像的 Dockerfile。</p>
+<p><strong>用法</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a href="index.html#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a>langgraph dockerfile [OPTIONS] SAVE_PATH
+</span></code></pre></div>
+<p><strong>选项</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>默认</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-c, --config 文件</code></td>
+<td><code>langgraph.json</code></td>
+<td>声明依赖项、图和环境变量的<a href="index.html#configuration-file">配置文件</a>路径。</td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td></td>
+<td>显示此消息并退出。</td>
+</tr>
+</tbody>
+</table>
+<p>示例</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a href="index.html#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a>langgraph<span class="w"> </span>dockerfile<span class="w"> </span>-c<span class="w"> </span>langgraph.json<span class="w"> </span>Dockerfile
+</span></code></pre></div>
+<p>这将生成一个类似于以下的 Dockerfile</p>
+<div class="language-dockerfile highlight"><pre><span></span><code><span id="__span-22-1"><a href="index.html#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">langchain/langgraph-api:3.11</span>
+</span><span id="__span-22-2"><a href="index.html#__codelineno-22-2" id="__codelineno-22-2" name="__codelineno-22-2"></a>
+</span><span id="__span-22-3"><a href="index.html#__codelineno-22-3" id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="k">ADD</span><span class="w"> </span>./pipconf.txt<span class="w"> </span>/pipconfig.txt
+</span><span id="__span-22-4"><a href="index.html#__codelineno-22-4" id="__codelineno-22-4" name="__codelineno-22-4"></a>
+</span><span id="__span-22-5"><a href="index.html#__codelineno-22-5" id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="k">RUN</span><span class="w"> </span><span class="nv">PIP_CONFIG_FILE</span><span class="o">=</span>/pipconfig.txt<span class="w"> </span><span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-c<span class="w"> </span>/api/constraints.txt<span class="w"> </span>langchain_community<span class="w"> </span>langchain_anthropic<span class="w"> </span>langchain_openai<span class="w"> </span>wikipedia<span class="w"> </span>scikit-learn
+</span><span id="__span-22-6"><a href="index.html#__codelineno-22-6" id="__codelineno-22-6" name="__codelineno-22-6"></a>
+</span><span id="__span-22-7"><a href="index.html#__codelineno-22-7" id="__codelineno-22-7" name="__codelineno-22-7"></a><span class="k">ADD</span><span class="w"> </span>./graphs<span class="w"> </span>/deps/__outer_graphs/src
+</span><span id="__span-22-8"><a href="index.html#__codelineno-22-8" id="__codelineno-22-8" name="__codelineno-22-8"></a><span class="k">RUN</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-ex<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-9"><a href="index.html#__codelineno-22-9" id="__codelineno-22-9" name="__codelineno-22-9"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span>line<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s1">'[project]'</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-10"><a href="index.html#__codelineno-22-10" id="__codelineno-22-10" name="__codelineno-22-10"></a><span class="w">                </span><span class="s1">'name = "graphs"'</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-11"><a href="index.html#__codelineno-22-11" id="__codelineno-22-11" name="__codelineno-22-11"></a><span class="w">                </span><span class="s1">'version = "0.1"'</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-12"><a href="index.html#__codelineno-22-12" id="__codelineno-22-12" name="__codelineno-22-12"></a><span class="w">                </span><span class="s1">'[tool.setuptools.package-data]'</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-13"><a href="index.html#__codelineno-22-13" id="__codelineno-22-13" name="__codelineno-22-13"></a><span class="w">                </span><span class="s1">'"*" = ["**/*"]'</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-14"><a href="index.html#__codelineno-22-14" id="__codelineno-22-14" name="__codelineno-22-14"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$line</span><span class="s2">"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/deps/__outer_graphs/pyproject.toml<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-22-15"><a href="index.html#__codelineno-22-15" id="__codelineno-22-15" name="__codelineno-22-15"></a><span class="w">    </span><span class="k">done</span>
+</span><span id="__span-22-16"><a href="index.html#__codelineno-22-16" id="__codelineno-22-16" name="__codelineno-22-16"></a>
+</span><span id="__span-22-17"><a href="index.html#__codelineno-22-17" id="__codelineno-22-17" name="__codelineno-22-17"></a><span class="k">RUN</span><span class="w"> </span><span class="nv">PIP_CONFIG_FILE</span><span class="o">=</span>/pipconfig.txt<span class="w"> </span><span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>-c<span class="w"> </span>/api/constraints.txt<span class="w"> </span>-e<span class="w"> </span>/deps/*
+</span><span id="__span-22-18"><a href="index.html#__codelineno-22-18" id="__codelineno-22-18" name="__codelineno-22-18"></a>
+</span><span id="__span-22-19"><a href="index.html#__codelineno-22-19" id="__codelineno-22-19" name="__codelineno-22-19"></a><span class="k">ENV</span><span class="w"> </span><span class="nv">LANGSERVE_GRAPHS</span><span class="o">=</span><span class="s1">'{"agent": "/deps/__outer_graphs/src/agent.py:graph", "storm": "/deps/__outer_graphs/src/storm.py:graph"}'</span>
+</span></code></pre></div>
+<details class="note" open="open">
+<summary>更新您的 langgraph.json 文件</summary>
+<p><code>langgraph dockerfile</code> 命令将您 <code>langgraph.json</code> 文件中的所有配置转换为 Dockerfile 命令。使用此命令时，每当您更新 <code>langgraph.json</code> 文件时，都必须重新运行它。否则，当您构建或运行 dockerfile 时，您的更改将不会反映出来。</p>
+</details>
+</div>
+<div class="tabbed-block">
+<p>生成用于构建 LangGraph 平台 API 服务器 Docker 镜像的 Dockerfile。</p>
+<p><strong>用法</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a href="index.html#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a>npx @langchain/langgraph-cli dockerfile [OPTIONS] SAVE_PATH
+</span></code></pre></div>
+<p><strong>选项</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>默认</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-c, --config 文件</code></td>
+<td><code>langgraph.json</code></td>
+<td>声明依赖项、图和环境变量的<a href="index.html#configuration-file">配置文件</a>路径。</td>
+</tr>
+<tr>
+<td><code>--help</code></td>
+<td></td>
+<td>显示此消息并退出。</td>
+</tr>
+</tbody>
+</table>
+<p>示例</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a href="index.html#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a>npx<span class="w"> </span>@langchain/langgraph-cli<span class="w"> </span>dockerfile<span class="w"> </span>-c<span class="w"> </span>langgraph.json<span class="w"> </span>Dockerfile
+</span></code></pre></div>
+<p>这将生成一个类似于以下的 Dockerfile</p>
+<div class="language-dockerfile highlight"><pre><span></span><code><span id="__span-25-1"><a href="index.html#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">langchain/langgraphjs-api:20</span>
+</span><span id="__span-25-2"><a href="index.html#__codelineno-25-2" id="__codelineno-25-2" name="__codelineno-25-2"></a>
+</span><span id="__span-25-3"><a href="index.html#__codelineno-25-3" id="__codelineno-25-3" name="__codelineno-25-3"></a><span class="k">ADD</span><span class="w"> </span>.<span class="w"> </span>/deps/agent
+</span><span id="__span-25-4"><a href="index.html#__codelineno-25-4" id="__codelineno-25-4" name="__codelineno-25-4"></a>
+</span><span id="__span-25-5"><a href="index.html#__codelineno-25-5" id="__codelineno-25-5" name="__codelineno-25-5"></a><span class="k">RUN</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/deps/agent<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>yarn<span class="w"> </span>install
+</span><span id="__span-25-6"><a href="index.html#__codelineno-25-6" id="__codelineno-25-6" name="__codelineno-25-6"></a>
+</span><span id="__span-25-7"><a href="index.html#__codelineno-25-7" id="__codelineno-25-7" name="__codelineno-25-7"></a><span class="k">ENV</span><span class="w"> </span><span class="nv">LANGSERVE_GRAPHS</span><span class="o">=</span><span class="s1">'{"agent":"./src/react_agent/graph.ts:graph"}'</span>
+</span><span id="__span-25-8"><a href="index.html#__codelineno-25-8" id="__codelineno-25-8" name="__codelineno-25-8"></a>
+</span><span id="__span-25-9"><a href="index.html#__codelineno-25-9" id="__codelineno-25-9" name="__codelineno-25-9"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/deps/agent</span>
+</span><span id="__span-25-10"><a href="index.html#__codelineno-25-10" id="__codelineno-25-10" name="__codelineno-25-10"></a>
+</span><span id="__span-25-11"><a href="index.html#__codelineno-25-11" id="__codelineno-25-11" name="__codelineno-25-11"></a><span class="k">RUN</span><span class="w"> </span><span class="o">(</span><span class="nb">test</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span>/api/langgraph_api/js/build.mts<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Prebuild script not found, skipping"</span><span class="o">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>tsx<span class="w"> </span>/api/langgraph_api/js/build.mts
+</span></code></pre></div>
+<details class="note" open="open">
+<summary>更新您的 langgraph.json 文件</summary>
+<p><code>npx @langchain/langgraph-cli dockerfile</code> 命令将您 <code>langgraph.json</code> 文件中的所有配置转换为 Dockerfile 命令。使用此命令时，每当您更新 <code>langgraph.json</code> 文件时，都必须重新运行它。否则，当您构建或运行 dockerfile 时，您的更改将不会反映出来。</p>
+</details>
+</div>
+</div>
+</div>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>返回顶部</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Server API" class="md-footer__link md-footer__link--prev" href="../api/api_ref/index.html"> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg> </div> <div class="md-footer__title"> <span class="md-footer__direction"> 上一个 </span> <div class="md-ellipsis"> 服务器 API </div> </div> </a> <a aria-label="Next: SDK (Python)" class="md-footer__link md-footer__link--next" href="../sdk/python_sdk_ref/index.html"> <div class="md-footer__title"> <span class="md-footer__direction"> 下一个 </span> <div class="md-ellipsis"> SDK (Python) </div> </div> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg> </div> </a></nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">版权所有 © 2025 LangChain, Inc | <a href="index.html#__consent">同意偏好</a></div>使用 <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank"> MkDocs Material </a> 制作</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.langchain.ac.cn/langgraphjs/" rel="noopener" target="_blank" title="langchain-ai.github.io">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 32v448h448V32zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6"></path></svg>
+</a>
+<a class="md-social__link" href="https://github.com/langchain-ai/langgraph" rel="noopener" target="_blank" title="github.com">
+<svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+<a class="md-social__link" href="https://twitter.com/LangChainAI" rel="noopener" target="_blank" title="twitter.com">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-progress" data-md-component="progress" role="progressbar"></div>
+<div class="md-consent" data-md-component="consent" hidden="" id="__consent">
+<div class="md-consent__overlay"></div>
+<aside class="md-consent__inner">
+<form class="md-consent__form md-grid md-typeset" name="consent">
+<h4>Cookie 同意</h4>
+<p>我们使用 Cookie 来识别您的重复访问和偏好，并衡量我们文档的有效性以及用户是否找到了他们正在搜索的内容。<strong>点击“接受”可以使我们的文档变得更好。谢谢！</strong> ❤️</p>
+<input checked="" class="md-toggle" id="__settings" type="checkbox" />
+<div class="md-consent__settings">
+<ul class="task-list">
+<li class="task-list-item">
+<label class="task-list-control">
+<input checked="" name="github" type="checkbox" />
+<span class="task-list-indicator"></span> GitHub</label>
+</li>
+</ul>
+</div>
+<div class="md-consent__controls">
+<button class="md-button md-button--primary">接受</button>
+<button class="md-button md-button--primary" type="reset">拒绝</button>
+</div>
+</form>
+</aside>
+</div>
+<script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.action.edit", "content.tooltips", "navigation.indexes", "navigation.footer", "navigation.instant", "navigation.sections", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.prune", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+
+</body></html>

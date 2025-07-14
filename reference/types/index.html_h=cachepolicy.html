@@ -1,0 +1,2132 @@
+<!DOCTYPE html><html lang="zh-hans" class="no-js"><head><script>(l=location)[p='protocol'][5]||(l[p]='https')</script><meta name="referrer" content="no-referrer"><style>
+div[data-md-component=announce] {
+  display: none !important;
+}
+</style><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8543159550507237" crossorigin="anonymous"></script>
+
+<script>window.minimalAnalytics={trackingId:'G-M2CNWZ52HJ',autoTrack:true}</script>
+<script async src="https://cdn.jsdelivr.net.cn/npm/@minimal-analytics/ga4/dist/index.js"></script>
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<link href="index.html" rel="canonical" />
+<link href="../cache/index.html" rel="prev" />
+<link href="../config/index.html" rel="next" />
+<link href="../../static/favicon.png" rel="icon" />
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator" />
+<title>类型 - LangChain 框架</title>
+<link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet" />
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Public+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet" />
+<style>:root{--md-text-font:"Public Sans";--md-code-font:"Roboto Mono"}</style>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+<link href="../../stylesheets/navigation_title_ovverides.css" rel="stylesheet" />
+<link href="../../stylesheets/version_admonitions.css" rel="stylesheet" />
+<link href="../../stylesheets/logos.css" rel="stylesheet" />
+<link href="../../stylesheets/sticky_navigation.css" rel="stylesheet" />
+<link href="../../stylesheets/agent_graph_widget.css" rel="stylesheet" />
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://#/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T35S4S46');</script>
+<!-- End Google Tag Manager -->
+<meta content="165B7E7C89E49946" name="algolia-site-verification" />
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Public+Sans&display=swap");
+    :root {
+      --md-primary-fg-color: #333333;
+      --md-accent-fg-color: #1E88E5;
+      --md-default-bg-color: #FFFFFF;
+      --md-default-fg-color: #333333;
+      --md-text-font-family: "Public Sans", sans-serif;
+    }
+
+    body {
+      font-family: var(--md-text-font-family);
+      background-color: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+    }
+
+    .md-main {
+      background-color: #FFFFFF;
+    }
+
+    .md-footer {
+      background-color: #F5F5F5;
+      color: #666666;
+    }
+
+    .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    .md-typeset a {
+      color: #1E88E5;
+    }
+
+    .md-typeset a:hover {
+      color: #1565C0;
+    }
+
+    .md-nav__link--active,
+    .md-nav__link:active {
+      color: #1E88E5;
+    }
+
+    .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    .md-search__input:hover,
+    .md-search__input:focus {
+      background-color: #EEEEEE;
+    }
+    /* Table of contents styles */
+    .md-nav--secondary .md-nav__item--active > .md-nav__link {
+      font-weight: bold;
+      color: var(--md-primary-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link {
+      font-weight: normal;
+      color: var(--md-default-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: var(--md-default-fg-color);
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+
+    [data-md-color-scheme="slate"] {
+      --md-default-bg-color: #1E1E1E;
+      --md-default-fg-color: #FFFFFF;
+      --md-accent-fg-color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-main {
+      background-color: #1E1E1E;
+    }
+
+    [data-md-color-scheme="slate"] .navbar {
+      background-color: #1E1E1E;
+      color: #FFFFFF;
+      box-shadow: none;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-header {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-tabs {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__icon {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input::placeholder {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a {
+      color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a:hover {
+      color: #90CAF9;
+    }
+
+    .notebook-links {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+    }
+    .notebook-links .md-content__button {
+      margin-left: 0.5rem;
+    }
+
+    [data-md-color-scheme=default] .logo-dark {
+      display: none !important;
+    }
+
+    [data-md-color-scheme=slate] .logo-light {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-CodeCell .jp-Cell-inputWrapper .jp-InputPrompt.jp-InputArea-prompt {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-Notebook .jp-Cell .jp-OutputPrompt {
+      display: none !important;
+    }
+
+    .md-banner {
+      background-color: #CFC9FA;
+      color: #000000;
+    }
+
+    .md-banner a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    .md-banner a:hover {
+      color: #000000;
+    }
+
+    .md-header__title {
+      visibility: hidden;
+    }
+
+    /* Dark mode banner links */
+    [data-md-color-scheme="slate"] .md-banner a {
+      color: #000000;
+    }
+
+    [data-md-color-scheme="slate"] .md-banner a:hover {
+      color: #000000;
+    }
+
+  </style>
+</head>
+<body data-md-color-accent="gray" data-md-color-primary="white" data-md-color-scheme="default" dir="ltr">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://#/ns.html?id=GTM-T35S4S46" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox" />
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox" />
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="index.html%3Fh=cachepolicy.html#types">跳到内容</a>
+</div>
+<div data-md-component="announce">
+<aside class="md-banner">
+<div class="md-banner__inner md-grid md-typeset">
+<button aria-label="Don&#39;t show this again" class="md-banner__button md-icon">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+<strong>我们正在为 LangChain、LangGraph 和 LangSmith 招聘多个职位。 <a href="https://langchain.ac.cn/careers" rel="noopener noreferrer" target="_blank">加入我们的团队！</a></strong>
+</div>
+<script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+</aside>
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="LangGraph" class="md-header__button md-logo" data-md-component="logo" href="../../index.html" title="LangGraph">
+<img alt="logo" class="logo-light" src="../../static/wordmark_dark.svg">
+<img alt="logo" class="logo-dark" src="../../static/wordmark_light.svg">
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">LangGraph</span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">类型</span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="gray" data-md-color-media="" data-md-color-primary="white" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="grey" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text" />
+<label class="md-search__icon md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">正在初始化搜索</div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../index.html">指南</a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../index.html">参考</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tutorials/rag/langgraph_agentic_rag/index.html">示例</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../concepts/faq/index.html">资源</a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="LangGraph" class="md-nav__button md-logo" data-md-component="logo" href="../../index.html" title="LangGraph"> <img alt="logo" class="logo-light" src="../../static/wordmark_dark.svg"> <img alt="logo" class="logo-dark" src="../../static/wordmark_light.svg"> </a> LangGraph</label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../index.html">
+<span class="md-ellipsis"> 指南 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox" />
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../index.html">
+<span class="md-ellipsis">参考</span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span> 参考</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2_2" type="checkbox" />
+<label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+<span class="md-ellipsis"> LangGraph </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="true" aria-labelledby="__nav_2_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span> LangGraph</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../graphs/index.html">
+<span class="md-ellipsis">图</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../func/index.html">
+<span class="md-ellipsis">函数式 API</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pregel/index.html">
+<span class="md-ellipsis">Pregel</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../checkpoints/index.html">
+<span class="md-ellipsis">检查点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../store/index.html">
+<span class="md-ellipsis">存储</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cache/index.html">
+<span class="md-ellipsis">缓存</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox" />
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis"> 类型 </span> <span class="md-nav__icon md-icon"></span></label>
+<a class="md-nav__link md-nav__link--active" href="index.html">
+<span class="md-ellipsis">类型</span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.All">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;全部</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StreamMode">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;StreamMode</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StreamWriter">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;StreamWriter</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;RetryPolicy</span>
+</a>
+<nav aria-label=" RetryPolicy" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.initial_interval">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;initial_interval</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.backoff_factor">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;backoff_factor</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.max_interval">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;max_interval</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.max_attempts">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;max_attempts</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.jitter">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;jitter</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.retry_on">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;retry_on</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.CachePolicy">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;CachePolicy</span>
+</a>
+<nav aria-label=" CachePolicy" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.CachePolicy.key_func">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;key_func</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.CachePolicy.ttl">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;ttl</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.Interrupt">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;Interrupt</span>
+</a>
+<nav aria-label=" Interrupt" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.Interrupt.interrupt_id">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;interrupt_id</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.PregelTask">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;PregelTask</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;StateSnapshot</span>
+</a>
+<nav aria-label=" StateSnapshot" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.values">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;values</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.next">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;next</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.config">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;config</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.metadata">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;metadata</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.created_at">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;created_at</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.parent_config">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;parent_config</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.tasks">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;tasks</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.interrupts">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;interrupts</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.Send">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;Send</span>
+</a>
+<nav aria-label=" Send" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.Send.__init__">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;__init__</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.Command">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;Command</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.interrupt">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;interrupt</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../config/index.html">
+<span class="md-ellipsis">配置</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../errors/index.html">
+<span class="md-ellipsis">错误</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../constants/index.html">
+<span class="md-ellipsis">常量</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../channels/index.html">
+<span class="md-ellipsis">通道</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_3" type="checkbox" />
+<label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+<span class="md-ellipsis"> 预构建 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span> 预构建</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../agents.1.html">
+<span class="md-ellipsis">代理</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../supervisor/index.html">
+<span class="md-ellipsis">主管</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../swarm/index.html">
+<span class="md-ellipsis">集群</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mcp/index.html">
+<span class="md-ellipsis">MCP 适配器</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2_4" type="checkbox" />
+<label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+<span class="md-ellipsis"> LangGraph 平台 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span> LangGraph 平台</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/reference/api/api_ref/index.html">
+<span class="md-ellipsis">服务器 API</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/reference/cli/index.html">
+<span class="md-ellipsis">CLI</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/reference/sdk/python_sdk_ref/index.html">
+<span class="md-ellipsis">SDK (Python)</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/reference/sdk/js_ts_sdk_ref/index.html">
+<span class="md-ellipsis">SDK (JS/TS)</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../remote_graph/index.html">
+<span class="md-ellipsis">远程图</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/reference/env_var/index.html">
+<span class="md-ellipsis">环境变量</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../tutorials/rag/langgraph_agentic_rag/index.html">
+<span class="md-ellipsis"> 示例 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../concepts/faq/index.html">
+<span class="md-ellipsis"> 资源 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.All">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;全部</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StreamMode">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;StreamMode</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StreamWriter">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;StreamWriter</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;RetryPolicy</span>
+</a>
+<nav aria-label=" RetryPolicy" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.initial_interval">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;initial_interval</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.backoff_factor">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;backoff_factor</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.max_interval">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;max_interval</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.max_attempts">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;max_attempts</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.jitter">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;jitter</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.retry_on">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;retry_on</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.CachePolicy">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;CachePolicy</span>
+</a>
+<nav aria-label=" CachePolicy" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.CachePolicy.key_func">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;key_func</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.CachePolicy.ttl">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;ttl</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.Interrupt">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;Interrupt</span>
+</a>
+<nav aria-label=" Interrupt" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.Interrupt.interrupt_id">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;interrupt_id</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.PregelTask">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;PregelTask</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;StateSnapshot</span>
+</a>
+<nav aria-label=" StateSnapshot" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.values">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;values</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.next">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;next</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.config">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;config</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.metadata">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;metadata</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.created_at">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;created_at</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.parent_config">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;parent_config</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.tasks">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;tasks</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.interrupts">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;interrupts</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.Send">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;Send</span>
+</a>
+<nav aria-label=" Send" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.Send.__init__">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;__init__</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.Command">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;Command</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="index.html%3Fh=cachepolicy.html#langgraph.types.interrupt">
+<span class="md-ellipsis">
+<code class="doc-symbol doc-symbol-toc doc-symbol-function"></code>&nbsp;interrupt</span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<div class="notebook-links">
+</div>
+<a class="md-content__button md-icon" href="https://github.com/langchain-ai/langgraph/edit/main/docs/docs/reference/types.md" title="Edit this page">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<h1 id="types">类型<a class="headerlink" href="index.html%3Fh=cachepolicy.html#types" title="Permanent link">¶</a></h1>
+<div class="doc doc-object doc-module">
+<div class="doc doc-contents first">
+<p><span class="doc-section-title">类</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;RetryPolicy&lt;/span&gt; (&lt;code&gt;langgraph.types.RetryPolicy&lt;/code&gt;)">RetryPolicy</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>节点重试配置。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.CachePolicy" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;CachePolicy&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-dataclass&quot;&gt;&lt;code&gt;dataclass&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.CachePolicy&lt;/code&gt;)">CachePolicy</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>节点缓存配置。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.Interrupt" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;Interrupt&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-dataclass&quot;&gt;&lt;code&gt;dataclass&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.Interrupt&lt;/code&gt;)">Interrupt</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>关于节点中发生中断的信息。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.PregelTask" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;PregelTask&lt;/span&gt; (&lt;code&gt;langgraph.types.PregelTask&lt;/code&gt;)">PregelTask</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>一个 Pregel 任务。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;StateSnapshot&lt;/span&gt; (&lt;code&gt;langgraph.types.StateSnapshot&lt;/code&gt;)">StateSnapshot</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>步骤开始时图状态的快照。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.Send" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;Send&lt;/span&gt; (&lt;code&gt;langgraph.types.Send&lt;/code&gt;)">Send</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>要发送到图中特定节点的消息或数据包。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.Command" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;Command&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-dataclass&quot;&gt;&lt;code&gt;dataclass&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.Command&lt;/code&gt;)">Command</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>一个或多个用于更新图状态并向节点发送消息的命令。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">函数</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.interrupt" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-function&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;interrupt&lt;/span&gt; (&lt;code&gt;langgraph.types.interrupt&lt;/code&gt;)">interrupt</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>从节点内部使用可恢复的异常中断图。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">属性</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.All" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;All&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.All&lt;/code&gt;)">All</a></code></td>
+<td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>特殊值，指示图应中断所有节点。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.StreamMode" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;StreamMode&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.StreamMode&lt;/code&gt;)">StreamMode</a></code></td>
+<td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>流方法应如何发出输出。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.StreamWriter" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;StreamWriter&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.StreamWriter&lt;/code&gt;)">StreamWriter</a></code></td>
+<td>
+</td>
+<td>
+<div class="doc-md-description">
+<p>一个可调用对象，它接受一个参数并将其写入输出流。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="doc doc-children">
+<div class="doc doc-object doc-attribute">
+<h2 class="doc doc-heading" id="langgraph.types.All">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">All</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.All" title="Permanent link">¶</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">All</span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Literal" title="<code>typing.Literal</code>">Literal</a></span><span class="p">[</span><span class="s1">'*'</span><span class="p">]</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>特殊值，指示图应中断所有节点。</p>
+</div>
+</div>
+<div class="doc doc-object doc-attribute">
+<h2 class="doc doc-heading" id="langgraph.types.StreamMode">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">StreamMode</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.StreamMode" title="Permanent link">¶</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">StreamMode</span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Literal" title="<code>typing.Literal</code>">Literal</a></span><span class="p">[</span>
+</span><span id="__span-0-2"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="s2">"values"</span><span class="p">,</span> <span class="s2">"updates"</span><span class="p">,</span> <span class="s2">"debug"</span><span class="p">,</span> <span class="s2">"messages"</span><span class="p">,</span> <span class="s2">"custom"</span>
+</span><span id="__span-0-3"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="p">]</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>流方法应如何发出输出。</p>
+<ul>
+<li><code>"values"</code>：在每个步骤之后发出状态中的所有值，包括中断。与函数式 API 一起使用时，值将在工作流结束时一次性发出。</li>
+<li><code>"updates"</code>：在每个步骤之后仅发出节点或任务名称以及节点或任务返回的更新。如果在同一步骤中进行多次更新（例如，运行多个节点），则这些更新将单独发出。</li>
+<li><code>"custom"</code>：使用节点或任务内部的 <code>StreamWriter</code> 发出自定义数据。</li>
+<li><code>"messages"</code>：与节点或任务中任何 LLM 调用的元数据一起，逐个令牌地发出 LLM 消息。</li>
+<li><code>"debug"</code>：为每个步骤发出包含尽可能多信息的调试事件。</li>
+</ul>
+</div>
+</div>
+<div class="doc doc-object doc-attribute">
+<h2 class="doc doc-heading" id="langgraph.types.StreamWriter">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">StreamWriter</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.StreamWriter" title="Permanent link">¶</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">StreamWriter</span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Callable" title="<code>typing.Callable</code>">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a></span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>一个可调用对象，它接受一个参数并将其写入输出流。如果请求作为关键字参数，它总是被注入到节点中，但在不使用 stream_mode="custom" 时，它是一个空操作。</p>
+</div>
+</div>
+<div class="doc doc-object doc-class">
+<h2 class="doc doc-heading" id="langgraph.types.RetryPolicy">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code> <span class="doc doc-object-name doc-class-name">RetryPolicy</span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
+<p class="doc doc-class-bases">基类：<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.NamedTuple" title="<code>typing.NamedTuple</code>">NamedTuple</a></code></p>
+<p>节点重试配置。</p>
+<div class="admonition version-added">
+<p class="admonition-title">0.2.24 版新增。</p>
+</div>
+<p><span class="doc-section-title">属性</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.initial_interval" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;initial_interval&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-class-attribute&quot;&gt;&lt;code&gt;class-attribute&lt;/code&gt;&lt;/small&gt;
+      &lt;small class=&quot;doc doc-label doc-label-instance-attribute&quot;&gt;&lt;code&gt;instance-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.RetryPolicy.initial_interval&lt;/code&gt;)">initial_interval</a></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#float">浮点数</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>首次重试前必须经过的时间量。以秒为单位。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.backoff_factor" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;backoff_factor&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-class-attribute&quot;&gt;&lt;code&gt;class-attribute&lt;/code&gt;&lt;/small&gt;
+      &lt;small class=&quot;doc doc-label doc-label-instance-attribute&quot;&gt;&lt;code&gt;instance-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.RetryPolicy.backoff_factor&lt;/code&gt;)">backoff_factor</a></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#float">浮点数</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>每次重试后间隔增加的乘数。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.max_interval" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;max_interval&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-class-attribute&quot;&gt;&lt;code&gt;class-attribute&lt;/code&gt;&lt;/small&gt;
+      &lt;small class=&quot;doc doc-label doc-label-instance-attribute&quot;&gt;&lt;code&gt;instance-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.RetryPolicy.max_interval&lt;/code&gt;)">max_interval</a></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#float">浮点数</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>两次重试之间可能经过的最大时间量。以秒为单位。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.max_attempts" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;max_attempts&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-class-attribute&quot;&gt;&lt;code&gt;class-attribute&lt;/code&gt;&lt;/small&gt;
+      &lt;small class=&quot;doc doc-label doc-label-instance-attribute&quot;&gt;&lt;code&gt;instance-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.RetryPolicy.max_attempts&lt;/code&gt;)">max_attempts</a></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#int">整数</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>放弃前的最大尝试次数，包括首次尝试。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.jitter" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;jitter&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-class-attribute&quot;&gt;&lt;code&gt;class-attribute&lt;/code&gt;&lt;/small&gt;
+      &lt;small class=&quot;doc doc-label doc-label-instance-attribute&quot;&gt;&lt;code&gt;instance-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.RetryPolicy.jitter&lt;/code&gt;)">jitter</a></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#bool">布尔值</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>是否在重试间隔之间添加随机抖动。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.retry_on" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;retry_on&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-class-attribute&quot;&gt;&lt;code&gt;class-attribute&lt;/code&gt;&lt;/small&gt;
+      &lt;small class=&quot;doc doc-label doc-label-instance-attribute&quot;&gt;&lt;code&gt;instance-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.RetryPolicy.retry_on&lt;/code&gt;)">retry_on</a></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#type">type</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/exceptions.html#Exception">Exception</a>], <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/collections.abc.html#collections.abc.Sequence" title="<code>collections.abc.Sequence</code>">Sequence</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#type">type</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/exceptions.html#Exception">Exception</a>]], <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Callable" title="<code>typing.Callable</code>">Callable</a>[[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/exceptions.html#Exception">Exception</a>], <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#bool">bool</a>]]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>应触发重试的异常类列表，或一个可调用对象，对于应触发重试的异常返回 True。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="doc doc-children">
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.RetryPolicy.initial_interval">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">initial_interval</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small> <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.initial_interval" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">initial_interval</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#float">float</a></span> <span class="o">=</span> <span class="mf">0.5</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>首次重试前必须经过的时间量。以秒为单位。</p>
+</div>
+</div>
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.RetryPolicy.backoff_factor">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">backoff_factor</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small> <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.backoff_factor" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">backoff_factor</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#float">float</a></span> <span class="o">=</span> <span class="mf">2.0</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>每次重试后间隔增加的乘数。</p>
+</div>
+</div>
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.RetryPolicy.max_interval">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">max_interval</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small> <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.max_interval" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">max_interval</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#float">float</a></span> <span class="o">=</span> <span class="mf">128.0</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>两次重试之间可能经过的最大时间量。以秒为单位。</p>
+</div>
+</div>
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.RetryPolicy.max_attempts">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">max_attempts</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small> <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.max_attempts" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">max_attempts</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#int">int</a></span> <span class="o">=</span> <span class="mi">3</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>放弃前的最大尝试次数，包括首次尝试。</p>
+</div>
+</div>
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.RetryPolicy.jitter">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">jitter</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small> <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.jitter" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">jitter</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#bool">bool</a></span> <span class="o">=</span> <span class="kc">True</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>是否在重试间隔之间添加随机抖动。</p>
+</div>
+</div>
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.RetryPolicy.retry_on">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">retry_on</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small> <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.RetryPolicy.retry_on" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">retry_on</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a></span><span class="p">[</span>
+</span><span id="__span-0-2"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#type">type</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/exceptions.html#Exception">Exception</a></span><span class="p">],</span>
+</span><span id="__span-0-3"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/collections.abc.html#collections.abc.Sequence" title="<code>collections.abc.Sequence</code>">Sequence</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#type">type</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/exceptions.html#Exception">Exception</a></span><span class="p">]],</span>
+</span><span id="__span-0-4"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Callable" title="<code>typing.Callable</code>">Callable</a></span><span class="p">[[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/exceptions.html#Exception">Exception</a></span><span class="p">],</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#bool">bool</a></span><span class="p">],</span>
+</span><span id="__span-0-5"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="p">]</span> <span class="o">=</span> <span class="n"><span title="langgraph.types.default_retry_on">default_retry_on</span></span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>应触发重试的异常类列表，或一个可调用对象，对于应触发重试的异常返回 True。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-class">
+<h2 class="doc doc-heading" id="langgraph.types.CachePolicy">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code> <span class="doc doc-object-name doc-class-name">CachePolicy</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.CachePolicy" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
+<p class="doc doc-class-bases">基类：<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Generic" title="<code>typing.Generic</code>">Generic</a>[<span title="langgraph.types.KeyFuncT">KeyFuncT</span>]</code></p>
+<p>节点缓存配置。</p>
+<p><span class="doc-section-title">属性</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.CachePolicy.key_func" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;key_func&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-class-attribute&quot;&gt;&lt;code&gt;class-attribute&lt;/code&gt;&lt;/small&gt;
+      &lt;small class=&quot;doc doc-label doc-label-instance-attribute&quot;&gt;&lt;code&gt;instance-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.CachePolicy.key_func&lt;/code&gt;)">key_func</a></code></td>
+<td>
+<code><span title="langgraph.types.KeyFuncT">KeyFuncT</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>根据节点输入生成缓存键的函数。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.CachePolicy.ttl" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;ttl&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-class-attribute&quot;&gt;&lt;code&gt;class-attribute&lt;/code&gt;&lt;/small&gt;
+      &lt;small class=&quot;doc doc-label doc-label-instance-attribute&quot;&gt;&lt;code&gt;instance-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.CachePolicy.ttl&lt;/code&gt;)">ttl</a></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#int">int</a>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>缓存条目的生存时间，以秒为单位。如果为 None，则条目永不失效。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="doc doc-children">
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.CachePolicy.key_func">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">key_func</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small> <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.CachePolicy.key_func" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">key_func</span><span class="p">:</span> <span class="n"><span title="langgraph.types.KeyFuncT">KeyFuncT</span></span> <span class="o">=</span> <span class="n"><span title="langgraph.utils.cache.default_cache_key">default_cache_key</span></span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>根据节点输入生成缓存键的函数。默认为使用 pickle 对输入进行哈希处理。</p>
+</div>
+</div>
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.CachePolicy.ttl">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">ttl</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-class-attribute"><code>class-attribute</code></small> <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.CachePolicy.ttl" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">ttl</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/functions.html#int">int</a></span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>缓存条目的生存时间，以秒为单位。如果为 None，则条目永不失效。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-class">
+<h2 class="doc doc-heading" id="langgraph.types.Interrupt">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code> <span class="doc doc-object-name doc-class-name">Interrupt</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.Interrupt" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
+<p>关于节点中发生中断的信息。</p>
+<div class="admonition version-added">
+<p class="admonition-title">0.2.24 版新增。</p>
+</div>
+<p><span class="doc-section-title">属性</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.Interrupt.interrupt_id" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;interrupt_id&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-property&quot;&gt;&lt;code&gt;property&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.Interrupt.interrupt_id&lt;/code&gt;)">interrupt_id</a></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">字符串</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>根据中断的命名空间生成唯一 ID。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="doc doc-children">
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.Interrupt.interrupt_id">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">interrupt_id</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-property"><code>property</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.Interrupt.interrupt_id" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">interrupt_id</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>根据中断的命名空间生成唯一 ID。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-class">
+<h2 class="doc doc-heading" id="langgraph.types.PregelTask">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code> <span class="doc doc-object-name doc-class-name">PregelTask</span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.PregelTask" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
+<p class="doc doc-class-bases">基类：<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.NamedTuple" title="<code>typing.NamedTuple</code>">NamedTuple</a></code></p>
+<p>一个 Pregel 任务。</p>
+<div class="doc doc-children">
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-class">
+<h2 class="doc doc-heading" id="langgraph.types.StateSnapshot">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code> <span class="doc doc-object-name doc-class-name">StateSnapshot</span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
+<p class="doc doc-class-bases">基类：<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.NamedTuple" title="<code>typing.NamedTuple</code>">NamedTuple</a></code></p>
+<p>步骤开始时图状态的快照。</p>
+<p><span class="doc-section-title">属性</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.values" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;values&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-instance-attribute&quot;&gt;&lt;code&gt;instance-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.StateSnapshot.values&lt;/code&gt;)">values</a></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a>], <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>通道的当前值。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.next" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;next&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-instance-attribute&quot;&gt;&lt;code&gt;instance-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.StateSnapshot.next&lt;/code&gt;)">next</a></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#tuple">tuple</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>, ...]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>此步骤中每个任务要执行的节点名称。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.config" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;config&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-instance-attribute&quot;&gt;&lt;code&gt;instance-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.StateSnapshot.config&lt;/code&gt;)">config</a></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/runnables/langchain_core.runnables.config.RunnableConfig.html#langchain_core.runnables.config.RunnableConfig" title="&lt;code&gt;langchain_core.runnables.RunnableConfig&lt;/code&gt;">RunnableConfig</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>用于获取此快照的配置。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.metadata" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;metadata&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-instance-attribute&quot;&gt;&lt;code&gt;instance-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.StateSnapshot.metadata&lt;/code&gt;)">metadata</a></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-internal" href="../checkpoints/index.html#langgraph.checkpoint.base.CheckpointMetadata" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>CheckpointMetadata</span> (<code>langgraph.checkpoint.base.CheckpointMetadata</code>)">CheckpointMetadata</a>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>与此快照关联的元数据。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.created_at" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;created_at&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-instance-attribute&quot;&gt;&lt;code&gt;instance-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.StateSnapshot.created_at&lt;/code&gt;)">created_at</a></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>快照创建的时间戳。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.parent_config" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;parent_config&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-instance-attribute&quot;&gt;&lt;code&gt;instance-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.StateSnapshot.parent_config&lt;/code&gt;)">parent_config</a></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/runnables/langchain_core.runnables.config.RunnableConfig.html#langchain_core.runnables.config.RunnableConfig" title="<code>langchain_core.runnables.RunnableConfig</code>">RunnableConfig</a>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>用于获取父快照（如果有）的配置。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.tasks" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;tasks&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-instance-attribute&quot;&gt;&lt;code&gt;instance-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.StateSnapshot.tasks&lt;/code&gt;)">tasks</a></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#tuple">tuple</a>[<a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.PregelTask" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>PregelTask</span> (<code>langgraph.types.PregelTask</code>)">PregelTask</a>, ...]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>此步骤中要执行的任务。如果已尝试，可能包含错误。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.interrupts" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-attribute-name&quot;&gt;interrupts&lt;/span&gt;
+
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-instance-attribute&quot;&gt;&lt;code&gt;instance-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt; (&lt;code&gt;langgraph.types.StateSnapshot.interrupts&lt;/code&gt;)">interrupts</a></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#tuple">tuple</a>[<a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.Interrupt" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>Interrupt</span> <span class=&quot;doc doc-labels&quot;> <small class=&quot;doc doc-label doc-label-dataclass&quot;><code>dataclass</code></small> </span> (<code>langgraph.types.Interrupt</code>)">Interrupt</a>, ...]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>此步骤中发生且待解决的中断。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="doc doc-children">
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.StateSnapshot.values">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">values</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.values" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">values</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#dict">dict</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a></span><span class="p">],</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a></span><span class="p">]</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>通道的当前值。</p>
+</div>
+</div>
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.StateSnapshot.next">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">next</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.next" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">next</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>此步骤中每个任务要执行的节点名称。</p>
+</div>
+</div>
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.StateSnapshot.config">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">config</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.config" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">config</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/runnables/langchain_core.runnables.config.RunnableConfig.html#langchain_core.runnables.config.RunnableConfig" title="<code>langchain_core.runnables.RunnableConfig</code>">RunnableConfig</a></span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>用于获取此快照的配置。</p>
+</div>
+</div>
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.StateSnapshot.metadata">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">metadata</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.metadata" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">metadata</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" href="../checkpoints/index.html#langgraph.checkpoint.base.CheckpointMetadata" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code>            <span class=&quot;doc doc-object-name doc-class-name&quot;>CheckpointMetadata</span> (<code>langgraph.checkpoint.base.CheckpointMetadata</code>)">CheckpointMetadata</a></span><span class="p">]</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>与此快照关联的元数据。</p>
+</div>
+</div>
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.StateSnapshot.created_at">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">created_at</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.created_at" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">created_at</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></span><span class="p">]</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>快照创建的时间戳。</p>
+</div>
+</div>
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.StateSnapshot.parent_config">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">parent_config</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.parent_config" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">parent_config</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://python.langchain.ac.cn/api_reference/core/runnables/langchain_core.runnables.config.RunnableConfig.html#langchain_core.runnables.config.RunnableConfig" title="<code>langchain_core.runnables.RunnableConfig</code>">RunnableConfig</a></span><span class="p">]</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>用于获取父快照（如果有）的配置。</p>
+</div>
+</div>
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.StateSnapshot.tasks">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">tasks</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.tasks" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">tasks</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.PregelTask" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code>            <span class=&quot;doc doc-object-name doc-class-name&quot;>PregelTask</span> (<code>langgraph.types.PregelTask</code>)">PregelTask</a></span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>此步骤中要执行的任务。如果已尝试，可能包含错误。</p>
+</div>
+</div>
+<div class="doc doc-object doc-attribute">
+<h3 class="doc doc-heading" id="langgraph.types.StateSnapshot.interrupts">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code> <span class="doc doc-object-name doc-attribute-name">interrupts</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-instance-attribute"><code>instance-attribute</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.StateSnapshot.interrupts" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">interrupts</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#tuple">tuple</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" href="#langgraph.types.Interrupt" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code>            <span class=&quot;doc doc-object-name doc-class-name&quot;>Interrupt</span>
+
+
+  <span class=&quot;doc doc-labels&quot;>
+      <small class=&quot;doc doc-label doc-label-dataclass&quot;><code>dataclass</code></small>
+  </span> (<code>langgraph.types.Interrupt</code>)">Interrupt</a></span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>此步骤中发生且待解决的中断。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-class">
+<h2 class="doc doc-heading" id="langgraph.types.Send">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code> <span class="doc doc-object-name doc-class-name">Send</span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.Send" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
+<p>要发送到图中特定节点的消息或数据包。</p>
+<p><code>Send</code> 类用于 <code>StateGraph</code> 的条件边中，以便在下一步动态地使用自定义状态调用节点。</p>
+<p>重要的是，发送的状态可以与核心图的状态不同，从而实现灵活和动态的工作流管理。</p>
+<p>一个这样的例子是“map-reduce”工作流，其中您的图并行多次调用同一个节点，每次使用不同的状态，然后将结果聚合回主图的状态。</p>
+<p><span class="doc-section-title">属性</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><span title="langgraph.types.Send.node">节点</span></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">字符串</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>要发送消息的目标节点名称。</p>
+</div>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td><code><span title="langgraph.types.Send.arg">参数</span></code></td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="&lt;code&gt;typing.Any&lt;/code&gt;">任意</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>要发送到目标节点的状态或消息。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">示例</span></p>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span>
+</span><span id="__span-0-2"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">operator</span>
+</span><span id="__span-0-3"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">OverallState</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-0-4"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="gp">... </span>    <span class="n">subjects</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="__span-0-5"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="gp">... </span>    <span class="n">jokes</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">operator</span><span class="o">.</span><span class="n">add</span><span class="p">]</span>
+</span><span id="__span-0-6"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="gp">...</span>
+</span><span id="__span-0-7"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Send</span>
+</span><span id="__span-0-8"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">END</span><span class="p">,</span> <span class="n">START</span>
+</span><span id="__span-0-9"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">continue_to_jokes</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">OverallState</span><span class="p">):</span>
+</span><span id="__span-0-10"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="gp">... </span>    <span class="k">return</span> <span class="p">[</span><span class="n">Send</span><span class="p">(</span><span class="s2">"generate_joke"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"subject"</span><span class="p">:</span> <span class="n">s</span><span class="p">})</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">state</span><span class="p">[</span><span class="s1">'subjects'</span><span class="p">]]</span>
+</span><span id="__span-0-11"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="gp">...</span>
+</span><span id="__span-0-12"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">StateGraph</span>
+</span><span id="__span-0-13"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">builder</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">OverallState</span><span class="p">)</span>
+</span><span id="__span-0-14"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"generate_joke"</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">state</span><span class="p">:</span> <span class="p">{</span><span class="s2">"jokes"</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"Joke about </span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="s1">'subject'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">]})</span>
+</span><span id="__span-0-15"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">builder</span><span class="o">.</span><span class="n">add_conditional_edges</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="n">continue_to_jokes</span><span class="p">)</span>
+</span><span id="__span-0-16"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"generate_joke"</span><span class="p">,</span> <span class="n">END</span><span class="p">)</span>
+</span><span id="__span-0-17"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+</span><span id="__span-0-18"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="gp">&gt;&gt;&gt;</span>
+</span><span id="__span-0-19"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Invoking with two subjects results in a generated joke for each</span>
+</span><span id="__span-0-20"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">"subjects"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"cats"</span><span class="p">,</span> <span class="s2">"dogs"</span><span class="p">]})</span>
+</span><span id="__span-0-21"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="go">{'subjects': ['cats', 'dogs'], 'jokes': ['Joke about cats', 'Joke about dogs']}</span>
+</span></code></pre></div>
+<p><span class="doc-section-title">方法</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code><a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.Send.__init__" title="&lt;code class=&quot;doc-symbol doc-symbol-heading doc-symbol-method&quot;&gt;&lt;/code&gt;            &lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;__init__&lt;/span&gt; (&lt;code&gt;langgraph.types.Send.__init__&lt;/code&gt;)">__init__</a></code></td>
+<td>
+<div class="doc-md-description">
+<p>初始化 Send 类的新实例。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="doc doc-children">
+<div class="doc doc-object doc-function">
+<h3 class="doc doc-heading" id="langgraph.types.Send.__init__">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code> <span class="doc doc-object-name doc-function-name">__init__</span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.Send.__init__" title="Permanent link">¶</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="fm">__init__</span><span class="p">(</span><span class="nf">node</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a></span><span class="p">,</span> <span class="n">arg</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>初始化 Send 类的新实例。</p>
+<p><span class="doc-section-title">参数</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>节点</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">字符串</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>要发送消息的目标节点名称。</p>
+</div>
+</td>
+<td>
+<em>必需</em>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>参数</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="&lt;code&gt;typing.Any&lt;/code&gt;">任意</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>要发送到目标节点的状态或消息。</p>
+</div>
+</td>
+<td>
+<em>必需</em>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-class">
+<h2 class="doc doc-heading" id="langgraph.types.Command">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code> <span class="doc doc-object-name doc-class-name">Command</span> <span class="doc doc-labels"> <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small> </span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.Command" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
+<p class="doc doc-class-bases">基类：<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Generic" title="<code>typing.Generic</code>">Generic</a>[<span title="langgraph.types.N">N</span>]</code>, <code><span title="langgraph.types.ToolOutputMixin">ToolOutputMixin</span></code></p>
+<p>一个或多个用于更新图状态并向节点发送消息的命令。</p>
+<div class="admonition version-added">
+<p class="admonition-title">0.2.24 版新增。</p>
+</div>
+<p><span class="doc-section-title">参数</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>图</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>要发送命令的图。支持的值有</p>
+<ul>
+<li>None：当前图（默认）</li>
+<li>Command.PARENT：最近的父图</li>
+</ul>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>更新</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>要应用于图状态的更新。</p>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>恢复</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Optional" title="<code>typing.Optional</code>">Optional</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a>], <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a>]]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>用于恢复执行的值。与 <a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.interrupt" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-function&quot;></code> <span class=&quot;doc doc-object-name doc-function-name&quot;>interrupt</span>"><code>interrupt()</code></a> 一起使用。可以是以下之一：</p>
+<ul>
+<li>中断 ID 到恢复值的映射</li>
+<li>一个用于恢复下一次中断的单个值</li>
+</ul>
+</div>
+</td>
+<td>
+<code>无</code>
+</td>
+</tr>
+<tr class="doc-section-item">
+<td>
+<code>跳转</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a>[<a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.Send" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>Send</span> (<code>langgraph.types.Send</code>)">Send</a>, <a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/collections.abc.html#collections.abc.Sequence" title="<code>collections.abc.Sequence</code>">Sequence</a>[<a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Union" title="<code>typing.Union</code>">Union</a>[<a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.Send" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>Send</span> (<code>langgraph.types.Send</code>)">Send</a>, <span title="langgraph.types.N">N</span>]], <span title="langgraph.types.N">N</span>]</code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>可以是以下之一：</p>
+<ul>
+<li>下一个要导航到的节点的名称（属于指定 <code>graph</code> 的任何节点）</li>
+<li>要导航到的节点名称序列</li>
+<li><code>Send</code> 对象（使用提供的输入执行节点）</li>
+<li><code>Send</code> 对象序列</li>
+</ul>
+</div>
+</td>
+<td>
+<code>()</code>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="doc doc-children">
+</div>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="langgraph.types.interrupt">
+<code class="doc-symbol doc-symbol-heading doc-symbol-function"></code> <span class="doc doc-object-name doc-function-name">interrupt</span> <a class="headerlink" href="index.html%3Fh=cachepolicy.html#langgraph.types.interrupt" title="Permanent link">¶</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nf">interrupt</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="<code>typing.Any</code>">Any</a></span>
+</span></code></pre></div>
+<div class="doc doc-contents">
+<p>从节点内部使用可恢复的异常中断图。</p>
+<p><code>interrupt</code> 函数通过暂停图执行并向客户端显示一个值来启用人机协作工作流。此值可以传达上下文或请求恢复执行所需的输入。</p>
+<p>在给定节点中，此函数的首次调用会引发 <code>GraphInterrupt</code> 异常，停止执行。提供的 <code>value</code> 会随异常一起包含并发送到执行图的客户端。</p>
+<p>恢复图的客户端必须使用 <a class="autorefs autorefs-internal" href="index.html%3Fh=cachepolicy.html#langgraph.types.Command" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>Command</span> <span class=&quot;doc doc-labels&quot;> <small class=&quot;doc doc-label doc-label-dataclass&quot;><code>dataclass</code></small> </span>"><code>Command</code></a> 原语来为中断指定一个值并继续执行。图将从节点的开头恢复，<strong>重新执行</strong>所有逻辑。</p>
+<p>如果一个节点包含多个 <code>interrupt</code> 调用，LangGraph 会根据它们在节点中的顺序将恢复值与中断匹配。此恢复值列表的范围限定为执行节点的特定任务，并且不在任务之间共享。</p>
+<p>要使用 <code>interrupt</code>，您必须启用检查点，因为该功能依赖于图状态的持久化。</p>
+<details class="example" open="">
+<summary>示例</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+</span><span id="__span-0-2"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+</span><span id="__span-0-3"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
+</span><span id="__span-0-4"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.checkpoint.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">MemorySaver</span>
+</span><span id="__span-0-6"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">START</span>
+</span><span id="__span-0-7"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">StateGraph</span>
+</span><span id="__span-0-8"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">interrupt</span>
+</span><span id="__span-0-9"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-0-12"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="sd">"""The graph state."""</span>
+</span><span id="__span-0-13"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>
+</span><span id="__span-0-14"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="n">foo</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-0-15"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="n">human_value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span><span id="__span-0-16"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="sd">"""Human value will be updated using an interrupt."""</span>
+</span><span id="__span-0-17"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a>
+</span><span id="__span-0-18"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a>
+</span><span id="__span-0-19"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="k">def</span><span class="w"> </span><span class="nf">node</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">):</span>
+</span><span id="__span-0-20"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a>    <span class="n">answer</span> <span class="o">=</span> <span class="n">interrupt</span><span class="p">(</span>
+</span><span id="__span-0-21"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a>        <span class="c1"># This value will be sent to the client</span>
+</span><span id="__span-0-22"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a>        <span class="c1"># as part of the interrupt information.</span>
+</span><span id="__span-0-23"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a>        <span class="s2">"what is your age?"</span>
+</span><span id="__span-0-24"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a>    <span class="p">)</span>
+</span><span id="__span-0-25"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"&gt; Received an input from the interrupt: </span><span class="si">{</span><span class="n">answer</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</span><span id="__span-0-26"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"human_value"</span><span class="p">:</span> <span class="n">answer</span><span class="p">}</span>
+</span><span id="__span-0-27"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-27" id="__codelineno-0-27" name="__codelineno-0-27"></a>
+</span><span id="__span-0-28"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-28" id="__codelineno-0-28" name="__codelineno-0-28"></a>
+</span><span id="__span-0-29"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-29" id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="n">builder</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">State</span><span class="p">)</span>
+</span><span id="__span-0-30"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-30" id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"node"</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+</span><span id="__span-0-31"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-31" id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="s2">"node"</span><span class="p">)</span>
+</span><span id="__span-0-32"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-32" id="__codelineno-0-32" name="__codelineno-0-32"></a>
+</span><span id="__span-0-33"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-33" id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="c1"># A checkpointer must be enabled for interrupts to work!</span>
+</span><span id="__span-0-34"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-34" id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="n">checkpointer</span> <span class="o">=</span> <span class="n">MemorySaver</span><span class="p">()</span>
+</span><span id="__span-0-35"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-35" id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="n">graph</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">)</span>
+</span><span id="__span-0-36"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-36" id="__codelineno-0-36" name="__codelineno-0-36"></a>
+</span><span id="__span-0-37"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-37" id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-0-38"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-38" id="__codelineno-0-38" name="__codelineno-0-38"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-0-39"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-39" id="__codelineno-0-39" name="__codelineno-0-39"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">(),</span>
+</span><span id="__span-0-40"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-40" id="__codelineno-0-40" name="__codelineno-0-40"></a>    <span class="p">}</span>
+</span><span id="__span-0-41"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-41" id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="p">}</span>
+</span><span id="__span-0-42"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-42" id="__codelineno-0-42" name="__codelineno-0-42"></a>
+</span><span id="__span-0-43"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-43" id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">stream</span><span class="p">({</span><span class="s2">"foo"</span><span class="p">:</span> <span class="s2">"abc"</span><span class="p">},</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="__span-0-44"><a href="index.html%3Fh=cachepolicy.html#__codelineno-0-44" id="__codelineno-0-44" name="__codelineno-0-44"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-1-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">{'__interrupt__': (Interrupt(value='what is your age?', resumable=True, ns=['node:62e598fa-8653-9d6d-2046-a70203020e37'], when='during'),)}</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">command</span> <span class="o">=</span> <span class="n">Command</span><span class="p">(</span><span class="n">resume</span><span class="o">=</span><span class="s2">"some input from a human!!!"</span><span class="p">)</span>
+</span><span id="__span-2-2"><a href="index.html%3Fh=cachepolicy.html#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a href="index.html%3Fh=cachepolicy.html#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="n">resume</span><span class="o">=</span><span class="s2">"some input from a human!!!"</span><span class="p">),</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="__span-2-4"><a href="index.html%3Fh=cachepolicy.html#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-3-1"><a href="index.html%3Fh=cachepolicy.html#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">Received an input from the interrupt: some input from a human!!!</span>
+</span><span id="__span-3-2"><a href="index.html%3Fh=cachepolicy.html#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="go">{'node': {'human_value': 'some input from a human!!!'}}</span>
+</span></code></pre></div>
+</details>
+<p><span class="doc-section-title">参数</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+<th>默认</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code>值</code>
+</td>
+<td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="&lt;code&gt;typing.Any&lt;/code&gt;">任意</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>当图被中断时，向客户端显示的值。</p>
+</div>
+</td>
+<td>
+<em>必需</em>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">返回</span></p>
+<table>
+<thead>
+<tr>
+<th>名称</th> <th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td><code>任意</code></td> <td>
+<code><a class="autorefs autorefs-external" href="https://docs.pythonlang.cn/3/library/typing.html#typing.Any" title="&lt;code&gt;typing.Any&lt;/code&gt;">任意</a></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>在同一节点（准确地说是同一任务）内的后续调用中，返回首次调用时提供的值</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="doc-section-title">引发</span></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="doc-section-item">
+<td>
+<code><span title="GraphInterrupt">GraphInterrupt</span></code>
+</td>
+<td>
+<div class="doc-md-description">
+<p>在节点内的首次调用时，停止执行并将提供的值显示给客户端。</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>返回顶部</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Caching" class="md-footer__link md-footer__link--prev" href="../cache/index.html"> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg> </div> <div class="md-footer__title"> <span class="md-footer__direction"> 上一页 </span> <div class="md-ellipsis"> 缓存 </div> </div> </a> <a aria-label="Next: Config" class="md-footer__link md-footer__link--next" href="../config/index.html"> <div class="md-footer__title"> <span class="md-footer__direction"> 下一页 </span> <div class="md-ellipsis"> 配置 </div> </div> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg> </div> </a></nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">版权所有 © 2025 LangChain, Inc | <a href="index.html%3Fh=cachepolicy.html#__consent">同意偏好</a></div>使用 <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank"> Material for MkDocs </a> 制作</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.langchain.ac.cn/langgraphjs/" rel="noopener" target="_blank" title="langchain-ai.github.io">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 32v448h448V32zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6"></path></svg>
+</a>
+<a class="md-social__link" href="https://github.com/langchain-ai/langgraph" rel="noopener" target="_blank" title="github.com">
+<svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+<a class="md-social__link" href="https://twitter.com/LangChainAI" rel="noopener" target="_blank" title="twitter.com">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-progress" data-md-component="progress" role="progressbar"></div>
+<div class="md-consent" data-md-component="consent" hidden="" id="__consent">
+<div class="md-consent__overlay"></div>
+<aside class="md-consent__inner">
+<form class="md-consent__form md-grid md-typeset" name="consent">
+<h4>Cookie 同意</h4>
+<p>我们使用 Cookie 来识别您的重复访问和偏好，并衡量我们文档的有效性以及用户是否找到他们正在寻找的内容。<strong>点击“接受”将使我们的文档更好。谢谢您！</strong> ❤️</p>
+<input checked="" class="md-toggle" id="__settings" type="checkbox" />
+<div class="md-consent__settings">
+<ul class="task-list">
+<li class="task-list-item">
+<label class="task-list-control">
+<input checked="" name="github" type="checkbox" />
+<span class="task-list-indicator"></span> GitHub</label>
+</li>
+</ul>
+</div>
+<div class="md-consent__controls">
+<button class="md-button md-button--primary">接受</button>
+<button class="md-button md-button--primary" type="reset">拒绝</button>
+</div>
+</form>
+</aside>
+</div>
+<script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.action.edit", "content.tooltips", "navigation.indexes", "navigation.footer", "navigation.instant", "navigation.sections", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.prune", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+
+</body></html>

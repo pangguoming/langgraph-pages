@@ -1,0 +1,1504 @@
+<!DOCTYPE html><html lang="zh-hans" class="no-js"><head><script>(l=location)[p='protocol'][5]||(l[p]='https')</script><meta name="referrer" content="no-referrer"><style>
+div[data-md-component=announce] {
+  display: none !important;
+}
+</style><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8543159550507237" crossorigin="anonymous"></script>
+
+<script>window.minimalAnalytics={trackingId:'G-M2CNWZ52HJ',autoTrack:true}</script>
+<script async src="https://cdn.jsdelivr.net.cn/npm/@minimal-analytics/ga4/dist/index.js"></script>
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<link href="../low_level.1.html" rel="canonical" />
+<link href="../../tutorials/workflows/index.html" rel="prev" />
+<link href="../pregel/index.html" rel="next" />
+<link href="../../static/favicon.png" rel="icon" />
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator" />
+<title>概述 - LangChain 框架</title>
+<link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet" />
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Public+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet" />
+<style>:root{--md-text-font:"Public Sans";--md-code-font:"Roboto Mono"}</style>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+<link href="../../stylesheets/navigation_title_ovverides.css" rel="stylesheet" />
+<link href="../../stylesheets/version_admonitions.css" rel="stylesheet" />
+<link href="../../stylesheets/logos.css" rel="stylesheet" />
+<link href="../../stylesheets/sticky_navigation.css" rel="stylesheet" />
+<link href="../../stylesheets/agent_graph_widget.css" rel="stylesheet" />
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://#/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T35S4S46');</script>
+<!-- End Google Tag Manager -->
+<meta content="165B7E7C89E49946" name="algolia-site-verification" />
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Public+Sans&display=swap");
+    :root {
+      --md-primary-fg-color: #333333;
+      --md-accent-fg-color: #1E88E5;
+      --md-default-bg-color: #FFFFFF;
+      --md-default-fg-color: #333333;
+      --md-text-font-family: "Public Sans", sans-serif;
+    }
+
+    body {
+      font-family: var(--md-text-font-family);
+      background-color: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+    }
+
+    .md-main {
+      background-color: #FFFFFF;
+    }
+
+    .md-footer {
+      background-color: #F5F5F5;
+      color: #666666;
+    }
+
+    .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    .md-typeset a {
+      color: #1E88E5;
+    }
+
+    .md-typeset a:hover {
+      color: #1565C0;
+    }
+
+    .md-nav__link--active,
+    .md-nav__link:active {
+      color: #1E88E5;
+    }
+
+    .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    .md-search__input:hover,
+    .md-search__input:focus {
+      background-color: #EEEEEE;
+    }
+    /* Table of contents styles */
+    .md-nav--secondary .md-nav__item--active > .md-nav__link {
+      font-weight: bold;
+      color: var(--md-primary-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link {
+      font-weight: normal;
+      color: var(--md-default-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: var(--md-default-fg-color);
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+
+    [data-md-color-scheme="slate"] {
+      --md-default-bg-color: #1E1E1E;
+      --md-default-fg-color: #FFFFFF;
+      --md-accent-fg-color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-main {
+      background-color: #1E1E1E;
+    }
+
+    [data-md-color-scheme="slate"] .navbar {
+      background-color: #1E1E1E;
+      color: #FFFFFF;
+      box-shadow: none;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-header {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-tabs {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__icon {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input::placeholder {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a {
+      color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a:hover {
+      color: #90CAF9;
+    }
+
+    .notebook-links {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+    }
+    .notebook-links .md-content__button {
+      margin-left: 0.5rem;
+    }
+
+    [data-md-color-scheme=default] .logo-dark {
+      display: none !important;
+    }
+
+    [data-md-color-scheme=slate] .logo-light {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-CodeCell .jp-Cell-inputWrapper .jp-InputPrompt.jp-InputArea-prompt {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-Notebook .jp-Cell .jp-OutputPrompt {
+      display: none !important;
+    }
+
+    .md-banner {
+      background-color: #CFC9FA;
+      color: #000000;
+    }
+
+    .md-banner a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    .md-banner a:hover {
+      color: #000000;
+    }
+
+    .md-header__title {
+      visibility: hidden;
+    }
+
+    /* Dark mode banner links */
+    [data-md-color-scheme="slate"] .md-banner a {
+      color: #000000;
+    }
+
+    [data-md-color-scheme="slate"] .md-banner a:hover {
+      color: #000000;
+    }
+
+  </style>
+</head>
+<body data-md-color-accent="gray" data-md-color-primary="white" data-md-color-scheme="default" dir="ltr">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://#/ns.html?id=GTM-T35S4S46" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox" />
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox" />
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="../low_level.1.html#graph-api-concepts">跳到内容</a>
+</div>
+<div data-md-component="announce">
+<aside class="md-banner">
+<div class="md-banner__inner md-grid md-typeset">
+<button aria-label="Don&#39;t show this again" class="md-banner__button md-icon">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+<strong>我们正在为 LangChain、LangGraph 和 LangSmith 招聘多个职位。<a href="https://langchain.ac.cn/careers" rel="noopener noreferrer" target="_blank">加入我们的团队！</a></strong>
+</div>
+<script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+</aside>
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="LangGraph" class="md-header__button md-logo" data-md-component="logo" href="../../index.html" title="LangGraph">
+<img alt="logo" class="logo-light" src="../../static/wordmark_dark.svg">
+<img alt="logo" class="logo-dark" src="../../static/wordmark_light.svg">
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">LangGraph</span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">概述</span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="gray" data-md-color-media="" data-md-color-primary="white" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="grey" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text" />
+<label class="md-search__icon md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">初始化搜索</div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../index.html">指南</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../reference/index.html">参考</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tutorials/rag/langgraph_agentic_rag/index.html">示例</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../faq/index.html">资源</a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="LangGraph" class="md-nav__button md-logo" data-md-component="logo" href="../../index.html" title="LangGraph"> <img alt="logo" class="logo-light" src="../../static/wordmark_dark.svg"> <img alt="logo" class="logo-dark" src="../../static/wordmark_light.svg"> </a> LangGraph</label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox" />
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../index.html">
+<span class="md-ellipsis">指南</span>
+</a>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span> 指南</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_2" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="">
+<span class="md-ellipsis"> 入门 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_2">
+<span class="md-nav__icon md-icon"></span> 入门</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/agents.1.html">
+<span class="md-ellipsis">快速入门</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../why-langgraph.1.html">
+<span class="md-ellipsis"> LangGraph 基础 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorials/deployment/index.html">
+<span class="md-ellipsis">部署</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_3" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="">
+<span class="md-ellipsis"> 预构建代理 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_3">
+<span class="md-nav__icon md-icon"></span> 预构建代理</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/overview.1.html">
+<span class="md-ellipsis">概述</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/run_agents.1.html">
+<span class="md-ellipsis">运行代理</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/streaming/index.html">
+<span class="md-ellipsis">流式传输</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/models/index.html">
+<span class="md-ellipsis">模型</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/tools.1.html">
+<span class="md-ellipsis">工具</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/mcp/index.html">
+<span class="md-ellipsis">MCP 集成</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/context/index.html">
+<span class="md-ellipsis">上下文</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/memory/index.html">
+<span class="md-ellipsis">记忆</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/human-in-the-loop/index.html">
+<span class="md-ellipsis">人工参与</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/multi-agent.1.html">
+<span class="md-ellipsis">多代理</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/evals/index.html">
+<span class="md-ellipsis">评估</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/deployment/index.html">
+<span class="md-ellipsis">部署</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/ui/index.html">
+<span class="md-ellipsis">用户界面</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1_4" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="">
+<span class="md-ellipsis"> LangGraph 框架 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="true" aria-labelledby="__nav_1_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_4">
+<span class="md-nav__icon md-icon"></span> LangGraph 框架</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../agentic_concepts.1.html">
+<span class="md-ellipsis"> 代理架构 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1_4_2" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_4_2" id="__nav_1_4_2_label" tabindex="0">
+<span class="md-ellipsis"> 图 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="true" aria-labelledby="__nav_1_4_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_1_4_2">
+<span class="md-nav__icon md-icon"></span> 图</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox" />
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis"> 概述 </span> <span class="md-nav__icon md-icon"></span></label>
+<a class="md-nav__link md-nav__link--active" href="../low_level.1.html">
+<span class="md-ellipsis">概述</span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#graphs">
+<span class="md-ellipsis">图</span>
+</a>
+<nav aria-label="Graphs" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#stategraph">
+<span class="md-ellipsis">StateGraph</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#compiling-your-graph">
+<span class="md-ellipsis">编译图</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#state">
+<span class="md-ellipsis">状态</span>
+</a>
+<nav aria-label="State" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#schema">
+<span class="md-ellipsis">模式</span>
+</a>
+<nav aria-label="Schema" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#multiple-schemas">
+<span class="md-ellipsis">多个模式</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#reducers">
+<span class="md-ellipsis">归约器</span>
+</a>
+<nav aria-label="Reducers" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#default-reducer">
+<span class="md-ellipsis">默认归约器</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#working-with-messages-in-graph-state">
+<span class="md-ellipsis">在图状态中使用消息</span>
+</a>
+<nav aria-label="Working with Messages in Graph State" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#why-use-messages">
+<span class="md-ellipsis">为什么要使用消息？</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#using-messages-in-your-graph">
+<span class="md-ellipsis">在图中使用消息</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#serialization">
+<span class="md-ellipsis">序列化</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#messagesstate">
+<span class="md-ellipsis">MessagesState</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#nodes">
+<span class="md-ellipsis">节点</span>
+</a>
+<nav aria-label="Nodes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#start-node">
+<span class="md-ellipsis">START 节点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#end-node">
+<span class="md-ellipsis">END 节点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#node-caching">
+<span class="md-ellipsis">节点缓存</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#edges">
+<span class="md-ellipsis">边</span>
+</a>
+<nav aria-label="Edges" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#normal-edges">
+<span class="md-ellipsis">普通边</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#conditional-edges">
+<span class="md-ellipsis">条件边</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#entry-point">
+<span class="md-ellipsis">入口点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#conditional-entry-point">
+<span class="md-ellipsis">条件入口点</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#send">
+<span class="md-ellipsis">发送</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#command">
+<span class="md-ellipsis">命令</span>
+</a>
+<nav aria-label="Command" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#when-should-i-use-command-instead-of-conditional-edges">
+<span class="md-ellipsis">什么时候应该使用 Command 而不是条件边？</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#navigating-to-a-node-in-a-parent-graph">
+<span class="md-ellipsis">导航到父图中的节点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#using-inside-tools">
+<span class="md-ellipsis">在工具内部使用</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#human-in-the-loop">
+<span class="md-ellipsis">人工参与</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#graph-migrations">
+<span class="md-ellipsis">图迁移</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#configuration">
+<span class="md-ellipsis">配置</span>
+</a>
+<nav aria-label="Configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#recursion-limit">
+<span class="md-ellipsis">递归限制</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#visualization">
+<span class="md-ellipsis">可视化</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pregel/index.html">
+<span class="md-ellipsis">运行时概述</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../how-tos/graph-api.1.html">
+<span class="md-ellipsis">使用图 API</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../streaming.1.html">
+<span class="md-ellipsis"> 流式传输 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../persistence.1.html">
+<span class="md-ellipsis"> 持久化 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../memory.1.html">
+<span class="md-ellipsis"> 记忆 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../human_in_the_loop.1.html">
+<span class="md-ellipsis"> 人工参与 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../breakpoints/index.html">
+<span class="md-ellipsis"> 断点 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../time-travel/index.html">
+<span class="md-ellipsis"> 时间旅行 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../tools/index.html">
+<span class="md-ellipsis"> 工具 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../subgraphs.1.html">
+<span class="md-ellipsis"> 子图 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../multi_agent.1.html">
+<span class="md-ellipsis"> 多代理 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../functional_api.1.html">
+<span class="md-ellipsis"> 函数式 API </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_5" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="">
+<span class="md-ellipsis"> LangGraph 平台 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_5">
+<span class="md-nav__icon md-icon"></span> LangGraph 平台</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../langgraph_platform/index.html">
+<span class="md-ellipsis">概述</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../tutorials/langgraph-platform/local-server/index.html">
+<span class="md-ellipsis"> 入门 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../langgraph_components/index.html">
+<span class="md-ellipsis"> 组件 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/deployment/semantic_search/index.html">
+<span class="md-ellipsis"> 数据管理 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../auth/index.html">
+<span class="md-ellipsis"> 认证与访问控制 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../assistants/index.html">
+<span class="md-ellipsis"> 助手 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/threads/index.html">
+<span class="md-ellipsis"> 线程 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/runs/index.html">
+<span class="md-ellipsis"> 运行 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/streaming/index.html">
+<span class="md-ellipsis"> 流式传输 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/how-tos/add-human-in-the-loop/index.html">
+<span class="md-ellipsis">人工参与</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/how-tos/human_in_the_loop_breakpoint/index.html">
+<span class="md-ellipsis">断点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/how-tos/human_in_the_loop_time_travel/index.html">
+<span class="md-ellipsis">时间旅行</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../server-mcp/index.html">
+<span class="md-ellipsis">MCP</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../double_texting/index.html">
+<span class="md-ellipsis"> 重复发送消息 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/webhooks/index.html">
+<span class="md-ellipsis"> Webhooks </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/cron_jobs/index.html">
+<span class="md-ellipsis"> Cron 作业 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../how-tos/http/custom_lifespan/index.html">
+<span class="md-ellipsis"> 服务器定制 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../deployment_options/index.html">
+<span class="md-ellipsis"> 部署 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../reference/index.html">
+<span class="md-ellipsis"> 参考 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../tutorials/rag/langgraph_agentic_rag/index.html">
+<span class="md-ellipsis"> 示例 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../faq/index.html">
+<span class="md-ellipsis"> 资源 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#graphs">
+<span class="md-ellipsis">图</span>
+</a>
+<nav aria-label="Graphs" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#stategraph">
+<span class="md-ellipsis">StateGraph</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#compiling-your-graph">
+<span class="md-ellipsis">编译图</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#state">
+<span class="md-ellipsis">状态</span>
+</a>
+<nav aria-label="State" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#schema">
+<span class="md-ellipsis">模式</span>
+</a>
+<nav aria-label="Schema" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#multiple-schemas">
+<span class="md-ellipsis">多个模式</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#reducers">
+<span class="md-ellipsis">归约器</span>
+</a>
+<nav aria-label="Reducers" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#default-reducer">
+<span class="md-ellipsis">默认归约器</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#working-with-messages-in-graph-state">
+<span class="md-ellipsis">在图状态中使用消息</span>
+</a>
+<nav aria-label="Working with Messages in Graph State" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#why-use-messages">
+<span class="md-ellipsis">为什么要使用消息？</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#using-messages-in-your-graph">
+<span class="md-ellipsis">在图中使用消息</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#serialization">
+<span class="md-ellipsis">序列化</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#messagesstate">
+<span class="md-ellipsis">MessagesState</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#nodes">
+<span class="md-ellipsis">节点</span>
+</a>
+<nav aria-label="Nodes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#start-node">
+<span class="md-ellipsis">START 节点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#end-node">
+<span class="md-ellipsis">END 节点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#node-caching">
+<span class="md-ellipsis">节点缓存</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#edges">
+<span class="md-ellipsis">边</span>
+</a>
+<nav aria-label="Edges" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#normal-edges">
+<span class="md-ellipsis">普通边</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#conditional-edges">
+<span class="md-ellipsis">条件边</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#entry-point">
+<span class="md-ellipsis">入口点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#conditional-entry-point">
+<span class="md-ellipsis">条件入口点</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#send">
+<span class="md-ellipsis">发送</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#command">
+<span class="md-ellipsis">命令</span>
+</a>
+<nav aria-label="Command" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#when-should-i-use-command-instead-of-conditional-edges">
+<span class="md-ellipsis">什么时候应该使用 Command 而不是条件边？</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#navigating-to-a-node-in-a-parent-graph">
+<span class="md-ellipsis">导航到父图中的节点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#using-inside-tools">
+<span class="md-ellipsis">在工具内部使用</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#human-in-the-loop">
+<span class="md-ellipsis">人工参与</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#graph-migrations">
+<span class="md-ellipsis">图迁移</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#configuration">
+<span class="md-ellipsis">配置</span>
+</a>
+<nav aria-label="Configuration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#recursion-limit">
+<span class="md-ellipsis">递归限制</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../low_level.1.html#visualization">
+<span class="md-ellipsis">可视化</span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<div class="notebook-links">
+</div>
+<a class="md-content__button md-icon" href="https://github.com/langchain-ai/langgraph/edit/main/docs/docs/concepts/low_level.md" title="Edit this page">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<h1 id="graph-api-concepts">图 API 概念<a class="headerlink" href="../low_level.1.html#graph-api-concepts" title="Permanent link">¶</a></h1>
+<h2 id="graphs">图<a class="headerlink" href="../low_level.1.html#graphs" title="Permanent link">¶</a></h2>
+<p>LangGraph 的核心是将代理工作流建模为图。您可以使用三个关键组件来定义代理的行为：</p>
+<ol>
+<li>
+<p><a href="../low_level.1.html#state"><code>State</code></a>：一个共享数据结构，表示应用程序的当前快照。它可以是任何 Python 类型，但通常是 <code>TypedDict</code> 或 Pydantic <code>BaseModel</code>。</p>
+</li>
+<li>
+<p><a href="../low_level.1.html#nodes"><code>Nodes</code></a>：编码代理逻辑的 Python 函数。它们接收当前的 <code>State</code> 作为输入，执行一些计算或副作用，并返回一个更新的 <code>State</code>。</p>
+</li>
+<li>
+<p><a href="../low_level.1.html#edges"><code>Edges</code></a>：Python 函数，根据当前的 <code>State</code> 决定接下来执行哪个 <code>Node</code>。它们可以是条件分支或固定转换。</p>
+</li>
+</ol>
+<p>通过组合 <code>Nodes</code> 和 <code>Edges</code>，您可以创建复杂、循环的工作流，使 <code>State</code> 随时间演进。然而，真正的力量来自于 LangGraph 如何管理 <code>State</code>。需要强调的是：<code>Nodes</code> 和 <code>Edges</code> 不过是 Python 函数——它们可以包含一个 LLM，也可以只是普通的 Python 代码。</p>
+<p>简而言之：<em>节点完成工作，边指示下一步该做什么</em>。</p>
+<p>LangGraph 的底层图算法使用<a href="https://en.wikipedia.org/wiki/Message_passing">消息传递</a>来定义通用程序。当一个节点完成其操作时，它会沿着一条或多条边向其他节点发送消息。这些接收节点随后执行其函数，将结果消息传递给下一组节点，然后该过程继续。受 Google 的 <a href="https://research.google/pubs/pregel-a-system-for-large-scale-graph-processing/">Pregel</a> 系统启发，程序以离散的“超步”进行。</p>
+<p>超步可以被认为是图节点的一次迭代。并行运行的节点属于同一个超步，而顺序运行的节点属于不同的超步。在图执行开始时，所有节点都处于 <code>inactive</code> 状态。当节点在其任何传入边（或“通道”）上接收到新消息（状态）时，它就会变为 <code>active</code>。活跃节点随后运行其函数并返回更新。在每个超步结束时，没有传入消息的节点通过将自身标记为 <code>inactive</code> 来投票 <code>halt</code>（停止）。当所有节点都处于 <code>inactive</code> 状态且没有消息传输时，图执行终止。</p>
+<h3 id="stategraph">StateGraph<a class="headerlink" href="../low_level.1.html#stategraph" title="Permanent link">¶</a></h3>
+<p><code>StateGraph</code> 类是主要的图类。它通过用户定义的 <code>State</code> 对象进行参数化。</p>
+<h3 id="compiling-your-graph">编译图<a class="headerlink" href="../low_level.1.html#compiling-your-graph" title="Permanent link">¶</a></h3>
+<p>要构建图，您首先定义<a href="../low_level.1.html#state">状态</a>，然后添加<a href="../low_level.1.html#nodes">节点</a>和<a href="../low_level.1.html#edges">边</a>，最后编译它。究竟什么是编译图，为什么需要它？</p>
+<p>编译是一个相当简单的步骤。它对图的结构进行一些基本检查（例如，没有孤立节点）。它也是您可以指定运行时参数的地方，例如<a href="../persistence.1.html">检查点</a>和断点。您只需调用 <code>.compile</code> 方法即可编译图。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a href="../low_level.1.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">graph</span> <span class="o">=</span> <span class="n">graph_builder</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</span></code></pre></div>
+<p>您<strong>必须</strong>先编译图才能使用它。</p>
+<h2 id="state">状态<a class="headerlink" href="../low_level.1.html#state" title="Permanent link">¶</a></h2>
+<p>定义图时，您要做的第一件事是定义图的 <code>State</code>。<code>State</code> 包含<a href="../low_level.1.html#schema">图的模式</a>以及指定如何应用状态更新的<a href="../low_level.1.html#reducers"><code>reducer</code> 函数</a>。<code>State</code> 的模式将是图中所有 <code>Nodes</code> 和 <code>Edges</code> 的输入模式，可以是 <code>TypedDict</code> 或 <code>Pydantic</code> 模型。所有 <code>Nodes</code> 都将发出对 <code>State</code> 的更新，然后使用指定的 <code>reducer</code> 函数应用这些更新。</p>
+<h3 id="schema">模式<a class="headerlink" href="../low_level.1.html#schema" title="Permanent link">¶</a></h3>
+<p>指定图模式的主要文档化方法是使用 <code>TypedDict</code>。然而，我们也支持<a href="../../how-tos/graph-api.1.html#use-pydantic-models-for-graph-state">使用 Pydantic BaseModel</a> 作为图状态，以添加<strong>默认值</strong>和额外的数据验证。</p>
+<p>默认情况下，图将具有相同的输入和输出模式。如果您想更改此设置，您还可以直接指定显式的输入和输出模式。当您有许多键，并且有些键专门用于输入而另一些用于输出时，这会很有用。有关如何使用的信息，请参阅<a href="../../how-tos/graph-api.1.html#define-input-and-output-schemas">此处指南</a>。</p>
+<h4 id="multiple-schemas">多个模式<a class="headerlink" href="../low_level.1.html#multiple-schemas" title="Permanent link">¶</a></h4>
+<p>通常，所有图节点都使用单个模式进行通信。这意味着它们将读写相同的状态通道。但是，在某些情况下，我们希望对此有更多控制：</p>
+<ul>
+<li>内部节点可以传递图中输入/输出不需要的信息。</li>
+<li>我们可能还希望为图使用不同的输入/输出模式。例如，输出可能只包含一个相关的输出键。</li>
+</ul>
+<p>节点可以在图内部写入私有状态通道以进行内部节点通信。我们可以简单地定义一个私有模式 <code>PrivateState</code>。有关更多详细信息，请参阅<a href="../../how-tos/graph-api.1.html#pass-private-state-between-nodes">本指南</a>。</p>
+<p>还可以为图定义显式输入和输出模式。在这些情况下，我们定义一个包含与图操作相关的<em>所有</em>键的“内部”模式。但是，我们也定义 <code>input</code> 和 <code>output</code> 模式，它们是“内部”模式的子集，用于约束图的输入和输出。有关更多详细信息，请参阅<a href="../../how-tos/graph-api.1.html#define-input-and-output-schemas">本指南</a>。</p>
+<p>让我们看一个例子</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a href="../low_level.1.html#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">InputState</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-1-2"><a href="../low_level.1.html#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>    <span class="n">user_input</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-1-3"><a href="../low_level.1.html#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a href="../low_level.1.html#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">OutputState</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-1-5"><a href="../low_level.1.html#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>    <span class="n">graph_output</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-1-6"><a href="../low_level.1.html#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a href="../low_level.1.html#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="k">class</span><span class="w"> </span><span class="nc">OverallState</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-1-8"><a href="../low_level.1.html#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a>    <span class="n">foo</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-1-9"><a href="../low_level.1.html#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a>    <span class="n">user_input</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-1-10"><a href="../low_level.1.html#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a>    <span class="n">graph_output</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-1-11"><a href="../low_level.1.html#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a href="../low_level.1.html#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="k">class</span><span class="w"> </span><span class="nc">PrivateState</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-1-13"><a href="../low_level.1.html#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a>    <span class="n">bar</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-1-14"><a href="../low_level.1.html#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a>
+</span><span id="__span-1-15"><a href="../low_level.1.html#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="k">def</span><span class="w"> </span><span class="nf">node_1</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">InputState</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OverallState</span><span class="p">:</span>
+</span><span id="__span-1-16"><a href="../low_level.1.html#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a>    <span class="c1"># Write to OverallState</span>
+</span><span id="__span-1-17"><a href="../low_level.1.html#__codelineno-1-17" id="__codelineno-1-17" name="__codelineno-1-17"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"foo"</span><span class="p">:</span> <span class="n">state</span><span class="p">[</span><span class="s2">"user_input"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">" name"</span><span class="p">}</span>
+</span><span id="__span-1-18"><a href="../low_level.1.html#__codelineno-1-18" id="__codelineno-1-18" name="__codelineno-1-18"></a>
+</span><span id="__span-1-19"><a href="../low_level.1.html#__codelineno-1-19" id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="k">def</span><span class="w"> </span><span class="nf">node_2</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">OverallState</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PrivateState</span><span class="p">:</span>
+</span><span id="__span-1-20"><a href="../low_level.1.html#__codelineno-1-20" id="__codelineno-1-20" name="__codelineno-1-20"></a>    <span class="c1"># Read from OverallState, write to PrivateState</span>
+</span><span id="__span-1-21"><a href="../low_level.1.html#__codelineno-1-21" id="__codelineno-1-21" name="__codelineno-1-21"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"bar"</span><span class="p">:</span> <span class="n">state</span><span class="p">[</span><span class="s2">"foo"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">" is"</span><span class="p">}</span>
+</span><span id="__span-1-22"><a href="../low_level.1.html#__codelineno-1-22" id="__codelineno-1-22" name="__codelineno-1-22"></a>
+</span><span id="__span-1-23"><a href="../low_level.1.html#__codelineno-1-23" id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="k">def</span><span class="w"> </span><span class="nf">node_3</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">PrivateState</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OutputState</span><span class="p">:</span>
+</span><span id="__span-1-24"><a href="../low_level.1.html#__codelineno-1-24" id="__codelineno-1-24" name="__codelineno-1-24"></a>    <span class="c1"># Read from PrivateState, write to OutputState</span>
+</span><span id="__span-1-25"><a href="../low_level.1.html#__codelineno-1-25" id="__codelineno-1-25" name="__codelineno-1-25"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"graph_output"</span><span class="p">:</span> <span class="n">state</span><span class="p">[</span><span class="s2">"bar"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">" Lance"</span><span class="p">}</span>
+</span><span id="__span-1-26"><a href="../low_level.1.html#__codelineno-1-26" id="__codelineno-1-26" name="__codelineno-1-26"></a>
+</span><span id="__span-1-27"><a href="../low_level.1.html#__codelineno-1-27" id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="n">builder</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">OverallState</span><span class="p">,</span><span class="nb">input</span><span class="o">=</span><span class="n">InputState</span><span class="p">,</span><span class="n">output</span><span class="o">=</span><span class="n">OutputState</span><span class="p">)</span>
+</span><span id="__span-1-28"><a href="../low_level.1.html#__codelineno-1-28" id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"node_1"</span><span class="p">,</span> <span class="n">node_1</span><span class="p">)</span>
+</span><span id="__span-1-29"><a href="../low_level.1.html#__codelineno-1-29" id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"node_2"</span><span class="p">,</span> <span class="n">node_2</span><span class="p">)</span>
+</span><span id="__span-1-30"><a href="../low_level.1.html#__codelineno-1-30" id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"node_3"</span><span class="p">,</span> <span class="n">node_3</span><span class="p">)</span>
+</span><span id="__span-1-31"><a href="../low_level.1.html#__codelineno-1-31" id="__codelineno-1-31" name="__codelineno-1-31"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="s2">"node_1"</span><span class="p">)</span>
+</span><span id="__span-1-32"><a href="../low_level.1.html#__codelineno-1-32" id="__codelineno-1-32" name="__codelineno-1-32"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"node_1"</span><span class="p">,</span> <span class="s2">"node_2"</span><span class="p">)</span>
+</span><span id="__span-1-33"><a href="../low_level.1.html#__codelineno-1-33" id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"node_2"</span><span class="p">,</span> <span class="s2">"node_3"</span><span class="p">)</span>
+</span><span id="__span-1-34"><a href="../low_level.1.html#__codelineno-1-34" id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"node_3"</span><span class="p">,</span> <span class="n">END</span><span class="p">)</span>
+</span><span id="__span-1-35"><a href="../low_level.1.html#__codelineno-1-35" id="__codelineno-1-35" name="__codelineno-1-35"></a>
+</span><span id="__span-1-36"><a href="../low_level.1.html#__codelineno-1-36" id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="n">graph</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+</span><span id="__span-1-37"><a href="../low_level.1.html#__codelineno-1-37" id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">"user_input"</span><span class="p">:</span><span class="s2">"My"</span><span class="p">})</span>
+</span><span id="__span-1-38"><a href="../low_level.1.html#__codelineno-1-38" id="__codelineno-1-38" name="__codelineno-1-38"></a><span class="p">{</span><span class="s1">'graph_output'</span><span class="p">:</span> <span class="s1">'My name is Lance'</span><span class="p">}</span>
+</span></code></pre></div>
+<p>这里有两点微妙而重要的注意事项：</p>
+<ol>
+<li>
+<p>我们将 <code>state: InputState</code> 作为输入模式传递给 <code>node_1</code>。但是，我们写入 <code>OverallState</code> 中的通道 <code>foo</code>。我们如何写入一个不包含在输入模式中的状态通道？这是因为节点<em>可以写入图状态中的任何状态通道</em>。图状态是初始化时定义的所有状态通道的并集，其中包括 <code>OverallState</code> 以及筛选器 <code>InputState</code> 和 <code>OutputState</code>。</p>
+</li>
+<li>
+<p>我们使用 <code>StateGraph(OverallState,input=InputState,output=OutputState)</code> 初始化图。那么，我们如何在 <code>node_2</code> 中写入 <code>PrivateState</code> 呢？如果未在 <code>StateGraph</code> 初始化中传递此模式，图如何访问它？我们可以这样做，因为<em>节点也可以声明额外的状态通道</em>，只要状态模式定义存在即可。在这种情况下，<code>PrivateState</code> 模式已定义，因此我们可以在图中添加 <code>bar</code> 作为新的状态通道并写入其中。</p>
+</li>
+</ol>
+<h3 id="reducers">归约器<a class="headerlink" href="../low_level.1.html#reducers" title="Permanent link">¶</a></h3>
+<p>归约器是理解节点更新如何应用于 <code>State</code> 的关键。<code>State</code> 中的每个键都有自己独立的归约函数。如果没有明确指定归约函数，则假定对该键的所有更新都应覆盖它。有几种不同类型的归约器，从默认类型的归约器开始：</p>
+<h4 id="default-reducer">默认归约器<a class="headerlink" href="../low_level.1.html#default-reducer" title="Permanent link">¶</a></h4>
+<p>以下两个示例展示了如何使用默认归约器：</p>
+<p><strong>示例 A</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a href="../low_level.1.html#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
+</span><span id="__span-2-2"><a href="../low_level.1.html#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a href="../low_level.1.html#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-2-4"><a href="../low_level.1.html#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="n">foo</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-2-5"><a href="../low_level.1.html#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>    <span class="n">bar</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span></code></pre></div>
+<p>在此示例中，未为任何键指定归约函数。假设图的输入是 <code>{"foo": 1, "bar": ["hi"]}</code>。然后假设第一个 <code>Node</code> 返回 <code>{"foo": 2}</code>。这被视为对状态的更新。请注意，<code>Node</code> 不需要返回整个 <code>State</code> 模式——只需返回一个更新。应用此更新后，<code>State</code> 将变为 <code>{"foo": 2, "bar": ["hi"]}</code>。如果第二个节点返回 <code>{"bar": ["bye"]}</code>，则 <code>State</code> 将变为 <code>{"foo": 2, "bar": ["bye"]}</code>。</p>
+<p><strong>示例 B</strong></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a href="../low_level.1.html#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span>
+</span><span id="__span-3-2"><a href="../low_level.1.html#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
+</span><span id="__span-3-3"><a href="../low_level.1.html#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">add</span>
+</span><span id="__span-3-4"><a href="../low_level.1.html#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a href="../low_level.1.html#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-3-6"><a href="../low_level.1.html#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>    <span class="n">foo</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-3-7"><a href="../low_level.1.html#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>    <span class="n">bar</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">add</span><span class="p">]</span>
+</span></code></pre></div>
+<p>在此示例中，我们使用 <code>Annotated</code> 类型为第二个键 (<code>bar</code>) 指定了一个归约函数 (<code>operator.add</code>)。请注意，第一个键保持不变。假设图的输入是 <code>{"foo": 1, "bar": ["hi"]}</code>。然后假设第一个 <code>Node</code> 返回 <code>{"foo": 2}</code>。这被视为对状态的更新。请注意，<code>Node</code> 不需要返回整个 <code>State</code> 模式——只需返回一个更新。应用此更新后，<code>State</code> 将变为 <code>{"foo": 2, "bar": ["hi"]}</code>。如果第二个节点返回 <code>{"bar": ["bye"]}</code>，则 <code>State</code> 将变为 <code>{"foo": 2, "bar": ["hi", "bye"]}</code>。请注意，这里的 <code>bar</code> 键是通过将两个列表相加来更新的。</p>
+<h3 id="working-with-messages-in-graph-state">在图状态中使用消息<a class="headerlink" href="../low_level.1.html#working-with-messages-in-graph-state" title="Permanent link">¶</a></h3>
+<h4 id="why-use-messages">为什么要使用消息？<a class="headerlink" href="../low_level.1.html#why-use-messages" title="Permanent link">¶</a></h4>
+<p>大多数现代 LLM 提供商都有一个聊天模型接口，它接受消息列表作为输入。LangChain 的<a href="https://python.langchain.ac.cn/docs/concepts/#chat-models"><code>ChatModel</code></a> 特别接受 <code>Message</code> 对象的列表作为输入。这些消息有多种形式，例如 <code>HumanMessage</code>（用户输入）或 <code>AIMessage</code>（LLM 响应）。要了解更多关于消息对象的信息，请参阅<a href="https://python.langchain.ac.cn/docs/concepts/#messages">此</a>概念指南。</p>
+<h4 id="using-messages-in-your-graph">在图中使用消息<a class="headerlink" href="../low_level.1.html#using-messages-in-your-graph" title="Permanent link">¶</a></h4>
+<p>在许多情况下，将之前的对话历史记录作为消息列表存储在图状态中很有帮助。为此，我们可以向图状态添加一个键（通道），该键存储 <code>Message</code> 对象的列表，并使用归约函数对其进行注释（参见下面示例中的 <code>messages</code> 键）。归约函数对于告诉图如何通过每次状态更新（例如，当节点发送更新时）来更新状态中的 <code>Message</code> 对象列表至关重要。如果您不指定归约器，则每次状态更新都将使用最新提供的值覆盖消息列表。如果您只想将消息简单地附加到现有列表，则可以使用 <code>operator.add</code> 作为归约器。</p>
+<p>然而，您可能还希望手动更新图状态中的消息（例如，人工参与）。如果您使用 <code>operator.add</code>，则您发送到图的手动状态更新将被附加到现有消息列表，而不是更新现有消息。为避免这种情况，您需要一个能够跟踪消息 ID 并在更新时覆盖现有消息的归约器。为此，您可以使用预构建的 <code>add_messages</code> 函数。对于全新消息，它将简单地附加到现有列表；但它也会正确处理现有消息的更新。</p>
+<h4 id="serialization">序列化<a class="headerlink" href="../low_level.1.html#serialization" title="Permanent link">¶</a></h4>
+<p>除了跟踪消息 ID 之外，每当在 <code>messages</code> 通道上收到状态更新时，<code>add_messages</code> 函数还会尝试将消息反序列化为 LangChain <code>Message</code> 对象。有关 LangChain 序列化/反序列化的更多信息，请参阅<a href="https://python.langchain.ac.cn/docs/how_to/serialization/">此处</a>。这允许以以下格式发送图输入/状态更新：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a href="../low_level.1.html#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1"># this is supported</span>
+</span><span id="__span-4-2"><a href="../low_level.1.html#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="p">{</span><span class="s2">"messages"</span><span class="p">:</span> <span class="p">[</span><span class="n">HumanMessage</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">"message"</span><span class="p">)]}</span>
+</span><span id="__span-4-3"><a href="../low_level.1.html#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a href="../low_level.1.html#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="c1"># and this is also supported</span>
+</span><span id="__span-4-5"><a href="../low_level.1.html#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="p">{</span><span class="s2">"messages"</span><span class="p">:</span> <span class="p">[{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"human"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"message"</span><span class="p">}]}</span>
+</span></code></pre></div>
+<p>由于在使用 <code>add_messages</code> 时状态更新总是反序列化为 LangChain <code>Messages</code>，因此您应该使用点表示法来访问消息属性，例如 <code>state["messages"][-1].content</code>。下面是一个使用 <code>add_messages</code> 作为其归约函数的图示例。</p>
+<p><sup><i>API 参考：<a href="https://python.langchain.ac.cn/api_reference/core/messages/langchain_core.messages.AnyMessage.html">AnyMessage</a> | <a href="../../reference/graphs/index.html#langgraph.graph.message.add_messages">add_messages</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a href="../low_level.1.html#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.messages</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnyMessage</span>
+</span><span id="__span-5-2"><a href="../low_level.1.html#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph.message</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_messages</span>
+</span><span id="__span-5-3"><a href="../low_level.1.html#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span>
+</span><span id="__span-5-4"><a href="../low_level.1.html#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
+</span><span id="__span-5-5"><a href="../low_level.1.html#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a href="../low_level.1.html#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="k">class</span><span class="w"> </span><span class="nc">GraphState</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-5-7"><a href="../low_level.1.html#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a>    <span class="n">messages</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">AnyMessage</span><span class="p">],</span> <span class="n">add_messages</span><span class="p">]</span>
+</span></code></pre></div>
+<h4 id="messagesstate">MessagesState<a class="headerlink" href="../low_level.1.html#messagesstate" title="Permanent link">¶</a></h4>
+<p>由于在状态中包含消息列表非常常见，因此存在一个预构建的状态，称为 <code>MessagesState</code>，它使得使用消息变得容易。<code>MessagesState</code> 定义了一个单独的 <code>messages</code> 键，它是一个 <code>AnyMessage</code> 对象列表，并使用 <code>add_messages</code> 归约器。通常，除了消息之外还需要跟踪更多状态，因此我们看到人们会对此状态进行子类化并添加更多字段，例如：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a href="../low_level.1.html#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">MessagesState</span>
+</span><span id="__span-6-2"><a href="../low_level.1.html#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a href="../low_level.1.html#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">MessagesState</span><span class="p">):</span>
+</span><span id="__span-6-4"><a href="../low_level.1.html#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a>    <span class="n">documents</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</span></code></pre></div>
+<h2 id="nodes">节点<a class="headerlink" href="../low_level.1.html#nodes" title="Permanent link">¶</a></h2>
+<p>在 LangGraph 中，节点通常是 Python 函数（同步或异步），其中<strong>第一个</strong>位置参数是<a href="../low_level.1.html#state">状态</a>，（可选地）<strong>第二个</strong>位置参数是“配置”，包含可选的<a href="../low_level.1.html#configuration">可配置参数</a>（例如 <code>thread_id</code>）。</p>
+<p>与 <code>NetworkX</code> 类似，您可以使用 <a class="autorefs autorefs-internal" href="../../reference/graphs/index.html#langgraph.graph.state.StateGraph.add_node" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-method&quot;></code> <span class=&quot;doc doc-object-name doc-function-name&quot;>add_node</span>">add_node</a> 方法将这些节点添加到图中：</p>
+<p><sup><i>API 参考：<a href="https://python.langchain.ac.cn/api_reference/core/runnables/langchain_core.runnables.config.RunnableConfig.html">RunnableConfig</a> | <a href="../../reference/graphs/index.html#langgraph.graph.state.StateGraph">StateGraph</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a href="../low_level.1.html#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
+</span><span id="__span-7-2"><a href="../low_level.1.html#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a href="../low_level.1.html#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.runnables</span><span class="w"> </span><span class="kn">import</span> <span class="n">RunnableConfig</span>
+</span><span id="__span-7-4"><a href="../low_level.1.html#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">StateGraph</span>
+</span><span id="__span-7-5"><a href="../low_level.1.html#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a href="../low_level.1.html#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-7-7"><a href="../low_level.1.html#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a>    <span class="nb">input</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-7-8"><a href="../low_level.1.html#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a>    <span class="n">results</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-7-9"><a href="../low_level.1.html#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a>
+</span><span id="__span-7-10"><a href="../low_level.1.html#__codelineno-7-10" id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="n">builder</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">State</span><span class="p">)</span>
+</span><span id="__span-7-11"><a href="../low_level.1.html#__codelineno-7-11" id="__codelineno-7-11" name="__codelineno-7-11"></a>
+</span><span id="__span-7-12"><a href="../low_level.1.html#__codelineno-7-12" id="__codelineno-7-12" name="__codelineno-7-12"></a>
+</span><span id="__span-7-13"><a href="../low_level.1.html#__codelineno-7-13" id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_node</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">RunnableConfig</span><span class="p">):</span>
+</span><span id="__span-7-14"><a href="../low_level.1.html#__codelineno-7-14" id="__codelineno-7-14" name="__codelineno-7-14"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"In node: "</span><span class="p">,</span> <span class="n">config</span><span class="p">[</span><span class="s2">"configurable"</span><span class="p">][</span><span class="s2">"user_id"</span><span class="p">])</span>
+</span><span id="__span-7-15"><a href="../low_level.1.html#__codelineno-7-15" id="__codelineno-7-15" name="__codelineno-7-15"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"results"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Hello, </span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="s1">'input'</span><span class="p">]</span><span class="si">}</span><span class="s2">!"</span><span class="p">}</span>
+</span><span id="__span-7-16"><a href="../low_level.1.html#__codelineno-7-16" id="__codelineno-7-16" name="__codelineno-7-16"></a>
+</span><span id="__span-7-17"><a href="../low_level.1.html#__codelineno-7-17" id="__codelineno-7-17" name="__codelineno-7-17"></a>
+</span><span id="__span-7-18"><a href="../low_level.1.html#__codelineno-7-18" id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="c1"># The second argument is optional</span>
+</span><span id="__span-7-19"><a href="../low_level.1.html#__codelineno-7-19" id="__codelineno-7-19" name="__codelineno-7-19"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_other_node</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">):</span>
+</span><span id="__span-7-20"><a href="../low_level.1.html#__codelineno-7-20" id="__codelineno-7-20" name="__codelineno-7-20"></a>    <span class="k">return</span> <span class="n">state</span>
+</span><span id="__span-7-21"><a href="../low_level.1.html#__codelineno-7-21" id="__codelineno-7-21" name="__codelineno-7-21"></a>
+</span><span id="__span-7-22"><a href="../low_level.1.html#__codelineno-7-22" id="__codelineno-7-22" name="__codelineno-7-22"></a>
+</span><span id="__span-7-23"><a href="../low_level.1.html#__codelineno-7-23" id="__codelineno-7-23" name="__codelineno-7-23"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"my_node"</span><span class="p">,</span> <span class="n">my_node</span><span class="p">)</span>
+</span><span id="__span-7-24"><a href="../low_level.1.html#__codelineno-7-24" id="__codelineno-7-24" name="__codelineno-7-24"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"other_node"</span><span class="p">,</span> <span class="n">my_other_node</span><span class="p">)</span>
+</span><span id="__span-7-25"><a href="../low_level.1.html#__codelineno-7-25" id="__codelineno-7-25" name="__codelineno-7-25"></a><span class="o">...</span>
+</span></code></pre></div>
+<p>在幕后，函数被转换为 <a href="https://python-api.langchain.ac.cn/en/latest/runnables/langchain_core.runnables.base.RunnableLambda.html#langchain_core.runnables.base.RunnableLambda">RunnableLambda</a>，这为您的函数添加了批处理和异步支持，以及原生跟踪和调试功能。</p>
+<p>如果您向图中添加节点时未指定名称，它将获得与函数名称相同的默认名称。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a href="../low_level.1.html#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">my_node</span><span class="p">)</span>
+</span><span id="__span-8-2"><a href="../low_level.1.html#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="c1"># You can then create edges to/from this node by referencing it as `"my_node"`</span>
+</span></code></pre></div>
+<h3 id="start-node"><code>START</code> 节点<a class="headerlink" href="../low_level.1.html#start-node" title="Permanent link">¶</a></h3>
+<p><code>START</code> 节点是一个特殊节点，代表将用户输入发送到图的节点。引用此节点的主要目的是确定应首先调用哪些节点。</p>
+<p><sup><i>API 参考：<a href="../../reference/constants/index.html#langgraph.constants.START">START</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a href="../low_level.1.html#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">START</span>
+</span><span id="__span-9-2"><a href="../low_level.1.html#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a href="../low_level.1.html#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="s2">"node_a"</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="end-node"><code>END</code> 节点<a class="headerlink" href="../low_level.1.html#end-node" title="Permanent link">¶</a></h3>
+<p><code>END</code> 节点是一个特殊节点，代表终止节点。当您想表示哪些边在完成操作后没有后续动作时，会引用此节点。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a href="../low_level.1.html#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>from langgraph.graph import END
+</span><span id="__span-10-2"><a href="../low_level.1.html#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a href="../low_level.1.html#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a>graph.add_edge("node_a", END)
+</span></code></pre></div>
+<h3 id="node-caching">节点缓存<a class="headerlink" href="../low_level.1.html#node-caching" title="Permanent link">¶</a></h3>
+<p>LangGraph 支持根据节点的输入缓存任务/节点。要使用缓存：</p>
+<ul>
+<li>编译图时（或指定入口点时）指定缓存。</li>
+<li>为节点指定缓存策略。每个缓存策略支持：<ul>
+<li><code>key_func</code> 用于根据节点输入生成缓存键，默认为使用 pickle 对输入进行 <code>hash</code>。</li>
+<li><code>ttl</code>，缓存的存活时间（秒）。如果未指定，缓存将永不过期。</li>
+</ul>
+</li>
+</ul>
+<p>例如</p>
+<p><sup><i>API 参考：<a href="../../reference/graphs/index.html#langgraph.graph.state.StateGraph">StateGraph</a></i></sup></p>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-11-1"><a href="../low_level.1.html#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-11-2"><a href="../low_level.1.html#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
+</span><span id="__span-11-3"><a href="../low_level.1.html#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">StateGraph</span>
+</span><span id="__span-11-4"><a href="../low_level.1.html#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.cache.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">InMemoryCache</span>
+</span><span id="__span-11-5"><a href="../low_level.1.html#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">CachePolicy</span>
+</span><span id="__span-11-6"><a href="../low_level.1.html#__codelineno-11-6" id="__codelineno-11-6" name="__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a href="../low_level.1.html#__codelineno-11-7" id="__codelineno-11-7" name="__codelineno-11-7"></a>
+</span><span id="__span-11-8"><a href="../low_level.1.html#__codelineno-11-8" id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-11-9"><a href="../low_level.1.html#__codelineno-11-9" id="__codelineno-11-9" name="__codelineno-11-9"></a>    <span class="n">x</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-11-10"><a href="../low_level.1.html#__codelineno-11-10" id="__codelineno-11-10" name="__codelineno-11-10"></a>    <span class="n">result</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-11-11"><a href="../low_level.1.html#__codelineno-11-11" id="__codelineno-11-11" name="__codelineno-11-11"></a>
+</span><span id="__span-11-12"><a href="../low_level.1.html#__codelineno-11-12" id="__codelineno-11-12" name="__codelineno-11-12"></a>
+</span><span id="__span-11-13"><a href="../low_level.1.html#__codelineno-11-13" id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="n">builder</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">State</span><span class="p">)</span>
+</span><span id="__span-11-14"><a href="../low_level.1.html#__codelineno-11-14" id="__codelineno-11-14" name="__codelineno-11-14"></a>
+</span><span id="__span-11-15"><a href="../low_level.1.html#__codelineno-11-15" id="__codelineno-11-15" name="__codelineno-11-15"></a>
+</span><span id="__span-11-16"><a href="../low_level.1.html#__codelineno-11-16" id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="k">def</span><span class="w"> </span><span class="nf">expensive_node</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+</span><span id="__span-11-17"><a href="../low_level.1.html#__codelineno-11-17" id="__codelineno-11-17" name="__codelineno-11-17"></a>    <span class="c1"># expensive computation</span>
+</span><span id="__span-11-18"><a href="../low_level.1.html#__codelineno-11-18" id="__codelineno-11-18" name="__codelineno-11-18"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-11-19"><a href="../low_level.1.html#__codelineno-11-19" id="__codelineno-11-19" name="__codelineno-11-19"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">"result"</span><span class="p">:</span> <span class="n">state</span><span class="p">[</span><span class="s2">"x"</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">}</span>
+</span><span id="__span-11-20"><a href="../low_level.1.html#__codelineno-11-20" id="__codelineno-11-20" name="__codelineno-11-20"></a>
+</span><span id="__span-11-21"><a href="../low_level.1.html#__codelineno-11-21" id="__codelineno-11-21" name="__codelineno-11-21"></a>
+</span><span id="__span-11-22"><a href="../low_level.1.html#__codelineno-11-22" id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"expensive_node"</span><span class="p">,</span> <span class="n">expensive_node</span><span class="p">,</span> <span class="n">cache_policy</span><span class="o">=</span><span class="n">CachePolicy</span><span class="p">(</span><span class="n">ttl</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+</span><span id="__span-11-23"><a href="../low_level.1.html#__codelineno-11-23" id="__codelineno-11-23" name="__codelineno-11-23"></a><span class="n">builder</span><span class="o">.</span><span class="n">set_entry_point</span><span class="p">(</span><span class="s2">"expensive_node"</span><span class="p">)</span>
+</span><span id="__span-11-24"><a href="../low_level.1.html#__codelineno-11-24" id="__codelineno-11-24" name="__codelineno-11-24"></a><span class="n">builder</span><span class="o">.</span><span class="n">set_finish_point</span><span class="p">(</span><span class="s2">"expensive_node"</span><span class="p">)</span>
+</span><span id="__span-11-25"><a href="../low_level.1.html#__codelineno-11-25" id="__codelineno-11-25" name="__codelineno-11-25"></a>
+</span><span id="__span-11-26"><a href="../low_level.1.html#__codelineno-11-26" id="__codelineno-11-26" name="__codelineno-11-26"></a><span class="n">graph</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">cache</span><span class="o">=</span><span class="n">InMemoryCache</span><span class="p">())</span>
+</span><span id="__span-11-27"><a href="../low_level.1.html#__codelineno-11-27" id="__codelineno-11-27" name="__codelineno-11-27"></a>
+</span><span id="__span-11-28"><a href="../low_level.1.html#__codelineno-11-28" id="__codelineno-11-28" name="__codelineno-11-28"></a><span class="nb">print</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">"x"</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="n">stream_mode</span><span class="o">=</span><span class="s1">'updates'</span><span class="p">))</span>  <span class="c1"># (1)!</span>
+</span><span id="__span-11-29"><a href="../low_level.1.html#__codelineno-11-29" id="__codelineno-11-29" name="__codelineno-11-29"></a><span class="p">[{</span><span class="s1">'expensive_node'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'result'</span><span class="p">:</span> <span class="mi">10</span><span class="p">}}]</span>
+</span><span id="__span-11-30"><a href="../low_level.1.html#__codelineno-11-30" id="__codelineno-11-30" name="__codelineno-11-30"></a><span class="nb">print</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">"x"</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="n">stream_mode</span><span class="o">=</span><span class="s1">'updates'</span><span class="p">))</span>  <span class="c1"># (2)!</span>
+</span><span id="__span-11-31"><a href="../low_level.1.html#__codelineno-11-31" id="__codelineno-11-31" name="__codelineno-11-31"></a><span class="p">[{</span><span class="s1">'expensive_node'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'result'</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span> <span class="s1">'__metadata__'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'cached'</span><span class="p">:</span> <span class="kc">True</span><span class="p">}}]</span>
+</span></code></pre></div>
+<ol>
+<li>第一次运行需要整整一秒钟（由于模拟了昂贵的计算）。</li>
+<li>第二次运行利用缓存并快速返回。</li>
+</ol>
+<h2 id="edges">边<a class="headerlink" href="../low_level.1.html#edges" title="Permanent link">¶</a></h2>
+<p>边定义了逻辑如何路由以及图如何决定停止。这是代理工作方式以及不同节点之间如何通信的重要组成部分。边有几种主要类型：</p>
+<ul>
+<li>普通边：直接从一个节点到下一个节点。</li>
+<li>条件边：调用函数来确定接下来要到哪个（或哪些）节点。</li>
+<li>入口点：当用户输入到达时首先调用哪个节点。</li>
+<li>条件入口点：调用函数来确定当用户输入到达时首先调用哪个（或哪些）节点。</li>
+</ul>
+<p>一个节点可以有多个出边。如果一个节点有多个出边，则所有这些目标节点都将作为下一个超步的一部分并行执行。</p>
+<h3 id="normal-edges">普通边<a class="headerlink" href="../low_level.1.html#normal-edges" title="Permanent link">¶</a></h3>
+<p>如果您<strong>总是</strong>想从节点 A 到节点 B，您可以直接使用 <a class="autorefs autorefs-internal" href="../../reference/graphs/index.html#langgraph.graph.state.StateGraph.add_edge" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-method&quot;></code> <span class=&quot;doc doc-object-name doc-function-name&quot;>add_edge</span>">add_edge</a> 方法。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a href="../low_level.1.html#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">"node_a"</span><span class="p">,</span> <span class="s2">"node_b"</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="conditional-edges">条件边<a class="headerlink" href="../low_level.1.html#conditional-edges" title="Permanent link">¶</a></h3>
+<p>如果您想<strong>选择性地</strong>路由到一条或多条边（或选择性地终止），您可以使用 <a class="autorefs autorefs-internal" href="../../reference/graphs/index.html#langgraph.graph.state.StateGraph.add_conditional_edges" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-method&quot;></code> <span class=&quot;doc doc-object-name doc-function-name&quot;>add_conditional_edges</span>">add_conditional_edges</a> 方法。此方法接受节点名称和一个在该节点执行后要调用的“路由函数”。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a href="../low_level.1.html#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="n">graph</span><span class="o">.</span><span class="n">add_conditional_edges</span><span class="p">(</span><span class="s2">"node_a"</span><span class="p">,</span> <span class="n">routing_function</span><span class="p">)</span>
+</span></code></pre></div>
+<p>与节点类似，<code>routing_function</code> 接受图的当前 <code>state</code> 并返回一个值。</p>
+<p>默认情况下，<code>routing_function</code> 的返回值用作下一个接收状态的节点（或节点列表）的名称。所有这些节点都将作为下一个超步的一部分并行运行。</p>
+<p>您可以选择提供一个字典，将 <code>routing_function</code> 的输出映射到下一个节点的名称。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a href="../low_level.1.html#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="n">graph</span><span class="o">.</span><span class="n">add_conditional_edges</span><span class="p">(</span><span class="s2">"node_a"</span><span class="p">,</span> <span class="n">routing_function</span><span class="p">,</span> <span class="p">{</span><span class="kc">True</span><span class="p">:</span> <span class="s2">"node_b"</span><span class="p">,</span> <span class="kc">False</span><span class="p">:</span> <span class="s2">"node_c"</span><span class="p">})</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">提示</p>
+<p>如果您想在单个函数中结合状态更新和路由，请使用<a href="../low_level.1.html#command"><code>Command</code></a> 而不是条件边。</p>
+</div>
+<h3 id="entry-point">入口点<a class="headerlink" href="../low_level.1.html#entry-point" title="Permanent link">¶</a></h3>
+<p>入口点是图启动时运行的第一个节点。您可以使用从虚拟 <a class="autorefs autorefs-internal" href="../../reference/constants/index.html#langgraph.constants.START" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;></code> <span class=&quot;doc doc-object-name doc-attribute-name&quot;>START</span> <span class=&quot;doc doc-labels&quot;> <small class=&quot;doc doc-label doc-label-module-attribute&quot;><code>module-attribute</code></small> </span>"><code>START</code></a> 节点到第一个要执行的节点的 <a class="autorefs autorefs-internal" href="../../reference/graphs/index.html#langgraph.graph.state.StateGraph.add_edge" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-method&quot;></code> <span class=&quot;doc doc-object-name doc-function-name&quot;>add_edge</span>"><code>add_edge</code></a> 方法来指定图的入口。</p>
+<p><sup><i>API 参考：<a href="../../reference/constants/index.html#langgraph.constants.START">START</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a href="../low_level.1.html#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">START</span>
+</span><span id="__span-15-2"><a href="../low_level.1.html#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a href="../low_level.1.html#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="s2">"node_a"</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="conditional-entry-point">条件入口点<a class="headerlink" href="../low_level.1.html#conditional-entry-point" title="Permanent link">¶</a></h3>
+<p>条件入口点允许您根据自定义逻辑在不同的节点开始。您可以使用虚拟 <a class="autorefs autorefs-internal" href="../../reference/constants/index.html#langgraph.constants.START" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-attribute&quot;></code> <span class=&quot;doc doc-object-name doc-attribute-name&quot;>START</span> <span class=&quot;doc doc-labels&quot;> <small class=&quot;doc doc-label doc-label-module-attribute&quot;><code>module-attribute</code></small> </span>"><code>START</code></a> 节点的 <a class="autorefs autorefs-internal" href="../../reference/graphs/index.html#langgraph.graph.state.StateGraph.add_conditional_edges" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-method&quot;></code> <span class=&quot;doc doc-object-name doc-function-name&quot;>add_conditional_edges</span>"><code>add_conditional_edges</code></a> 来实现此目的。</p>
+<p><sup><i>API 参考：<a href="../../reference/constants/index.html#langgraph.constants.START">START</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a href="../low_level.1.html#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">START</span>
+</span><span id="__span-16-2"><a href="../low_level.1.html#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a href="../low_level.1.html#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="n">graph</span><span class="o">.</span><span class="n">add_conditional_edges</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="n">routing_function</span><span class="p">)</span>
+</span></code></pre></div>
+<p>您可以选择提供一个字典，将 <code>routing_function</code> 的输出映射到下一个节点的名称。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a href="../low_level.1.html#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="n">graph</span><span class="o">.</span><span class="n">add_conditional_edges</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="n">routing_function</span><span class="p">,</span> <span class="p">{</span><span class="kc">True</span><span class="p">:</span> <span class="s2">"node_b"</span><span class="p">,</span> <span class="kc">False</span><span class="p">:</span> <span class="s2">"node_c"</span><span class="p">})</span>
+</span></code></pre></div>
+<h2 id="send"><code>Send</code><a class="headerlink" href="../low_level.1.html#send" title="Permanent link">¶</a></h2>
+<p>默认情况下，<code>Nodes</code> 和 <code>Edges</code> 是预先定义的，并在同一个共享状态上操作。然而，在某些情况下，确切的边可能无法预先知道，或者您可能希望同时存在不同版本的 <code>State</code>。一个常见的例子是 <a href="../../how-tos/map-reduce/index.html">map-reduce</a> 设计模式。在此设计模式中，第一个节点可能会生成一个对象列表，您可能希望将某些其他节点应用于所有这些对象。对象的数量可能无法预先知道（这意味着边的数量可能无法知道），并且下游 <code>Node</code> 的输入 <code>State</code> 应该不同（每个生成的对象对应一个）。</p>
+<p>为了支持这种设计模式，LangGraph 支持从条件边返回 <a class="autorefs autorefs-internal" href="../../reference/types/index.html#langgraph.types.Send" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>Send</span>"><code>Send</code></a> 对象。<code>Send</code> 接受两个参数：第一个是节点名称，第二个是要传递给该节点的状态。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a href="../low_level.1.html#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">continue_to_jokes</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">OverallState</span><span class="p">):</span>
+</span><span id="__span-18-2"><a href="../low_level.1.html#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a>    <span class="k">return</span> <span class="p">[</span><span class="n">Send</span><span class="p">(</span><span class="s2">"generate_joke"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"subject"</span><span class="p">:</span> <span class="n">s</span><span class="p">})</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">state</span><span class="p">[</span><span class="s1">'subjects'</span><span class="p">]]</span>
+</span><span id="__span-18-3"><a href="../low_level.1.html#__codelineno-18-3" id="__codelineno-18-3" name="__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a href="../low_level.1.html#__codelineno-18-4" id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="n">graph</span><span class="o">.</span><span class="n">add_conditional_edges</span><span class="p">(</span><span class="s2">"node_a"</span><span class="p">,</span> <span class="n">continue_to_jokes</span><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="command"><code>Command</code><a class="headerlink" href="../low_level.1.html#command" title="Permanent link">¶</a></h2>
+<p>将控制流（边）和状态更新（节点）结合起来会很有用。例如，您可能希望在同一个节点中既执行状态更新又决定下一个要去的节点。LangGraph 提供了一种通过从节点函数返回 <a class="autorefs autorefs-internal" href="../../reference/types/index.html#langgraph.types.Command" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>Command</span> <span class=&quot;doc doc-labels&quot;> <small class=&quot;doc doc-label doc-label-dataclass&quot;><code>dataclass</code></small> </span>"><code>Command</code></a> 对象来实现此目的的方法：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a href="../low_level.1.html#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_node</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Command</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s2">"my_other_node"</span><span class="p">]]:</span>
+</span><span id="__span-19-2"><a href="../low_level.1.html#__codelineno-19-2" id="__codelineno-19-2" name="__codelineno-19-2"></a>    <span class="k">return</span> <span class="n">Command</span><span class="p">(</span>
+</span><span id="__span-19-3"><a href="../low_level.1.html#__codelineno-19-3" id="__codelineno-19-3" name="__codelineno-19-3"></a>        <span class="c1"># state update</span>
+</span><span id="__span-19-4"><a href="../low_level.1.html#__codelineno-19-4" id="__codelineno-19-4" name="__codelineno-19-4"></a>        <span class="n">update</span><span class="o">=</span><span class="p">{</span><span class="s2">"foo"</span><span class="p">:</span> <span class="s2">"bar"</span><span class="p">},</span>
+</span><span id="__span-19-5"><a href="../low_level.1.html#__codelineno-19-5" id="__codelineno-19-5" name="__codelineno-19-5"></a>        <span class="c1"># control flow</span>
+</span><span id="__span-19-6"><a href="../low_level.1.html#__codelineno-19-6" id="__codelineno-19-6" name="__codelineno-19-6"></a>        <span class="n">goto</span><span class="o">=</span><span class="s2">"my_other_node"</span>
+</span><span id="__span-19-7"><a href="../low_level.1.html#__codelineno-19-7" id="__codelineno-19-7" name="__codelineno-19-7"></a>    <span class="p">)</span>
+</span></code></pre></div>
+<p>使用 <code>Command</code>，您还可以实现动态控制流行为（与<a href="../low_level.1.html#conditional-edges">条件边</a>相同）。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a href="../low_level.1.html#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_node</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Command</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s2">"my_other_node"</span><span class="p">]]:</span>
+</span><span id="__span-20-2"><a href="../low_level.1.html#__codelineno-20-2" id="__codelineno-20-2" name="__codelineno-20-2"></a>    <span class="k">if</span> <span class="n">state</span><span class="p">[</span><span class="s2">"foo"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"bar"</span><span class="p">:</span>
+</span><span id="__span-20-3"><a href="../low_level.1.html#__codelineno-20-3" id="__codelineno-20-3" name="__codelineno-20-3"></a>        <span class="k">return</span> <span class="n">Command</span><span class="p">(</span><span class="n">update</span><span class="o">=</span><span class="p">{</span><span class="s2">"foo"</span><span class="p">:</span> <span class="s2">"baz"</span><span class="p">},</span> <span class="n">goto</span><span class="o">=</span><span class="s2">"my_other_node"</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">重要提示</p>
+<p>在节点函数中返回 <code>Command</code> 时，您必须添加返回类型注解，其中包含节点路由到的节点名称列表，例如 <code>Command[Literal["my_other_node"]]</code>。这对于图的渲染是必需的，并告诉 LangGraph <code>my_node</code> 可以导航到 <code>my_other_node</code>。</p>
+</div>
+<p>请查看<a href="../../how-tos/graph-api.1.html#combine-control-flow-and-state-updates-with-command">此操作指南</a>，了解如何使用 <code>Command</code> 的端到端示例。</p>
+<h3 id="when-should-i-use-command-instead-of-conditional-edges">什么时候应该使用 Command 而不是条件边？<a class="headerlink" href="../low_level.1.html#when-should-i-use-command-instead-of-conditional-edges" title="Permanent link">¶</a></h3>
+<p>当您需要<strong>同时</strong>更新图状态<strong>和</strong>路由到不同节点时，请使用 <code>Command</code>。例如，在实现<a href="../multi_agent.1.html#handoffs">多代理交接</a>时，路由到不同代理并向其传递某些信息非常重要。</p>
+<p>使用<a href="../low_level.1.html#conditional-edges">条件边</a>可在节点之间有条件地路由，而无需更新状态。</p>
+<h3 id="navigating-to-a-node-in-a-parent-graph">导航到父图中的节点<a class="headerlink" href="../low_level.1.html#navigating-to-a-node-in-a-parent-graph" title="Permanent link">¶</a></h3>
+<p>如果您正在使用<a href="../subgraphs.1.html">子图</a>，您可能希望从子图中的一个节点导航到不同的子图（即父图中的不同节点）。为此，您可以在 <code>Command</code> 中指定 <code>graph=Command.PARENT</code>。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a href="../low_level.1.html#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_node</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Command</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s2">"other_subgraph"</span><span class="p">]]:</span>
+</span><span id="__span-21-2"><a href="../low_level.1.html#__codelineno-21-2" id="__codelineno-21-2" name="__codelineno-21-2"></a>    <span class="k">return</span> <span class="n">Command</span><span class="p">(</span>
+</span><span id="__span-21-3"><a href="../low_level.1.html#__codelineno-21-3" id="__codelineno-21-3" name="__codelineno-21-3"></a>        <span class="n">update</span><span class="o">=</span><span class="p">{</span><span class="s2">"foo"</span><span class="p">:</span> <span class="s2">"bar"</span><span class="p">},</span>
+</span><span id="__span-21-4"><a href="../low_level.1.html#__codelineno-21-4" id="__codelineno-21-4" name="__codelineno-21-4"></a>        <span class="n">goto</span><span class="o">=</span><span class="s2">"other_subgraph"</span><span class="p">,</span>  <span class="c1"># where `other_subgraph` is a node in the parent graph</span>
+</span><span id="__span-21-5"><a href="../low_level.1.html#__codelineno-21-5" id="__codelineno-21-5" name="__codelineno-21-5"></a>        <span class="n">graph</span><span class="o">=</span><span class="n">Command</span><span class="o">.</span><span class="n">PARENT</span>
+</span><span id="__span-21-6"><a href="../low_level.1.html#__codelineno-21-6" id="__codelineno-21-6" name="__codelineno-21-6"></a>    <span class="p">)</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">注意</p>
+<p>将 <code>graph</code> 设置为 <code>Command.PARENT</code> 将导航到最近的父图。</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">使用 <code>Command.PARENT</code> 进行状态更新</p>
+<p>当您从子图节点向父图节点发送更新时，对于父图和子图<a href="../low_level.1.html#schema">状态模式</a>都共享的键，您<strong>必须</strong>在父图状态中为您正在更新的键定义一个<a href="../low_level.1.html#reducers">归约器</a>。请参阅<a href="../../how-tos/graph-api.1.html#navigate-to-a-node-in-a-parent-graph">此示例</a>。</p>
+</div>
+<p>这在实现<a href="../multi_agent.1.html#handoffs">多代理交接</a>时特别有用。</p>
+<p>有关详细信息，请查看<a href="../../how-tos/graph-api.1.html#navigate-to-a-node-in-a-parent-graph">本指南</a>。</p>
+<h3 id="using-inside-tools">在工具内部使用<a class="headerlink" href="../low_level.1.html#using-inside-tools" title="Permanent link">¶</a></h3>
+<p>一个常见的使用场景是从工具内部更新图状态。例如，在客户支持应用程序中，您可能希望在对话开始时根据客户的帐号或 ID 查找客户信息。</p>
+<p>有关详细信息，请参阅<a href="../../how-tos/graph-api.1.html#use-inside-tools">本指南</a>。</p>
+<h3 id="human-in-the-loop">人工参与<a class="headerlink" href="../low_level.1.html#human-in-the-loop" title="Permanent link">¶</a></h3>
+<p><code>Command</code> 是人工参与工作流的重要组成部分：当使用 <code>interrupt()</code> 收集用户输入时，随后通过 <code>Command(resume="User input")</code> 提供输入并恢复执行。有关更多信息，请查看<a href="../human_in_the_loop.1.html">此概念指南</a>。</p>
+<h2 id="graph-migrations">图迁移<a class="headerlink" href="../low_level.1.html#graph-migrations" title="Permanent link">¶</a></h2>
+<p>即使使用检查点来跟踪状态，LangGraph 也能轻松处理图定义（节点、边和状态）的迁移。</p>
+<ul>
+<li>对于图末尾的线程（即未中断的线程），您可以更改图的整个拓扑结构（即所有节点和边，删除、添加、重命名等）。</li>
+<li>对于当前已中断的线程，我们支持除重命名/删除节点之外的所有拓扑更改（因为该线程现在可能即将进入一个不再存在的节点）——如果这是一个障碍，请联系我们，我们可以优先提供解决方案。</li>
+<li>对于修改状态，我们完全支持添加和删除键的向后和向前兼容性。</li>
+<li>已重命名的状态键会在现有线程中丢失其保存的状态。</li>
+<li>类型以不兼容方式更改的状态键目前可能会在具有更改前状态的线程中导致问题——如果这是一个障碍，请联系我们，我们可以优先提供解决方案。</li>
+</ul>
+<h2 id="configuration">配置<a class="headerlink" href="../low_level.1.html#configuration" title="Permanent link">¶</a></h2>
+<p>创建图时，您还可以将图的某些部分标记为可配置。这通常是为了方便在模型或系统提示之间切换。这允许您创建一个单一的“认知架构”（图），但拥有它的多个不同实例。</p>
+<p>创建图时，您可以选择指定一个 <code>config_schema</code>。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a href="../low_level.1.html#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">ConfigSchema</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+</span><span id="__span-22-2"><a href="../low_level.1.html#__codelineno-22-2" id="__codelineno-22-2" name="__codelineno-22-2"></a>    <span class="n">llm</span><span class="p">:</span> <span class="nb">str</span>
+</span><span id="__span-22-3"><a href="../low_level.1.html#__codelineno-22-3" id="__codelineno-22-3" name="__codelineno-22-3"></a>
+</span><span id="__span-22-4"><a href="../low_level.1.html#__codelineno-22-4" id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="n">graph</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">State</span><span class="p">,</span> <span class="n">config_schema</span><span class="o">=</span><span class="n">ConfigSchema</span><span class="p">)</span>
+</span></code></pre></div>
+<p>然后您可以使用 <code>configurable</code> 配置字段将此配置传递到图中。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a href="../low_level.1.html#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"llm"</span><span class="p">:</span> <span class="s2">"anthropic"</span><span class="p">}}</span>
+</span><span id="__span-23-2"><a href="../low_level.1.html#__codelineno-23-2" id="__codelineno-23-2" name="__codelineno-23-2"></a>
+</span><span id="__span-23-3"><a href="../low_level.1.html#__codelineno-23-3" id="__codelineno-23-3" name="__codelineno-23-3"></a><span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</span></code></pre></div>
+<p>然后您可以在节点或条件边内部访问和使用此配置。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a href="../low_level.1.html#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">node_a</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="__span-24-2"><a href="../low_level.1.html#__codelineno-24-2" id="__codelineno-24-2" name="__codelineno-24-2"></a>    <span class="n">llm_type</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"configurable"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"llm"</span><span class="p">,</span> <span class="s2">"openai"</span><span class="p">)</span>
+</span><span id="__span-24-3"><a href="../low_level.1.html#__codelineno-24-3" id="__codelineno-24-3" name="__codelineno-24-3"></a>    <span class="n">llm</span> <span class="o">=</span> <span class="n">get_llm</span><span class="p">(</span><span class="n">llm_type</span><span class="p">)</span>
+</span><span id="__span-24-4"><a href="../low_level.1.html#__codelineno-24-4" id="__codelineno-24-4" name="__codelineno-24-4"></a>    <span class="o">...</span>
+</span></code></pre></div>
+<p>有关配置的完整细分，请参阅<a href="../../how-tos/graph-api.1.html#add-runtime-configuration">本指南</a>。</p>
+<h3 id="recursion-limit">递归限制<a class="headerlink" href="../low_level.1.html#recursion-limit" title="Permanent link">¶</a></h3>
+<p>递归限制设置了图在单次执行期间可以执行的<a href="../low_level.1.html#graphs">超步</a>的最大数量。一旦达到限制，LangGraph 将引发 <code>GraphRecursionError</code>。默认情况下，此值设置为 25 步。递归限制可以在运行时在任何图上设置，并通过配置字典传递给 <code>.invoke</code>/<code>.stream</code>。重要的是，<code>recursion_limit</code> 是一个独立的 <code>config</code> 键，不应像所有其他用户定义的配置一样传递到 <code>configurable</code> 键中。请参阅以下示例：</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-25-1"><a href="../low_level.1.html#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s2">"recursion_limit"</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">"configurable"</span><span class="p">:{</span><span class="s2">"llm"</span><span class="p">:</span> <span class="s2">"anthropic"</span><span class="p">}})</span>
+</span></code></pre></div>
+<p>阅读<a href="../../how-tos/recursion-limit/index.html">此操作指南</a>以了解有关递归限制如何工作的更多信息。</p>
+<h2 id="visualization">可视化<a class="headerlink" href="../low_level.1.html#visualization" title="Permanent link">¶</a></h2>
+<p>能够可视化图通常是件好事，尤其是当它们变得更复杂时。LangGraph 提供了几种内置的图可视化方法。有关更多信息，请参阅<a href="../../how-tos/graph-api.1.html#visualize-your-graph">此操作指南</a>。</p>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>返回顶部</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Workflows &amp; agents" class="md-footer__link md-footer__link--prev" href="../../tutorials/workflows/index.html"> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg> </div> <div class="md-footer__title"> <span class="md-footer__direction"> 上一个 </span> <div class="md-ellipsis"> 工作流与代理 </div> </div> </a> <a aria-label="Next: Runtime overview" class="md-footer__link md-footer__link--next" href="../pregel/index.html"> <div class="md-footer__title"> <span class="md-footer__direction"> 下一个 </span> <div class="md-ellipsis"> 运行时概述 </div> </div> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg> </div> </a></nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">版权所有 © 2025 LangChain, Inc | <a href="../low_level.1.html#__consent">同意偏好设置</a></div>使用 <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank"> Material for MkDocs </a> 制作</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.langchain.ac.cn/langgraphjs/" rel="noopener" target="_blank" title="langchain-ai.github.io">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 32v448h448V32zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6"></path></svg>
+</a>
+<a class="md-social__link" href="https://github.com/langchain-ai/langgraph" rel="noopener" target="_blank" title="github.com">
+<svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+<a class="md-social__link" href="https://twitter.com/LangChainAI" rel="noopener" target="_blank" title="twitter.com">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-progress" data-md-component="progress" role="progressbar"></div>
+<div class="md-consent" data-md-component="consent" hidden="" id="__consent">
+<div class="md-consent__overlay"></div>
+<aside class="md-consent__inner">
+<form class="md-consent__form md-grid md-typeset" name="consent">
+<h4>Cookie 同意</h4>
+<p>我们使用 Cookie 来识别您的重复访问和偏好，并衡量我们文档的有效性以及用户是否找到了他们正在搜索的内容。<strong>点击“接受”将使我们的文档变得更好。谢谢！</strong> ❤️</p>
+<input checked="" class="md-toggle" id="__settings" type="checkbox" />
+<div class="md-consent__settings">
+<ul class="task-list">
+<li class="task-list-item">
+<label class="task-list-control">
+<input checked="" name="github" type="checkbox" />
+<span class="task-list-indicator"></span> GitHub</label>
+</li>
+</ul>
+</div>
+<div class="md-consent__controls">
+<button class="md-button md-button--primary">接受</button>
+<button class="md-button md-button--primary" type="reset">拒绝</button>
+</div>
+</form>
+</aside>
+</div>
+<script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.action.edit", "content.tooltips", "navigation.indexes", "navigation.footer", "navigation.instant", "navigation.sections", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.prune", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+
+</body></html>

@@ -1,0 +1,1538 @@
+<!DOCTYPE html><html lang="zh-hans" class="no-js"><head><script>(l=location)[p='protocol'][5]||(l[p]='https')</script><meta name="referrer" content="no-referrer"><style>
+div[data-md-component=announce] {
+  display: none !important;
+}
+</style><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8543159550507237" crossorigin="anonymous"></script>
+
+<script>window.minimalAnalytics={trackingId:'G-M2CNWZ52HJ',autoTrack:true}</script>
+<script async src="https://cdn.jsdelivr.net.cn/npm/@minimal-analytics/ga4/dist/index.js"></script>
+<meta charset="utf-8" />
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<link href="../functional_api.1.html" rel="canonical" />
+<link href="../../how-tos/multi_agent/index.html" rel="prev" />
+<link href="../../how-tos/use-functional-api/index.html" rel="next" />
+<link href="../../static/favicon.png" rel="icon" />
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator" />
+<title>概述 - LangChain 框架</title>
+<link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet" />
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Public+Sans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet" />
+<style>:root{--md-text-font:"Public Sans";--md-code-font:"Roboto Mono"}</style>
+<link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+<link href="../../stylesheets/navigation_title_ovverides.css" rel="stylesheet" />
+<link href="../../stylesheets/version_admonitions.css" rel="stylesheet" />
+<link href="../../stylesheets/logos.css" rel="stylesheet" />
+<link href="../../stylesheets/sticky_navigation.css" rel="stylesheet" />
+<link href="../../stylesheets/agent_graph_widget.css" rel="stylesheet" />
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://#/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T35S4S46');</script>
+<!-- End Google Tag Manager -->
+<meta content="165B7E7C89E49946" name="algolia-site-verification" />
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Public+Sans&display=swap");
+    :root {
+      --md-primary-fg-color: #333333;
+      --md-accent-fg-color: #1E88E5;
+      --md-default-bg-color: #FFFFFF;
+      --md-default-fg-color: #333333;
+      --md-text-font-family: "Public Sans", sans-serif;
+    }
+
+    body {
+      font-family: var(--md-text-font-family);
+      background-color: var(--md-default-bg-color);
+      color: var(--md-default-fg-color);
+    }
+
+    .md-main {
+      background-color: #FFFFFF;
+    }
+
+    .md-footer {
+      background-color: #F5F5F5;
+      color: #666666;
+    }
+
+    .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    .md-typeset a {
+      color: #1E88E5;
+    }
+
+    .md-typeset a:hover {
+      color: #1565C0;
+    }
+
+    .md-nav__link--active,
+    .md-nav__link:active {
+      color: #1E88E5;
+    }
+
+    .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    .md-search__input:hover,
+    .md-search__input:focus {
+      background-color: #EEEEEE;
+    }
+    /* Table of contents styles */
+    .md-nav--secondary .md-nav__item--active > .md-nav__link {
+      font-weight: bold;
+      color: var(--md-primary-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link {
+      font-weight: normal;
+      color: var(--md-default-fg-color);
+    }
+
+    .md-nav--secondary .md-nav__item--nested > .md-nav__link::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: var(--md-default-fg-color);
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+
+    [data-md-color-scheme="slate"] {
+      --md-default-bg-color: #1E1E1E;
+      --md-default-fg-color: #FFFFFF;
+      --md-accent-fg-color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-main {
+      background-color: #1E1E1E;
+    }
+
+    [data-md-color-scheme="slate"] .navbar {
+      background-color: #1E1E1E;
+      color: #FFFFFF;
+      box-shadow: none;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-header {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-tabs {
+      background-color: #1E1E1E;
+      color: #BDBDBD;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input {
+      background-color: #F5F5F5;
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__icon {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-search__input::placeholder {
+      color: #333333;
+    }
+
+    [data-md-color-scheme="slate"] .md-footer-meta {
+      background-color: #4d4d4d;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a {
+      color: #64B5F6;
+    }
+
+    [data-md-color-scheme="slate"] .md-typeset a:hover {
+      color: #90CAF9;
+    }
+
+    .notebook-links {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1rem;
+    }
+    .notebook-links .md-content__button {
+      margin-left: 0.5rem;
+    }
+
+    [data-md-color-scheme=default] .logo-dark {
+      display: none !important;
+    }
+
+    [data-md-color-scheme=slate] .logo-light {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-CodeCell .jp-Cell-inputWrapper .jp-InputPrompt.jp-InputArea-prompt {
+      display: none !important;
+    }
+
+    .jupyter-wrapper .jp-Notebook .jp-Cell .jp-OutputPrompt {
+      display: none !important;
+    }
+
+    .md-banner {
+      background-color: #CFC9FA;
+      color: #000000;
+    }
+
+    .md-banner a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    .md-banner a:hover {
+      color: #000000;
+    }
+
+    .md-header__title {
+      visibility: hidden;
+    }
+
+    /* Dark mode banner links */
+    [data-md-color-scheme="slate"] .md-banner a {
+      color: #000000;
+    }
+
+    [data-md-color-scheme="slate"] .md-banner a:hover {
+      color: #000000;
+    }
+
+  </style>
+</head>
+<body data-md-color-accent="gray" data-md-color-primary="white" data-md-color-scheme="default" dir="ltr">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://#/ns.html?id=GTM-T35S4S46" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox" />
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox" />
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="../functional_api.1.html#functional-api-concepts">跳到内容</a>
+</div>
+<div data-md-component="announce">
+<aside class="md-banner">
+<div class="md-banner__inner md-grid md-typeset">
+<button aria-label="Don&#39;t show this again" class="md-banner__button md-icon">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+<strong>我们正在为 LangChain、LangGraph 和 LangSmith 招聘多个职位。<a href="https://langchain.ac.cn/careers" rel="noopener noreferrer" target="_blank">加入我们的团队！</a></strong>
+</div>
+<script>var el=document.querySelector("[data-md-component=announce]");if(el){var content=el.querySelector(".md-typeset");__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0)}</script>
+</aside>
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="LangGraph" class="md-header__button md-logo" data-md-component="logo" href="../../index.html" title="LangGraph">
+<img alt="logo" class="logo-light" src="../../static/wordmark_dark.svg">
+<img alt="logo" class="logo-dark" src="../../static/wordmark_light.svg">
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">LangGraph</span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">概述</span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="gray" data-md-color-media="" data-md-color-primary="white" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="white" data-md-color-media="" data-md-color-primary="grey" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio" />
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text" />
+<label class="md-search__icon md-icon" for="__search">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">初始化搜索</div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../index.html">指南</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../reference/index.html">参考</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tutorials/rag/langgraph_agentic_rag/index.html">示例</a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../faq/index.html">资源</a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="LangGraph" class="md-nav__button md-logo" data-md-component="logo" href="../../index.html" title="LangGraph"> <img alt="logo" class="logo-light" src="../../static/wordmark_dark.svg"> <img alt="logo" class="logo-dark" src="../../static/wordmark_light.svg"> </a> LangGraph</label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/langchain-ai/langgraph" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+</div>
+<div class="md-source__repository">GitHub</div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox" />
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../index.html">
+<span class="md-ellipsis">指南</span>
+</a>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span> 指南</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_2" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="">
+<span class="md-ellipsis"> 入门 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_2">
+<span class="md-nav__icon md-icon"></span> 入门</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/agents.1.html">
+<span class="md-ellipsis">快速入门</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../why-langgraph.1.html">
+<span class="md-ellipsis"> LangGraph 基础 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorials/deployment/index.html">
+<span class="md-ellipsis">部署</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_3" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="">
+<span class="md-ellipsis"> 预构建代理 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_3">
+<span class="md-nav__icon md-icon"></span> 预构建代理</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/overview.1.html">
+<span class="md-ellipsis">概述</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/run_agents.1.html">
+<span class="md-ellipsis">运行代理</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/streaming/index.html">
+<span class="md-ellipsis">流式传输</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/models/index.html">
+<span class="md-ellipsis">模型</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/tools.1.html">
+<span class="md-ellipsis">工具</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/mcp/index.html">
+<span class="md-ellipsis">MCP 集成</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/context/index.html">
+<span class="md-ellipsis">上下文</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/memory/index.html">
+<span class="md-ellipsis">内存</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/human-in-the-loop/index.html">
+<span class="md-ellipsis">人在环</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/multi-agent.1.html">
+<span class="md-ellipsis">多代理</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/evals/index.html">
+<span class="md-ellipsis">评估</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/deployment/index.html">
+<span class="md-ellipsis">部署</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../agents/ui/index.html">
+<span class="md-ellipsis">UI</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1_4" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="">
+<span class="md-ellipsis"> LangGraph 框架 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="true" aria-labelledby="__nav_1_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_4">
+<span class="md-nav__icon md-icon"></span> LangGraph 框架</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../agentic_concepts.1.html">
+<span class="md-ellipsis"> 代理架构 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../low_level.1.html">
+<span class="md-ellipsis"> 图 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../streaming.1.html">
+<span class="md-ellipsis"> 流式传输 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../persistence.1.html">
+<span class="md-ellipsis"> 持久化 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../memory.1.html">
+<span class="md-ellipsis"> 内存 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../human_in_the_loop.1.html">
+<span class="md-ellipsis"> 人在环 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../breakpoints/index.html">
+<span class="md-ellipsis"> 断点 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../time-travel/index.html">
+<span class="md-ellipsis"> 时间旅行 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../tools/index.html">
+<span class="md-ellipsis"> 工具 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../subgraphs.1.html">
+<span class="md-ellipsis"> 子图 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../multi_agent.1.html">
+<span class="md-ellipsis"> 多代理 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_1_4_12" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_4_12" id="__nav_1_4_12_label" tabindex="0">
+<span class="md-ellipsis"> 函数式 API </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="true" aria-labelledby="__nav_1_4_12_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_1_4_12">
+<span class="md-nav__icon md-icon"></span> 函数式 API</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox" />
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis"> 概述 </span> <span class="md-nav__icon md-icon"></span></label>
+<a class="md-nav__link md-nav__link--active" href="../functional_api.1.html">
+<span class="md-ellipsis">概述</span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#overview">
+<span class="md-ellipsis">概述</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#example">
+<span class="md-ellipsis">示例</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#entrypoint">
+<span class="md-ellipsis">入口点</span>
+</a>
+<nav aria-label="Entrypoint" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#definition">
+<span class="md-ellipsis">定义</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#injectable-parameters">
+<span class="md-ellipsis">可注入参数</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#executing">
+<span class="md-ellipsis">执行</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#resuming">
+<span class="md-ellipsis">恢复</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#short-term-memory">
+<span class="md-ellipsis">短期记忆</span>
+</a>
+<nav aria-label="Short-term memory" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#entrypointfinal">
+<span class="md-ellipsis">entrypoint.final</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#task">
+<span class="md-ellipsis">任务</span>
+</a>
+<nav aria-label="Task" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#definition_1">
+<span class="md-ellipsis">定义</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#execution">
+<span class="md-ellipsis">执行</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#when-to-use-a-task">
+<span class="md-ellipsis">何时使用任务</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#serialization">
+<span class="md-ellipsis">序列化</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#determinism">
+<span class="md-ellipsis">确定性</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#idempotency">
+<span class="md-ellipsis">幂等性</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#functional-api-vs-graph-api">
+<span class="md-ellipsis">函数式 API 与图 API 对比</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#common-pitfalls">
+<span class="md-ellipsis">常见陷阱</span>
+</a>
+<nav aria-label="Common Pitfalls" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#handling-side-effects">
+<span class="md-ellipsis">处理副作用</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#non-deterministic-control-flow">
+<span class="md-ellipsis">非确定性控制流</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../how-tos/use-functional-api/index.html">
+<span class="md-ellipsis">使用函数式 API</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1_5" type="checkbox" />
+<label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="">
+<span class="md-ellipsis"> LangGraph 平台 </span> <span class="md-nav__icon md-icon"></span></label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_1_5">
+<span class="md-nav__icon md-icon"></span> LangGraph 平台</label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../langgraph_platform/index.html">
+<span class="md-ellipsis">概述</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../tutorials/langgraph-platform/local-server/index.html">
+<span class="md-ellipsis"> 入门 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../langgraph_components/index.html">
+<span class="md-ellipsis"> 组件 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/deployment/semantic_search/index.html">
+<span class="md-ellipsis"> 数据管理 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../auth/index.html">
+<span class="md-ellipsis"> 身份验证与访问控制 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../assistants/index.html">
+<span class="md-ellipsis"> 助手 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/threads/index.html">
+<span class="md-ellipsis"> 线程 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/runs/index.html">
+<span class="md-ellipsis"> 运行 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/streaming/index.html">
+<span class="md-ellipsis"> 流式传输 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/how-tos/add-human-in-the-loop/index.html">
+<span class="md-ellipsis">人在环</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/how-tos/human_in_the_loop_breakpoint/index.html">
+<span class="md-ellipsis">断点</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cloud/how-tos/human_in_the_loop_time_travel/index.html">
+<span class="md-ellipsis">时间旅行</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../server-mcp/index.html">
+<span class="md-ellipsis">MCP</span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../double_texting/index.html">
+<span class="md-ellipsis"> 重复文本发送 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/webhooks/index.html">
+<span class="md-ellipsis"> Webhook </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../cloud/concepts/cron_jobs/index.html">
+<span class="md-ellipsis"> Cron 作业 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../how-tos/http/custom_lifespan/index.html">
+<span class="md-ellipsis"> 服务器自定义 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../deployment_options/index.html">
+<span class="md-ellipsis"> 部署 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../reference/index.html">
+<span class="md-ellipsis"> 参考 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../../tutorials/rag/langgraph_agentic_rag/index.html">
+<span class="md-ellipsis"> 示例 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+<li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+<a class="md-nav__link" href="../faq/index.html">
+<span class="md-ellipsis"> 资源 </span> <span class="md-nav__icon md-icon"></span></a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span> 目录</label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#overview">
+<span class="md-ellipsis">概述</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#example">
+<span class="md-ellipsis">示例</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#entrypoint">
+<span class="md-ellipsis">入口点</span>
+</a>
+<nav aria-label="Entrypoint" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#definition">
+<span class="md-ellipsis">定义</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#injectable-parameters">
+<span class="md-ellipsis">可注入参数</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#executing">
+<span class="md-ellipsis">执行</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#resuming">
+<span class="md-ellipsis">恢复</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#short-term-memory">
+<span class="md-ellipsis">短期记忆</span>
+</a>
+<nav aria-label="Short-term memory" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#entrypointfinal">
+<span class="md-ellipsis">entrypoint.final</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#task">
+<span class="md-ellipsis">任务</span>
+</a>
+<nav aria-label="Task" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#definition_1">
+<span class="md-ellipsis">定义</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#execution">
+<span class="md-ellipsis">执行</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#when-to-use-a-task">
+<span class="md-ellipsis">何时使用任务</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#serialization">
+<span class="md-ellipsis">序列化</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#determinism">
+<span class="md-ellipsis">确定性</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#idempotency">
+<span class="md-ellipsis">幂等性</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#functional-api-vs-graph-api">
+<span class="md-ellipsis">函数式 API 与图 API 对比</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#common-pitfalls">
+<span class="md-ellipsis">常见陷阱</span>
+</a>
+<nav aria-label="Common Pitfalls" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#handling-side-effects">
+<span class="md-ellipsis">处理副作用</span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../functional_api.1.html#non-deterministic-control-flow">
+<span class="md-ellipsis">非确定性控制流</span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<div class="notebook-links">
+</div>
+<a class="md-content__button md-icon" href="https://github.com/langchain-ai/langgraph/edit/main/docs/docs/concepts/functional_api.md" title="Edit this page">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+</a>
+<h1 id="functional-api-concepts">函数式 API 概念<a class="headerlink" href="../functional_api.1.html#functional-api-concepts" title="Permanent link">¶</a></h1>
+<h2 id="overview">概述<a class="headerlink" href="../functional_api.1.html#overview" title="Permanent link">¶</a></h2>
+<p><strong>函数式 API</strong> 允许您将 LangGraph 的关键功能——<a href="../persistence.1.html">持久化</a>、<a href="../memory.1.html">内存</a>、<a href="../human_in_the_loop.1.html">人在环</a>和<a href="../streaming.1.html">流式传输</a>——以最少的改动集成到您现有的代码中。</p>
+<p>它旨在将这些功能集成到可能使用标准语言原语（例如 <code>if</code> 语句、<code>for</code> 循环和函数调用）进行分支和控制流的现有代码中。与许多需要将代码重构为显式管道或 DAG 的数据编排框架不同，函数式 API 允许您在不强制执行严格执行模型的情况下整合这些功能。</p>
+<p>函数式 API 使用两个关键构建块</p>
+<ul>
+<li><strong><code>@entrypoint</code></strong> – 将函数标记为工作流的起始点，封装逻辑并管理执行流，包括处理长时间运行的任务和中断。</li>
+<li><strong><code>@task</code></strong> – 表示一个离散的工作单元，例如 API 调用或数据处理步骤，可以在入口点内异步执行。任务返回一个类似 future 的对象，该对象可以被等待或同步解析。</li>
+</ul>
+<p>这为构建具有状态管理和流式传输功能的工作流提供了最小的抽象。</p>
+<div class="admonition tip">
+<p class="admonition-title">提示</p>
+<p>对于喜欢声明式方法的开发人员，LangGraph 的<a href="../low_level.1.html">图 API</a> 允许您使用图范式定义工作流。两种 API 共享相同的底层运行时，因此您可以在同一个应用程序中同时使用它们。请参阅<a href="../functional_api.1.html#functional-api-vs-graph-api">函数式 API 与图 API 对比</a>部分，了解这两种范式的比较。</p>
+</div>
+<h2 id="example">示例<a class="headerlink" href="../functional_api.1.html#example" title="Permanent link">¶</a></h2>
+<p>下面我们演示一个简单的应用程序，它会撰写一篇论文并<a href="../human_in_the_loop.1.html">中断</a>以请求人工审查。</p>
+<p><sup><i>API 参考：<a href="../../reference/checkpoints/index.html#langgraph.checkpoint.memory.MemorySaver">MemorySaver</a> | <a href="../../reference/func/index.html#langgraph.func.entrypoint">entrypoint</a> | <a href="../../reference/func/index.html#langgraph.func.task">task</a> | <a href="../../reference/types/index.html#langgraph.types.interrupt">interrupt</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a href="../functional_api.1.html#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.checkpoint.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">MemorySaver</span>
+</span><span id="__span-0-2"><a href="../functional_api.1.html#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.func</span><span class="w"> </span><span class="kn">import</span> <span class="n">entrypoint</span><span class="p">,</span> <span class="n">task</span>
+</span><span id="__span-0-3"><a href="../functional_api.1.html#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">interrupt</span>
+</span><span id="__span-0-4"><a href="../functional_api.1.html#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a href="../functional_api.1.html#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a href="../functional_api.1.html#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="nd">@task</span>
+</span><span id="__span-0-7"><a href="../functional_api.1.html#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">write_essay</span><span class="p">(</span><span class="n">topic</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-0-8"><a href="../functional_api.1.html#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="sd">"""Write an essay about the given topic."""</span>
+</span><span id="__span-0-9"><a href="../functional_api.1.html#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># A placeholder for a long-running task.</span>
+</span><span id="__span-0-10"><a href="../functional_api.1.html#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">"An essay about topic: </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-0-11"><a href="../functional_api.1.html#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a href="../functional_api.1.html#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="nd">@entrypoint</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">MemorySaver</span><span class="p">())</span>
+</span><span id="__span-0-13"><a href="../functional_api.1.html#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">workflow</span><span class="p">(</span><span class="n">topic</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+</span><span id="__span-0-14"><a href="../functional_api.1.html#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="sd">"""A simple workflow that writes an essay and asks for a review."""</span>
+</span><span id="__span-0-15"><a href="../functional_api.1.html#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="n">essay</span> <span class="o">=</span> <span class="n">write_essay</span><span class="p">(</span><span class="s2">"cat"</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</span><span id="__span-0-16"><a href="../functional_api.1.html#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a>    <span class="n">is_approved</span> <span class="o">=</span> <span class="n">interrupt</span><span class="p">({</span>
+</span><span id="__span-0-17"><a href="../functional_api.1.html#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a>        <span class="c1"># Any json-serializable payload provided to interrupt as argument.</span>
+</span><span id="__span-0-18"><a href="../functional_api.1.html#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a>        <span class="c1"># It will be surfaced on the client side as an Interrupt when streaming data</span>
+</span><span id="__span-0-19"><a href="../functional_api.1.html#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a>        <span class="c1"># from the workflow.</span>
+</span><span id="__span-0-20"><a href="../functional_api.1.html#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a>        <span class="s2">"essay"</span><span class="p">:</span> <span class="n">essay</span><span class="p">,</span> <span class="c1"># The essay we want reviewed.</span>
+</span><span id="__span-0-21"><a href="../functional_api.1.html#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a>        <span class="c1"># We can add any additional information that we need.</span>
+</span><span id="__span-0-22"><a href="../functional_api.1.html#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a>        <span class="c1"># For example, introduce a key called "action" with some instructions.</span>
+</span><span id="__span-0-23"><a href="../functional_api.1.html#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a>        <span class="s2">"action"</span><span class="p">:</span> <span class="s2">"Please approve/reject the essay"</span><span class="p">,</span>
+</span><span id="__span-0-24"><a href="../functional_api.1.html#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a>    <span class="p">})</span>
+</span><span id="__span-0-25"><a href="../functional_api.1.html#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a>
+</span><span id="__span-0-26"><a href="../functional_api.1.html#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a>    <span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-0-27"><a href="../functional_api.1.html#__codelineno-0-27" id="__codelineno-0-27" name="__codelineno-0-27"></a>        <span class="s2">"essay"</span><span class="p">:</span> <span class="n">essay</span><span class="p">,</span> <span class="c1"># The essay that was generated</span>
+</span><span id="__span-0-28"><a href="../functional_api.1.html#__codelineno-0-28" id="__codelineno-0-28" name="__codelineno-0-28"></a>        <span class="s2">"is_approved"</span><span class="p">:</span> <span class="n">is_approved</span><span class="p">,</span> <span class="c1"># Response from HIL</span>
+</span><span id="__span-0-29"><a href="../functional_api.1.html#__codelineno-0-29" id="__codelineno-0-29" name="__codelineno-0-29"></a>    <span class="p">}</span>
+</span></code></pre></div>
+<details class="example">
+<summary>详细解释</summary>
+<p>此工作流将撰写一篇关于“猫”主题的论文，然后暂停以获取人工审查。工作流可以无限期中断，直到提供审查。</p>
+<p>当工作流恢复时，它会从头开始执行，但由于 <code>write_essay</code> 任务的结果已保存，因此任务结果将从检查点加载，而不是重新计算。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a href="../functional_api.1.html#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-1-2"><a href="../functional_api.1.html#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+</span><span id="__span-1-3"><a href="../functional_api.1.html#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a href="../functional_api.1.html#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.func</span><span class="w"> </span><span class="kn">import</span> <span class="n">entrypoint</span><span class="p">,</span> <span class="n">task</span>
+</span><span id="__span-1-5"><a href="../functional_api.1.html#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">interrupt</span>
+</span><span id="__span-1-6"><a href="../functional_api.1.html#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.checkpoint.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">MemorySaver</span>
+</span><span id="__span-1-7"><a href="../functional_api.1.html#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a href="../functional_api.1.html#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="nd">@task</span>
+</span><span id="__span-1-9"><a href="../functional_api.1.html#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">write_essay</span><span class="p">(</span><span class="n">topic</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="__span-1-10"><a href="../functional_api.1.html#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="sd">"""Write an essay about the given topic."""</span>
+</span><span id="__span-1-11"><a href="../functional_api.1.html#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># This is a placeholder for a long-running task.</span>
+</span><span id="__span-1-12"><a href="../functional_api.1.html#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">"An essay about topic: </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s2">"</span>
+</span><span id="__span-1-13"><a href="../functional_api.1.html#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a href="../functional_api.1.html#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="nd">@entrypoint</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">MemorySaver</span><span class="p">())</span>
+</span><span id="__span-1-15"><a href="../functional_api.1.html#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="k">def</span><span class="w"> </span><span class="nf">workflow</span><span class="p">(</span><span class="n">topic</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+</span><span id="__span-1-16"><a href="../functional_api.1.html#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">    </span><span class="sd">"""A simple workflow that writes an essay and asks for a review."""</span>
+</span><span id="__span-1-17"><a href="../functional_api.1.html#__codelineno-1-17" id="__codelineno-1-17" name="__codelineno-1-17"></a>    <span class="n">essay</span> <span class="o">=</span> <span class="n">write_essay</span><span class="p">(</span><span class="s2">"cat"</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</span><span id="__span-1-18"><a href="../functional_api.1.html#__codelineno-1-18" id="__codelineno-1-18" name="__codelineno-1-18"></a>    <span class="n">is_approved</span> <span class="o">=</span> <span class="n">interrupt</span><span class="p">({</span>
+</span><span id="__span-1-19"><a href="../functional_api.1.html#__codelineno-1-19" id="__codelineno-1-19" name="__codelineno-1-19"></a>        <span class="c1"># Any json-serializable payload provided to interrupt as argument.</span>
+</span><span id="__span-1-20"><a href="../functional_api.1.html#__codelineno-1-20" id="__codelineno-1-20" name="__codelineno-1-20"></a>        <span class="c1"># It will be surfaced on the client side as an Interrupt when streaming data</span>
+</span><span id="__span-1-21"><a href="../functional_api.1.html#__codelineno-1-21" id="__codelineno-1-21" name="__codelineno-1-21"></a>        <span class="c1"># from the workflow.</span>
+</span><span id="__span-1-22"><a href="../functional_api.1.html#__codelineno-1-22" id="__codelineno-1-22" name="__codelineno-1-22"></a>        <span class="s2">"essay"</span><span class="p">:</span> <span class="n">essay</span><span class="p">,</span> <span class="c1"># The essay we want reviewed.</span>
+</span><span id="__span-1-23"><a href="../functional_api.1.html#__codelineno-1-23" id="__codelineno-1-23" name="__codelineno-1-23"></a>        <span class="c1"># We can add any additional information that we need.</span>
+</span><span id="__span-1-24"><a href="../functional_api.1.html#__codelineno-1-24" id="__codelineno-1-24" name="__codelineno-1-24"></a>        <span class="c1"># For example, introduce a key called "action" with some instructions.</span>
+</span><span id="__span-1-25"><a href="../functional_api.1.html#__codelineno-1-25" id="__codelineno-1-25" name="__codelineno-1-25"></a>        <span class="s2">"action"</span><span class="p">:</span> <span class="s2">"Please approve/reject the essay"</span><span class="p">,</span>
+</span><span id="__span-1-26"><a href="../functional_api.1.html#__codelineno-1-26" id="__codelineno-1-26" name="__codelineno-1-26"></a>    <span class="p">})</span>
+</span><span id="__span-1-27"><a href="../functional_api.1.html#__codelineno-1-27" id="__codelineno-1-27" name="__codelineno-1-27"></a>
+</span><span id="__span-1-28"><a href="../functional_api.1.html#__codelineno-1-28" id="__codelineno-1-28" name="__codelineno-1-28"></a>    <span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-1-29"><a href="../functional_api.1.html#__codelineno-1-29" id="__codelineno-1-29" name="__codelineno-1-29"></a>        <span class="s2">"essay"</span><span class="p">:</span> <span class="n">essay</span><span class="p">,</span> <span class="c1"># The essay that was generated</span>
+</span><span id="__span-1-30"><a href="../functional_api.1.html#__codelineno-1-30" id="__codelineno-1-30" name="__codelineno-1-30"></a>        <span class="s2">"is_approved"</span><span class="p">:</span> <span class="n">is_approved</span><span class="p">,</span> <span class="c1"># Response from HIL</span>
+</span><span id="__span-1-31"><a href="../functional_api.1.html#__codelineno-1-31" id="__codelineno-1-31" name="__codelineno-1-31"></a>    <span class="p">}</span>
+</span><span id="__span-1-32"><a href="../functional_api.1.html#__codelineno-1-32" id="__codelineno-1-32" name="__codelineno-1-32"></a>
+</span><span id="__span-1-33"><a href="../functional_api.1.html#__codelineno-1-33" id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="n">thread_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+</span><span id="__span-1-34"><a href="../functional_api.1.html#__codelineno-1-34" id="__codelineno-1-34" name="__codelineno-1-34"></a>
+</span><span id="__span-1-35"><a href="../functional_api.1.html#__codelineno-1-35" id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-1-36"><a href="../functional_api.1.html#__codelineno-1-36" id="__codelineno-1-36" name="__codelineno-1-36"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-1-37"><a href="../functional_api.1.html#__codelineno-1-37" id="__codelineno-1-37" name="__codelineno-1-37"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="n">thread_id</span>
+</span><span id="__span-1-38"><a href="../functional_api.1.html#__codelineno-1-38" id="__codelineno-1-38" name="__codelineno-1-38"></a>    <span class="p">}</span>
+</span><span id="__span-1-39"><a href="../functional_api.1.html#__codelineno-1-39" id="__codelineno-1-39" name="__codelineno-1-39"></a><span class="p">}</span>
+</span><span id="__span-1-40"><a href="../functional_api.1.html#__codelineno-1-40" id="__codelineno-1-40" name="__codelineno-1-40"></a>
+</span><span id="__span-1-41"><a href="../functional_api.1.html#__codelineno-1-41" id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">workflow</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="s2">"cat"</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="__span-1-42"><a href="../functional_api.1.html#__codelineno-1-42" id="__codelineno-1-42" name="__codelineno-1-42"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-2-1"><a href="../functional_api.1.html#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">{'write_essay': 'An essay about topic: cat'}</span>
+</span><span id="__span-2-2"><a href="../functional_api.1.html#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="go">{'__interrupt__': (Interrupt(value={'essay': 'An essay about topic: cat', 'action': 'Please approve/reject the essay'}, resumable=True, ns=['workflow:f7b8508b-21c0-8b4c-5958-4e8de74d2684'], when='during'),)}</span>
+</span></code></pre></div>
+<p>一篇论文已撰写完成并可供审查。提供审查后，我们可以恢复工作流</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a href="../functional_api.1.html#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Command</span>
+</span><span id="__span-3-2"><a href="../functional_api.1.html#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a href="../functional_api.1.html#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1"># Get review from a user (e.g., via a UI)</span>
+</span><span id="__span-3-4"><a href="../functional_api.1.html#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="c1"># In this case, we're using a bool, but this can be any json-serializable value.</span>
+</span><span id="__span-3-5"><a href="../functional_api.1.html#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="n">human_review</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="__span-3-6"><a href="../functional_api.1.html#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a href="../functional_api.1.html#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">workflow</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="n">resume</span><span class="o">=</span><span class="n">human_review</span><span class="p">),</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="__span-3-8"><a href="../functional_api.1.html#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-pycon highlight"><pre><span></span><code><span id="__span-4-1"><a href="../functional_api.1.html#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">{'workflow': {'essay': 'An essay about topic: cat', 'is_approved': False}}</span>
+</span></code></pre></div>
+<p>工作流已完成，审查已添加到论文中。</p>
+</details>
+<h2 id="entrypoint">入口点<a class="headerlink" href="../functional_api.1.html#entrypoint" title="Permanent link">¶</a></h2>
+<p><a class="autorefs autorefs-internal" href="../../reference/func/index.html#langgraph.func.entrypoint" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>entrypoint</span>"><code>@entrypoint</code></a> 装饰器可用于从函数创建工作流。它封装了工作流逻辑并管理执行流，包括处理<em>长时间运行的任务</em>和<a href="../human_in_the_loop.1.html">中断</a>。</p>
+<h3 id="definition">定义<a class="headerlink" href="../functional_api.1.html#definition" title="Permanent link">¶</a></h3>
+<p><strong>入口点</strong>通过使用 <code>@entrypoint</code> 装饰器装饰函数来定义。</p>
+<p>该函数<strong>必须接受一个位置参数</strong>，该参数用作工作流输入。如果您需要传递多个数据片段，请使用字典作为第一个参数的输入类型。</p>
+<p>使用 <code>entrypoint</code> 装饰函数会生成一个 <a class="autorefs autorefs-internal" href="../../reference/pregel/index.html#langgraph.pregel.Pregel.stream" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-method&quot;></code> <span class=&quot;doc doc-object-name doc-function-name&quot;>stream</span>"><code>Pregel</code></a> 实例，有助于管理工作流的执行（例如，处理流式传输、恢复和检查点）。</p>
+<p>通常，您会希望将一个<strong>检查点器</strong>传递给 <code>@entrypoint</code> 装饰器，以启用持久化并使用<strong>人在环</strong>等功能。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">同步</label><label for="__tabbed_1_2">异步</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a href="../functional_api.1.html#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.func</span><span class="w"> </span><span class="kn">import</span> <span class="n">entrypoint</span>
+</span><span id="__span-5-2"><a href="../functional_api.1.html#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a href="../functional_api.1.html#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nd">@entrypoint</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">)</span>
+</span><span id="__span-5-4"><a href="../functional_api.1.html#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_workflow</span><span class="p">(</span><span class="n">some_input</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-5-5"><a href="../functional_api.1.html#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>    <span class="c1"># some logic that may involve long-running tasks like API calls,</span>
+</span><span id="__span-5-6"><a href="../functional_api.1.html#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a>    <span class="c1"># and may be interrupted for human-in-the-loop.</span>
+</span><span id="__span-5-7"><a href="../functional_api.1.html#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a>    <span class="o">...</span>
+</span><span id="__span-5-8"><a href="../functional_api.1.html#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a>    <span class="k">return</span> <span class="n">result</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a href="../functional_api.1.html#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.func</span><span class="w"> </span><span class="kn">import</span> <span class="n">entrypoint</span>
+</span><span id="__span-6-2"><a href="../functional_api.1.html#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a href="../functional_api.1.html#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="nd">@entrypoint</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">)</span>
+</span><span id="__span-6-4"><a href="../functional_api.1.html#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">my_workflow</span><span class="p">(</span><span class="n">some_input</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-6-5"><a href="../functional_api.1.html#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a>    <span class="c1"># some logic that may involve long-running tasks like API calls,</span>
+</span><span id="__span-6-6"><a href="../functional_api.1.html#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a>    <span class="c1"># and may be interrupted for human-in-the-loop</span>
+</span><span id="__span-6-7"><a href="../functional_api.1.html#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a>    <span class="o">...</span>
+</span><span id="__span-6-8"><a href="../functional_api.1.html#__codelineno-6-8" id="__codelineno-6-8" name="__codelineno-6-8"></a>    <span class="k">return</span> <span class="n">result</span> 
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">序列化</p>
+<p>入口点的<strong>输入</strong>和<strong>输出</strong>必须是 JSON 可序列化的，以支持检查点。有关更多详细信息，请参阅<a href="../functional_api.1.html#serialization">序列化</a>部分。</p>
+</div>
+<h3 id="injectable-parameters">可注入参数<a class="headerlink" href="../functional_api.1.html#injectable-parameters" title="Permanent link">¶</a></h3>
+<p>声明 <code>entrypoint</code> 时，您可以请求访问将在运行时自动注入的额外参数。这些参数包括</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>previous</strong></td>
+<td>访问与给定线程的先前 <code>checkpoint</code> 相关联的状态。请参阅<a href="../functional_api.1.html#short-term-memory">短期记忆</a>。</td>
+</tr>
+<tr>
+<td><strong>store</strong></td>
+<td><a class="autorefs autorefs-internal" href="../../reference/store/index.html#langgraph.store.base.BaseStore" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>BaseStore</span>">BaseStore</a> 的一个实例。适用于<a href="../../how-tos/use-functional-api/index.html#long-term-memory">长期记忆</a>。</td>
+</tr>
+<tr>
+<td><strong>writer</strong></td>
+<td>在使用 Async Python &lt; 3.11 时，用于访问 StreamWriter。有关详细信息，请参阅<a href="../../how-tos/use-functional-api/index.html#streaming">函数式 API 流式传输</a>。</td>
+</tr>
+<tr>
+<td><strong>config</strong></td>
+<td>用于访问运行时配置。有关信息，请参阅<a href="https://python.langchain.ac.cn/docs/concepts/runnables/#runnableconfig">RunnableConfig</a>。</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>声明具有适当名称和类型注释的参数。</p>
+</div>
+<details class="example">
+<summary>请求可注入参数</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a href="../functional_api.1.html#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.runnables</span><span class="w"> </span><span class="kn">import</span> <span class="n">RunnableConfig</span>
+</span><span id="__span-7-2"><a href="../functional_api.1.html#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.func</span><span class="w"> </span><span class="kn">import</span> <span class="n">entrypoint</span>
+</span><span id="__span-7-3"><a href="../functional_api.1.html#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.store.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseStore</span>
+</span><span id="__span-7-4"><a href="../functional_api.1.html#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.store.memory</span><span class="w"> </span><span class="kn">import</span> <span class="n">InMemoryStore</span>
+</span><span id="__span-7-5"><a href="../functional_api.1.html#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a href="../functional_api.1.html#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="n">in_memory_store</span> <span class="o">=</span> <span class="n">InMemoryStore</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>  <span class="c1"># An instance of InMemoryStore for long-term memory</span>
+</span><span id="__span-7-7"><a href="../functional_api.1.html#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a href="../functional_api.1.html#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="nd">@entrypoint</span><span class="p">(</span>
+</span><span id="__span-7-9"><a href="../functional_api.1.html#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a>    <span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">,</span>  <span class="c1"># Specify the checkpointer</span>
+</span><span id="__span-7-10"><a href="../functional_api.1.html#__codelineno-7-10" id="__codelineno-7-10" name="__codelineno-7-10"></a>    <span class="n">store</span><span class="o">=</span><span class="n">in_memory_store</span>  <span class="c1"># Specify the store</span>
+</span><span id="__span-7-11"><a href="../functional_api.1.html#__codelineno-7-11" id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="p">)</span>  
+</span><span id="__span-7-12"><a href="../functional_api.1.html#__codelineno-7-12" id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_workflow</span><span class="p">(</span>
+</span><span id="__span-7-13"><a href="../functional_api.1.html#__codelineno-7-13" id="__codelineno-7-13" name="__codelineno-7-13"></a>    <span class="n">some_input</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>  <span class="c1"># The input (e.g., passed via `invoke`)</span>
+</span><span id="__span-7-14"><a href="../functional_api.1.html#__codelineno-7-14" id="__codelineno-7-14" name="__codelineno-7-14"></a>    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-7-15"><a href="../functional_api.1.html#__codelineno-7-15" id="__codelineno-7-15" name="__codelineno-7-15"></a>    <span class="n">previous</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="c1"># For short-term memory</span>
+</span><span id="__span-7-16"><a href="../functional_api.1.html#__codelineno-7-16" id="__codelineno-7-16" name="__codelineno-7-16"></a>    <span class="n">store</span><span class="p">:</span> <span class="n">BaseStore</span><span class="p">,</span>  <span class="c1"># For long-term memory</span>
+</span><span id="__span-7-17"><a href="../functional_api.1.html#__codelineno-7-17" id="__codelineno-7-17" name="__codelineno-7-17"></a>    <span class="n">writer</span><span class="p">:</span> <span class="n">StreamWriter</span><span class="p">,</span>  <span class="c1"># For streaming custom data</span>
+</span><span id="__span-7-18"><a href="../functional_api.1.html#__codelineno-7-18" id="__codelineno-7-18" name="__codelineno-7-18"></a>    <span class="n">config</span><span class="p">:</span> <span class="n">RunnableConfig</span>  <span class="c1"># For accessing the configuration passed to the entrypoint</span>
+</span><span id="__span-7-19"><a href="../functional_api.1.html#__codelineno-7-19" id="__codelineno-7-19" name="__codelineno-7-19"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="o">...</span><span class="p">:</span>
+</span></code></pre></div>
+</details>
+<h3 id="executing">执行<a class="headerlink" href="../functional_api.1.html#executing" title="Permanent link">¶</a></h3>
+<p>使用<a href="../functional_api.1.html#entrypoint"><code>@entrypoint</code></a> 会生成一个 <a class="autorefs autorefs-internal" href="../../reference/pregel/index.html#langgraph.pregel.Pregel.stream" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-method&quot;></code> <span class=&quot;doc doc-object-name doc-function-name&quot;>stream</span>"><code>Pregel</code></a> 对象，该对象可以使用 <code>invoke</code>、<code>ainvoke</code>、<code>stream</code> 和 <code>astream</code> 方法执行。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">调用</label><label for="__tabbed_2_2">异步调用</label><label for="__tabbed_2_3">流</label><label for="__tabbed_2_4">异步流</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a href="../functional_api.1.html#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-8-2"><a href="../functional_api.1.html#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-8-3"><a href="../functional_api.1.html#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"some_thread_id"</span>
+</span><span id="__span-8-4"><a href="../functional_api.1.html#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a>    <span class="p">}</span>
+</span><span id="__span-8-5"><a href="../functional_api.1.html#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="p">}</span>
+</span><span id="__span-8-6"><a href="../functional_api.1.html#__codelineno-8-6" id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="n">my_workflow</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">some_input</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>  <span class="c1"># Wait for the result synchronously</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a href="../functional_api.1.html#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-9-2"><a href="../functional_api.1.html#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-9-3"><a href="../functional_api.1.html#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"some_thread_id"</span>
+</span><span id="__span-9-4"><a href="../functional_api.1.html#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a>    <span class="p">}</span>
+</span><span id="__span-9-5"><a href="../functional_api.1.html#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="p">}</span>
+</span><span id="__span-9-6"><a href="../functional_api.1.html#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="k">await</span> <span class="n">my_workflow</span><span class="o">.</span><span class="n">ainvoke</span><span class="p">(</span><span class="n">some_input</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>  <span class="c1"># Await result asynchronously</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a href="../functional_api.1.html#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-10-2"><a href="../functional_api.1.html#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-10-3"><a href="../functional_api.1.html#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"some_thread_id"</span>
+</span><span id="__span-10-4"><a href="../functional_api.1.html#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a>    <span class="p">}</span>
+</span><span id="__span-10-5"><a href="../functional_api.1.html#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="p">}</span>
+</span><span id="__span-10-6"><a href="../functional_api.1.html#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a href="../functional_api.1.html#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">my_workflow</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">some_input</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="__span-10-8"><a href="../functional_api.1.html#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a href="../functional_api.1.html#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-11-2"><a href="../functional_api.1.html#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-11-3"><a href="../functional_api.1.html#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"some_thread_id"</span>
+</span><span id="__span-11-4"><a href="../functional_api.1.html#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a>    <span class="p">}</span>
+</span><span id="__span-11-5"><a href="../functional_api.1.html#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="p">}</span>
+</span><span id="__span-11-6"><a href="../functional_api.1.html#__codelineno-11-6" id="__codelineno-11-6" name="__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a href="../functional_api.1.html#__codelineno-11-7" id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="k">async</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">my_workflow</span><span class="o">.</span><span class="n">astream</span><span class="p">(</span><span class="n">some_input</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="__span-11-8"><a href="../functional_api.1.html#__codelineno-11-8" id="__codelineno-11-8" name="__codelineno-11-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="resuming">恢复<a class="headerlink" href="../functional_api.1.html#resuming" title="Permanent link">¶</a></h3>
+<p>在<a class="autorefs autorefs-internal" href="../../reference/types/index.html#langgraph.types.interrupt" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-function&quot;></code> <span class=&quot;doc doc-object-name doc-function-name&quot;>interrupt</span>">中断</a>后恢复执行可以通过将<strong>恢复</strong>值传递给<a class="autorefs autorefs-internal" href="../../reference/types/index.html#langgraph.types.Command" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>Command</span> <span class=&quot;doc doc-labels&quot;> <small class=&quot;doc doc-label doc-label-dataclass&quot;><code>dataclass</code></small> </span>">Command</a> 原语来完成。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:4"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">调用</label><label for="__tabbed_3_2">异步调用</label><label for="__tabbed_3_3">流</label><label for="__tabbed_3_4">异步流</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a href="../functional_api.1.html#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Command</span>
+</span><span id="__span-12-2"><a href="../functional_api.1.html#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a href="../functional_api.1.html#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-12-4"><a href="../functional_api.1.html#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-12-5"><a href="../functional_api.1.html#__codelineno-12-5" id="__codelineno-12-5" name="__codelineno-12-5"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"some_thread_id"</span>
+</span><span id="__span-12-6"><a href="../functional_api.1.html#__codelineno-12-6" id="__codelineno-12-6" name="__codelineno-12-6"></a>    <span class="p">}</span>
+</span><span id="__span-12-7"><a href="../functional_api.1.html#__codelineno-12-7" id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="p">}</span>
+</span><span id="__span-12-8"><a href="../functional_api.1.html#__codelineno-12-8" id="__codelineno-12-8" name="__codelineno-12-8"></a>
+</span><span id="__span-12-9"><a href="../functional_api.1.html#__codelineno-12-9" id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="n">my_workflow</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="n">resume</span><span class="o">=</span><span class="n">some_resume_value</span><span class="p">),</span> <span class="n">config</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a href="../functional_api.1.html#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Command</span>
+</span><span id="__span-13-2"><a href="../functional_api.1.html#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a href="../functional_api.1.html#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-13-4"><a href="../functional_api.1.html#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-13-5"><a href="../functional_api.1.html#__codelineno-13-5" id="__codelineno-13-5" name="__codelineno-13-5"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"some_thread_id"</span>
+</span><span id="__span-13-6"><a href="../functional_api.1.html#__codelineno-13-6" id="__codelineno-13-6" name="__codelineno-13-6"></a>    <span class="p">}</span>
+</span><span id="__span-13-7"><a href="../functional_api.1.html#__codelineno-13-7" id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="p">}</span>
+</span><span id="__span-13-8"><a href="../functional_api.1.html#__codelineno-13-8" id="__codelineno-13-8" name="__codelineno-13-8"></a>
+</span><span id="__span-13-9"><a href="../functional_api.1.html#__codelineno-13-9" id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="k">await</span> <span class="n">my_workflow</span><span class="o">.</span><span class="n">ainvoke</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="n">resume</span><span class="o">=</span><span class="n">some_resume_value</span><span class="p">),</span> <span class="n">config</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a href="../functional_api.1.html#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Command</span>
+</span><span id="__span-14-2"><a href="../functional_api.1.html#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a href="../functional_api.1.html#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-14-4"><a href="../functional_api.1.html#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-14-5"><a href="../functional_api.1.html#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"some_thread_id"</span>
+</span><span id="__span-14-6"><a href="../functional_api.1.html#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a>    <span class="p">}</span>
+</span><span id="__span-14-7"><a href="../functional_api.1.html#__codelineno-14-7" id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="p">}</span>
+</span><span id="__span-14-8"><a href="../functional_api.1.html#__codelineno-14-8" id="__codelineno-14-8" name="__codelineno-14-8"></a>
+</span><span id="__span-14-9"><a href="../functional_api.1.html#__codelineno-14-9" id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">my_workflow</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="n">resume</span><span class="o">=</span><span class="n">some_resume_value</span><span class="p">),</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="__span-14-10"><a href="../functional_api.1.html#__codelineno-14-10" id="__codelineno-14-10" name="__codelineno-14-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a href="../functional_api.1.html#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">Command</span>
+</span><span id="__span-15-2"><a href="../functional_api.1.html#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a href="../functional_api.1.html#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-15-4"><a href="../functional_api.1.html#__codelineno-15-4" id="__codelineno-15-4" name="__codelineno-15-4"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-15-5"><a href="../functional_api.1.html#__codelineno-15-5" id="__codelineno-15-5" name="__codelineno-15-5"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"some_thread_id"</span>
+</span><span id="__span-15-6"><a href="../functional_api.1.html#__codelineno-15-6" id="__codelineno-15-6" name="__codelineno-15-6"></a>    <span class="p">}</span>
+</span><span id="__span-15-7"><a href="../functional_api.1.html#__codelineno-15-7" id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="p">}</span>
+</span><span id="__span-15-8"><a href="../functional_api.1.html#__codelineno-15-8" id="__codelineno-15-8" name="__codelineno-15-8"></a>
+</span><span id="__span-15-9"><a href="../functional_api.1.html#__codelineno-15-9" id="__codelineno-15-9" name="__codelineno-15-9"></a><span class="k">async</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">my_workflow</span><span class="o">.</span><span class="n">astream</span><span class="p">(</span><span class="n">Command</span><span class="p">(</span><span class="n">resume</span><span class="o">=</span><span class="n">some_resume_value</span><span class="p">),</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="__span-15-10"><a href="../functional_api.1.html#__codelineno-15-10" id="__codelineno-15-10" name="__codelineno-15-10"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p><strong>错误后恢复</strong></p>
+<p>要在大纲后恢复，请使用 <code>None</code> 和相同的<strong>线程 ID</strong>（配置）运行 <code>entrypoint</code>。</p>
+<p>这假设底层<strong>错误</strong>已解决并且执行可以成功进行。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">调用</label><label for="__tabbed_4_2">异步调用</label><label for="__tabbed_4_3">流</label><label for="__tabbed_4_4">异步流</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a href="../functional_api.1.html#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-16-2"><a href="../functional_api.1.html#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-16-3"><a href="../functional_api.1.html#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"some_thread_id"</span>
+</span><span id="__span-16-4"><a href="../functional_api.1.html#__codelineno-16-4" id="__codelineno-16-4" name="__codelineno-16-4"></a>    <span class="p">}</span>
+</span><span id="__span-16-5"><a href="../functional_api.1.html#__codelineno-16-5" id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="p">}</span>
+</span><span id="__span-16-6"><a href="../functional_api.1.html#__codelineno-16-6" id="__codelineno-16-6" name="__codelineno-16-6"></a>
+</span><span id="__span-16-7"><a href="../functional_api.1.html#__codelineno-16-7" id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="n">my_workflow</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a href="../functional_api.1.html#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-17-2"><a href="../functional_api.1.html#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-17-3"><a href="../functional_api.1.html#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"some_thread_id"</span>
+</span><span id="__span-17-4"><a href="../functional_api.1.html#__codelineno-17-4" id="__codelineno-17-4" name="__codelineno-17-4"></a>    <span class="p">}</span>
+</span><span id="__span-17-5"><a href="../functional_api.1.html#__codelineno-17-5" id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="p">}</span>
+</span><span id="__span-17-6"><a href="../functional_api.1.html#__codelineno-17-6" id="__codelineno-17-6" name="__codelineno-17-6"></a>
+</span><span id="__span-17-7"><a href="../functional_api.1.html#__codelineno-17-7" id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="k">await</span> <span class="n">my_workflow</span><span class="o">.</span><span class="n">ainvoke</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a href="../functional_api.1.html#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-18-2"><a href="../functional_api.1.html#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-18-3"><a href="../functional_api.1.html#__codelineno-18-3" id="__codelineno-18-3" name="__codelineno-18-3"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"some_thread_id"</span>
+</span><span id="__span-18-4"><a href="../functional_api.1.html#__codelineno-18-4" id="__codelineno-18-4" name="__codelineno-18-4"></a>    <span class="p">}</span>
+</span><span id="__span-18-5"><a href="../functional_api.1.html#__codelineno-18-5" id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="p">}</span>
+</span><span id="__span-18-6"><a href="../functional_api.1.html#__codelineno-18-6" id="__codelineno-18-6" name="__codelineno-18-6"></a>
+</span><span id="__span-18-7"><a href="../functional_api.1.html#__codelineno-18-7" id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">my_workflow</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="__span-18-8"><a href="../functional_api.1.html#__codelineno-18-8" id="__codelineno-18-8" name="__codelineno-18-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-19-1"><a href="../functional_api.1.html#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-19-2"><a href="../functional_api.1.html#__codelineno-19-2" id="__codelineno-19-2" name="__codelineno-19-2"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-19-3"><a href="../functional_api.1.html#__codelineno-19-3" id="__codelineno-19-3" name="__codelineno-19-3"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"some_thread_id"</span>
+</span><span id="__span-19-4"><a href="../functional_api.1.html#__codelineno-19-4" id="__codelineno-19-4" name="__codelineno-19-4"></a>    <span class="p">}</span>
+</span><span id="__span-19-5"><a href="../functional_api.1.html#__codelineno-19-5" id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="p">}</span>
+</span><span id="__span-19-6"><a href="../functional_api.1.html#__codelineno-19-6" id="__codelineno-19-6" name="__codelineno-19-6"></a>
+</span><span id="__span-19-7"><a href="../functional_api.1.html#__codelineno-19-7" id="__codelineno-19-7" name="__codelineno-19-7"></a><span class="k">async</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">my_workflow</span><span class="o">.</span><span class="n">astream</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="__span-19-8"><a href="../functional_api.1.html#__codelineno-19-8" id="__codelineno-19-8" name="__codelineno-19-8"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="short-term-memory">短期记忆<a class="headerlink" href="../functional_api.1.html#short-term-memory" title="Permanent link">¶</a></h3>
+<p>当 <code>entrypoint</code> 与 <code>checkpointer</code> 一起定义时，它会在同一<strong>线程 ID</strong> 的连续调用之间将信息存储在<a href="../persistence.1.html#checkpoints">检查点</a>中。</p>
+<p>这允许使用 <code>previous</code> 参数访问前一次调用的状态。</p>
+<p>默认情况下，<code>previous</code> 参数是前一次调用的返回值。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-20-1"><a href="../functional_api.1.html#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="nd">@entrypoint</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">)</span>
+</span><span id="__span-20-2"><a href="../functional_api.1.html#__codelineno-20-2" id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_workflow</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">previous</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-20-3"><a href="../functional_api.1.html#__codelineno-20-3" id="__codelineno-20-3" name="__codelineno-20-3"></a>    <span class="n">previous</span> <span class="o">=</span> <span class="n">previous</span> <span class="ow">or</span> <span class="mi">0</span>
+</span><span id="__span-20-4"><a href="../functional_api.1.html#__codelineno-20-4" id="__codelineno-20-4" name="__codelineno-20-4"></a>    <span class="k">return</span> <span class="n">number</span> <span class="o">+</span> <span class="n">previous</span>
+</span><span id="__span-20-5"><a href="../functional_api.1.html#__codelineno-20-5" id="__codelineno-20-5" name="__codelineno-20-5"></a>
+</span><span id="__span-20-6"><a href="../functional_api.1.html#__codelineno-20-6" id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-20-7"><a href="../functional_api.1.html#__codelineno-20-7" id="__codelineno-20-7" name="__codelineno-20-7"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-20-8"><a href="../functional_api.1.html#__codelineno-20-8" id="__codelineno-20-8" name="__codelineno-20-8"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"some_thread_id"</span>
+</span><span id="__span-20-9"><a href="../functional_api.1.html#__codelineno-20-9" id="__codelineno-20-9" name="__codelineno-20-9"></a>    <span class="p">}</span>
+</span><span id="__span-20-10"><a href="../functional_api.1.html#__codelineno-20-10" id="__codelineno-20-10" name="__codelineno-20-10"></a><span class="p">}</span>
+</span><span id="__span-20-11"><a href="../functional_api.1.html#__codelineno-20-11" id="__codelineno-20-11" name="__codelineno-20-11"></a>
+</span><span id="__span-20-12"><a href="../functional_api.1.html#__codelineno-20-12" id="__codelineno-20-12" name="__codelineno-20-12"></a><span class="n">my_workflow</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>  <span class="c1"># 1 (previous was None)</span>
+</span><span id="__span-20-13"><a href="../functional_api.1.html#__codelineno-20-13" id="__codelineno-20-13" name="__codelineno-20-13"></a><span class="n">my_workflow</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>  <span class="c1"># 3 (previous was 1 from the previous invocation)</span>
+</span></code></pre></div>
+<h4 id="entrypointfinal"><code>entrypoint.final</code><a class="headerlink" href="../functional_api.1.html#entrypointfinal" title="Permanent link">¶</a></h4>
+<p><a class="autorefs autorefs-internal" href="../../reference/func/index.html#langgraph.func.entrypoint.final" title="<code class=&quot;doc-symbol doc-symbol-heading doc-symbol-class&quot;></code> <span class=&quot;doc doc-object-name doc-class-name&quot;>final</span> <span class=&quot;doc doc-labels&quot;> <small class=&quot;doc doc-label doc-label-dataclass&quot;><code>dataclass</code></small> </span>">entrypoint.final</a> 是一个特殊的原语，可以从入口点返回，并允许将<strong>保存到检查点中的值</strong>与<strong>入口点的返回值</strong>进行<strong>解耦</strong>。</p>
+<p>第一个值是入口点的返回值，第二个值是保存到检查点中的值。类型注释为 <code>entrypoint.final[return_type, save_type]</code>。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-21-1"><a href="../functional_api.1.html#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="nd">@entrypoint</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">)</span>
+</span><span id="__span-21-2"><a href="../functional_api.1.html#__codelineno-21-2" id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_workflow</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">previous</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">entrypoint</span><span class="o">.</span><span class="n">final</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+</span><span id="__span-21-3"><a href="../functional_api.1.html#__codelineno-21-3" id="__codelineno-21-3" name="__codelineno-21-3"></a>    <span class="n">previous</span> <span class="o">=</span> <span class="n">previous</span> <span class="ow">or</span> <span class="mi">0</span>
+</span><span id="__span-21-4"><a href="../functional_api.1.html#__codelineno-21-4" id="__codelineno-21-4" name="__codelineno-21-4"></a>    <span class="c1"># This will return the previous value to the caller, saving</span>
+</span><span id="__span-21-5"><a href="../functional_api.1.html#__codelineno-21-5" id="__codelineno-21-5" name="__codelineno-21-5"></a>    <span class="c1"># 2 * number to the checkpoint, which will be used in the next invocation </span>
+</span><span id="__span-21-6"><a href="../functional_api.1.html#__codelineno-21-6" id="__codelineno-21-6" name="__codelineno-21-6"></a>    <span class="c1"># for the `previous` parameter.</span>
+</span><span id="__span-21-7"><a href="../functional_api.1.html#__codelineno-21-7" id="__codelineno-21-7" name="__codelineno-21-7"></a>    <span class="k">return</span> <span class="n">entrypoint</span><span class="o">.</span><span class="n">final</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">previous</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">2</span> <span class="o">*</span> <span class="n">number</span><span class="p">)</span>
+</span><span id="__span-21-8"><a href="../functional_api.1.html#__codelineno-21-8" id="__codelineno-21-8" name="__codelineno-21-8"></a>
+</span><span id="__span-21-9"><a href="../functional_api.1.html#__codelineno-21-9" id="__codelineno-21-9" name="__codelineno-21-9"></a><span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-21-10"><a href="../functional_api.1.html#__codelineno-21-10" id="__codelineno-21-10" name="__codelineno-21-10"></a>    <span class="s2">"configurable"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-21-11"><a href="../functional_api.1.html#__codelineno-21-11" id="__codelineno-21-11" name="__codelineno-21-11"></a>        <span class="s2">"thread_id"</span><span class="p">:</span> <span class="s2">"1"</span>
+</span><span id="__span-21-12"><a href="../functional_api.1.html#__codelineno-21-12" id="__codelineno-21-12" name="__codelineno-21-12"></a>    <span class="p">}</span>
+</span><span id="__span-21-13"><a href="../functional_api.1.html#__codelineno-21-13" id="__codelineno-21-13" name="__codelineno-21-13"></a><span class="p">}</span>
+</span><span id="__span-21-14"><a href="../functional_api.1.html#__codelineno-21-14" id="__codelineno-21-14" name="__codelineno-21-14"></a>
+</span><span id="__span-21-15"><a href="../functional_api.1.html#__codelineno-21-15" id="__codelineno-21-15" name="__codelineno-21-15"></a><span class="n">my_workflow</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>  <span class="c1"># 0 (previous was None)</span>
+</span><span id="__span-21-16"><a href="../functional_api.1.html#__codelineno-21-16" id="__codelineno-21-16" name="__codelineno-21-16"></a><span class="n">my_workflow</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>  <span class="c1"># 6 (previous was 3 * 2 from the previous invocation)</span>
+</span></code></pre></div>
+<h2 id="task">任务<a class="headerlink" href="../functional_api.1.html#task" title="Permanent link">¶</a></h2>
+<p><strong>任务</strong>表示一个离散的工作单元，例如 API 调用或数据处理步骤。它具有两个关键特性：</p>
+<ul>
+<li><strong>异步执行</strong>：任务旨在异步执行，允许多个操作并发运行而不会阻塞。</li>
+<li><strong>检查点</strong>：任务结果会保存到检查点，从而使工作流能够从上次保存的状态恢复。（有关更多详细信息，请参阅<a href="../persistence.1.html">持久化</a>）。</li>
+</ul>
+<h3 id="definition_1">定义<a class="headerlink" href="../functional_api.1.html#definition_1" title="Permanent link">¶</a></h3>
+<p>任务是使用 <code>@task</code> 装饰器定义的，该装饰器包装了一个普通的 Python 函数。</p>
+<p><sup><i>API 参考：<a href="../../reference/func/index.html#langgraph.func.task">task</a></i></sup></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-22-1"><a href="../functional_api.1.html#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.func</span><span class="w"> </span><span class="kn">import</span> <span class="n">task</span>
+</span><span id="__span-22-2"><a href="../functional_api.1.html#__codelineno-22-2" id="__codelineno-22-2" name="__codelineno-22-2"></a>
+</span><span id="__span-22-3"><a href="../functional_api.1.html#__codelineno-22-3" id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="nd">@task</span><span class="p">()</span>
+</span><span id="__span-22-4"><a href="../functional_api.1.html#__codelineno-22-4" id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">slow_computation</span><span class="p">(</span><span class="n">input_value</span><span class="p">):</span>
+</span><span id="__span-22-5"><a href="../functional_api.1.html#__codelineno-22-5" id="__codelineno-22-5" name="__codelineno-22-5"></a>    <span class="c1"># Simulate a long-running operation</span>
+</span><span id="__span-22-6"><a href="../functional_api.1.html#__codelineno-22-6" id="__codelineno-22-6" name="__codelineno-22-6"></a>    <span class="o">...</span>
+</span><span id="__span-22-7"><a href="../functional_api.1.html#__codelineno-22-7" id="__codelineno-22-7" name="__codelineno-22-7"></a>    <span class="k">return</span> <span class="n">result</span>
+</span></code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">序列化</p>
+<p>任务的<strong>输出</strong>必须是 JSON 可序列化的，以支持检查点。</p>
+</div>
+<h3 id="execution">执行<a class="headerlink" href="../functional_api.1.html#execution" title="Permanent link">¶</a></h3>
+<p><strong>任务</strong>只能从<strong>入口点</strong>、另一个<strong>任务</strong>或<a href="../low_level.1.html#nodes">状态图节点</a>内部调用。</p>
+<p>任务<em>不能</em>直接从主应用程序代码中调用。</p>
+<p>当您调用一个<strong>任务</strong>时，它会<em>立即</em>返回一个 future 对象。future 是一个占位符，用于表示稍后可用的结果。</p>
+<p>要获取<strong>任务</strong>的结果，您可以同步等待它（使用 <code>result()</code>）或异步等待它（使用 <code>await</code>）。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">同步调用</label><label for="__tabbed_5_2">异步调用</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-23-1"><a href="../functional_api.1.html#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="nd">@entrypoint</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">)</span>
+</span><span id="__span-23-2"><a href="../functional_api.1.html#__codelineno-23-2" id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_workflow</span><span class="p">(</span><span class="n">some_input</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-23-3"><a href="../functional_api.1.html#__codelineno-23-3" id="__codelineno-23-3" name="__codelineno-23-3"></a>    <span class="n">future</span> <span class="o">=</span> <span class="n">slow_computation</span><span class="p">(</span><span class="n">some_input</span><span class="p">)</span>
+</span><span id="__span-23-4"><a href="../functional_api.1.html#__codelineno-23-4" id="__codelineno-23-4" name="__codelineno-23-4"></a>    <span class="k">return</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>  <span class="c1"># Wait for the result synchronously</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-24-1"><a href="../functional_api.1.html#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="nd">@entrypoint</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">)</span>
+</span><span id="__span-24-2"><a href="../functional_api.1.html#__codelineno-24-2" id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">my_workflow</span><span class="p">(</span><span class="n">some_input</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-24-3"><a href="../functional_api.1.html#__codelineno-24-3" id="__codelineno-24-3" name="__codelineno-24-3"></a>    <span class="k">return</span> <span class="k">await</span> <span class="n">slow_computation</span><span class="p">(</span><span class="n">some_input</span><span class="p">)</span>  <span class="c1"># Await result asynchronously</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="when-to-use-a-task">何时使用任务<a class="headerlink" href="../functional_api.1.html#when-to-use-a-task" title="Permanent link">¶</a></h2>
+<p><strong>任务</strong>在以下场景中很有用：</p>
+<ul>
+<li><strong>检查点</strong>：当您需要将长时间运行操作的结果保存到检查点时，这样在恢复工作流时就不需要重新计算它。</li>
+<li><strong>人在环</strong>：如果您正在构建需要人工干预的工作流，则必须使用<strong>任务</strong>来封装任何随机性（例如 API 调用），以确保工作流可以正确恢复。有关更多详细信息，请参阅<a href="../functional_api.1.html#determinism">确定性</a>部分。</li>
+<li><strong>并行执行</strong>：对于 I/O 密集型任务，<strong>任务</strong>支持并行执行，允许多个操作并发运行而不会阻塞（例如，调用多个 API）。</li>
+<li><strong>可观测性</strong>：将操作封装在<strong>任务</strong>中，提供了一种使用<a href="https://langsmith.langchain.ac.cn/">LangSmith</a>跟踪工作流进度和监控单个操作执行的方法。</li>
+<li><strong>可重试工作</strong>：当工作需要重试以处理故障或不一致时，<strong>任务</strong>提供了一种封装和管理重试逻辑的方法。</li>
+</ul>
+<h2 id="serialization">序列化<a class="headerlink" href="../functional_api.1.html#serialization" title="Permanent link">¶</a></h2>
+<p>LangGraph 中的序列化有两个关键方面：</p>
+<ol>
+<li><code>@entrypoint</code> 的输入和输出必须是 JSON 可序列化的。</li>
+<li><code>@task</code> 的输出必须是 JSON 可序列化的。</li>
+</ol>
+<p>这些要求对于启用检查点和工作流恢复是必要的。使用 Python 原语，如字典、列表、字符串、数字和布尔值，以确保您的输入和输出是可序列化的。</p>
+<p>序列化确保工作流状态（例如任务结果和中间值）可以可靠地保存和恢复。这对于启用人在环交互、容错和并行执行至关重要。</p>
+<p>提供不可序列化的输入或输出将在工作流配置了检查点器时导致运行时错误。</p>
+<h2 id="determinism">确定性<a class="headerlink" href="../functional_api.1.html#determinism" title="Permanent link">¶</a></h2>
+<p>为了利用<strong>人在环</strong>等功能，任何随机性都应封装在<strong>任务</strong>内部。这保证了当执行停止（例如，为了人在环）并随后恢复时，它将遵循相同的<em>步骤序列</em>，即使<strong>任务</strong>结果是非确定性的。</p>
+<p>LangGraph 通过在执行时持久化<strong>任务</strong>和<a href="../subgraphs.1.html"><strong>子图</strong></a>的结果来实现此行为。精心设计的工作流可确保恢复执行遵循<em>相同的步骤序列</em>，从而允许正确检索先前计算的结果，而无需重新执行它们。这对于长时间运行的<strong>任务</strong>或具有非确定性结果的<strong>任务</strong>特别有用，因为它避免了重复以前完成的工作，并允许从本质上相同的状态恢复。</p>
+<p>尽管工作流的不同运行可以产生不同的结果，但恢复<strong>特定</strong>运行应始终遵循相同的记录步骤序列。这使得 LangGraph 能够有效地查找在图中断之前执行的<strong>任务</strong>和<strong>子图</strong>结果，并避免重新计算它们。</p>
+<h2 id="idempotency">幂等性<a class="headerlink" href="../functional_api.1.html#idempotency" title="Permanent link">¶</a></h2>
+<p>幂等性确保多次运行相同的操作会产生相同的结果。这有助于防止因故障而重新运行某个步骤时出现重复的 API 调用和冗余处理。始终将 API 调用放在<strong>任务</strong>函数内部进行检查点，并将其设计为幂等的，以防重新执行。如果<strong>任务</strong>启动但未成功完成，则可能会发生重新执行。然后，如果工作流恢复，<strong>任务</strong>将再次运行。使用幂等性键或验证现有结果以避免重复。</p>
+<h2 id="functional-api-vs-graph-api">函数式 API 与图 API 对比<a class="headerlink" href="../functional_api.1.html#functional-api-vs-graph-api" title="Permanent link">¶</a></h2>
+<p><strong>函数式 API</strong> 和<a href="../low_level.1.html#stategraph">图 API (StateGraph)</a> 提供了两种不同的范式来使用 LangGraph 创建应用程序。以下是一些主要区别：</p>
+<ul>
+<li><strong>控制流</strong>：函数式 API 不需要考虑图结构。您可以使用标准 Python 构造来定义工作流。这通常会减少您需要编写的代码量。</li>
+<li><strong>短期记忆</strong>：<strong>图 API</strong> 需要声明一个<a href="../low_level.1.html#state"><strong>State</strong></a>，并且可能需要定义<a href="../low_level.1.html#reducers"><strong>reducer</strong></a>来管理图状态的更新。<code>@entrypoint</code> 和 <code>@tasks</code> 不需要显式状态管理，因为它们的状态作用域限定在函数内部，并且不跨函数共享。</li>
+<li><strong>检查点</strong>：两种 API 都生成和使用检查点。在<strong>图 API</strong> 中，每个<a href="../low_level.1.html">超步</a>后都会生成一个新的检查点。在<strong>函数式 API</strong> 中，当任务执行时，它们的結果會保存到与给定入口点关联的现有检查点中，而不是创建新的检查点。</li>
+<li><strong>可视化</strong>：图 API 可以轻松地将工作流可视化为图，这对于调试、理解工作流和与他人共享非常有用。函数式 API 不支持可视化，因为图是在运行时动态生成的。</li>
+</ul>
+<h2 id="common-pitfalls">常见陷阱<a class="headerlink" href="../functional_api.1.html#common-pitfalls" title="Permanent link">¶</a></h2>
+<h3 id="handling-side-effects">处理副作用<a class="headerlink" href="../functional_api.1.html#handling-side-effects" title="Permanent link">¶</a></h3>
+<p>将副作用（例如，写入文件、发送电子邮件）封装在任务中，以确保在恢复工作流时它们不会被多次执行。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">不正确</label><label for="__tabbed_6_2">正确</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>在此示例中，副作用（写入文件）直接包含在工作流中，因此在恢复工作流时会再次执行。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-25-1"><a href="../functional_api.1.html#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="nd">@entrypoint</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">)</span>
+</span><span id="__span-25-2"><a href="../functional_api.1.html#__codelineno-25-2" id="__codelineno-25-2" name="__codelineno-25-2"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_workflow</span><span class="p">(</span><span class="n">inputs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-25-3"><a href="../functional_api.1.html#__codelineno-25-3" id="__codelineno-25-3" name="__codelineno-25-3"></a>    <span class="c1"># This code will be executed a second time when resuming the workflow.</span>
+</span><span id="__span-25-4"><a href="../functional_api.1.html#__codelineno-25-4" id="__codelineno-25-4" name="__codelineno-25-4"></a>    <span class="c1"># Which is likely not what you want.</span>
+</span><span id="__span-25-5"><a href="../functional_api.1.html#__codelineno-25-5" id="__codelineno-25-5" name="__codelineno-25-5"></a><span class="hll">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"output.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span id="__span-25-6"><a href="../functional_api.1.html#__codelineno-25-6" id="__codelineno-25-6" name="__codelineno-25-6"></a><span class="hll">        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"Side effect executed"</span><span class="p">)</span>
+</span></span><span id="__span-25-7"><a href="../functional_api.1.html#__codelineno-25-7" id="__codelineno-25-7" name="__codelineno-25-7"></a>    <span class="n">value</span> <span class="o">=</span> <span class="n">interrupt</span><span class="p">(</span><span class="s2">"question"</span><span class="p">)</span>
+</span><span id="__span-25-8"><a href="../functional_api.1.html#__codelineno-25-8" id="__codelineno-25-8" name="__codelineno-25-8"></a>    <span class="k">return</span> <span class="n">value</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>在此示例中，副作用被封装在任务中，确保在恢复时执行一致。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-26-1"><a href="../functional_api.1.html#__codelineno-26-1" id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.func</span><span class="w"> </span><span class="kn">import</span> <span class="n">task</span>
+</span><span id="__span-26-2"><a href="../functional_api.1.html#__codelineno-26-2" id="__codelineno-26-2" name="__codelineno-26-2"></a>
+</span><span id="__span-26-3"><a href="../functional_api.1.html#__codelineno-26-3" id="__codelineno-26-3" name="__codelineno-26-3"></a><span class="hll"><span class="nd">@task</span>
+</span></span><span id="__span-26-4"><a href="../functional_api.1.html#__codelineno-26-4" id="__codelineno-26-4" name="__codelineno-26-4"></a><span class="hll"><span class="k">def</span><span class="w"> </span><span class="nf">write_to_file</span><span class="p">():</span>
+</span></span><span id="__span-26-5"><a href="../functional_api.1.html#__codelineno-26-5" id="__codelineno-26-5" name="__codelineno-26-5"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"output.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span id="__span-26-6"><a href="../functional_api.1.html#__codelineno-26-6" id="__codelineno-26-6" name="__codelineno-26-6"></a>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"Side effect executed"</span><span class="p">)</span>
+</span><span id="__span-26-7"><a href="../functional_api.1.html#__codelineno-26-7" id="__codelineno-26-7" name="__codelineno-26-7"></a>
+</span><span id="__span-26-8"><a href="../functional_api.1.html#__codelineno-26-8" id="__codelineno-26-8" name="__codelineno-26-8"></a><span class="nd">@entrypoint</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">)</span>
+</span><span id="__span-26-9"><a href="../functional_api.1.html#__codelineno-26-9" id="__codelineno-26-9" name="__codelineno-26-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_workflow</span><span class="p">(</span><span class="n">inputs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-26-10"><a href="../functional_api.1.html#__codelineno-26-10" id="__codelineno-26-10" name="__codelineno-26-10"></a>    <span class="c1"># The side effect is now encapsulated in a task.</span>
+</span><span id="__span-26-11"><a href="../functional_api.1.html#__codelineno-26-11" id="__codelineno-26-11" name="__codelineno-26-11"></a>    <span class="n">write_to_file</span><span class="p">()</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</span><span id="__span-26-12"><a href="../functional_api.1.html#__codelineno-26-12" id="__codelineno-26-12" name="__codelineno-26-12"></a>    <span class="n">value</span> <span class="o">=</span> <span class="n">interrupt</span><span class="p">(</span><span class="s2">"question"</span><span class="p">)</span>
+</span><span id="__span-26-13"><a href="../functional_api.1.html#__codelineno-26-13" id="__codelineno-26-13" name="__codelineno-26-13"></a>    <span class="k">return</span> <span class="n">value</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="non-deterministic-control-flow">非确定性控制流<a class="headerlink" href="../functional_api.1.html#non-deterministic-control-flow" title="Permanent link">¶</a></h3>
+<p>每次可能产生不同结果的操作（例如获取当前时间或随机数）应封装在任务中，以确保在恢复时返回相同的结果。</p>
+<ul>
+<li>在任务中：获取随机数 (5) → 中断 → 恢复 → (再次返回 5) → ...</li>
+<li>不在任务中：获取随机数 (5) → 中断 → 恢复 → 获取新的随机数 (7) → ...</li>
+</ul>
+<p>当使用具有多个中断调用的<strong>人在环</strong>工作流时，这一点尤为重要。LangGraph 为每个任务/入口点保留一个恢复值列表。当遇到中断时，它会与相应的恢复值匹配。这种匹配严格按<strong>索引</strong>进行，因此恢复值的顺序应与中断的顺序匹配。</p>
+<p>如果在恢复时未保持执行顺序，一个 <code>interrupt</code> 调用可能会与错误的 <code>resume</code> 值匹配，从而导致结果不正确。</p>
+<p>请阅读<a href="../functional_api.1.html#determinism">确定性</a>部分了解更多详细信息。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">不正确</label><label for="__tabbed_7_2">正确</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>在此示例中，工作流使用当前时间来确定要执行的任务。这是非确定性的，因为工作流的结果取决于其执行时间。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-27-1"><a href="../functional_api.1.html#__codelineno-27-1" id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.func</span><span class="w"> </span><span class="kn">import</span> <span class="n">entrypoint</span>
+</span><span id="__span-27-2"><a href="../functional_api.1.html#__codelineno-27-2" id="__codelineno-27-2" name="__codelineno-27-2"></a>
+</span><span id="__span-27-3"><a href="../functional_api.1.html#__codelineno-27-3" id="__codelineno-27-3" name="__codelineno-27-3"></a><span class="nd">@entrypoint</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">)</span>
+</span><span id="__span-27-4"><a href="../functional_api.1.html#__codelineno-27-4" id="__codelineno-27-4" name="__codelineno-27-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_workflow</span><span class="p">(</span><span class="n">inputs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-27-5"><a href="../functional_api.1.html#__codelineno-27-5" id="__codelineno-27-5" name="__codelineno-27-5"></a>    <span class="n">t0</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="s2">"t0"</span><span class="p">]</span>
+</span><span id="__span-27-6"><a href="../functional_api.1.html#__codelineno-27-6" id="__codelineno-27-6" name="__codelineno-27-6"></a><span class="hll">    <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span></span><span id="__span-27-7"><a href="../functional_api.1.html#__codelineno-27-7" id="__codelineno-27-7" name="__codelineno-27-7"></a>
+</span><span id="__span-27-8"><a href="../functional_api.1.html#__codelineno-27-8" id="__codelineno-27-8" name="__codelineno-27-8"></a>    <span class="n">delta_t</span> <span class="o">=</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span>
+</span><span id="__span-27-9"><a href="../functional_api.1.html#__codelineno-27-9" id="__codelineno-27-9" name="__codelineno-27-9"></a>
+</span><span id="__span-27-10"><a href="../functional_api.1.html#__codelineno-27-10" id="__codelineno-27-10" name="__codelineno-27-10"></a>    <span class="k">if</span> <span class="n">delta_t</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-27-11"><a href="../functional_api.1.html#__codelineno-27-11" id="__codelineno-27-11" name="__codelineno-27-11"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">slow_task</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</span><span id="__span-27-12"><a href="../functional_api.1.html#__codelineno-27-12" id="__codelineno-27-12" name="__codelineno-27-12"></a>        <span class="n">value</span> <span class="o">=</span> <span class="n">interrupt</span><span class="p">(</span><span class="s2">"question"</span><span class="p">)</span>
+</span><span id="__span-27-13"><a href="../functional_api.1.html#__codelineno-27-13" id="__codelineno-27-13" name="__codelineno-27-13"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-27-14"><a href="../functional_api.1.html#__codelineno-27-14" id="__codelineno-27-14" name="__codelineno-27-14"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">slow_task</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</span><span id="__span-27-15"><a href="../functional_api.1.html#__codelineno-27-15" id="__codelineno-27-15" name="__codelineno-27-15"></a>        <span class="n">value</span> <span class="o">=</span> <span class="n">interrupt</span><span class="p">(</span><span class="s2">"question"</span><span class="p">)</span>
+</span><span id="__span-27-16"><a href="../functional_api.1.html#__codelineno-27-16" id="__codelineno-27-16" name="__codelineno-27-16"></a>
+</span><span id="__span-27-17"><a href="../functional_api.1.html#__codelineno-27-17" id="__codelineno-27-17" name="__codelineno-27-17"></a>    <span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-27-18"><a href="../functional_api.1.html#__codelineno-27-18" id="__codelineno-27-18" name="__codelineno-27-18"></a>        <span class="s2">"result"</span><span class="p">:</span> <span class="n">result</span><span class="p">,</span>
+</span><span id="__span-27-19"><a href="../functional_api.1.html#__codelineno-27-19" id="__codelineno-27-19" name="__codelineno-27-19"></a>        <span class="s2">"value"</span><span class="p">:</span> <span class="n">value</span>
+</span><span id="__span-27-20"><a href="../functional_api.1.html#__codelineno-27-20" id="__codelineno-27-20" name="__codelineno-27-20"></a>    <span class="p">}</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>在此示例中，工作流使用输入 <code>t0</code> 来确定要执行的任务。这是确定性的，因为工作流的结果仅取决于输入。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-28-1"><a href="../functional_api.1.html#__codelineno-28-1" id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+</span><span id="__span-28-2"><a href="../functional_api.1.html#__codelineno-28-2" id="__codelineno-28-2" name="__codelineno-28-2"></a>
+</span><span id="__span-28-3"><a href="../functional_api.1.html#__codelineno-28-3" id="__codelineno-28-3" name="__codelineno-28-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.func</span><span class="w"> </span><span class="kn">import</span> <span class="n">task</span>
+</span><span id="__span-28-4"><a href="../functional_api.1.html#__codelineno-28-4" id="__codelineno-28-4" name="__codelineno-28-4"></a>
+</span><span id="__span-28-5"><a href="../functional_api.1.html#__codelineno-28-5" id="__codelineno-28-5" name="__codelineno-28-5"></a><span class="hll"><span class="nd">@task</span>
+</span></span><span id="__span-28-6"><a href="../functional_api.1.html#__codelineno-28-6" id="__codelineno-28-6" name="__codelineno-28-6"></a><span class="hll"><span class="k">def</span><span class="w"> </span><span class="nf">get_time</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+</span></span><span id="__span-28-7"><a href="../functional_api.1.html#__codelineno-28-7" id="__codelineno-28-7" name="__codelineno-28-7"></a>    <span class="k">return</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</span><span id="__span-28-8"><a href="../functional_api.1.html#__codelineno-28-8" id="__codelineno-28-8" name="__codelineno-28-8"></a>
+</span><span id="__span-28-9"><a href="../functional_api.1.html#__codelineno-28-9" id="__codelineno-28-9" name="__codelineno-28-9"></a><span class="nd">@entrypoint</span><span class="p">(</span><span class="n">checkpointer</span><span class="o">=</span><span class="n">checkpointer</span><span class="p">)</span>
+</span><span id="__span-28-10"><a href="../functional_api.1.html#__codelineno-28-10" id="__codelineno-28-10" name="__codelineno-28-10"></a><span class="k">def</span><span class="w"> </span><span class="nf">my_workflow</span><span class="p">(</span><span class="n">inputs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-28-11"><a href="../functional_api.1.html#__codelineno-28-11" id="__codelineno-28-11" name="__codelineno-28-11"></a>    <span class="n">t0</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="s2">"t0"</span><span class="p">]</span>
+</span><span id="__span-28-12"><a href="../functional_api.1.html#__codelineno-28-12" id="__codelineno-28-12" name="__codelineno-28-12"></a><span class="hll">    <span class="n">t1</span> <span class="o">=</span> <span class="n">get_time</span><span class="p">()</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</span></span><span id="__span-28-13"><a href="../functional_api.1.html#__codelineno-28-13" id="__codelineno-28-13" name="__codelineno-28-13"></a>
+</span><span id="__span-28-14"><a href="../functional_api.1.html#__codelineno-28-14" id="__codelineno-28-14" name="__codelineno-28-14"></a>    <span class="n">delta_t</span> <span class="o">=</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span>
+</span><span id="__span-28-15"><a href="../functional_api.1.html#__codelineno-28-15" id="__codelineno-28-15" name="__codelineno-28-15"></a>
+</span><span id="__span-28-16"><a href="../functional_api.1.html#__codelineno-28-16" id="__codelineno-28-16" name="__codelineno-28-16"></a>    <span class="k">if</span> <span class="n">delta_t</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-28-17"><a href="../functional_api.1.html#__codelineno-28-17" id="__codelineno-28-17" name="__codelineno-28-17"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">slow_task</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</span><span id="__span-28-18"><a href="../functional_api.1.html#__codelineno-28-18" id="__codelineno-28-18" name="__codelineno-28-18"></a>        <span class="n">value</span> <span class="o">=</span> <span class="n">interrupt</span><span class="p">(</span><span class="s2">"question"</span><span class="p">)</span>
+</span><span id="__span-28-19"><a href="../functional_api.1.html#__codelineno-28-19" id="__codelineno-28-19" name="__codelineno-28-19"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-28-20"><a href="../functional_api.1.html#__codelineno-28-20" id="__codelineno-28-20" name="__codelineno-28-20"></a>        <span class="n">result</span> <span class="o">=</span> <span class="n">slow_task</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</span><span id="__span-28-21"><a href="../functional_api.1.html#__codelineno-28-21" id="__codelineno-28-21" name="__codelineno-28-21"></a>        <span class="n">value</span> <span class="o">=</span> <span class="n">interrupt</span><span class="p">(</span><span class="s2">"question"</span><span class="p">)</span>
+</span><span id="__span-28-22"><a href="../functional_api.1.html#__codelineno-28-22" id="__codelineno-28-22" name="__codelineno-28-22"></a>
+</span><span id="__span-28-23"><a href="../functional_api.1.html#__codelineno-28-23" id="__codelineno-28-23" name="__codelineno-28-23"></a>    <span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-28-24"><a href="../functional_api.1.html#__codelineno-28-24" id="__codelineno-28-24" name="__codelineno-28-24"></a>        <span class="s2">"result"</span><span class="p">:</span> <span class="n">result</span><span class="p">,</span>
+</span><span id="__span-28-25"><a href="../functional_api.1.html#__codelineno-28-25" id="__codelineno-28-25" name="__codelineno-28-25"></a>        <span class="s2">"value"</span><span class="p">:</span> <span class="n">value</span>
+</span><span id="__span-28-26"><a href="../functional_api.1.html#__codelineno-28-26" id="__codelineno-28-26" name="__codelineno-28-26"></a>    <span class="p">}</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>返回顶部</button>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: Build multi-agent systems" class="md-footer__link md-footer__link--prev" href="../../how-tos/multi_agent/index.html"> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg> </div> <div class="md-footer__title"> <span class="md-footer__direction"> 上一个 </span> <div class="md-ellipsis"> 构建多代理系统 </div> </div> </a> <a aria-label="Next: Use the functional API" class="md-footer__link md-footer__link--next" href="../../how-tos/use-functional-api/index.html"> <div class="md-footer__title"> <span class="md-footer__direction"> 下一个 </span> <div class="md-ellipsis"> 使用函数式 API </div> </div> <div class="md-footer__button md-icon"> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg> </div> </a></nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">版权所有 © 2025 LangChain, Inc | <a href="../functional_api.1.html#__consent">同意偏好</a></div>使用<a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank"> Material for MkDocs </a>制作</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.langchain.ac.cn/langgraphjs/" rel="noopener" target="_blank" title="langchain-ai.github.io">
+<svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M0 32v448h448V32zm243.8 349.4c0 43.6-25.6 63.5-62.9 63.5-33.7 0-53.2-17.4-63.2-38.5l34.3-20.7c6.6 11.7 12.6 21.6 27.1 21.6 13.8 0 22.6-5.4 22.6-26.5V237.7h42.1zm99.6 63.5c-39.1 0-64.4-18.6-76.7-43l34.3-19.8c9 14.7 20.8 25.6 41.5 25.6 17.4 0 28.6-8.7 28.6-20.8 0-14.4-11.4-19.5-30.7-28l-10.5-4.5c-30.4-12.9-50.5-29.2-50.5-63.5 0-31.6 24.1-55.6 61.6-55.6 26.8 0 46 9.3 59.8 33.7L368 290c-7.2-12.9-15-18-27.1-18-12.3 0-20.1 7.8-20.1 18 0 12.6 7.8 17.7 25.9 25.6l10.5 4.5c35.8 15.3 55.9 31 55.9 66.2 0 37.8-29.8 58.6-69.7 58.6"></path></svg>
+</a>
+<a class="md-social__link" href="https://github.com/langchain-ai/langgraph" rel="noopener" target="_blank" title="github.com">
+<svg viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+</a>
+<a class="md-social__link" href="https://twitter.com/LangChainAI" rel="noopener" target="_blank" title="twitter.com">
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<div class="md-progress" data-md-component="progress" role="progressbar"></div>
+<div class="md-consent" data-md-component="consent" hidden="" id="__consent">
+<div class="md-consent__overlay"></div>
+<aside class="md-consent__inner">
+<form class="md-consent__form md-grid md-typeset" name="consent">
+<h4>Cookie 同意</h4>
+<p>我们使用 Cookie 来识别您的重复访问和偏好，并衡量我们文档的有效性以及用户是否找到了他们正在查找的内容。<strong>点击“接受”使我们的文档更好。谢谢！</strong> ❤️</p>
+<input checked="" class="md-toggle" id="__settings" type="checkbox" />
+<div class="md-consent__settings">
+<ul class="task-list">
+<li class="task-list-item">
+<label class="task-list-control">
+<input checked="" name="github" type="checkbox" />
+<span class="task-list-indicator"></span> GitHub</label>
+</li>
+</ul>
+</div>
+<div class="md-consent__controls">
+<button class="md-button md-button--primary">接受</button>
+<button class="md-button md-button--primary" type="reset">拒绝</button>
+</div>
+</form>
+</aside>
+</div>
+<script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+<script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.code.select", "content.tabs.link", "content.action.edit", "content.tooltips", "navigation.indexes", "navigation.footer", "navigation.instant", "navigation.sections", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.top", "navigation.prune", "navigation.tracking", "search.highlight", "search.share", "search.suggest"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+
+</body></html>
